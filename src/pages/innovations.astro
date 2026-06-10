@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Signature Innovations"
+  description="The HUMAN Framework for ethical AI integration, the Learning Experience Analyzer (LEA), and 25+ custom automation tools built to transform how schools approach technology."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy to-teal-900 text-white py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 text-center">
+        <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Signature Innovations</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Tools &amp; Frameworks That Transform How Schools Approach AI</h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+          Built from real classroom needs, tested across three international school divisions,
+          and designed to benefit students, teachers, and leadership simultaneously.
+        </p>
+      </div>
+    </section>
+
+    <!-- HUMAN FRAMEWORK -->
+    <section id="human-framework" class="py-20 md:py-28 bg-white scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-14 items-start">
+          <div>
+            <span class="tag mb-4">Framework</span>
+            <h2 class="section-title">The HUMAN Framework</h2>
+            <p class="text-sm text-gray-500 mb-4">Co-created with <strong class="text-teal">María Pérez Talavera</strong></p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              A practical guide for the human-centered use and selective integration of AI in education.
+              Rather than prescribing when to use AI, the framework gives teachers and students a shared
+              vocabulary and clear map for making intentional, ethical choices.
+            </p>
+            <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 mb-6">
+              <h3 class="font-semibold text-navy mb-4 text-sm uppercase tracking-wider">Two Core Principles</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="text-center p-4 bg-white rounded-xl">
+                  <div class="text-2xl font-bold text-teal mb-1">🧠</div>
+                  <div class="font-semibold text-navy text-sm">Preserving Learning</div>
+                </div>
+                <div class="text-center p-4 bg-white rounded-xl">
+                  <div class="text-2xl font-bold text-teal mb-1">🤝</div>
+                  <div class="font-semibold text-navy text-sm">Maintaining Integrity</div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-8">
+              {['Presented at AIFE Jakarta', 'Data in Schools KL', 'School-wide Guidelines', 'Ethical AI'].map(t => (
+                <span class="bg-teal-50 text-teal text-xs rounded-full px-3 py-1 font-medium">{t}</span>
+              ))}
+            </div>
+            <a href="mailto:mr.luisc@gmail.com?subject=HUMAN Framework Inquiry" class="btn-primary">
+              Ask About Implementation
+            </a>
+          </div>
+
+          <div class="space-y-4">
+            <img src="/images/human-framework.png" alt="HUMAN Framework poster" class="w-full rounded-2xl shadow-md border border-gray-100 mb-6" />
+            <h3 class="font-bold text-navy text-lg mb-4">The Five Levels</h3>
+            {[
+              { letter: 'H', label: 'Human Thinking & Discovery', desc: 'Students engage in a learning task alone, without AI support. This preserves the foundational cognitive work that builds understanding and skill.' },
+              { letter: 'U', label: 'Utilizing AI for Planning & Research', desc: 'Students chart their own ideas, with AI supporting through the planning, outlining, and research process. The ideas remain theirs.' },
+              { letter: 'M', label: 'Maximizing Ideas with AI', desc: 'Students use AI as a thought partner to generate ideas they will fully develop on their own. AI sparks possibilities; students do the work.' },
+              { letter: 'A', label: 'AI Feedforward', desc: 'Students use AI to get feedforward — suggestions and possibilities for enhancing their work before final submission.' },
+              { letter: 'N', label: 'New AI-Created Elements', desc: 'Students use AI to create new elements that expand their learning, focusing on work outside their main learning goals.' },
+            ].map(({ letter, label, desc }) => (
+              <div class="flex gap-4 p-4 rounded-xl bg-gray-50 hover:bg-teal-50 transition-colors">
+                <div class="w-10 h-10 bg-teal text-white rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0">{letter}</div>
+                <div>
+                  <div class="font-semibold text-navy text-sm mb-1">{label}</div>
+                  <div class="text-gray-600 text-sm leading-relaxed">{desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEA -->
+    <section id="lea" class="py-20 md:py-28 bg-gray-50 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-14 items-start">
+          <div class="order-2 md:order-1">
+            <img src="/images/lea-human-framework.jpeg" alt="LEA with HUMAN Framework" class="w-full rounded-2xl shadow-md border border-gray-100 mb-6" />
+            <img src="/images/lea-web.jpeg" alt="LEA web interface" class="w-full rounded-2xl shadow-md border border-gray-100" />
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="tag mb-4">AI-Powered Tool</span>
+            <h2 class="section-title">Learning Experience Analyzer (LEA)</h2>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              What began as a practical tool for teachers evolved into a school-wide data system.
+              Paste any learning activity and LEA analyzes it in real time against multiple frameworks
+              simultaneously — generating specific, time-bounded improvement recommendations.
+            </p>
+
+            <h3 class="font-semibold text-navy mb-3">Frameworks analyzed:</h3>
+            <div class="flex flex-wrap gap-2 mb-8">
+              {['HUMAN Framework', 'UbD (Understanding by Design)', 'UDL', "Bloom's Taxonomy", 'School Mission & Values', 'Social-Emotional Learning'].map(f => (
+                <span class="bg-amber/10 text-amber-dark text-xs rounded-full px-3 py-1 font-medium border border-amber/20">{f}</span>
+              ))}
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mb-8">
+              {[
+                { icon: '🎓', tier: 'Students', impact: 'Better-designed learning experiences' },
+                { icon: '👩‍🏫', tier: 'Teachers', impact: 'Streamlined planning without cognitive overload' },
+                { icon: '🏫', tier: 'Leadership', impact: 'Data for hiring, PD & strategic decisions' },
+              ].map(({ icon, tier, impact }) => (
+                <div class="text-center p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+                  <div class="text-2xl mb-2">{icon}</div>
+                  <div class="font-semibold text-navy text-sm mb-1">{tier}</div>
+                  <div class="text-gray-500 text-xs leading-snug">{impact}</div>
+                </div>
+              ))}
+            </div>
+
+            <div class="bg-teal-50 border-l-4 border-teal rounded-r-xl p-5 mb-8">
+              <p class="text-sm text-gray-700 italic">
+                "The unexpected discovery: in a framework designed for AI integration, 'not using AI'
+                became the most popular and pedagogically valuable choice — revealing insights that
+                transformed our entire approach to educational technology."
+              </p>
+            </div>
+
+            <a href="mailto:mr.luisc@gmail.com?subject=LEA Tool - Try It" class="btn-primary">
+              Request Access to LEA
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25+ TOOLS -->
+    <section id="tools" class="py-20 md:py-28 bg-white scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">Custom Tools</span>
+          <h2 class="section-title">25+ Custom Automation Tools</h2>
+          <p class="section-subtitle mx-auto">
+            Built to solve real problems — saving teachers hours every week, systematizing workflows, and bringing data to decisions.
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {[
+            { name: 'Report Card Comment Generator', desc: 'AI-powered personalized student comments for Middle and High School. Reduced report writing time by hours per teacher per cycle.', tag: 'Most Used' },
+            { name: 'Learning Experience Analyzer (LEA)', desc: 'Multi-framework lesson analysis tool with real-time recommendations. Three-tier impact: students, teachers, and leadership.', tag: 'Flagship' },
+            { name: 'Classroom Observation Tool', desc: 'Structured coaching observation and feedback system for MS and HS administrators and instructional coaches.', tag: 'Coaching' },
+            { name: 'STEAM Week Organizer', desc: 'End-to-end event planning and coordination system for school-wide STEAM festivals with 200+ participants.', tag: 'Events' },
+            { name: 'Digital Citizenship Tracker', desc: 'Student self-reflection and media tracking tool used with 400+ students annually across all three divisions.', tag: 'Students' },
+            { name: 'Professional Learning Dashboard', desc: 'Faculty PD tracking, survey aggregation, and coaching cycle management across three school divisions.', tag: 'Faculty' },
+          ].map(({ name, desc, tag }) => (
+            <div class="card">
+              <span class="tag text-xs mb-3">{tag}</span>
+              <h3 class="font-semibold text-navy mb-2">{name}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="bg-navy text-white rounded-2xl p-8 text-center">
+          <p class="text-amber font-bold text-3xl mb-2">15+ hours</p>
+          <p class="text-gray-300">saved weekly across departments through automation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="py-20 md:py-28 bg-teal text-white">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="tag bg-white/10 text-white border border-white/20 mb-4 inline-block">My AI Philosophy</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Human-Centered Technology</h2>
+            <p class="text-teal-100 leading-relaxed mb-6">
+              I believe AI should empower teachers — not replace them or overwhelm them with guilt.
+              My goal is for every teacher to be able to say <strong class="text-white">"I want to use AI"</strong> or
+              <strong class="text-white">"I don't want to use AI"</strong> — and have a clear, confident reason for either choice.
+            </p>
+            <p class="text-teal-100 leading-relaxed">
+              The surprising discovery from 8+ months of LEA implementation: "not using AI" was the
+              most popular and pedagogically valuable choice. That insight reshaped everything.
+            </p>
+          </div>
+          <div>
+            <img src="/images/headshot-3.jpeg" alt="Luis Carlos Moreno" class="rounded-2xl shadow-xl w-full object-cover max-h-[400px]" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS + CTA -->
+    <section class="py-20 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-3 gap-6 mb-14">
+          {[
+            { value: '25+', label: 'Custom Tools Built', sub: 'deployed across 3 school divisions' },
+            { value: '4', label: 'International Conferences', sub: 'PAIS · AIELOC · AIFE · Data in Schools' },
+            { value: '8+', label: 'Months of LEA Data', sub: 'informing school-wide strategy' },
+          ].map(({ value, label, sub }) => (
+            <div class="text-center p-8 bg-gray-50 rounded-2xl">
+              <div class="text-4xl font-bold text-amber mb-2">{value}</div>
+              <div class="font-semibold text-navy mb-1">{label}</div>
+              <div class="text-gray-500 text-sm">{sub}</div>
+            </div>
+          ))}
+        </div>
+        <div class="text-center">
+          <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4">Ready to Transform Your School's Approach to AI?</h2>
+          <p class="text-gray-600 mb-8 max-w-xl mx-auto">Whether you want to implement the HUMAN Framework, pilot LEA, or explore what a custom tool could look like for your school — let's talk.</p>
+          <a href="/work-with-me" class="btn-primary">Work With Me</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

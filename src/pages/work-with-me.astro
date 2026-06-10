@@ -1,0 +1,388 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+// Replace with your Formspree form ID after signing up at formspree.io
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+---
+
+<Layout
+  title="Work With Me"
+  description="AI integration coaching for educators and professionals. School workshops, 1:1 coaching, HUMAN Framework implementation, and consulting services."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy to-teal-900 text-white py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 text-center">
+        <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Work With Me</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Coaching, Training &amp; Consulting<br />
+          <span class="text-amber">for Educators, Professionals &amp; Organizations</span>
+        </h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+          My approach is always the same: efficiency, efficacy, sustainability — and above all, partnership.
+          Whether you're an individual educator, a leadership team, or a professional outside education,
+          I'm here to walk alongside you.
+        </p>
+        <a href="#contact" class="btn-amber">Start a Conversation</a>
+      </div>
+    </section>
+
+    <!-- FOR EDUCATORS -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">For Educators & Schools</span>
+          <h2 class="section-title">Services That Meet You Where You Are</h2>
+          <p class="section-subtitle mx-auto">
+            Every educator and every school has unique needs. I design services to be flexible,
+            practical, and deeply responsive to your context.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              icon: '🤖',
+              title: 'AI Integration Coaching',
+              sub: '1:1 or small groups',
+              desc: 'Personalized coaching sessions helping educators build confidence with AI tools, develop their own informed philosophy, and integrate AI purposefully into their practice.',
+              details: ['Tool selection and setup', 'Prompt engineering for teachers', 'HUMAN Framework introduction', 'Classroom application planning', 'Ethics and data privacy'],
+              color: 'teal',
+            },
+            {
+              icon: '🏫',
+              title: 'School-Wide Workshops & PD',
+              sub: 'Half-day to multi-session programs',
+              desc: 'Interactive professional development for faculty and staff — from foundational AI literacy to advanced implementation of the HUMAN Framework and LEA system.',
+              details: ['AI foundations for educators', 'HUMAN Framework rollout', 'LEA implementation training', 'Digital citizenship curriculum', 'Leadership data strategy sessions'],
+              color: 'teal',
+            },
+            {
+              icon: '🧩',
+              title: 'HUMAN Framework Implementation',
+              sub: 'Consulting engagement',
+              desc: 'Full implementation support for the HUMAN Framework — co-delivered with María Pérez Talavera. Includes customization to your school context, teacher training, and dashboard setup.',
+              details: ['School-specific customization', 'Faculty training series', 'LEA tool configuration', 'Leadership reporting setup', 'Ongoing support'],
+              color: 'amber',
+            },
+            {
+              icon: '⚙️',
+              title: 'Systems & Efficiency Consulting',
+              sub: 'Custom engagements',
+              desc: 'Custom solutions for schools navigating platform transitions, workflow inefficiencies, or digital system gaps — from Google Workspace rollouts to custom automation tools.',
+              details: ['EdTech audit & roadmap', 'Platform transition support', 'Custom tool development', 'Data workflow design', 'Staff capacity building'],
+              color: 'amber',
+            },
+          ].map(({ icon, title, sub, desc, details, color }) => (
+            <div class={`card border-t-4 ${color === 'teal' ? 'border-teal' : 'border-amber'}`}>
+              <div class="text-3xl mb-3">{icon}</div>
+              <h3 class="font-bold text-navy text-lg mb-0.5">{title}</h3>
+              <p class="text-sm text-gray-400 mb-3">{sub}</p>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">{desc}</p>
+              <ul class="space-y-1.5">
+                {details.map(d => (
+                  <li class="flex gap-2 text-sm text-gray-600">
+                    <span class={color === 'teal' ? 'text-teal' : 'text-amber'}>✓</span>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR PROFESSIONALS -->
+    <section class="py-20 md:py-28 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">For Professionals & Teams</span>
+          <h2 class="section-title">Work Smarter with AI — Without Losing Control of Your Data</h2>
+          <p class="section-subtitle mx-auto">
+            Not in education? No problem. Whether you're a lawyer, doctor, business owner, or executive —
+            I help you harness AI tools that actually fit how you work, with a focus on data privacy and practical results.
+          </p>
+        </div>
+
+        <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 md:p-8 mb-12">
+          <h3 class="font-semibold text-navy mb-4">Who This Is For</h3>
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {[
+              '⚖️ Legal Professionals — contracts, research, correspondence',
+              '🏥 Healthcare — documentation, patient comms, research',
+              '💼 Business Owners — operations, marketing, planning',
+              '🏦 Finance & Insurance — reports, analysis, compliance',
+              '👔 Executive Teams — strategy, communication, decisions',
+              '✍️ Anyone who writes, analyzes, or decides for a living',
+            ].map(item => (
+              <div class="flex gap-2 text-sm text-gray-700">
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          {[
+            {
+              icon: '🎯',
+              title: 'AI Readiness Call',
+              sub: 'Free — 30 minutes',
+              desc: "Let's talk about your work and identify where AI can have the biggest impact. No commitment, just clarity.",
+              cta: 'Book a Call',
+            },
+            {
+              icon: '👤',
+              title: '1:1 AI Coaching',
+              sub: 'Personalized sessions',
+              desc: 'Focused on your specific role and real workflows. Virtual, flexible scheduling, hands-on with your actual documents.',
+              cta: 'Learn More',
+            },
+            {
+              icon: '👥',
+              title: 'Team Workshops',
+              sub: '3–8 participants',
+              desc: 'Customized to your industry. Half-day intensives or multi-session programs. Virtual or on-site.',
+              cta: 'Inquire',
+            },
+          ].map(({ icon, title, sub, desc, cta }) => (
+            <div class="card text-center">
+              <div class="text-4xl mb-3">{icon}</div>
+              <h3 class="font-bold text-navy mb-1">{title}</h3>
+              <p class="text-sm text-gray-400 mb-3">{sub}</p>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">{desc}</p>
+              <a href="#contact" class="btn-secondary text-sm py-2 w-full justify-center">{cta}</a>
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card">
+            <h3 class="font-semibold text-navy mb-4">What You Get</h3>
+            <ul class="space-y-2">
+              {[
+                'Live sessions (recorded for your reference)',
+                'Custom prompt library tailored to your work',
+                'Tool recommendations based on your privacy needs',
+                'Quick reference guides and frameworks',
+                '30 days follow-up support via email',
+              ].map(item => (
+                <li class="flex gap-2 text-sm text-gray-600">
+                  <span class="text-teal">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="font-semibold text-navy mb-4">Tools We Cover</h3>
+            <div class="space-y-3">
+              {[
+                { tool: 'Claude', note: 'Best for confidential/legal work, complex analysis' },
+                { tool: 'ChatGPT', note: 'General productivity, creative tasks' },
+                { tool: 'Gemini', note: 'Google Workspace integration, research' },
+                { tool: 'Industry-specific', note: 'Based on your particular needs' },
+              ].map(({ tool, note }) => (
+                <div class="flex gap-3 text-sm">
+                  <span class="font-semibold text-navy w-24 flex-shrink-0">{tool}</span>
+                  <span class="text-gray-500">{note}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="py-20 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">My Approach</span>
+          <h2 class="section-title">How I Work</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              step: '01',
+              title: 'Discovery',
+              desc: 'We start with a free 30-minute conversation. I learn about your context, challenges, and goals — and you get a clear sense of whether this is the right fit.',
+            },
+            {
+              step: '02',
+              title: 'Design',
+              desc: 'I design an engagement specific to your needs. Not a packaged course — a tailored approach that works with your real workflows, documents, and constraints.',
+            },
+            {
+              step: '03',
+              title: 'Partnership',
+              desc: 'We work together iteratively. You apply what we explore to your actual work. I provide feedback, adjustment, and ongoing support to make sure it sticks.',
+            },
+          ].map(({ step, title, desc }) => (
+            <div class="text-center">
+              <div class="w-14 h-14 bg-teal rounded-2xl flex items-center justify-center text-white font-bold text-lg mx-auto mb-5">{step}</div>
+              <h3 class="font-bold text-navy text-lg mb-3">{title}</h3>
+              <p class="text-gray-600 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-20 md:py-24 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">What People Say</span>
+          <h2 class="section-title">From Educators I've Worked With</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              quote: 'He was so approachable, always working from a growth perspective to help me achieve my goals. He has given me confidence to keep trying other AI applications.',
+              name: 'Nicole Merletti',
+              role: 'MS Teacher, AISC',
+            },
+            {
+              quote: 'His expertise with educational technology is such an asset. Even if he is unfamiliar with a program, he can quickly analyze it and solve any problems that I have.',
+              name: 'Suzanne Brigham',
+              role: 'Teacher, AISC',
+            },
+            {
+              quote: 'Luis motivated me to take risks, try new tools, and feel confident bringing tech meaningfully into the classroom. My students were so proud when they saw me in the Apple video.',
+              name: 'Eugenia Gomez-Escobar',
+              role: 'MS World Language Teacher, AISC',
+            },
+          ].map(({ quote, name, role }) => (
+            <div class="card">
+              <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"{quote}"</p>
+              <p class="font-semibold text-navy text-sm">{name}</p>
+              <p class="text-gray-400 text-xs">{role}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-center text-gray-400 text-sm mt-8">90.5% service retention · 76.2% improved learning outcomes · 26 educator survey responses</p>
+      </div>
+    </section>
+
+    <!-- INVESTMENT -->
+    <section class="py-20 md:py-24 bg-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <span class="tag mb-4">Investment</span>
+        <h2 class="section-title">Flexible to Your Context</h2>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          I believe in accessible, transparent pricing. Educators and professionals start with a free
+          discovery call — no obligation, just a conversation. From there, we design an engagement that
+          fits your budget and goals.
+        </p>
+        <div class="grid sm:grid-cols-3 gap-6 mb-10">
+          {[
+            { label: 'Discovery Call', price: 'Free', note: '30 min · No commitment' },
+            { label: '1:1 Session', price: 'From $75', note: '90 min · Virtual' },
+            { label: 'Team Program', price: 'From $600', note: '4 sessions · 3–8 people' },
+          ].map(({ label, price, note }) => (
+            <div class="card text-center">
+              <div class="text-xl font-bold text-amber mb-1">{price}</div>
+              <div class="font-semibold text-navy text-sm mb-0.5">{label}</div>
+              <div class="text-gray-400 text-xs">{note}</div>
+            </div>
+          ))}
+        </div>
+        <p class="text-gray-500 text-sm">
+          Schools and organizations: custom pricing for multi-session programs and school-wide implementations.
+          Contact me to discuss.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" class="py-20 md:py-28 bg-navy text-white scroll-mt-20">
+      <div class="max-w-3xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <span class="tag bg-white/10 text-white border border-white/20 mb-4 inline-block">Get in Touch</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start?</h2>
+          <p class="text-gray-300">
+            Whether you have a specific challenge in mind or just want to explore possibilities —
+            the first conversation is always free.
+          </p>
+        </div>
+
+        <form
+          action={`https://formspree.io/f/${FORMSPREE_ID}`}
+          method="POST"
+          class="space-y-5"
+          id="contact-form"
+        >
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-300 mb-1.5">Full Name *</label>
+              <input type="text" id="name" name="name" required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-300 mb-1.5">Email *</label>
+              <input type="email" id="email" name="email" required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
+                placeholder="your@email.com"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="type" class="block text-sm font-medium text-gray-300 mb-1.5">I am a… *</label>
+            <select id="type" name="type" required
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
+            >
+              <option value="" class="text-gray-800">Select…</option>
+              <option value="educator" class="text-gray-800">Educator / Teacher</option>
+              <option value="school-leader" class="text-gray-800">School Leader / Administrator</option>
+              <option value="professional" class="text-gray-800">Professional (non-education)</option>
+              <option value="conference" class="text-gray-800">Conference / Event Organizer</option>
+              <option value="other" class="text-gray-800">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="subject" class="block text-sm font-medium text-gray-300 mb-1.5">Subject *</label>
+            <input type="text" id="subject" name="subject" required
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
+              placeholder="What would you like to discuss?"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-300 mb-1.5">Message *</label>
+            <textarea id="message" name="message" required rows="5"
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors resize-none"
+              placeholder="Tell me about your context, needs, or questions…"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-amber w-full justify-center text-base py-3.5">
+            Send Message
+          </button>
+          <p class="text-center text-gray-400 text-xs">
+            Or email directly: <a href="mailto:mr.luisc@gmail.com" class="text-teal-300 hover:text-white underline">mr.luisc@gmail.com</a>
+            · <a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener" class="text-teal-300 hover:text-white underline">LinkedIn</a>
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  form?.addEventListener('submit', async (e) => {
+    if ((form.querySelector('#type') as HTMLSelectElement)?.value === 'YOUR_FORMSPREE_ID') return;
+    // Formspree handles submission natively via action attribute
+  });
+</script>

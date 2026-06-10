@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-gray-800 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-teal text-white px-6 py-3 rounded-lg font-medium hover:bg-teal-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border-2 border-teal text-teal px-6 py-3 rounded-lg font-medium hover:bg-teal hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2;
+  }
+  .btn-amber {
+    @apply inline-flex items-center gap-2 bg-amber text-white px-6 py-3 rounded-lg font-medium hover:bg-amber-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber focus:ring-offset-2;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-navy mb-4;
+  }
+  .section-subtitle {
+    @apply text-lg text-gray-600 max-w-2xl;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow duration-200;
+  }
+  .tag {
+    @apply inline-block text-xs font-semibold uppercase tracking-wider text-teal bg-teal-50 px-3 py-1 rounded-full;
+  }
+}

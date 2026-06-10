@@ -1,0 +1,368 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="My Journey"
+  description="From systems engineering in Venezuela to learning innovation coaching across 5 countries — the full career journey of Luis Carlos Moreno."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy to-teal-900 text-white py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">My Journey</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">From Systems Engineering to Human-Centered Education</h1>
+            <p class="text-gray-300 text-lg leading-relaxed">
+              A decade of building, teaching, coaching, and innovating across four countries and every
+              role a school has to offer — with Venezuela always at the beginning of the story.
+            </p>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <img
+              src="/images/headshot-5.jpeg"
+              alt="Luis Carlos Moreno"
+              class="w-64 h-64 md:w-72 md:h-72 rounded-2xl object-cover object-top shadow-2xl ring-4 ring-white/10"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDENTITY & REPRESENTATION -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-14 items-center">
+          <div>
+            <span class="tag mb-4">Identity & Practice</span>
+            <h2 class="section-title">The Representation I Wished I'd Had</h2>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                I grew up in Valle de la Pascua, a small town in the Venezuelan plains, in a family of entrepreneurs.
+                I was working by age 7, managing my family's restaurant by 11. At 15, I immigrated alone
+                to Texas to learn English — with nothing but drive and the certainty that education could open any door.
+              </p>
+              <p>
+                As a queer, Latino, multilingual educator, I strive to be the representation I wished I'd had.
+                My students shouldn't have to search for someone who looks like them, thinks like them,
+                or navigated what they're navigating. I show up with that purpose every day.
+              </p>
+              <p>
+                My DEIJ work isn't separate from my technology work. It is foundational to it. Every
+                tool I build, every framework I design, begins with the question: <em>who does this serve,
+                and who might it leave out?</em>
+              </p>
+              <blockquote class="border-l-4 border-amber pl-4 text-gray-600 italic">
+                "You will not tell me that you accept me. You will not tell me that you tolerate me.
+                That is not your power. I take that from you. You will respect me for who I am."
+                <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">— Luis Carlos Moreno, AIELOC Conference Hanoi 2024</footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            {[
+              { emoji: '🇻🇪', label: 'Venezuelan', sub: 'Valle de la Pascua native' },
+              { emoji: '🏳️‍🌈', label: 'Queer Educator', sub: 'DEIJ advocate' },
+              { emoji: '🌍', label: '5 Countries', sub: '60+ countries visited' },
+              { emoji: '🎭', label: 'Hospital Clowns', sub: '9 years founding "Payasitos de Hospital"' },
+              { emoji: '✍️', label: 'Published Writer', sub: 'Author, songwriter' },
+              { emoji: '🗣️', label: 'Multilingual', sub: 'English · Spanish · Portuguese' },
+            ].map(({ emoji, label, sub }) => (
+              <div class="card text-center">
+                <div class="text-3xl mb-2">{emoji}</div>
+                <div class="font-semibold text-navy text-sm">{label}</div>
+                <div class="text-gray-500 text-xs mt-0.5">{sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRENT ROLES -->
+    <section class="py-20 md:py-28 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">Current Roles</span>
+          <h2 class="section-title">Where I Am Now</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card border-l-4 border-teal">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">🎓</div>
+              <div>
+                <span class="tag text-xs mb-1">2024 – Present</span>
+                <h3 class="font-bold text-navy text-lg">Learning Innovation & Technology Coach</h3>
+                <p class="text-teal font-medium text-sm">American International School Chennai (AISC), India</p>
+              </div>
+            </div>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex gap-2"><span class="text-teal">→</span> Led Apple Distinguished School certification (one of 10 schools in India)</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Co-created HUMAN Framework with María Pérez Talavera</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Engineered LEA — analyzed 8+ months of school-wide data</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Coached 110+ faculty using student-centered model (plan, observe, model, co-teach)</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Built 25+ automation tools saving 15+ hours weekly</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Designed digital citizenship curriculum for 400+ students annually</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Managed Integration Studio: VR, podcasting, multimedia</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Facilitated parent & community sessions on AI literacy and digital wellbeing</li>
+            </ul>
+          </div>
+          <div class="card border-l-4 border-amber">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 bg-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">🌐</div>
+              <div>
+                <span class="tag text-xs mb-1">2024 – Present</span>
+                <h3 class="font-bold text-navy text-lg">Game Theory & AI Instructor</h3>
+                <p class="text-amber font-medium text-sm">Global Online Academy (GOA) — Worldwide</p>
+              </div>
+            </div>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex gap-2"><span class="text-amber">→</span> Teaches Game Theory to students from member schools worldwide</li>
+              <li class="flex gap-2"><span class="text-amber">→</span> Teaches Introduction to Artificial Intelligence</li>
+              <li class="flex gap-2"><span class="text-amber">→</span> Creates custom instructional videos and competency-based assessments</li>
+              <li class="flex gap-2"><span class="text-amber">→</span> 95%+ course completion rate</li>
+              <li class="flex gap-2"><span class="text-amber">→</span> Global, asynchronous, project-based learning model</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPEAKING -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">Speaking</span>
+          <h2 class="section-title">Conference Presentations</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+          {[
+            {
+              year: '2025',
+              conf: 'AIFE Conference',
+              location: 'Jakarta, Indonesia',
+              title: 'Human-Like System: AI for Human-Like Decisions',
+              desc: 'Presented the HUMAN Framework and LEA as a complete system for ethical AI integration and school-wide strategic intelligence.',
+            },
+            {
+              year: '2025',
+              conf: 'Data in Schools Conference',
+              location: 'Kuala Lumpur, Malaysia',
+              title: 'Building Ethical AI Data Systems: From Classroom Guidance to Strategic Intelligence',
+              desc: 'Live demonstration of LEA analyzing real learning activities, with full data pipeline from classroom to leadership dashboards.',
+            },
+            {
+              year: '2024',
+              conf: 'AIELOC Conference',
+              location: 'Hanoi, Vietnam',
+              title: 'Identity, Immigration, and Belonging in International Education',
+              desc: 'Personal narrative presentation on navigating identity as a Venezuelan immigrant, queer Latino educator, and global citizen in international schools.',
+            },
+            {
+              year: '2019',
+              conf: 'PAIS Conference',
+              location: 'Panama City, Panama',
+              title: 'Escape Rooms & Breakout Boxes: Outside-the-Box Teaching',
+              desc: 'Practical workshop on gamifying learning experiences through digital and physical escape rooms to drive student engagement.',
+            },
+          ].map(({ year, conf, location, title, desc }) => (
+            <div class="card">
+              <div class="flex items-start justify-between mb-3">
+                <span class="tag text-xs">{year}</span>
+                <span class="text-xs text-gray-400 font-medium">{location}</span>
+              </div>
+              <p class="text-xs font-semibold text-teal uppercase tracking-wide mb-2">{conf}</p>
+              <h3 class="font-bold text-navy mb-2 leading-snug">"{title}"</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL CAREER TIMELINE -->
+    <section class="py-20 md:py-28 bg-gray-50">
+      <div class="max-w-5xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">Career Timeline</span>
+          <h2 class="section-title">Every Role, Every School</h2>
+        </div>
+        <div class="space-y-8">
+          {[
+            {
+              period: '2021 – 2023',
+              role: 'MYP Mathematics Teacher · DEIJ Taskforce Member',
+              org: 'Vientiane International School (VIS)',
+              location: 'Vientiane, Laos',
+              points: [
+                'MYP Mathematics teacher across multiple grade levels',
+                'DEIJ Taskforce member — contributed to inclusion and equity culture initiatives',
+                'Continued coaching educators in technology integration',
+                'ISS DEIJ Learning to Action Institute (2021–2022)',
+              ],
+            },
+            {
+              period: '2016 – 2021',
+              role: 'EdTech Coordinator K-12 → Instructional Technology Coach → MS Math Teacher & Dept. Head → Learning Support Specialist',
+              org: 'International School of Panama (ISP)',
+              location: 'Panama City, Panama',
+              points: [
+                'Four distinct roles across five years — built comprehensive understanding of the full school ecosystem',
+                'Led school-wide technology vision; primary administrator for Canvas LMS, FACTS SIS, Google Workspace',
+                'Coached teachers in technology integration with tailored, data-driven support',
+                'Taught middle school mathematics and served as Mathematics Department Head',
+                'Provided learning support for grades 6–8 with individualized instruction and ILP development',
+                'Consulted for Academia Hebrea de Panamá (2020) — delivered strategic technology audit',
+              ],
+            },
+            {
+              period: '2015 – 2016',
+              role: 'STEM & Robotics Teacher · Head of IT Department',
+              org: 'Colegio Isaac Rabin',
+              location: 'Panama City, Panama',
+              points: [
+                'Founded the school\'s STEM and Robotics program from the ground up',
+                'Led IT Department — managed infrastructure, device deployment, and tech support',
+                'Developed K-12 technology curriculum',
+              ],
+            },
+            {
+              period: '2011 – 2015',
+              role: 'Private Tutor & Homeschool Educator',
+              org: 'Independent',
+              location: 'Panama',
+              points: [
+                'Tutored two brothers for 4 years — full homeschool model',
+                'Subjects: STEM, Robotics, Mathematics, Information Technology',
+                'Students achieved A and B grades on GCSE assessments',
+                'Also supported AS & A Level students in mathematics',
+              ],
+            },
+          ].map(({ period, role, org, location, points }) => (
+            <div class="card">
+              <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+                <span class="tag text-xs">{period}</span>
+                <span class="text-xs text-gray-400">{location}</span>
+              </div>
+              <h3 class="font-semibold text-navy mb-1">{role}</h3>
+              <p class="text-teal font-medium text-sm mb-4">{org}</p>
+              <ul class="space-y-1.5">
+                {points.map(p => (
+                  <li class="flex gap-2 text-sm text-gray-600">
+                    <span class="text-teal mt-0.5 flex-shrink-0">→</span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS & EDUCATION -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-14">
+          <!-- Certifications -->
+          <div>
+            <span class="tag mb-4">Certifications</span>
+            <h2 class="text-2xl font-bold text-navy mb-8">Professional Credentials</h2>
+            <div class="space-y-3">
+              {[
+                { name: 'COETAIL — Certificate of Educational Technology & Information Literacy', year: '' },
+                { name: 'Google Certified Educator Level 1 & Level 2', year: '' },
+                { name: 'UDL Associate Level 1 Credential', year: '' },
+                { name: 'Apple Distinguished School — Certification Leader', year: '2024' },
+                { name: 'International Teaching Certificate (TTC, Rome)', year: '2018' },
+                { name: 'Coaching Skills for International Teacher Leaders (TTC, Rome)', year: '2018' },
+                { name: 'Social & Emotional Teaching and Learning (TTC, Rome)', year: '2018' },
+                { name: 'Special Needs Learning in International Schools (TTC, London)', year: '2017' },
+                { name: 'Problem, Project & Design-Based Teaching (TTC, London)', year: '2017' },
+                { name: 'Adaptive Schools Training', year: '' },
+                { name: 'ISS DEIJ Learning to Action Institute', year: '2021–2022' },
+                { name: 'Responsive Classroom for Elementary Educators', year: '2018' },
+              ].map(({ name, year }) => (
+                <div class="flex items-start gap-3 py-2.5 border-b border-gray-50 last:border-0">
+                  <div class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-1.5"></div>
+                  <div class="flex-1">
+                    <span class="text-sm text-gray-700">{name}</span>
+                    {year && <span class="text-xs text-gray-400 ml-2">({year})</span>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div>
+            <span class="tag mb-4">Education</span>
+            <h2 class="text-2xl font-bold text-navy mb-8">Academic Background</h2>
+            <div class="space-y-6">
+              <div class="card border-l-4 border-teal">
+                <p class="text-xs text-gray-400 mb-1">2013 – 2015</p>
+                <h3 class="font-bold text-navy mb-1">Master's in Education</h3>
+                <p class="text-gray-600 text-sm mb-0.5">Higher Education, Teaching Emphasis</p>
+                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
+              </div>
+              <div class="card border-l-4 border-amber">
+                <p class="text-xs text-gray-400 mb-1">2008 – 2012</p>
+                <h3 class="font-bold text-navy mb-1">Bachelor's in Computer Science & Systems Engineering</h3>
+                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
+              </div>
+              <div class="card border-l-4 border-gray-200">
+                <p class="text-xs text-gray-400 mb-1">2014 – 2015</p>
+                <h3 class="font-bold text-navy mb-1">Postgraduate Specialization in Higher Education</h3>
+                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
+              </div>
+              <div class="card border-l-4 border-gray-200">
+                <p class="text-xs text-gray-400 mb-1">2015</p>
+                <h3 class="font-bold text-navy mb-1">Creative Writing Diploma</h3>
+                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <span class="tag mb-4">Languages</span>
+              <div class="space-y-3 mt-4">
+                {[
+                  { lang: 'Spanish', level: 'Native', pct: 100 },
+                  { lang: 'English', level: 'Professional fluency', pct: 98 },
+                  { lang: 'Portuguese', level: 'Conversational', pct: 55 },
+                ].map(({ lang, level, pct }) => (
+                  <div>
+                    <div class="flex justify-between text-sm mb-1">
+                      <span class="font-medium text-navy">{lang}</span>
+                      <span class="text-gray-500">{level}</span>
+                    </div>
+                    <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div class="h-full bg-teal rounded-full" style={`width: ${pct}%`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-6">Want to know more or explore working together?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work-with-me" class="btn-amber">Work With Me</a>
+          <a href="mailto:mr.luisc@gmail.com" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Send an Email</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

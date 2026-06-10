@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Blog"
+  description="Insights on AI integration in education, human-centered technology, and systems thinking from Luis Carlos Moreno."
+>
+  <Nav />
+  <main>
+
+    <section class="bg-gradient-to-br from-navy to-teal-900 text-white py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 text-center">
+        <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Blog & Insights</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Ideas Worth Sharing</h1>
+        <p class="text-gray-300 text-lg max-w-xl mx-auto">
+          Reflections on AI in education, human-centered technology, systems thinking, and what it means to lead with purpose.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <div class="w-20 h-20 bg-teal-50 rounded-2xl flex items-center justify-center mx-auto mb-8">
+          <svg class="w-10 h-10 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-bold text-navy mb-4">Coming Soon</h2>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          I'm getting ready to share thoughts on AI integration, human-centered education, and building
+          systems that actually work. Subscribe to be notified when the first post goes live — or
+          connect with me on LinkedIn where I share ideas regularly.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener" class="btn-primary">
+            Follow on LinkedIn
+          </a>
+          <a href="/work-with-me#contact" class="btn-secondary">
+            Get in Touch
+          </a>
+        </div>
+        <div class="mt-12 grid sm:grid-cols-3 gap-4 text-left">
+          {[
+            { topic: '🤖 AI in Education', desc: 'Practical frameworks for integrating AI without losing what makes learning human.' },
+            { topic: '⚙️ Systems Thinking', desc: 'How to see schools as complete systems and build solutions that work for everyone.' },
+            { topic: '🧭 Leadership & Coaching', desc: 'What 10 years of coaching teachers has taught me about change and trust.' },
+          ].map(({ topic, desc }) => (
+            <div class="card text-center">
+              <p class="font-semibold text-navy mb-2 text-sm">{topic}</p>
+              <p class="text-gray-500 text-xs leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

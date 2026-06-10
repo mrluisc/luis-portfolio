@@ -1,0 +1,351 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Home" description="Learning Innovation & Technology Coach, AI Integration Specialist, and Co-creator of the HUMAN Framework. Engineering solutions, empowering educators.">
+  <Nav />
+  <main>
+
+    <!-- ─── HERO ──────────────────────────────────────────────── -->
+    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-20 md:py-32 overflow-hidden relative">
+      <div class="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_50%,_#F4A442_0%,_transparent_60%)]"></div>
+      <div class="max-w-6xl mx-auto px-4 md:px-8 relative">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">
+              Available for roles & consulting
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+              Luis Carlos <span class="text-amber">Moreno</span>
+            </h1>
+            <p class="text-teal-200 font-medium text-lg mb-2">
+              Learning Innovation &amp; Technology Coach &nbsp;·&nbsp; AI Integration Specialist
+            </p>
+            <p class="text-teal-200 font-medium text-base mb-6">
+              Co-creator of the HUMAN Framework &nbsp;·&nbsp; GOA Game Theory Instructor
+            </p>
+            <p class="text-2xl md:text-3xl font-semibold text-amber mb-8 leading-snug">
+              Engineering Solutions.<br />Empowering Educators.
+            </p>
+            <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-lg">
+              A Venezuelan-born systems engineer turned international educator — I bridge the gap
+              between complex technology and human-centered teaching, building sustainable solutions
+              that work for students, teachers, and leaders alike.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="/experience" class="btn-amber">Explore My Journey</a>
+              <a href="/work-with-me" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Work With Me</a>
+            </div>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <div class="relative">
+              <div class="absolute -inset-4 bg-amber/20 rounded-3xl blur-xl"></div>
+              <img
+                src="/images/headshot-main.jpeg"
+                alt="Luis Carlos Moreno"
+                class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl object-cover object-top shadow-2xl ring-4 ring-white/10"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STATS BAR ─────────────────────────────────────────── -->
+    <section class="bg-teal text-white py-8">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '10+', label: 'Years in Ed Tech' },
+            { value: '760+', label: 'Students Supported' },
+            { value: '25+', label: 'Custom Tools Built' },
+            { value: '4', label: 'International Conferences' },
+          ].map(({ value, label }) => (
+            <div>
+              <div class="text-3xl font-bold text-amber">{value}</div>
+              <div class="text-sm text-teal-100 mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ──────────────────────────────────────────────── -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-14 items-center">
+          <div>
+            <span class="tag mb-4">About Me</span>
+            <h2 class="section-title">The Bridge Between Systems Thinking &amp; Human-Centered Education</h2>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                ¡Hola, hola! I'm Luis Carlos — a Venezuelan-born systems engineer who became an educator.
+                I grew up in Valle de la Pascua, immigrated to Texas at 15, and have since lived and worked
+                in 5 countries across the Americas, Asia, and Southeast Asia.
+              </p>
+              <p>
+                With a B.S. in Computer Science &amp; Systems Engineering and a Master's in Education,
+                I occupy a rare space: I understand both the architecture of technology <em>and</em>
+                the daily reality of teaching. That combination lets me build solutions that actually
+                work — for students, teachers, and leadership alike.
+              </p>
+              <p>
+                My career has spanned IT Director, Learning Support Specialist, Math Department Head,
+                EdTech Coordinator, Instructional Coach, and AI Integration Specialist. I see schools
+                as complete systems — and I build sustainable solutions that make them more cohesive.
+              </p>
+              <p class="italic text-teal font-medium border-l-4 border-teal pl-4">
+                "Technology serves people, not the other way around."
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-6 text-sm text-gray-600">
+              <span class="bg-gray-100 rounded-full px-3 py-1">🇻🇪 Venezuelan</span>
+              <span class="bg-gray-100 rounded-full px-3 py-1">🏳️‍🌈 Queer Educator</span>
+              <span class="bg-gray-100 rounded-full px-3 py-1">🌐 5 Countries</span>
+              <span class="bg-gray-100 rounded-full px-3 py-1">🗣️ EN · ES · PT</span>
+            </div>
+          </div>
+          <div class="relative">
+            <img
+              src="/images/headshot-2.jpeg"
+              alt="Luis Carlos Moreno presenting"
+              class="rounded-2xl shadow-lg w-full object-cover max-h-[480px]"
+            />
+            <div class="absolute -bottom-4 -right-4 bg-amber text-white rounded-xl px-5 py-3 shadow-lg text-sm font-semibold">
+              60+ countries visited
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SIGNATURE INNOVATIONS ─────────────────────────────── -->
+    <section class="py-20 md:py-28 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">Signature Innovations</span>
+          <h2 class="section-title">Tools &amp; Frameworks That Transform Education</h2>
+          <p class="section-subtitle mx-auto">
+            From ethical AI integration guidelines to data-driven lesson analysis — built for real classrooms, real teachers, real impact.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+
+          <!-- HUMAN Framework -->
+          <div class="card group hover:border-teal-200">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
+                <svg class="w-6 h-6 text-teal group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-teal">Co-created with María Pérez Talavera</span>
+                <h3 class="text-xl font-bold text-navy mt-0.5">The HUMAN Framework</h3>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-5 leading-relaxed">
+              School-wide guidelines for ethical, human-centered AI integration in education. Five levels
+              — from pure human thinking to AI-created elements — give teachers a clear, flexible map
+              for responsible AI use that preserves learning and maintains integrity.
+            </p>
+            <img src="/images/human-framework.png" alt="HUMAN Framework diagram" class="w-full rounded-xl mb-5 border border-gray-100" />
+            <div class="flex flex-wrap gap-2 text-xs mb-5">
+              {['Preserving Learning', 'Maintaining Integrity', 'AIFE Jakarta', 'Data in Schools KL'].map(t => (
+                <span class="bg-teal-50 text-teal rounded-full px-3 py-1 font-medium">{t}</span>
+              ))}
+            </div>
+            <a href="/innovations#human-framework" class="btn-secondary text-sm py-2">
+              Learn More →
+            </a>
+          </div>
+
+          <!-- LEA -->
+          <div class="card group hover:border-amber/30">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 bg-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-amber group-hover:text-white transition-colors">
+                <svg class="w-6 h-6 text-amber group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-amber">AI-Powered Tool</span>
+                <h3 class="text-xl font-bold text-navy mt-0.5">Learning Experience Analyzer (LEA)</h3>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-5 leading-relaxed">
+              Teachers paste a learning activity and LEA instantly analyzes it against UbD, UDL, Bloom's
+              Taxonomy, the HUMAN Framework, and school-specific mission &amp; values — generating
+              actionable improvement recommendations in seconds.
+            </p>
+            <img src="/images/lea-web.jpeg" alt="LEA tool interface" class="w-full rounded-xl mb-5 border border-gray-100" />
+            <div class="grid grid-cols-3 gap-3 text-center mb-5">
+              {[
+                { who: 'Students', what: 'Better-designed learning experiences' },
+                { who: 'Teachers', what: 'Streamlined planning, less cognitive load' },
+                { who: 'Leadership', what: 'Data for strategic decisions' },
+              ].map(({ who, what }) => (
+                <div class="bg-gray-50 rounded-xl p-3">
+                  <div class="font-semibold text-navy text-sm">{who}</div>
+                  <div class="text-xs text-gray-500 mt-1 leading-snug">{what}</div>
+                </div>
+              ))}
+            </div>
+            <a href="/innovations#lea" class="btn-secondary text-sm py-2">
+              Learn More →
+            </a>
+          </div>
+
+        </div>
+        <div class="text-center mt-10">
+          <a href="/innovations" class="btn-primary">See All Innovations</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CAREER HIGHLIGHTS ─────────────────────────────────── -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">Experience</span>
+          <h2 class="section-title">A Career Built on Every Angle</h2>
+          <p class="section-subtitle mx-auto">
+            Having held almost every role in a school, I see education as a complete system — and build solutions that work for everyone.
+          </p>
+        </div>
+        <div class="relative pl-6 border-l-2 border-teal-100 space-y-10 max-w-3xl mx-auto">
+          {[
+            {
+              years: '2024 – Present',
+              role: 'Learning Innovation & Technology Coach · AI Initiatives Coordinator',
+              org: 'American International School Chennai (AISC), India',
+              badge: 'Current',
+              notes: 'Led Apple Distinguished School certification · Co-created HUMAN Framework · Built LEA · Coached 110+ faculty',
+            },
+            {
+              years: '2024 – Present',
+              role: 'Game Theory Instructor',
+              org: 'Global Online Academy (GOA) — Global',
+              badge: 'Current',
+              notes: 'Teaching Game Theory and Introduction to Artificial Intelligence online to students worldwide',
+            },
+            {
+              years: '2021 – 2023',
+              role: 'MYP Mathematics Teacher · DEIJ Taskforce',
+              org: 'Vientiane International School, Laos',
+              badge: null,
+              notes: 'Presented at AIELOC Hanoi 2024 · Contributed to DEIJ culture initiatives',
+            },
+            {
+              years: '2016 – 2021',
+              role: 'EdTech Coordinator · Instructional Coach · Math Dept Head · Learning Support',
+              org: 'International School of Panama',
+              badge: null,
+              notes: '5 roles across 5 years — built the full picture of how schools work',
+            },
+            {
+              years: '2015 – 2016',
+              role: 'STEM & Robotics Teacher · Head of IT Department',
+              org: 'Colegio Isaac Rabin, Panama',
+              badge: null,
+              notes: 'Founded robotics program and led IT infrastructure',
+            },
+          ].map(({ years, role, org, badge, notes }) => (
+            <div class="relative">
+              <div class="absolute -left-[29px] w-4 h-4 rounded-full bg-teal border-2 border-white shadow-sm"></div>
+              <div class="card ml-2">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+                  <span class="text-sm text-gray-500 font-medium">{years}</span>
+                  {badge && <span class="tag text-xs">{badge}</span>}
+                </div>
+                <h3 class="font-semibold text-navy text-base mb-0.5">{role}</h3>
+                <p class="text-teal text-sm font-medium mb-2">{org}</p>
+                <p class="text-gray-500 text-sm">{notes}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-10">
+          <a href="/experience" class="btn-secondary">Full Journey →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
+    <section class="py-20 md:py-28 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-14">
+          <span class="tag mb-4">Testimonials</span>
+          <h2 class="section-title">What People Say</h2>
+          <p class="section-subtitle mx-auto">From head of school to classroom teachers — what colleagues say about working together.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          {[
+            {
+              quote: 'Thank you thank you thank you for the energy, creativity and reliability that you bring to our school.',
+              name: 'Leigh Fitzgerald',
+              role: 'Head of School',
+              org: 'American International School Chennai',
+            },
+            {
+              quote: 'Luis provided the perfect combination of expertise, patience, and accessibility that made learning feel safe and achievable. He understood my limitations without making me feel judged.',
+              name: 'Eugenia Gomez-Escobar',
+              role: 'MS World Language Teacher',
+              org: 'AISC',
+            },
+            {
+              quote: 'This is SO cool. I love the idea, and think this would be a great metric for assessing our alignment to our various goals. Amazing work!',
+              name: 'Kyle Martin',
+              role: 'Middle School Principal',
+              org: 'ISKL (former supervisor)',
+            },
+            {
+              quote: 'What AI lacks in terms of human sentiments is made up for by coaches who understand not only one\'s needs, but what one is going through. Coaches are consistently encouraging, available and non-judgmental!',
+              name: 'Miriam Chakko',
+              role: 'Teacher',
+              org: 'AISC',
+            },
+          ].map(({ quote, name, role, org }) => (
+            <div class="card flex flex-col gap-4">
+              <svg class="w-8 h-8 text-teal-200 flex-shrink-0" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M10 8C5.582 8 2 11.582 2 16s3.582 8 8 8h1v4l6-4h3c4.418 0 8-3.582 8-8s-3.582-8-8-8H10z"/>
+              </svg>
+              <p class="text-gray-700 leading-relaxed flex-1 italic">"{quote}"</p>
+              <div class="pt-2 border-t border-gray-100">
+                <p class="font-semibold text-navy text-sm">{name}</p>
+                <p class="text-gray-500 text-xs">{role} · {org}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="text-center text-gray-400 text-sm mt-8">
+          4.8/5 average · 26 teacher survey responses · 100% would work together again
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── CTA ───────────────────────────────────────────────── -->
+    <section class="py-20 md:py-28 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Let's Connect</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Ready to bring AI integration, instructional coaching, or systems thinking to your school or team?
+        </h2>
+        <p class="text-gray-300 text-lg mb-10">
+          Whether you're a school leader exploring AI integration, an educator looking for coaching support,
+          or a professional wanting to work smarter — let's start a conversation.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work-with-me" class="btn-amber">Work With Me</a>
+          <a href="mailto:mr.luisc@gmail.com" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">
+            Send an Email
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
