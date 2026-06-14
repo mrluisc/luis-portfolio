@@ -1,0 +1,167 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Health Office App"
+  description="A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries — launched school-wide for 700+ students at AISC Chennai."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <a href="/work" class="text-teal-200 text-sm hover:text-white transition-colors">← Back to all work</a>
+        <span class="tag bg-white/10 text-white border border-white/20 mt-6 mb-5 inline-block">Full-stack · Firebase + React</span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">Health Office App</h1>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
+          A student health check-in system that closes the communication loop the moment a student walks
+          into the nurse's office — automatically letting the right teacher and secretary know, in real time.
+        </p>
+      </div>
+    </section>
+
+    <!-- METRICS BAR -->
+    <section class="bg-teal text-white py-8">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '700+', label: 'Students covered' },
+            { value: 'School-wide', label: 'Launch · Jun 3, 2026' },
+            { value: 'Same-day', label: 'Notifications live' },
+            { value: '2', label: 'Audiences notified' },
+          ].map(({ value, label }) => (
+            <div>
+              <div class="text-2xl md:text-3xl font-bold text-amber">{value}</div>
+              <div class="text-sm text-teal-100 mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <article class="py-16 md:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 space-y-14">
+
+        <!-- OVERVIEW -->
+        <div>
+          <span class="tag mb-4">Overview</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What it is</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              The Health Office App is a Firebase + React web application for student check-ins at the
+              school health office. When a student checks in, the system automatically notifies the
+              relevant teachers and secretaries — so the people responsible for that student always know
+              where they are and why.
+            </p>
+            <p>
+              It launched school-wide on <strong class="text-navy">June 3, 2026</strong>, covering the
+              full student body of 700+, with automated notifications going live the same week on June 9.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROBLEM -->
+        <div>
+          <span class="tag mb-4">The Problem</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">A communication gap with real stakes</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              When a student leaves class for the health office, a gap opens. The teacher may not know
+              where the student went or whether they're coming back. The front office may not have a record.
+              Paper logs and verbal hand-offs don't scale across a 700-student school — and in a health
+              context, knowing a student's whereabouts in real time isn't a nice-to-have, it's a duty of care.
+            </p>
+          </div>
+        </div>
+
+        <!-- WHAT I BUILT -->
+        <div>
+          <span class="tag mb-4">What I Built</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">Check-in plus automatic notification</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed mb-6">
+            <p>
+              I built a full-stack web app on Firebase and React. The front end gives health-office staff
+              a fast, simple check-in flow; Firebase handles the data and the real-time logic behind it:
+            </p>
+          </div>
+          <ul class="space-y-3">
+            {[
+              ['Student check-in', 'A quick, reliable way for health-office staff to log a student arriving.'],
+              ['Automated teacher notifications', 'The relevant teacher is notified automatically, so they know exactly where their student is.'],
+              ['Automated secretary notifications', 'Front-office staff get the same real-time visibility, closing the records gap.'],
+              ['Real-time backend', 'Firebase keeps the data and notifications consistent and instant across the school.'],
+            ].map(([title, desc]) => (
+              <li class="flex gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-2"></span>
+                <span class="text-gray-700"><strong class="text-navy">{title}.</strong> {desc}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- IMPACT -->
+        <div>
+          <span class="tag mb-4">Impact &amp; Results</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">From paper trail to real-time visibility</h2>
+          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { value: '700+', label: 'Students covered', sub: 'entire student body' },
+              { value: 'Jun 3', label: 'School-wide launch', sub: '2026' },
+              { value: 'Jun 9', label: 'Notifications live', sub: 'same week' },
+            ].map(({ value, label, sub }) => (
+              <div class="text-center p-5 bg-gray-50 rounded-2xl">
+                <div class="text-3xl font-bold text-amber mb-1">{value}</div>
+                <div class="font-semibold text-navy text-sm">{label}</div>
+                <div class="text-gray-500 text-xs mt-1">{sub}</div>
+              </div>
+            ))}
+          </div>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              The app gave the school real-time visibility into student health check-ins across the
+              entire student body, and replaced informal hand-offs with automatic, reliable notifications
+              to the people who need them. From launch to live notifications took less than a week —
+              a fast path from shipped to fully operational.
+            </p>
+          </div>
+        </div>
+
+        <!-- LESSONS -->
+        <div>
+          <span class="tag mb-4">Lessons Learned</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What I'd carry forward</h2>
+          <ul class="space-y-4">
+            {[
+              ['Pick the stack that ships.', 'Firebase + React let one person build, launch, and wire up real-time notifications for a whole school in a tight window — the right tools collapse the distance between idea and live.'],
+              ['Close the loop, don’t just log it.', 'A check-in record is useful; an automatic notification to the right teacher is what actually changes behavior and reduces worry.'],
+              ['In a duty-of-care context, speed matters.', 'Going from launch to live notifications in the same week meant the safety benefit landed immediately, not next term.'],
+            ].map(([title, desc]) => (
+              <li class="card">
+                <p class="font-semibold text-navy mb-1" set:html={title}></p>
+                <p class="text-gray-600 text-sm leading-relaxed" set:html={desc}></p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="py-16 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-5">Need a school tool built and shipped fast?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">More Case Studies</a>
+          <a href="/work-with-me#contact" class="btn-amber">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

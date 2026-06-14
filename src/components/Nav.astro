@@ -2,12 +2,18 @@
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/experience', label: 'My Journey' },
+  { href: '/work', label: 'Work' },
   { href: '/innovations', label: 'Innovations' },
   { href: '/work-with-me', label: 'Work With Me' },
   { href: '/blog', label: 'Blog' },
 ];
 
 const currentPath = Astro.url.pathname;
+
+const isActive = (href) =>
+  href === '/'
+    ? currentPath === '/'
+    : currentPath === href || currentPath.startsWith(href + '/');
 ---
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm">
@@ -29,7 +35,7 @@ const currentPath = Astro.url.pathname;
           <a
             href={href}
             class={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              currentPath === href || (href !== '/' && currentPath.startsWith(href))
+              isActive(href)
                 ? 'bg-teal-50 text-teal'
                 : 'text-gray-600 hover:text-teal hover:bg-gray-50'
             }`}
@@ -64,7 +70,7 @@ const currentPath = Astro.url.pathname;
           <a
             href={href}
             class={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-              currentPath === href || (href !== '/' && currentPath.startsWith(href))
+              isActive(href)
                 ? 'bg-teal-50 text-teal'
                 : 'text-gray-700 hover:bg-gray-50'
             }`}

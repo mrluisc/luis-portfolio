@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Discover India Trip Assignment System"
+  description="An automated assignment engine plus a 50-page operations manual that placed 237 incoming Grade 9 students across 15 'Week Without Walls' trips at AISC Chennai — balancing capacity, gender, and ranked preferences."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <a href="/work" class="text-teal-200 text-sm hover:text-white transition-colors">← Back to all work</a>
+        <span class="tag bg-white/10 text-white border border-white/20 mt-6 mb-5 inline-block">Systems · Google Sheets + Apps Script</span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">Discover India Trip Assignment System</h1>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
+          The assignment engine behind AISC's "Week Without Walls" — placing 237 incoming Grade 9 students
+          across 15 experiential trips by ranked preference, capacity, and balance, with a 50-page manual
+          so the program runs without its author.
+        </p>
+      </div>
+    </section>
+
+    <!-- METRICS BAR -->
+    <section class="bg-teal text-white py-8">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '237', label: 'Students assigned' },
+            { value: '15', label: 'Trips · 3 pillars' },
+            { value: '215+', label: 'Sign-up responses' },
+            { value: '50', label: 'Pages of docs' },
+          ].map(({ value, label }) => (
+            <div>
+              <div class="text-3xl font-bold text-amber">{value}</div>
+              <div class="text-sm text-teal-100 mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <article class="py-16 md:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 space-y-14">
+
+        <!-- OVERVIEW -->
+        <div>
+          <span class="tag mb-4">Overview</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What it is</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Discover India is AISC's "Week Without Walls" program — the experiential trips that define a
+              student's first year of high school. For SY 2026–27, that meant placing
+              <strong class="text-navy">237 incoming Grade 9 students</strong> across
+              <strong class="text-navy">15 trips</strong> spanning three pillars: Adventure, Service, and
+              Culture. I built the complete assignment algorithm and a 50-page operations manual that turns
+              a sprawling, high-stakes placement problem into a repeatable, documented process.
+            </p>
+            <p>
+              I built the backend assignment engine; Riedwaan Kader was the student-facing lead. And it
+              wasn't purely a desk project — I also went on the trip itself as a chaperone in September 2025.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROBLEM -->
+        <div>
+          <span class="tag mb-4">The Problem</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">A high-stakes placement done by hand</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Assigning an entire grade to experiential trips is one of the hardest logistics problems a
+              school faces. Every student ranks their preferences; every trip has a hard capacity (20
+              students and 3 teachers) and needs gender balance; and the result has to feel fair to 237
+              teenagers and their parents. Done by hand, it's days of work, opaque decisions, and no clean
+              way to explain why any one student ended up where they did.
+            </p>
+            <p>
+              It also wasn't durable. The knowledge lived in one person's spreadsheet and one person's head,
+              which is exactly the kind of single point of failure a school's signature program shouldn't have.
+            </p>
+          </div>
+        </div>
+
+        <!-- WHAT I BUILT -->
+        <div>
+          <span class="tag mb-4">What I Built</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">An assignment algorithm plus a full operations manual</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed mb-6">
+            <p>
+              The system runs on Google Sheets, Google Forms, and Apps Script — native to the school's
+              workspace — and pairs the automation with the documentation a program needs to outlive its builder:
+            </p>
+          </div>
+          <ul class="space-y-3">
+            {[
+              ['Student sign-up form', 'A Google Form that collected 215+ ranked-preference responses from incoming Grade 9 students.'],
+              ['Teacher sign-up form', 'A parallel form to staff each trip with the right faculty leads.'],
+              ['Assignment algorithm', 'Places every student by ranked preference while enforcing capacity (20 students / 3 teachers per trip) and gender balance.'],
+              ['Capacity-tracked spreadsheet', 'A live dashboard showing fill rates across all 15 trips so no trip over- or under-fills.'],
+              ['Appeals process', 'A formal, documented path for students to request a change after assignments go out.'],
+              ['50-page operations manual', 'Step-by-step documentation so the program runs the same way next year, with or without me.'],
+            ].map(([title, desc]) => (
+              <li class="flex gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-2"></span>
+                <span class="text-gray-700"><strong class="text-navy">{title}.</strong> {desc}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-gray-700 leading-relaxed mt-6">
+            It was deliberately built for handover in April–May 2026 — scope comparable to the SEVAI system,
+            but at grade-wide scale and with a much heavier documentation layer.
+          </p>
+        </div>
+
+        <!-- IMPACT -->
+        <div>
+          <span class="tag mb-4">Impact &amp; Results</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">An entire grade placed, fairly and on the record</h2>
+          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { value: '237', label: 'Students placed', sub: 'entire incoming Grade 9' },
+              { value: '15', label: 'Trips assigned', sub: 'Adventure · Service · Culture' },
+              { value: '50', label: 'Pages of docs', sub: 'built for handover' },
+            ].map(({ value, label, sub }) => (
+              <div class="text-center p-5 bg-gray-50 rounded-2xl">
+                <div class="text-3xl font-bold text-amber mb-1">{value}</div>
+                <div class="font-semibold text-navy text-sm">{label}</div>
+                <div class="text-gray-500 text-xs mt-1">{sub}</div>
+              </div>
+            ))}
+          </div>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              The system placed all 237 students across 15 trips by ranked preference while holding capacity
+              and gender-balance rules consistently — and, just as important, it made every placement
+              explainable. The capacity dashboard and appeals process turned a process that used to live in
+              one head into something the whole program team could see and trust.
+            </p>
+            <p>
+              Because it shipped with 50 pages of documentation, AISC's signature Grade 9 trip program can
+              keep running long after I leave — the clearest test of whether a system has actually become
+              institutional infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <!-- LESSONS -->
+        <div>
+          <span class="tag mb-4">Lessons Learned</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What I'd carry forward</h2>
+          <ul class="space-y-4">
+            {[
+              ['Fairness has to be legible.', 'For a placement 237 families will scrutinize, being fair isn\'t enough — the system has to make it visible why each student landed where they did.'],
+              ['Documentation is the deliverable.', '50 pages of operations manual is what separates a clever one-off script from a program the school can run again next year.'],
+              ['Build it, then go live it.', 'Chaperoning the trip I\'d assigned students to closed the loop — the logistics only matter because of the experience they make possible.'],
+            ].map(([title, desc]) => (
+              <li class="card">
+                <p class="font-semibold text-navy mb-1" set:html={title}></p>
+                <p class="text-gray-600 text-sm leading-relaxed" set:html={desc}></p>
+              </li>
+            ))}
+          </ul>
+          <p class="text-gray-600 text-sm mt-6">
+            Discover India is the largest of a family of assignment engines I built — see the
+            <a href="/work/student-assignment-systems" class="text-teal font-medium hover:underline">Student Assignment Systems</a> overview.
+          </p>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="py-16 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-5">Running a trip or program that's placed by hand every year?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">More Case Studies</a>
+          <a href="/work-with-me#contact" class="btn-amber">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const caseStudies = [
+  {
+    href: '/work/curriculum-intelligence',
+    tag: 'Flagship',
+    title: 'Curriculum Intelligence Dashboard',
+    desc: 'A Google Apps Script web app that turned scattered curriculum documents into a live analytics system — tracking 216 courses and 849 units across three divisions and putting that data in front of 50+ school leaders.',
+    metrics: ['216 courses', '849 units · 81% complete', '50+ leaders'],
+    color: 'teal',
+  },
+  {
+    href: '/work/student-assignment-systems',
+    tag: 'Systems',
+    title: 'Student Assignment Systems',
+    desc: 'The logistics infrastructure behind experiential learning — assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that place hundreds of students into trips, activities, and workshops by ranked preference.',
+    metrics: ['700+ students placed', '4 programs', '50+ hours saved'],
+    color: 'amber',
+  },
+  {
+    href: '/work/sevai-assignment-system',
+    tag: 'Automation',
+    title: 'SEVAI Assignment System',
+    desc: 'A 700+ line Apps Script automation that assigns 150+ students to 12 community-service activities by ranked preference, balanced across grades — replacing 20–30 hours of manual work.',
+    metrics: ['150+ students', '12 activities', '20–30 hrs saved'],
+    color: 'teal',
+  },
+  {
+    href: '/work/discover-india-trip-assignment',
+    tag: 'Systems',
+    title: 'Discover India Trip Assignment',
+    desc: 'The assignment engine behind AISC\'s "Week Without Walls" — placing 237 incoming Grade 9 students across 15 experiential trips by ranked preference, capacity, and gender balance, with a 50-page operations manual.',
+    metrics: ['237 students', '15 trips', '50-page manual'],
+    color: 'amber',
+  },
+  {
+    href: '/work/health-office-app',
+    tag: 'Full-stack',
+    title: 'Health Office App',
+    desc: 'A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries — launched school-wide for 700+ students.',
+    metrics: ['700+ students', 'Firebase + React', 'School-wide launch'],
+    color: 'amber',
+  },
+];
+---
+
+<Layout
+  title="Selected Work"
+  description="Case studies from Luis Carlos Moreno's work at the American International School Chennai — curriculum analytics, student assignment systems, and full-stack school tools."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy to-teal-900 text-white py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 text-center">
+        <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Selected Work</span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Systems That Make Institutional Knowledge Stick</h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+          Real tools, shipped into real schools. Each case study walks through the problem, what I built,
+          the measurable impact, and what I learned — grounded in the work I did at the American
+          International School Chennai.
+        </p>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 gap-8">
+          {caseStudies.map(({ href, tag, title, desc, metrics, color }) => (
+            <a href={href} class={`card group block border-t-4 ${color === 'teal' ? 'border-teal' : 'border-amber'}`}>
+              <span class="tag text-xs mb-3">{tag}</span>
+              <h2 class="text-xl font-bold text-navy mb-3 group-hover:text-teal transition-colors">{title}</h2>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">{desc}</p>
+              <div class="flex flex-wrap gap-2 mb-5">
+                {metrics.map(m => (
+                  <span class="bg-gray-50 text-gray-600 text-xs rounded-full px-3 py-1 font-medium">{m}</span>
+                ))}
+              </div>
+              <span class={`text-sm font-medium ${color === 'teal' ? 'text-teal' : 'text-amber-dark'}`}>Read the case study →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-6">Want something like this built for your school?</h2>
+        <p class="text-gray-300 mb-8">
+          These systems started as someone's spreadsheet headache. If you have a workflow that should
+          be automated, a data problem that should be a dashboard, or a tool that doesn't exist yet —
+          let's talk.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work-with-me" class="btn-amber">Work With Me</a>
+          <a href="mailto:mr.luisc@gmail.com" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Send an Email</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

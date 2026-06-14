@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="SEVAI Assignment System"
+  description="A 700+ line Google Apps Script automation that assigns 150+ students to 12 community-service activities by ranked preference and grade balance — saving 20–30 hours of manual work at AISC Chennai."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <a href="/work" class="text-teal-200 text-sm hover:text-white transition-colors">← Back to all work</a>
+        <span class="tag bg-white/10 text-white border border-white/20 mt-6 mb-5 inline-block">Automation · Google Apps Script</span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">SEVAI Assignment System</h1>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
+          An assignment engine for AISC's community-service program that places 150+ students into 12
+          activities by ranked preference and grade balance — turning a multi-day manual scramble into
+          a one-click run.
+        </p>
+      </div>
+    </section>
+
+    <!-- METRICS BAR -->
+    <section class="bg-teal text-white py-8">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '150+', label: 'Students assigned' },
+            { value: '12', label: 'Activities' },
+            { value: '20–30', label: 'Hours saved' },
+            { value: '700+', label: 'Lines of script' },
+          ].map(({ value, label }) => (
+            <div>
+              <div class="text-3xl font-bold text-amber">{value}</div>
+              <div class="text-sm text-teal-100 mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <article class="py-16 md:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 space-y-14">
+
+        <!-- OVERVIEW -->
+        <div>
+          <span class="tag mb-4">Overview</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What it is</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              SEVAI is AISC's community-service program. Every cycle, more than 150 students rank their
+              preferred activities, and someone has to place each of them into one of 12 options — while
+              respecting capacity limits and keeping grades balanced. I built a complete Google Apps
+              Script automation that does the entire assignment, sends every notification, and ships with
+              a full documentation package.
+            </p>
+            <p>
+              Built for <strong class="text-navy">Riedwaan Kader</strong> and deployed on November 3, 2025.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROBLEM -->
+        <div>
+          <span class="tag mb-4">The Problem</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">A hand-built jigsaw, every cycle</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Assigning 150+ students to activities by hand is the kind of task that eats a full working
+              week. You're juggling ranked preferences, hard capacity caps per activity, and a fairness
+              constraint — no activity should skew toward a single grade. Do it manually and you get
+              errors, late nights, and a process only one person understands.
+            </p>
+            <p>
+              It also wasn't repeatable. Each cycle meant starting the puzzle over from scratch, with no
+              guarantee the result was even close to optimal for student preferences.
+            </p>
+          </div>
+        </div>
+
+        <!-- WHAT I BUILT -->
+        <div>
+          <span class="tag mb-4">What I Built</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">A preference-and-balance assignment engine</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed mb-6">
+            <p>
+              The system is a 700+ line Apps Script application driven by ranked student preferences, with
+              the logic and safeguards a real operational tool needs:
+            </p>
+          </div>
+          <ul class="space-y-3">
+            {[
+              ['Grade-balance algorithm', 'Targets roughly 33% per grade in each activity so no group is over-concentrated.'],
+              ['Capacity management', 'Respects hard caps per activity and handles overflow gracefully.'],
+              ['Automated email notifications', 'Sends confirmations to students, teachers, and advisors automatically.'],
+              ['Test mode', 'Run the full assignment and preview results without sending a single email.'],
+              ['Manual override', 'Lets the program lead adjust individual placements when human judgment is needed.'],
+            ].map(([title, desc]) => (
+              <li class="flex gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-2"></span>
+                <span class="text-gray-700"><strong class="text-navy">{title}.</strong> {desc}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-gray-700 leading-relaxed mt-6">
+            It shipped as a complete handover package — 8 files including the full script and operating
+            documentation — so the program could run without me in the loop.
+          </p>
+        </div>
+
+        <!-- IMPACT -->
+        <div>
+          <span class="tag mb-4">Impact &amp; Results</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">A week of work, reduced to a click</h2>
+          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { value: '20–30', label: 'Hours saved', sub: 'per assignment cycle' },
+              { value: '150+', label: 'Students placed', sub: 'by ranked preference' },
+              { value: '1', label: 'Click to run', sub: 'fully repeatable' },
+            ].map(({ value, label, sub }) => (
+              <div class="text-center p-5 bg-gray-50 rounded-2xl">
+                <div class="text-3xl font-bold text-amber mb-1">{value}</div>
+                <div class="font-semibold text-navy text-sm">{label}</div>
+                <div class="text-gray-500 text-xs mt-1">{sub}</div>
+              </div>
+            ))}
+          </div>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              The automation removed 20–30 hours of manual work per cycle and made the process repeatable,
+              fair, and transparent. The program lead could re-run it, preview results in test mode, and
+              trust that capacity and grade-balance rules were enforced consistently every time.
+            </p>
+            <p>
+              Just as important, it became a template. The same assignment-engine pattern went on to power
+              a whole family of student-logistics systems at the school — Discover India, Discovery Day,
+              and STEAM Week.
+            </p>
+          </div>
+        </div>
+
+        <!-- LESSONS -->
+        <div>
+          <span class="tag mb-4">Lessons Learned</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What I'd carry forward</h2>
+          <ul class="space-y-4">
+            {[
+              ['Test mode is non-negotiable.', 'Letting the lead preview a full assignment before any emails go out turned a high-stakes script into a tool people actually trusted.'],
+              ['Build for handover from day one.', 'Shipping documentation alongside the code meant the program never depended on me being available to run it.'],
+              ['Solve one problem well and it generalizes.', 'A clean preference-and-capacity engine for SEVAI became the backbone for three more programs.'],
+            ].map(([title, desc]) => (
+              <li class="card">
+                <p class="font-semibold text-navy mb-1">{title}</p>
+                <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
+              </li>
+            ))}
+          </ul>
+          <p class="text-gray-600 text-sm mt-6">
+            See how this pattern scaled across the school in the
+            <a href="/work/student-assignment-systems" class="text-teal font-medium hover:underline">Student Assignment Systems</a> case study.
+          </p>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="py-16 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-5">Have a manual process that should be a one-click run?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">More Case Studies</a>
+          <a href="/work-with-me#contact" class="btn-amber">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

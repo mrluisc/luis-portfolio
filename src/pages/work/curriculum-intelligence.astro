@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Curriculum Intelligence Dashboard"
+  description="A Google Apps Script web app that turned scattered curriculum documents into a live analytics system tracking 216 courses and 849 units across three school divisions — deployed to 50+ leaders at AISC Chennai."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <a href="/work" class="text-teal-200 text-sm hover:text-white transition-colors">← Back to all work</a>
+        <span class="tag bg-white/10 text-white border border-white/20 mt-6 mb-5 inline-block">Flagship Project · Google Apps Script</span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">Curriculum Intelligence Dashboard</h1>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
+          A curriculum analytics web app that made an entire school's curriculum visible, searchable,
+          and actionable — and became the first onboarding resource 26 incoming teachers received before
+          they ever arrived in Chennai.
+        </p>
+      </div>
+    </section>
+
+    <!-- METRICS BAR -->
+    <section class="bg-teal text-white py-8">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '216', label: 'Courses tracked' },
+            { value: '849', label: 'Units · 81% complete' },
+            { value: '50+', label: 'Leaders using it' },
+            { value: '3', label: 'School divisions' },
+          ].map(({ value, label }) => (
+            <div>
+              <div class="text-3xl font-bold text-amber">{value}</div>
+              <div class="text-sm text-teal-100 mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <article class="py-16 md:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 space-y-14">
+
+        <!-- OVERVIEW -->
+        <div>
+          <span class="tag mb-4">Overview</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What it is</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              The Curriculum Intelligence Dashboard is a Google Apps Script web application that gives
+              an entire IB World School a single, living view of its curriculum across Elementary, Middle,
+              and High School. Instead of curriculum living in hundreds of disconnected documents, leaders
+              get a navigable dashboard: a course Navigator, a Standards view with a Visible-for-Learning
+              heatmap and gap analysis, a Head-of-Department view, a Gantt-style curriculum Calendar, and
+              an AI tab for deeper queries.
+            </p>
+            <p>
+              Underneath it sits the AISC Curriculum Documentation Tracker — a structured system tracking
+              <strong class="text-navy">216 courses and 849 units</strong> across all three divisions,
+              reaching <strong class="text-navy">81% school-wide completion</strong> by June 2026.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROBLEM -->
+        <div>
+          <span class="tag mb-4">The Problem</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">Curriculum nobody could see</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Like most schools, AISC's curriculum knowledge was real but invisible. It lived in
+              individual planning documents, in teachers' heads, and in formats that varied by division
+              and department. Leaders couldn't answer basic strategic questions — which standards are
+              under-assessed, where are the gaps, how complete is our documentation — without weeks of
+              manual auditing.
+            </p>
+            <p>
+              When documentation isn't visible, it doesn't get used, it doesn't stay consistent, and it
+              walks out the door every time a teacher leaves. The school needed institutional knowledge
+              to become an asset rather than a liability.
+            </p>
+          </div>
+        </div>
+
+        <!-- WHAT I BUILT -->
+        <div>
+          <span class="tag mb-4">What I Built</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">A live analytics layer over curriculum</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed mb-6">
+            <p>
+              I designed and built the whole system in Google Apps Script so it lived natively inside the
+              school's existing Google Workspace — no new platform, no new login, no new vendor. The web
+              app reads from the documentation tracker and surfaces it through purpose-built views:
+            </p>
+          </div>
+          <ul class="space-y-3">
+            {[
+              ['Navigator', 'Browse and search every course and unit across ES, MS, and HS from one place.'],
+              ['Standards view', 'A Visible-for-Learning heatmap plus gap analysis that shows which standards are covered, over-covered, or missing.'],
+              ['HoD view', 'A department-level lens so Heads of Department can see and steward their own area.'],
+              ['Curriculum Calendar', 'A Gantt-style timeline of when units are taught across the year.'],
+              ['AI tab', 'Natural-language querying over the curriculum data for deeper, ad-hoc analysis.'],
+            ].map(([title, desc]) => (
+              <li class="flex gap-3">
+                <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-2"></span>
+                <span class="text-gray-700"><strong class="text-navy">{title}.</strong> {desc}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-gray-700 leading-relaxed mt-6">
+            The system was in real, active use months before any formal launch — a curriculum coach was
+            already flagging live bugs in August 2025, well ahead of the June 2026 rollout to the full
+            leadership team.
+          </p>
+        </div>
+
+        <!-- IMPACT -->
+        <div>
+          <span class="tag mb-4">Impact &amp; Results</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">From a project to onboarding infrastructure</h2>
+          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { value: '50+', label: 'Leaders deployed to', sub: '10 SLT + 40+ ILT members' },
+              { value: '81%', label: 'School-wide completion', sub: '849 units documented' },
+              { value: '26', label: 'New teachers onboarded', sub: 'before arriving in Chennai' },
+            ].map(({ value, label, sub }) => (
+              <div class="text-center p-5 bg-gray-50 rounded-2xl">
+                <div class="text-3xl font-bold text-amber mb-1">{value}</div>
+                <div class="font-semibold text-navy text-sm">{label}</div>
+                <div class="text-gray-500 text-xs mt-1">{sub}</div>
+              </div>
+            ))}
+          </div>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              The dashboard was deployed to 10 Senior Leadership Team members and 40+ Instructional
+              Leadership Team members. But the clearest signal of impact came from how the underlying
+              Shared Drive curriculum structure got used: in May 2026, the school director sent it to
+              <strong class="text-navy">26 incoming 2026–27 teachers</strong> as the very first
+              onboarding resource they received — before they had even arrived.
+            </p>
+          </div>
+          <blockquote class="border-l-4 border-teal pl-5 my-8 text-gray-700 italic">
+            "This is phenomenal work throughout this year that has provided extensive insight into our program."
+            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">— Gretchen Galaty, High School Teacher</footer>
+          </blockquote>
+          <blockquote class="border-l-4 border-amber pl-5 my-8 text-gray-700 italic">
+            "Over the past year, we have been working to move all of our curriculum documentation into a
+            shared Google Drive structure to create greater consistency, accessibility, and alignment
+            across the school."
+            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">— Joel Bevans, Director, in the onboarding email sent to 26 incoming teachers</footer>
+          </blockquote>
+        </div>
+
+        <!-- LESSONS -->
+        <div>
+          <span class="tag mb-4">Lessons Learned</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What I'd carry forward</h2>
+          <ul class="space-y-4">
+            {[
+              ['Build where people already are.', 'Living inside Google Workspace — no new platform — removed every adoption barrier. The best tool is one nobody has to be convinced to log into.'],
+              ['Ship before you launch.', 'Having a curriculum coach catch real bugs in August, ten months before the formal rollout, meant the June launch landed on something already battle-tested.'],
+              ['Make knowledge visible and it becomes infrastructure.', 'The moment curriculum became searchable and complete, it stopped being a documentation chore and became the thing a director hands new hires on day zero.'],
+            ].map(([title, desc]) => (
+              <li class="card">
+                <p class="font-semibold text-navy mb-1">{title}</p>
+                <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="py-16 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-5">Curious what a curriculum dashboard could look like for your school?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">More Case Studies</a>
+          <a href="/work-with-me#contact" class="btn-amber">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

@@ -58,10 +58,10 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '10+', label: 'Years in Ed Tech' },
-            { value: '760+', label: 'Students Supported' },
-            { value: '25+', label: 'Custom Tools Built' },
-            { value: '4', label: 'International Conferences' },
+            { value: '9', label: 'Major systems built' },
+            { value: '700+', label: 'Students via Health Office' },
+            { value: '50+', label: 'Leaders on the curriculum dashboard' },
+            { value: '$8,200', label: 'Saved per year' },
           ].map(({ value, label }) => (
             <div>
               <div class="text-3xl font-bold text-amber">{value}</div>
@@ -78,26 +78,35 @@ import Footer from '../components/Footer.astro';
         <div class="grid md:grid-cols-2 gap-14 items-center">
           <div>
             <span class="tag mb-4">About Me</span>
-            <h2 class="section-title">The Bridge Between Systems Thinking &amp; Human-Centered Education</h2>
+            <h2 class="section-title">I Build Systems That Make Institutional Knowledge Stick</h2>
             <div class="space-y-4 text-gray-700 leading-relaxed">
               <p>
                 ¡Hola, hola! I'm Luis Carlos — a Venezuelan-born systems engineer who became an educator.
-                I grew up in Valle de la Pascua, immigrated to Texas at 15, and have since lived and worked
-                in 5 countries across the Americas, Asia, and Southeast Asia.
+                I grew up in Valle de la Pascua, immigrated to Texas at 15, and have since lived and
+                worked across 5 countries on three continents.
               </p>
               <p>
-                With a B.S. in Computer Science &amp; Systems Engineering and a Master's in Education,
-                I occupy a rare space: I understand both the architecture of technology <em>and</em>
-                the daily reality of teaching. That combination lets me build solutions that actually
-                work — for students, teachers, and leadership alike.
+                Since July 2024 I've been the <strong>Learning Innovation &amp; Technology Coach</strong> at
+                the American International School Chennai, an IB World School of roughly 700 students. I started
+                in the classroom teaching MYP Mathematics, then moved into EdTech coaching — and that path is
+                exactly the point. I work at the intersection of coaching and engineering: close enough to
+                pedagogy to know what teachers actually need, and technical enough to build it.
               </p>
               <p>
-                My career has spanned IT Director, Learning Support Specialist, Math Department Head,
-                EdTech Coordinator, Instructional Coach, and AI Integration Specialist. I see schools
-                as complete systems — and I build sustainable solutions that make them more cohesive.
+                That's what I do best — turn the knowledge trapped in spreadsheets, documents, and people's
+                heads into living systems a whole school can use. A curriculum dashboard 50+ leaders rely on.
+                Assignment engines that place hundreds of students into trips and activities. A health
+                check-in app shipped school-wide. Tools that bridge AI and tech with real classroom practice,
+                and that keep working after I leave the room.
+              </p>
+              <p>
+                In <strong>August 2026 I'm joining Shanghai American School (SAS Puxi, Middle School)</strong> as
+                an EdTech coordinator — carrying that same belief forward: technology serves people, not the
+                other way around.
               </p>
               <p class="italic text-teal font-medium border-l-4 border-teal pl-4">
-                "Technology serves people, not the other way around."
+                "His support has significantly reduced stress for many of us and has made a complicated
+                process much smoother." — Elizabeth Keogh, in a commendation to the Deputy Head
               </p>
             </div>
             <div class="flex flex-wrap gap-3 mt-6 text-sm text-gray-600">
@@ -284,27 +293,33 @@ import Footer from '../components/Footer.astro';
         <div class="grid md:grid-cols-2 gap-6">
           {[
             {
-              quote: 'Thank you thank you thank you for the energy, creativity and reliability that you bring to our school.',
-              name: 'Leigh Fitzgerald',
-              role: 'Head of School',
-              org: 'American International School Chennai',
+              quote: 'Luis Carlos has consistently been patient, responsive, and incredibly helpful, often taking the time to troubleshoot problems thoroughly and ensure that things were fully resolved. His support has significantly reduced stress for many of us and has made a complicated process much smoother.',
+              name: 'Elizabeth Keogh',
+              role: 'Grade 3 Teacher',
+              org: 'AISC (commendation to the Head of School)',
             },
             {
-              quote: 'Luis provided the perfect combination of expertise, patience, and accessibility that made learning feel safe and achievable. He understood my limitations without making me feel judged.',
-              name: 'Eugenia Gomez-Escobar',
-              role: 'MS World Language Teacher',
+              quote: 'This is phenomenal work throughout this year that has provided extensive insight into our program.',
+              name: 'Gretchen Galaty',
+              role: 'High School Teacher',
               org: 'AISC',
             },
             {
-              quote: 'This is SO cool. I love the idea, and think this would be a great metric for assessing our alignment to our various goals. Amazing work!',
-              name: 'Kyle Martin',
-              role: 'Middle School Principal',
-              org: 'ISKL (former supervisor)',
+              quote: 'Created an amazing tool to expediate the report card process for the science team — it\'s fantastic, easy to use and accessible for all and should be made available to all to speed up the process.',
+              name: 'MS Science Teacher',
+              role: 'Annual Survey',
+              org: 'AISC',
             },
             {
-              quote: 'What AI lacks in terms of human sentiments is made up for by coaches who understand not only one\'s needs, but what one is going through. Coaches are consistently encouraging, available and non-judgmental!',
-              name: 'Miriam Chakko',
-              role: 'Teacher',
+              quote: 'I truly learnt a lot about AI working with you Luis so much so that I am inspired to do a lot more of this kind of work next year.',
+              name: 'HS Teacher',
+              role: 'Annual Survey',
+              org: 'AISC',
+            },
+            {
+              quote: 'I value the process and the product.',
+              name: 'Joel Bevans',
+              role: 'Director of Teaching and Learning',
               org: 'AISC',
             },
           ].map(({ quote, name, role, org }) => (

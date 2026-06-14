@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Student Assignment Systems"
+  description="The logistics infrastructure behind experiential learning at AISC Chennai — assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that placed 700+ students into trips, activities, and workshops."
+>
+  <Nav />
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <a href="/work" class="text-teal-200 text-sm hover:text-white transition-colors">← Back to all work</a>
+        <span class="tag bg-white/10 text-white border border-white/20 mt-6 mb-5 inline-block">Systems · Google Apps Script + Sheets</span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">Student Assignment Systems</h1>
+        <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
+          The logistics infrastructure for experiential learning. Across four programs, I built the
+          assignment engines that quietly place hundreds of students into the trips, activities, and
+          workshops that make a school's signature experiences actually happen.
+        </p>
+      </div>
+    </section>
+
+    <!-- METRICS BAR -->
+    <section class="bg-teal text-white py-8">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '700+', label: 'Students placed' },
+            { value: '4', label: 'Programs powered' },
+            { value: '15', label: 'Discover India trips' },
+            { value: '50+', label: 'Hours saved' },
+          ].map(({ value, label }) => (
+            <div>
+              <div class="text-3xl font-bold text-amber">{value}</div>
+              <div class="text-sm text-teal-100 mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <article class="py-16 md:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 space-y-14">
+
+        <!-- OVERVIEW -->
+        <div>
+          <span class="tag mb-4">Overview</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">The infrastructure behind experiential learning</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Experiential programs — service learning, "Week Without Walls" trips, activity days, STEAM
+              workshops — are the experiences students remember most. They're also a logistics nightmare:
+              hundreds of students, ranked preferences, capacity caps, fairness constraints, and teacher
+              staffing, all of which has to resolve into a clean assignment before anyone boards a bus.
+            </p>
+            <p>
+              Over a single year I built and ran the assignment engines for four of AISC's flagship
+              programs. Individually each saved real time; together they formed a reusable pattern for how
+              the school runs experiential learning at scale.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROBLEM -->
+        <div>
+          <span class="tag mb-4">The Problem</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">Great programs, fragile logistics</h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Every one of these programs was being assembled by hand — different spreadsheets, different
+              people, different ad-hoc rules each time. The work was invisible until it broke: an
+              over-capacity trip, a grade-skewed workshop, a student who never got placed. And because the
+              process lived in someone's head, it couldn't be handed off or trusted to run the same way twice.
+            </p>
+          </div>
+        </div>
+
+        <!-- WHAT I BUILT -->
+        <div>
+          <span class="tag mb-4">What I Built</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">Four assignment engines, one pattern</h2>
+          <div class="space-y-6">
+
+            <div class="card border-l-4 border-teal">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                <h3 class="font-bold text-navy">SEVAI Community Service</h3>
+                <span class="text-xs text-gray-400 font-medium">Oct–Nov 2025</span>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                The system that started it all: a 700+ line engine assigning 150+ students to 12 activities
+                by ranked preference, with grade balance, capacity limits, automated notifications, and
+                test mode. Saved 20–30 hours per cycle.
+                <a href="/work/sevai-assignment-system" class="text-teal font-medium hover:underline">Full case study →</a>
+              </p>
+            </div>
+
+            <div class="card border-l-4 border-amber">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                <h3 class="font-bold text-navy">Discover India — "Week Without Walls"</h3>
+                <span class="text-xs text-gray-400 font-medium">Apr–May 2026</span>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                The largest of the four. A complete assignment algorithm plus a 50+ page operations manual
+                to place ~237 students across 15 trips spanning three pillars — Adventure, Service, and
+                Culture. Handled 215+ student sign-up responses, capacity rules (20 students and 3 teachers
+                per trip), gender balance, and a formal appeals process. I built the backend engine; I also
+                chaperoned a trip myself.
+              </p>
+            </div>
+
+            <div class="card border-l-4 border-teal">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                <h3 class="font-bold text-navy">Discovery Day 2026</h3>
+                <span class="text-xs text-gray-400 font-medium">Feb 2026</span>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Automated assignment across 34 activities — morning, afternoon, and full-day sessions —
+                from 215 student sign-up responses, with a capacity-tracked dashboard and near-full
+                assignment at launch.
+              </p>
+            </div>
+
+            <div class="card border-l-4 border-amber">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                <h3 class="font-bold text-navy">STEAM Week 2026 Distribution</h3>
+                <span class="text-xs text-gray-400 font-medium">Mar 2026</span>
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                An automated workshop-distribution tool allocating 120+ students across 12+ prototype
+                workshops over three days for Grades 6–8. I owned the assignment-automation piece in
+                partnership with the program leads.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- IMPACT -->
+        <div>
+          <span class="tag mb-4">Impact &amp; Results</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">Hundreds of students, placed reliably</h2>
+          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { value: '700+', label: 'Total placements', sub: 'across four programs' },
+              { value: '15', label: 'Trips assigned', sub: 'Discover India alone' },
+              { value: '34', label: 'Activities', sub: 'Discovery Day sessions' },
+            ].map(({ value, label, sub }) => (
+              <div class="text-center p-5 bg-gray-50 rounded-2xl">
+                <div class="text-3xl font-bold text-amber mb-1">{value}</div>
+                <div class="font-semibold text-navy text-sm">{label}</div>
+                <div class="text-gray-500 text-xs mt-1">{sub}</div>
+              </div>
+            ))}
+          </div>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Across SEVAI, Discover India, Discovery Day, and STEAM Week, the systems placed well over
+              700 students by ranked preference while enforcing capacity, grade, and gender balance —
+              and they did it repeatably. Each program could re-run its assignment, preview before
+              committing, and hand the process to someone new without losing the logic.
+            </p>
+            <p>
+              The Discover India system in particular was built as a deliberate handover artifact:
+              50+ pages of documentation alongside the algorithm, so the school's signature trip program
+              could keep running long after I left.
+            </p>
+          </div>
+        </div>
+
+        <!-- LESSONS -->
+        <div>
+          <span class="tag mb-4">Lessons Learned</span>
+          <h2 class="text-2xl font-bold text-navy mb-4">What I'd carry forward</h2>
+          <ul class="space-y-4">
+            {[
+              ['Logistics is pedagogy’s silent partner.', 'The trip nobody remembers as "well-organized" is the one that worked. Good assignment infrastructure is invisible by design — and that’s the point.'],
+              ['Reuse beats rebuild.', 'Solving SEVAI cleanly meant Discover India, Discovery Day, and STEAM Week each started from a proven pattern instead of a blank spreadsheet.'],
+              ['Build the manual, not just the machine.', 'A 50+ page operations manual is what turns a clever script into an institutional system that outlives its author.'],
+            ].map(([title, desc]) => (
+              <li class="card">
+                <p class="font-semibold text-navy mb-1" set:html={title}></p>
+                <p class="text-gray-600 text-sm leading-relaxed" set:html={desc}></p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="py-16 bg-navy text-white">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-5">Running a program that's held together by spreadsheets and luck?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/work" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">More Case Studies</a>
+          <a href="/work-with-me#contact" class="btn-amber">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
