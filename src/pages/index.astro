@@ -15,24 +15,27 @@ import Footer from '../components/Footer.astro';
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">
-              Available for roles & consulting
+              Joining Shanghai American School · Puxi Middle School · August 2026 — Available for consulting
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
               Luis Carlos <span class="text-amber">Moreno</span>
             </h1>
             <p class="text-teal-200 font-medium text-lg mb-2">
-              Learning Innovation &amp; Technology Coach &nbsp;·&nbsp; AI Integration Specialist
+              EdTech Coordinator &nbsp;·&nbsp; Learning Innovation &amp; Technology Coach
             </p>
             <p class="text-teal-200 font-medium text-base mb-6">
-              Co-creator of the HUMAN Framework &nbsp;·&nbsp; GOA Game Theory Instructor
+              Co-creator of the HUMAN Framework &nbsp;·&nbsp; GOA Instructor &nbsp;·&nbsp; Apple Distinguished School lead
             </p>
             <p class="text-2xl md:text-3xl font-semibold text-amber mb-8 leading-snug">
-              Engineering Solutions.<br />Empowering Educators.
+              I build school systems<br />that outlive their builder.
             </p>
             <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-lg">
-              A Venezuelan-born systems engineer turned international educator — I bridge the gap
-              between complex technology and human-centered teaching, building sustainable solutions
-              that work for students, teachers, and leaders alike.
+              A Venezuelan-born systems engineer turned international educator, I work at the
+              intersection of coaching and code: close enough to pedagogy to know what teachers
+              actually need, technical enough to build it myself. At my last school, the systems I
+              built became the infrastructure — the dashboard 50+ leaders run curriculum from, the
+              app that tracks 700+ students' health check-ins, the engine that places an entire grade
+              into its signature trips. All of it still running after I left. That was the point.
             </p>
             <div class="flex flex-wrap gap-4">
               <a href="/experience" class="btn-amber">Explore My Journey</a>
@@ -58,10 +61,10 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '9', label: 'Major systems built' },
-            { value: '700+', label: 'Students via Health Office' },
-            { value: '50+', label: 'Leaders on the curriculum dashboard' },
-            { value: '$8,200', label: 'Saved per year' },
+            { value: '26', label: 'New teachers onboarded through my system — before day one' },
+            { value: '50+', label: 'School leaders running curriculum from my dashboard' },
+            { value: '700+', label: 'Students covered by school-wide systems' },
+            { value: '9', label: 'Systems built, documented, and handed over' },
           ].map(({ value, label }) => (
             <div>
               <div class="text-3xl font-bold text-amber">{value}</div>
@@ -86,23 +89,26 @@ import Footer from '../components/Footer.astro';
                 worked across 5 countries on three continents.
               </p>
               <p>
-                Since July 2024 I've been the <strong>Learning Innovation &amp; Technology Coach</strong> at
-                the American International School Chennai, an IB World School of roughly 700 students. I started
-                in the classroom teaching MYP Mathematics, then moved into EdTech coaching — and that path is
-                exactly the point. I work at the intersection of coaching and engineering: close enough to
-                pedagogy to know what teachers actually need, and technical enough to build it.
+                At the American International School Chennai, an IB World School of 700+ students, I was
+                the <strong>Learning Innovation &amp; Technology Coach and AI Initiatives Coordinator</strong> —
+                I led the school's Apple Distinguished School certification, co-created its framework for
+                ethical AI use, and coached 110+ faculty. I started my career in the classroom teaching MYP
+                Mathematics, and that path is exactly the point: I work at the intersection of coaching and
+                engineering, translating what teachers actually need into tools they actually adopt.
               </p>
               <p>
-                That's what I do best — turn the knowledge trapped in spreadsheets, documents, and people's
-                heads into living systems a whole school can use. A curriculum dashboard 50+ leaders rely on.
-                Assignment engines that place hundreds of students into trips and activities. A health
-                check-in app shipped school-wide. Tools that bridge AI and tech with real classroom practice,
-                and that keep working after I leave the room.
+                Here's the test I hold my own work to: <strong>does it keep running after I leave the
+                room?</strong> The curriculum dashboard I built is how 50+ AISC leaders see their program —
+                and in May 2026, the school's director sent it to 26 incoming teachers as the very first
+                onboarding resource they received, before they'd even arrived in Chennai. The
+                trip-assignment engine shipped with a 50-page operations manual so the program runs
+                identically without me. That's what I mean by making institutional knowledge stick: not
+                tools, infrastructure.
               </p>
               <p>
-                In <strong>August 2026 I'm joining Shanghai American School (SAS Puxi, Middle School)</strong> as
-                an EdTech coordinator — carrying that same belief forward: technology serves people, not the
-                other way around.
+                In <strong>August 2026 I'm bringing that playbook to Shanghai American School (SAS Puxi,
+                Middle School)</strong> as EdTech Coordinator — same belief, new campus: technology serves
+                people, not the other way around.
               </p>
               <p class="italic text-teal font-medium border-l-4 border-teal pl-4">
                 "His support has significantly reduced stress for many of us and has made a complicated
@@ -288,15 +294,23 @@ import Footer from '../components/Footer.astro';
         <div class="text-center mb-14">
           <span class="tag mb-4">Testimonials</span>
           <h2 class="section-title">What People Say</h2>
-          <p class="section-subtitle mx-auto">From head of school to classroom teachers — what colleagues say about working together.</p>
+          <p class="section-subtitle mx-auto">
+            4.8/5 across 26 teacher responses · 100% would work with me again. Here's what a few of them said.
+          </p>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
           {[
             {
               quote: 'Luis Carlos has consistently been patient, responsive, and incredibly helpful, often taking the time to troubleshoot problems thoroughly and ensure that things were fully resolved. His support has significantly reduced stress for many of us and has made a complicated process much smoother.',
               name: 'Elizabeth Keogh',
-              role: 'Grade 3 Teacher',
-              org: 'AISC (commendation to the Head of School)',
+              role: 'Grade 3 Teacher · unsolicited commendation to the Head of School',
+              org: 'AISC',
+            },
+            {
+              quote: 'Over the past year, we have been working to move all of our curriculum documentation into a shared Google Drive structure to create greater consistency, accessibility, and alignment across the school.',
+              name: 'Joel Bevans',
+              role: 'Director of Teaching & Learning',
+              org: 'AISC — sent while introducing my system to 26 incoming teachers as their first onboarding resource',
             },
             {
               quote: 'This is phenomenal work throughout this year that has provided extensive insight into our program.',
@@ -316,12 +330,6 @@ import Footer from '../components/Footer.astro';
               role: 'Annual Survey',
               org: 'AISC',
             },
-            {
-              quote: 'I value the process and the product.',
-              name: 'Joel Bevans',
-              role: 'Director of Teaching and Learning',
-              org: 'AISC',
-            },
           ].map(({ quote, name, role, org }) => (
             <div class="card flex flex-col gap-4">
               <svg class="w-8 h-8 text-teal-200 flex-shrink-0" fill="currentColor" viewBox="0 0 32 32">
@@ -335,9 +343,6 @@ import Footer from '../components/Footer.astro';
             </div>
           ))}
         </div>
-        <p class="text-center text-gray-400 text-sm mt-8">
-          4.8/5 average · 26 teacher survey responses · 100% would work together again
-        </p>
       </div>
     </section>
 

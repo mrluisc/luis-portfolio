@@ -5,19 +5,12 @@ import Footer from '../../components/Footer.astro';
 
 const caseStudies = [
   {
-    href: '/work/curriculum-intelligence',
-    tag: 'Flagship',
-    title: 'Curriculum Intelligence Dashboard',
-    desc: 'A Google Apps Script web app that turned scattered curriculum documents into a live analytics system — tracking 216 courses and 849 units across three divisions and putting that data in front of 50+ school leaders.',
-    metrics: ['216 courses', '849 units · 81% complete', '50+ leaders'],
-    color: 'teal',
-  },
-  {
-    href: '/work/student-assignment-systems',
+    href: '/work/discover-india-trip-assignment',
     tag: 'Systems',
-    title: 'Student Assignment Systems',
-    desc: 'The logistics infrastructure behind experiential learning — assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that place hundreds of students into trips, activities, and workshops by ranked preference.',
-    metrics: ['700+ students placed', '4 programs', '50+ hours saved'],
+    chapter: 'Chapter 1 · Prove it on one hard problem',
+    title: 'Discover India Trip Assignment',
+    desc: 'The assignment engine behind AISC\'s "Week Without Walls" — placing 237 incoming Grade 9 students across 15 experiential trips by ranked preference, capacity, and gender balance, with a 50-page operations manual so it never depends on me again.',
+    metrics: ['237 students', '15 trips', '50-page manual'],
     color: 'amber',
   },
   {
@@ -29,20 +22,31 @@ const caseStudies = [
     color: 'teal',
   },
   {
-    href: '/work/discover-india-trip-assignment',
+    href: '/work/student-assignment-systems',
     tag: 'Systems',
-    title: 'Discover India Trip Assignment',
-    desc: 'The assignment engine behind AISC\'s "Week Without Walls" — placing 237 incoming Grade 9 students across 15 experiential trips by ranked preference, capacity, and gender balance, with a 50-page operations manual.',
-    metrics: ['237 students', '15 trips', '50-page manual'],
+    chapter: 'Chapter 2 · Turn the solution into infrastructure',
+    title: 'Student Assignment Systems',
+    desc: 'The logistics infrastructure behind experiential learning — assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that quietly placed 700+ students and saved 50+ hours of manual work a year.',
+    metrics: ['700+ students placed', '4 programs', '50+ hours saved'],
     color: 'amber',
   },
   {
     href: '/work/health-office-app',
     tag: 'Full-stack',
+    chapter: 'Chapter 3 · Go school-wide, and go fast',
     title: 'Health Office App',
-    desc: 'A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries — launched school-wide for 700+ students.',
+    desc: 'A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries — a duty-of-care gap closed for all 700+ students, from school-wide launch to live automated notifications in six days.',
     metrics: ['700+ students', 'Firebase + React', 'School-wide launch'],
     color: 'amber',
+  },
+  {
+    href: '/work/curriculum-intelligence',
+    tag: 'Flagship',
+    chapter: "Chapter 4 · Become the institution's memory",
+    title: 'Curriculum Intelligence Dashboard',
+    desc: 'A Google Apps Script web app that turned scattered curriculum documents into a live analytics system — tracking 216 courses and 849 units across three divisions, put in front of 50+ leaders, and adopted by the director as the first onboarding resource 26 new teachers received.',
+    metrics: ['216 courses', '849 units · 81% complete', '50+ leaders'],
+    color: 'teal',
   },
 ];
 ---
@@ -60,9 +64,11 @@ const caseStudies = [
         <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Selected Work</span>
         <h1 class="text-4xl md:text-5xl font-bold mb-6">Systems That Make Institutional Knowledge Stick</h1>
         <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-          Real tools, shipped into real schools. Each case study walks through the problem, what I built,
-          the measurable impact, and what I learned — grounded in the work I did at the American
-          International School Chennai.
+          These projects are one story told at increasing scale. It starts with a single high-stakes
+          logistics problem — placing one grade into its signature trips — and ends with the school's
+          entire curriculum becoming searchable infrastructure that a director now hands to new teachers
+          on day zero. At each step the question was the same: can this run without me? Every system
+          below shipped with the documentation, training, and handover to answer yes.
         </p>
       </div>
     </section>
@@ -71,9 +77,10 @@ const caseStudies = [
     <section class="py-20 md:py-28 bg-white">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="grid md:grid-cols-2 gap-8">
-          {caseStudies.map(({ href, tag, title, desc, metrics, color }) => (
+          {caseStudies.map(({ href, tag, chapter, title, desc, metrics, color }) => (
             <a href={href} class={`card group block border-t-4 ${color === 'teal' ? 'border-teal' : 'border-amber'}`}>
               <span class="tag text-xs mb-3">{tag}</span>
+              {chapter && <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">{chapter}</p>}
               <h2 class="text-xl font-bold text-navy mb-3 group-hover:text-teal transition-colors">{title}</h2>
               <p class="text-gray-600 text-sm leading-relaxed mb-5">{desc}</p>
               <div class="flex flex-wrap gap-2 mb-5">
