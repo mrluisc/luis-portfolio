@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CalendarHeatmap from '../components/CalendarHeatmap.astro';
 ---
 
 <Layout
   title="My Journey"
-  description="From systems engineering in Venezuela to learning innovation coaching across 5 countries — the full career journey of Luis Carlos Moreno."
+  description="From systems engineering in Venezuela to learning innovation coaching across 5 countries, the full career journey of Luis Carlos Moreno."
 >
   <Nav />
   <main>
@@ -20,7 +21,7 @@ import Footer from '../components/Footer.astro';
             <h1 class="text-4xl md:text-5xl font-bold mb-4">From Systems Engineering to Human-Centered Education</h1>
             <p class="text-gray-300 text-lg leading-relaxed">
               A decade of building, teaching, coaching, and innovating across four countries and every
-              role a school has to offer — with Venezuela always at the beginning of the story.
+              role a school has to offer, with Venezuela always at the beginning of the story.
             </p>
           </div>
           <div class="flex justify-center md:justify-end">
@@ -43,9 +44,11 @@ import Footer from '../components/Footer.astro';
             <h2 class="section-title">The Representation I Wished I'd Had</h2>
             <div class="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                I grew up in Valle de la Pascua, a small town in the Venezuelan plains, in a family of entrepreneurs.
-                I was working by age 7, managing my family's restaurant by 11. At 15, I immigrated alone
-                to Texas to learn English — with nothing but drive and the certainty that education could open any door.
+                I grew up in Valle de la Pascua, a small town in the Venezuelan plains, in a family of
+                entrepreneurs and educators. My grandmother founded two schools there and ran her classroom
+                as a small living democracy she called the República Escolar. I was working by age 7,
+                managing my family's restaurant by 11. At 15, I moved to Texas to learn English, with
+                nothing but drive and the certainty that education could open any door.
               </p>
               <p>
                 As a queer, Latino, multilingual educator, I strive to be the representation I wished I'd had.
@@ -60,7 +63,7 @@ import Footer from '../components/Footer.astro';
               <blockquote class="border-l-4 border-amber pl-4 text-gray-600 italic">
                 "You will not tell me that you accept me. You will not tell me that you tolerate me.
                 That is not your power. I take that from you. You will respect me for who I am."
-                <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">— Luis Carlos Moreno, AIELOC Conference Hanoi 2024</footer>
+                <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">Luis Carlos Moreno, AIELOC Conference Hanoi 2024</footer>
               </blockquote>
             </div>
           </div>
@@ -96,7 +99,7 @@ import Footer from '../components/Footer.astro';
             <div class="flex items-start gap-4 mb-4">
               <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">🎓</div>
               <div>
-                <span class="tag text-xs mb-1">2024 – Present</span>
+                <span class="tag text-xs mb-1">2024 – 2026</span>
                 <h3 class="font-bold text-navy text-lg">Learning Innovation & Technology Coach</h3>
                 <p class="text-teal font-medium text-sm">American International School Chennai (AISC), India</p>
               </div>
@@ -104,7 +107,7 @@ import Footer from '../components/Footer.astro';
             <ul class="space-y-2 text-sm text-gray-600">
               <li class="flex gap-2"><span class="text-teal">→</span> Led Apple Distinguished School certification (one of 10 schools in India)</li>
               <li class="flex gap-2"><span class="text-teal">→</span> Co-created HUMAN Framework with María Pérez Talavera</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Engineered LEA — analyzed 8+ months of school-wide data</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Engineered LEA, analyzed 8+ months of school-wide data</li>
               <li class="flex gap-2"><span class="text-teal">→</span> Coached 110+ faculty using student-centered model (plan, observe, model, co-teach)</li>
               <li class="flex gap-2"><span class="text-teal">→</span> Built 25+ automation tools saving 15+ hours weekly</li>
               <li class="flex gap-2"><span class="text-teal">→</span> Designed digital citizenship curriculum for 400+ students annually</li>
@@ -118,7 +121,7 @@ import Footer from '../components/Footer.astro';
               <div>
                 <span class="tag text-xs mb-1">2024 – Present</span>
                 <h3 class="font-bold text-navy text-lg">Game Theory & AI Instructor</h3>
-                <p class="text-amber font-medium text-sm">Global Online Academy (GOA) — Worldwide</p>
+                <p class="text-amber font-medium text-sm">Global Online Academy (GOA), Worldwide</p>
               </div>
             </div>
             <ul class="space-y-2 text-sm text-gray-600">
@@ -130,6 +133,18 @@ import Footer from '../components/Footer.astro';
             </ul>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- AISC CALENDAR DENSITY -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-5xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-10">
+          <span class="tag mb-4">Two Years, One Calendar</span>
+          <h2 class="section-title">2,514 Calendar Events in Two Years at AISC</h2>
+          <p class="section-subtitle mx-auto">The dark squares are the job. Every cell is a day, July 2024 through June 2026.</p>
+        </div>
+        <CalendarHeatmap />
       </div>
     </section>
 
@@ -201,7 +216,8 @@ import Footer from '../components/Footer.astro';
               location: 'Vientiane, Laos',
               points: [
                 'MYP Mathematics teacher across multiple grade levels',
-                'DEIJ Taskforce member — contributed to inclusion and equity culture initiatives',
+                'Designed and taught a grades 6-12 financial literacy curriculum',
+                'DEIJ Taskforce member, contributed to inclusion and equity culture initiatives',
                 'Continued coaching educators in technology integration',
                 'ISS DEIJ Learning to Action Institute (2021–2022)',
               ],
@@ -212,12 +228,12 @@ import Footer from '../components/Footer.astro';
               org: 'International School of Panama (ISP)',
               location: 'Panama City, Panama',
               points: [
-                'Four distinct roles across five years — built comprehensive understanding of the full school ecosystem',
+                'Four distinct roles across five years, built comprehensive understanding of the full school ecosystem',
                 'Led school-wide technology vision; primary administrator for Canvas LMS, FACTS SIS, Google Workspace',
                 'Coached teachers in technology integration with tailored, data-driven support',
                 'Taught middle school mathematics and served as Mathematics Department Head',
                 'Provided learning support for grades 6–8 with individualized instruction and ILP development',
-                'Consulted for Academia Hebrea de Panamá (2020) — delivered strategic technology audit',
+                'Consulted for Academia Hebrea de Panamá (2020), delivered strategic technology audit',
               ],
             },
             {
@@ -227,7 +243,7 @@ import Footer from '../components/Footer.astro';
               location: 'Panama City, Panama',
               points: [
                 'Founded the school\'s STEM and Robotics program from the ground up',
-                'Led IT Department — managed infrastructure, device deployment, and tech support',
+                'Led IT Department, managed infrastructure, device deployment, and tech support',
                 'Developed K-12 technology curriculum',
               ],
             },
@@ -237,7 +253,7 @@ import Footer from '../components/Footer.astro';
               org: 'Independent',
               location: 'Panama',
               points: [
-                'Tutored two brothers for 4 years — full homeschool model',
+                'Tutored two brothers for 4 years, full homeschool model',
                 'Subjects: STEM, Robotics, Mathematics, Information Technology',
                 'Students achieved A and B grades on GCSE assessments',
                 'Also supported AS & A Level students in mathematics',
@@ -275,10 +291,10 @@ import Footer from '../components/Footer.astro';
             <h2 class="text-2xl font-bold text-navy mb-8">Professional Credentials</h2>
             <div class="space-y-3">
               {[
-                { name: 'COETAIL — Certificate of Educational Technology & Information Literacy', year: '' },
+                { name: 'COETAIL, Certificate of Educational Technology & Information Literacy', year: '' },
                 { name: 'Google Certified Educator Level 1 & Level 2', year: '' },
                 { name: 'UDL Associate Level 1 Credential', year: '' },
-                { name: 'Apple Distinguished School — Certification Leader', year: '2024' },
+                { name: 'Apple Distinguished School, Certification Leader', year: '2024' },
                 { name: 'International Teaching Certificate (TTC, Rome)', year: '2018' },
                 { name: 'Coaching Skills for International Teacher Leaders (TTC, Rome)', year: '2018' },
                 { name: 'Social & Emotional Teaching and Learning (TTC, Rome)', year: '2018' },

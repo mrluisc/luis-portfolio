@@ -23,7 +23,7 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
           <span class="text-amber">for Educators, Professionals &amp; Organizations</span>
         </h1>
         <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
-          My approach is always the same: efficiency, efficacy, sustainability — and above all, partnership.
+          My approach is always the same: efficiency, efficacy, sustainability, and above all, partnership.
           Whether you're an individual educator, a leadership team, or a professional outside education,
           I'm here to walk alongside you.
         </p>
@@ -45,7 +45,6 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
         <div class="grid md:grid-cols-2 gap-8">
           {[
             {
-              icon: '🤖',
               title: 'AI Integration Coaching',
               sub: '1:1 or small groups',
               desc: 'Personalized coaching sessions helping educators build confidence with AI tools, develop their own informed philosophy, and integrate AI purposefully into their practice.',
@@ -53,32 +52,28 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
               color: 'teal',
             },
             {
-              icon: '🏫',
               title: 'School-Wide Workshops & PD',
               sub: 'Half-day to multi-session programs',
-              desc: 'Interactive professional development for faculty and staff — from foundational AI literacy to advanced implementation of the HUMAN Framework and LEA system.',
+              desc: 'Interactive professional development for faculty and staff, from foundational AI literacy to advanced implementation of the HUMAN Framework and LEA system.',
               details: ['AI foundations for educators', 'HUMAN Framework rollout', 'LEA implementation training', 'Digital citizenship curriculum', 'Leadership data strategy sessions'],
               color: 'teal',
             },
             {
-              icon: '🧩',
               title: 'HUMAN Framework Implementation',
               sub: 'Consulting engagement',
-              desc: 'Full implementation support for the HUMAN Framework — co-delivered with María Pérez Talavera. Includes customization to your school context, teacher training, and dashboard setup.',
+              desc: 'Full implementation support for the HUMAN Framework, co-delivered with María Pérez Talavera. Includes customization to your school context, teacher training, and dashboard setup.',
               details: ['School-specific customization', 'Faculty training series', 'LEA tool configuration', 'Leadership reporting setup', 'Ongoing support'],
               color: 'amber',
             },
             {
-              icon: '⚙️',
               title: 'Systems & Efficiency Consulting',
               sub: 'Custom engagements',
-              desc: 'Custom solutions for schools navigating platform transitions, workflow inefficiencies, or digital system gaps — from Google Workspace rollouts to custom automation tools.',
+              desc: 'Custom solutions for schools navigating platform transitions, workflow inefficiencies, or digital system gaps, from Google Workspace rollouts to custom automation tools.',
               details: ['EdTech audit & roadmap', 'Platform transition support', 'Custom tool development', 'Data workflow design', 'Staff capacity building'],
               color: 'amber',
             },
-          ].map(({ icon, title, sub, desc, details, color }) => (
+          ].map(({ title, sub, desc, details, color }) => (
             <div class={`card border-t-4 ${color === 'teal' ? 'border-teal' : 'border-amber'}`}>
-              <div class="text-3xl mb-3">{icon}</div>
               <h3 class="font-bold text-navy text-lg mb-0.5">{title}</h3>
               <p class="text-sm text-gray-400 mb-3">{sub}</p>
               <p class="text-gray-600 text-sm leading-relaxed mb-4">{desc}</p>
@@ -101,9 +96,9 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="text-center mb-14">
           <span class="tag mb-4">For Professionals & Teams</span>
-          <h2 class="section-title">Work Smarter with AI — Without Losing Control of Your Data</h2>
+          <h2 class="section-title">Work Smarter with AI, Without Losing Control of Your Data</h2>
           <p class="section-subtitle mx-auto">
-            Not in education? No problem. Whether you're a lawyer, doctor, business owner, or executive —
+            Not in education? No problem. Whether you're a lawyer, doctor, business owner, or executive,
             I help you harness AI tools that actually fit how you work, with a focus on data privacy and practical results.
           </p>
         </div>
@@ -112,12 +107,12 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
           <h3 class="font-semibold text-navy mb-4">Who This Is For</h3>
           <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              '⚖️ Legal Professionals — contracts, research, correspondence',
-              '🏥 Healthcare — documentation, patient comms, research',
-              '💼 Business Owners — operations, marketing, planning',
-              '🏦 Finance & Insurance — reports, analysis, compliance',
-              '👔 Executive Teams — strategy, communication, decisions',
-              '✍️ Anyone who writes, analyzes, or decides for a living',
+              'Legal Professionals: contracts, research, correspondence',
+              'Healthcare: documentation, patient comms, research',
+              'Business Owners: operations, marketing, planning',
+              'Finance & Insurance: reports, analysis, compliance',
+              'Executive Teams: strategy, communication, decisions',
+              'Anyone who writes, analyzes, or decides for a living',
             ].map(item => (
               <div class="flex gap-2 text-sm text-gray-700">
                 <span>{item}</span>
@@ -129,29 +124,25 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
         <div class="grid md:grid-cols-3 gap-6 mb-12">
           {[
             {
-              icon: '🎯',
               title: 'AI Readiness Call',
-              sub: 'Free — 30 minutes',
+              sub: 'Free, 30 minutes',
               desc: "Let's talk about your work and identify where AI can have the biggest impact. No commitment, just clarity.",
               cta: 'Book a Call',
             },
             {
-              icon: '👤',
               title: '1:1 AI Coaching',
               sub: 'Personalized sessions',
               desc: 'Focused on your specific role and real workflows. Virtual, flexible scheduling, hands-on with your actual documents.',
               cta: 'Learn More',
             },
             {
-              icon: '👥',
               title: 'Team Workshops',
-              sub: '3–8 participants',
+              sub: '3-8 participants',
               desc: 'Customized to your industry. Half-day intensives or multi-session programs. Virtual or on-site.',
               cta: 'Inquire',
             },
-          ].map(({ icon, title, sub, desc, cta }) => (
+          ].map(({ title, sub, desc, cta }) => (
             <div class="card text-center">
-              <div class="text-4xl mb-3">{icon}</div>
               <h3 class="font-bold text-navy mb-1">{title}</h3>
               <p class="text-sm text-gray-400 mb-3">{sub}</p>
               <p class="text-gray-600 text-sm leading-relaxed mb-5">{desc}</p>
@@ -210,12 +201,12 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
             {
               step: '01',
               title: 'Discovery',
-              desc: 'We start with a free 30-minute conversation. I learn about your context, challenges, and goals — and you get a clear sense of whether this is the right fit.',
+              desc: 'We start with a free 30-minute conversation. I learn about your context, challenges, and goals, and you get a clear sense of whether this is the right fit.',
             },
             {
               step: '02',
               title: 'Design',
-              desc: 'I design an engagement specific to your needs. Not a packaged course — a tailored approach that works with your real workflows, documents, and constraints.',
+              desc: 'I design an engagement specific to your needs. Not a packaged course: a tailored approach that works with your real workflows, documents, and constraints.',
             },
             {
               step: '03',
@@ -253,9 +244,9 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
               role: 'Teacher, AISC',
             },
             {
-              quote: 'Luis motivated me to take risks, try new tools, and feel confident bringing tech meaningfully into the classroom. My students were so proud when they saw me in the Apple video.',
+              quote: 'Luis provided the perfect combination of expertise, patience, and accessibility that made learning feel safe and achievable. Luis is not just an amazing coach but an incredible individual you can truly depend on.',
               name: 'Eugenia Gomez-Escobar',
-              role: 'MS World Language Teacher, AISC',
+              role: 'MS World Language Teacher, AISC, endorsed the coaching twice, months apart',
             },
           ].map(({ quote, name, role }) => (
             <div class="card">
@@ -276,7 +267,7 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
         <h2 class="section-title">Flexible to Your Context</h2>
         <p class="text-gray-600 leading-relaxed mb-8">
           I believe in accessible, transparent pricing. Educators and professionals start with a free
-          discovery call — no obligation, just a conversation. From there, we design an engagement that
+          discovery call, no obligation, just a conversation. From there, we design an engagement that
           fits your budget and goals.
         </p>
         <div class="grid sm:grid-cols-3 gap-6 mb-10">
@@ -306,7 +297,7 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
           <span class="tag bg-white/10 text-white border border-white/20 mb-4 inline-block">Get in Touch</span>
           <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start?</h2>
           <p class="text-gray-300">
-            Whether you have a specific challenge in mind or just want to explore possibilities —
+            Whether you have a specific challenge in mind or just want to explore possibilities,
             the first conversation is always free.
           </p>
         </div>

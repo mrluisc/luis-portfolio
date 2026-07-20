@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+// UNCONFIRMED before this ships as a real resume:
+// 1. M.Ed. institution name (see Education section below, currently omitted)
+// 2. AIFE conference venue: "Jakarta" on the live site (innovations.astro), "Bangkok" in
+//    cv-content.md. This page deliberately omits the city rather than guess. Verify with
+//    Luis and update the AIFE bullet below once confirmed.
+---
+
+<Layout
+  title="CV"
+  description="Curriculum vitae for Luis Carlos Moreno Rivero, Instructional Technology Coach."
+>
+  <Nav />
+  <main class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-20 print:py-0">
+      <div class="flex items-center justify-between mb-10 print:hidden">
+        <span class="tag">Curriculum Vitae</span>
+        <button
+          onclick="window.print()"
+          class="btn-secondary text-sm py-2"
+        >
+          Download / Print PDF
+        </button>
+      </div>
+
+      <article class="prose prose-slate max-w-none prose-headings:font-semibold prose-headings:text-navy prose-h2:text-lg prose-h2:uppercase prose-h2:tracking-wide prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2 prose-h2:mt-10 prose-a:text-teal">
+
+        <h1 class="!mb-1 !text-3xl">Luis Carlos Moreno Rivero</h1>
+        <p class="!mt-0 text-gray-600">
+          Instructional Technology Coach · Shanghai American School (Puxi), from August 2026<br />
+          <a href="mailto:mr.luisc@gmail.com">mr.luisc@gmail.com</a> ·
+          <a href="https://github.com/mrluisc" target="_blank" rel="noopener">github.com/mrluisc</a> ·
+          <a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener">linkedin.com/in/luiscarlosmorenorivero</a> ·
+          <a href="https://mrluisc.com">mrluisc.com</a><br />
+          Venezuelan · Spanish / English / Portuguese
+        </p>
+
+        <h2>Professional Summary</h2>
+        <p>
+          I build the systems schools usually buy. Over two years at an IB World School in Chennai I
+          designed and shipped custom web applications for curriculum analytics, student health
+          check-ins, and automated trip and service-learning placement, while coaching 110+ faculty
+          through AI integration, UDL, and digital pedagogy. More than ten of my tools were requested
+          by colleagues and adopted by name in daily departmental workflows. I pair classroom
+          credibility (MYP Mathematics teacher) with software engineering (Google Apps Script,
+          Firebase, React) and a coach's instinct for what faculty will actually adopt. The test I hold
+          my work to is simple: does it keep running after I leave the room? At AISC, it does.
+        </p>
+
+        <h2>Core Skills</h2>
+        <p>
+          <strong>Development:</strong> Google Apps Script web apps and automation · Firebase + React ·
+          Google Workspace APIs (Classroom, Sheets, Drive) · PowerSchool / PowerTeacher Pro data
+          workflows · Looker Studio dashboards · assignment and capacity-balancing algorithms ·
+          Git/GitHub
+        </p>
+        <p>
+          <strong>Coaching and Professional Learning:</strong> instructional coaching (menu- and
+          cycle-based) · whole-staff PD facilitation (110+ faculty) · UDL implementation leadership ·
+          peer observation models · digital citizenship instruction · co-teaching
+        </p>
+        <p>
+          <strong>AI and EdTech:</strong> classroom AI integration (Claude, ChatGPT, Gemini, Flint) ·
+          HUMAN Framework co-creator · AI policy and academic integrity frameworks · EdTech
+          evaluation, rollout, and subscription management · device deployment PK-12
+        </p>
+        <p>
+          <strong>Systems and Data:</strong> curriculum mapping and gap analysis · institutional audits
+          · process documentation and operations manuals · data governance · vendor portfolio
+          management (~$200k annual spend)
+        </p>
+
+        <h2>Experience</h2>
+
+        <p class="!mb-1">
+          <strong>American International School Chennai (AISC), India</strong><br />
+          <em>Learning Innovation & Technology Coach · Jul 2024 to Jun 2026</em><br />
+          <span class="text-sm text-gray-500">IB World School, ~700 students PK-12, Apple Distinguished School.</span>
+        </p>
+        <ul>
+          <li>Designed and built the Curriculum Intelligence Dashboard, a web app tracking 216 courses and 849 curriculum units across three divisions; deployed to 50+ school leaders, and adopted by the Director of Teaching & Learning as the first onboarding resource sent to 26 incoming teachers.</li>
+          <li>Built the Health Office App (Firebase + React) for 700+ students: digital check-ins with automated same-day notifications to teachers and secretaries; launched school-wide June 2026.</li>
+          <li>Shipped 10+ additional tools by colleague request, each adopted by name: report-comment generators for Science and French, a DT/trip safety consent-tracking system, a gamified EAL progress tracker, an automated placement engine (SEVAI) assigning 150+ students to service activities, and the Discover India engine placing ~237 students across 15 trips, delivered with a 50-page operations manual.</li>
+          <li>Led the migration from Turnitin to Google Originality Reports, saving ~$8,200 per year, and set up Google Classrooms for all IB teachers.</li>
+          <li>Co-created the HUMAN Framework for ethical AI integration and presented it to 100+ faculty; ran the "Exploring Tomorrow" AI book club for 20+ educators including the Deputy Head and Director.</li>
+          <li>Directed the secondary school's year-long UDL implementation: orientation series with an external consultant, a UDL Champions cohort, and monthly cycle meetings.</li>
+          <li>Co-led the school's Apple Distinguished School application from planning through video production.</li>
+          <li>Served on hiring panels for Head of School, MS and HS Principal, Student Support Services Director, and Secondary Learning Coach candidates.</li>
+          <li>Co-authored the OTL Strategic Implementation Plan 2025-28; member of the Sustainable Data Systems Council and Innovation in Teaching & Learning Council.</li>
+          <li>Spoke at the Data in Schools Conference (Kuala Lumpur, 2025); co-facilitated a HUMAN Framework session at the AIFE International Conference for 10+ international schools.</li>
+        </ul>
+
+        <p class="!mb-1 mt-6">
+          <strong>Global Online Academy</strong><br />
+          <em>Instructor, Geometry and Game Theory · 2024 to present</em>
+        </p>
+        <ul>
+          <li>Teach fully online, asynchronous-first courses to students across member schools worldwide; competency-based grading with narrative feedback.</li>
+        </ul>
+
+        <p class="!mb-1 mt-6">
+          <strong>Vientiane International School, Laos</strong><br />
+          <em>MYP Mathematics Teacher · 2021 to 2024</em>
+        </p>
+        <ul>
+          <li>Taught MYP Mathematics at an IB World School; built inquiry-based units aligned to IB criteria.</li>
+          <li>Designed and taught a grades 6-12 financial literacy curriculum; served on the DEIJ taskforce; presented at AIELOC Hanoi 2024.</li>
+        </ul>
+
+        <p class="!mb-1 mt-6">
+          <strong>International School of Panama</strong><br />
+          <em>2016 to 2021</em>
+        </p>
+        <ul>
+          <li>Five roles across five years: EdTech Coordinator, Instructional Coach, Mathematics Department Head, MYP Mathematics Teacher, Learning Support.</li>
+        </ul>
+
+        <p class="!mb-1 mt-6">
+          <strong>Colegio Isaac Rabin, Panama</strong><br />
+          <em>STEM & Robotics Teacher and Head of IT · 2015 to 2016</em>
+        </p>
+        <ul>
+          <li>Founded the school's robotics program.</li>
+        </ul>
+
+        <p class="text-sm text-gray-500 mt-4">
+          Earlier: co-founded Konekti, a coding and robotics education startup in Panama, where I found my path into teaching.
+        </p>
+
+        <h2>Education</h2>
+        <ul>
+          <li>M.Ed., Master of Education</li>
+          <li>B.S. Systems Engineering, Universidad Tecnológica de Panamá</li>
+        </ul>
+
+        <h2>Recognition</h2>
+        <ul>
+          <li>Formal commendation to school leadership for support of faculty (Elizabeth Keogh to Deputy Head, May 2026): "His support has significantly reduced stress for many of us and has made a complicated process much smoother."</li>
+          <li>Described by AISC's Deputy Head to an external AI consultant as "making amazing tools to improve teachers' lives, among his many other activities."</li>
+          <li>Colleague survey: 4.8/5 across 26 responses; 100% would work with me again.</li>
+          <li>International speaking: Data in Schools (Kuala Lumpur), AIFE, AIELOC (Hanoi); workshop materials adopted by schools in Malaysia and Korea.</li>
+        </ul>
+
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  @media print {
+    :global(header), :global(footer) {
+      display: none !important;
+    }
+  }
+</style>

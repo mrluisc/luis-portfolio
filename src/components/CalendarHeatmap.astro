@@ -1,0 +1,106 @@
+---
+import rawDays from '../data/calendar-heatmap.json';
+
+// Validated sequential teal ramp (dataviz skill, --ordinal check, all pass):
+// light-end contrast 2.53:1, monotone lightness, single hue, ΔL >= 0.06 per step
+const BUCKET_COLORS = [
+  '#e5e7eb', // 0 events — neutral gray, not part of the magnitude ramp
+  '#14b2b8', // 1-2
+  '#0d7377', // 3-5
+  '#0a5d61', // 6-8
+  '#07474a', // 9-12
+  '#053033', // 13+
+];
+const BUCKET_LABELS = ['No events', '1-2 events', '3-5 events', '6-8 events', '9-12 events', '13+ events'];
+
+type Day = { date: string; count: number; bucket: number };
+const days = rawDays as Day[];
+
+// Pad to a Sunday-start grid, GitHub-style: 7 rows (Sun-Sat) x N week-columns
+const first = new Date(days[0].date + 'T00:00:00');
+const padStart = first.getDay(); // 0 = Sunday
+const padded: (Day | null)[] = Array(padStart).fill(null).concat(days);
+while (padded.length % 7 !== 0) padded.push(null);
+
+const weeks: (Day | null)[][] = [];
+for (let i = 0; i < padded.length; i += 7) {
+  weeks.push(padded.slice(i, i + 7));
+}
+
+// Month labels: mark the week-column where a new month starts
+const monthLabels: { weekIndex: number; label: string }[] = [];
+let lastMonth = '';
+weeks.forEach((week, wi) => {
+  const firstRealDay = week.find(d => d !== null);
+  if (!firstRealDay) return;
+  const d = new Date(firstRealDay.date + 'T00:00:00');
+  const monthKey = `${d.getFullYear()}-${d.getMonth()}`;
+  if (monthKey !== lastMonth) {
+    monthLabels.push({ weekIndex: wi, label: d.toLocaleDateString('en-US', { month: 'short' }) });
+    lastMonth = monthKey;
+  }
+});
+
+const totalEvents = days.reduce((sum, d) => sum + d.count, 0);
+const maxDay = days.reduce((max, d) => d.count > max.count ? d : max, days[0]);
+const cellSize = 11;
+const cellGap = 3;
+const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
+---
+
+<div class="overflow-x-auto pb-2">
+  <div class="inline-block min-w-full">
+    <!-- Month labels -->
+    <div class="flex" style={`padding-left:${28}px`}>
+      {weeks.map((_, wi) => {
+        const label = monthLabels.find(m => m.weekIndex === wi)?.label;
+        return (
+          <div style={`width:${cellSize + cellGap}px; flex-shrink:0`} class="text-[10px] font-mono text-gray-400">
+            {label || ''}
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="flex mt-1">
+      <!-- Day-of-week labels -->
+      <div class="flex flex-col justify-between" style={`width:24px; margin-right:4px`}>
+        {dayLabels.map(l => (
+          <div style={`height:${cellSize}px; margin-bottom:${cellGap}px`} class="text-[9px] font-mono text-gray-400 leading-none flex items-center">{l}</div>
+        ))}
+      </div>
+
+      <!-- Grid -->
+      <div class="flex" style={`gap:${cellGap}px`}>
+        {weeks.map(week => (
+          <div class="flex flex-col" style={`gap:${cellGap}px`}>
+            {week.map(day => (
+              day ? (
+                <div
+                  style={`width:${cellSize}px; height:${cellSize}px; background:${BUCKET_COLORS[day.bucket]}; border-radius:2px`}
+                  title={`${day.date}: ${day.count} event${day.count === 1 ? '' : 's'}`}
+                ></div>
+              ) : (
+                <div style={`width:${cellSize}px; height:${cellSize}px`}></div>
+              )
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="flex items-center justify-end gap-1.5 mt-4 text-[11px] font-mono text-gray-400">
+      <span>Less</span>
+      {BUCKET_COLORS.map((c, i) => (
+        <div style={`width:${cellSize}px; height:${cellSize}px; background:${c}; border-radius:2px`} title={BUCKET_LABELS[i]}></div>
+      ))}
+      <span>More</span>
+    </div>
+  </div>
+</div>
+
+<p class="sr-only">
+  Calendar heatmap showing {totalEvents} calendar events across {days.length} days from {days[0].date} to {days[days.length - 1].date}.
+  The busiest single day had {maxDay.count} events, on {maxDay.date}. Darker cells indicate more events that day.
+</p>
