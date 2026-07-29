@@ -2,11 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { facts } from '../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
   title="Signature Innovations"
-  description="The HUMAN Framework for ethical AI integration, the Learning Experience Analyzer (LEA), and 20+ custom automation tools built to transform how schools approach technology."
+  description={`The HUMAN Framework for ethical AI integration, the Learning Experience Analyzer (LEA), and ${facts.scale.tools} custom automation tools built to transform how schools approach technology.`}
 >
   <Nav />
   <main>
@@ -30,7 +34,7 @@ import Footer from '../components/Footer.astro';
           <div>
             <span class="tag mb-4">Framework</span>
             <h2 class="section-title">The HUMAN Framework</h2>
-            <p class="text-sm text-gray-500 mb-4">Co-created with <strong class="text-teal">María Pérez Talavera</strong></p>
+            <p class="text-sm text-gray-500 mb-4">Co-created with <strong class="text-teal">{facts.people.perezTalavera.name}</strong></p>
             <p class="text-gray-700 leading-relaxed mb-6">
               A practical guide for the human-centered use and selective integration of AI in education.
               Rather than prescribing when to use AI, the framework gives teachers and students a shared
@@ -54,7 +58,7 @@ import Footer from '../components/Footer.astro';
                 <span class="bg-teal-50 text-teal text-xs rounded-full px-3 py-1 font-medium">{t}</span>
               ))}
             </div>
-            <a href="mailto:mr.luisc@gmail.com?subject=HUMAN Framework Inquiry" class="btn-primary">
+            <a href={`mailto:${facts.person.email}?subject=HUMAN Framework Inquiry`} class="btn-primary">
               Ask About Implementation
             </a>
           </div>
@@ -128,7 +132,7 @@ import Footer from '../components/Footer.astro';
               </p>
             </div>
 
-            <a href="mailto:mr.luisc@gmail.com?subject=LEA Tool - Try It" class="btn-primary">
+            <a href={`mailto:${facts.person.email}?subject=LEA Tool - Try It`} class="btn-primary">
               Request Access to LEA
             </a>
           </div>
@@ -136,12 +140,12 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
-    <!-- 25+ TOOLS -->
+    <!-- CUSTOM TOOLS -->
     <section id="tools" class="py-20 md:py-28 bg-white scroll-mt-20">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="text-center mb-14">
           <span class="tag mb-4">Custom Tools</span>
-          <h2 class="section-title">20+ Custom Automation Tools</h2>
+          <h2 class="section-title">{facts.scale.tools} Custom Automation Tools</h2>
           <p class="section-subtitle mx-auto">
             Built to solve real problems, saving teachers hours every week, systematizing workflows, and bringing data to decisions.
           </p>
@@ -152,7 +156,7 @@ import Footer from '../components/Footer.astro';
             { name: 'Learning Experience Analyzer (LEA)', desc: 'Multi-framework lesson analysis tool with real-time recommendations. Three-tier impact: students, teachers, and leadership.', tag: 'Flagship' },
             { name: 'Classroom Observation Tool', desc: 'Structured coaching observation and feedback system for MS and HS administrators and instructional coaches.', tag: 'Coaching' },
             { name: 'STEAM Week Organizer', desc: 'End-to-end event planning and coordination system for school-wide STEAM festivals with 200+ participants.', tag: 'Events' },
-            { name: 'Digital Citizenship Tracker', desc: 'Student self-reflection and media tracking tool used with 400+ students annually across all three divisions.', tag: 'Students' },
+            { name: 'Digital Citizenship Tracker', desc: `Student self-reflection and media tracking tool used with ${facts.scale.digitalCitizenshipStudents} students annually across all three divisions.`, tag: 'Students' },
             { name: 'Professional Learning Dashboard', desc: 'Faculty PD tracking, survey aggregation, and coaching cycle management across three school divisions.', tag: 'Faculty' },
           ].map(({ name, desc, tag }) => (
             <div class="card">
@@ -163,7 +167,7 @@ import Footer from '../components/Footer.astro';
           ))}
         </div>
         <div class="bg-navy text-white rounded-2xl p-8 text-center">
-          <p class="text-amber font-bold text-3xl mb-2">20–30 hours</p>
+          <p class="text-amber font-bold text-3xl mb-2">{facts.sevai.hoursSaved} hours</p>
           <p class="text-gray-300">of manual placement work eliminated by the SEVAI engine alone</p>
         </div>
       </div>
@@ -182,7 +186,7 @@ import Footer from '../components/Footer.astro';
               <strong class="text-white">"I don't want to use AI"</strong>, and have a clear, confident reason for either choice.
             </p>
             <p class="text-teal-100 leading-relaxed">
-              The surprising discovery from 8+ months of LEA implementation: "not using AI" was the
+              The surprising discovery from {facts.scale.leaMonths} months of LEA implementation: "not using AI" was the
               most popular and pedagogically valuable choice. That insight reshaped everything.
             </p>
           </div>
@@ -198,9 +202,9 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="grid md:grid-cols-3 gap-6 mb-14">
           {[
-            { value: '20+', label: 'Custom Tools Built', sub: 'deployed across 3 school divisions' },
-            { value: '7', label: 'International Conferences', sub: 'Data in Schools ×2 · AIFE ×2 · DEIX · AIELOC · PAIS' },
-            { value: '8+', label: 'Months of LEA Data', sub: 'informing school-wide strategy' },
+            { value: facts.scale.tools, label: 'Custom Tools Built', sub: 'deployed across 3 school divisions' },
+            { value: facts.conferences.career, label: 'International Conferences', sub: facts.conferences.careerList },
+            { value: facts.scale.leaMonths, label: 'Months of LEA Data', sub: 'informing school-wide strategy' },
           ].map(({ value, label, sub }) => (
             <div class="text-center p-8 bg-gray-50 rounded-2xl">
               <div class="text-4xl font-bold text-amber mb-2">{value}</div>

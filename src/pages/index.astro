@@ -2,9 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { facts, range, credit } from '../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
-<Layout title="Home" description="Learning Innovation & Technology Coach, AI Integration Specialist, and Co-creator of the HUMAN Framework. Engineering solutions, empowering educators.">
+<Layout title="Home" description={`${facts.aisc.title}, AI Integration Specialist, and Co-creator of the HUMAN Framework. Engineering solutions, empowering educators.`}>
   <Nav />
   <main>
 
@@ -15,16 +19,16 @@ import Footer from '../components/Footer.astro';
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">
-              Shanghai American School · Puxi Middle School · Available for consulting
+              {facts.current.school} · {facts.current.campus} {facts.current.division} · Available for consulting
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
               Luis Carlos <span class="text-amber">Moreno</span>
             </h1>
             <p class="text-teal-200 font-medium text-lg mb-2">
-              Instructional Technology Coach &nbsp;·&nbsp; Learning Innovation &amp; Technology Coach
+              {facts.current.title} &nbsp;·&nbsp; {facts.aisc.title}
             </p>
             <p class="text-teal-200 font-medium text-base mb-6">
-              Co-creator of the HUMAN Framework &nbsp;·&nbsp; GOA Instructor &nbsp;·&nbsp; Apple Distinguished School lead
+              Co-creator of the HUMAN Framework &nbsp;·&nbsp; {facts.goa.orgShort} Instructor &nbsp;·&nbsp; Apple Distinguished School co-lead
             </p>
             <p class="text-2xl md:text-3xl font-semibold text-amber mb-8 leading-snug">
               I build school systems<br />that outlive their builder.
@@ -33,8 +37,8 @@ import Footer from '../components/Footer.astro';
               A Venezuelan-born systems engineer turned international educator, I work at the
               intersection of coaching and code: close enough to pedagogy to know what teachers
               actually need, technical enough to build it myself. At my last school, the systems I
-              built became the infrastructure: the dashboard 50+ leaders run curriculum from, the
-              app that tracks 700+ students' health check-ins, the engine that places an entire grade
+              built became the infrastructure: the dashboard {facts.scale.leaders} leaders run curriculum from, the
+              app that tracks {facts.scale.students} students' health check-ins, the engine that places an entire grade
               into its signature trips. All of it still running after I left. That was the point.
             </p>
             <div class="flex flex-wrap gap-4">
@@ -61,10 +65,10 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '26', label: 'New teachers onboarded through my system, before day one' },
-            { value: '50+', label: 'School leaders running curriculum from my dashboard' },
-            { value: '700+', label: 'Students covered by school-wide systems' },
-            { value: '20+', label: 'Tools shipped by request, adopted by name' },
+            { value: facts.scale.incomingTeachers, label: 'New teachers onboarded through my system, before day one' },
+            { value: facts.scale.leaders, label: 'School leaders running curriculum from my dashboard' },
+            { value: facts.scale.students, label: 'Students covered by school-wide systems' },
+            { value: facts.scale.tools, label: 'Tools shipped by request, adopted by name' },
           ].map(({ value, label }) => (
             <div>
               <div class="text-3xl font-bold text-amber">{value}</div>
@@ -87,42 +91,42 @@ import Footer from '../components/Footer.astro';
                 ¡Hola, hola! I'm Luis Carlos, a Venezuelan-born systems engineer who became an educator.
                 It runs in the family: my grandmother founded two schools in Valle de la Pascua, the small
                 town where I grew up, and I am the third generation to make teaching my work. I left for
-                Texas at 15 to learn English, and have since lived and worked across 5 countries on
+                Texas at 15 to learn English, and have since lived and worked across {facts.scale.countriesLived} countries on
                 three continents.
               </p>
               <p>
-                At the American International School Chennai, an IB World School of 700+ students, I was
-                the <strong>Learning Innovation &amp; Technology Coach and AI Initiatives Coordinator</strong>.
+                At the {facts.aisc.school}, an IB World School of {facts.scale.students} students, I was
+                the <strong>{facts.aisc.title} and {facts.aisc.secondTitle}</strong>.
                 I co-led the school's Apple Distinguished School certification, co-created its framework for
-                ethical AI use, and coached 100+ faculty. I started my career in the classroom teaching MYP
+                ethical AI use, and coached {facts.scale.facultyCoached} faculty. I started my career in the classroom teaching MYP
                 Mathematics, and that path is exactly the point: I work at the intersection of coaching and
                 engineering, translating what teachers actually need into tools they actually adopt.
               </p>
               <p>
                 Here's the test I hold my own work to: <strong>does it keep running after I leave the
-                room?</strong> The curriculum dashboard I built is how 50+ AISC leaders see their program,
-                and in May 2026, the school's director sent the curriculum infrastructure behind it to 26
+                room?</strong> The curriculum dashboard I built is how {facts.scale.leaders} {facts.aisc.schoolShort} leaders see their program,
+                and in May 2026, the school's director sent the curriculum infrastructure behind it to {facts.scale.incomingTeachers}
                 incoming teachers as the very first onboarding resource they received, before they'd even
                 arrived in Chennai. The
-                trip-assignment engine shipped with a 50-page operations manual so the program runs
+                trip-assignment engine shipped with a {facts.discoverIndia.manualPages} operations manual so the program runs
                 identically without me. That's what I mean by making institutional knowledge stick: not
                 tools, infrastructure.
               </p>
               <p>
-                As of <strong>July 2026 I'm bringing that playbook to Shanghai American School (SAS Puxi,
-                Middle School)</strong> as Instructional Technology Coach. Same belief, new campus: technology serves
+                As of <strong>{facts.current.startMonth} {facts.current.startYear} I'm bringing that playbook to {facts.current.school} ({facts.current.schoolShort} {facts.current.campus},
+                {facts.current.division})</strong> as {facts.current.title}. Same belief, new campus: technology serves
                 people, not the other way around. And one more thing every move has taught me: leaving
                 your comfort zone gets easier the more you do it.
               </p>
               <p class="italic text-teal font-medium border-l-4 border-teal pl-4">
                 "His support has significantly reduced stress for many of us and has made a complicated
-                process much smoother." Elizabeth Keogh, in a commendation to the Head of School
+                process much smoother." {facts.people.keogh.name}, in a commendation to the Head of School
               </p>
             </div>
             <div class="flex flex-wrap gap-3 mt-6 text-sm text-gray-600">
               <span class="bg-gray-100 rounded-full px-3 py-1">Venezuelan</span>
               <span class="bg-gray-100 rounded-full px-3 py-1">Queer Educator</span>
-              <span class="bg-gray-100 rounded-full px-3 py-1">5 Countries</span>
+              <span class="bg-gray-100 rounded-full px-3 py-1">{facts.scale.countriesLived} Countries</span>
               <span class="bg-gray-100 rounded-full px-3 py-1">EN · ES · PT</span>
             </div>
           </div>
@@ -133,7 +137,7 @@ import Footer from '../components/Footer.astro';
               class="rounded-2xl shadow-lg w-full object-cover max-h-[480px]"
             />
             <div class="absolute -bottom-4 -right-4 bg-amber text-white rounded-xl px-5 py-3 shadow-lg text-sm font-semibold">
-              60+ countries visited
+              {facts.scale.countriesVisited} countries visited
             </div>
           </div>
         </div>
@@ -161,7 +165,7 @@ import Footer from '../components/Footer.astro';
                 </svg>
               </div>
               <div>
-                <span class="text-xs font-semibold uppercase tracking-wider text-teal">Co-created with María Pérez Talavera</span>
+                <span class="text-xs font-semibold uppercase tracking-wider text-teal">Co-created with {facts.people.perezTalavera.name}</span>
                 <h3 class="text-xl font-bold text-navy mt-0.5">The HUMAN Framework</h3>
               </div>
               <div class="ml-auto flex items-center gap-1.5 flex-shrink-0">
@@ -239,7 +243,7 @@ import Footer from '../components/Footer.astro';
           <span class="tag bg-white/10 text-white border border-white/20 mb-4 inline-block">Built on Request</span>
           <h2 class="text-3xl md:text-4xl font-bold mb-6">The Case Studies Are Five. The Requests Never Stopped.</h2>
           <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-            Case studies get the spotlight. Most of what I built at AISC started smaller: a colleague
+            Case studies get the spotlight. Most of what I built at {facts.aisc.schoolShort} started smaller: a colleague
             mentioned a headache, and a few days later there was a tool. More than twenty of these are in
             the record by name, each one adopted by the person who asked for it. This is the part of the
             job I care about most. Not the flagship launch. The Tuesday request.
@@ -252,21 +256,21 @@ import Footer from '../components/Footer.astro';
             teachers' lives, among his many other activities."
           </p>
           <p class="text-sm text-gray-400 mt-3">
-            Greg Clinton, Deputy Head of School, introducing me to an outside AI consultant
+            {credit(facts.people.clinton)}, introducing me to an outside AI consultant
           </p>
         </blockquote>
 
         <div class="space-y-1 font-mono text-sm">
           {[
-            { date: '2025-09', name: 'DT & Trip Safety Consent System', dept: 'MS Design Technology', desc: 'Digital consent forms with a signature-tracking dashboard, used daily by the department.', receipt: '"It has made a massive difference in our department."', who: 'Jay Hart, DT Teacher' },
-            { date: '2025-09', name: 'Science Report Comment Generator', dept: 'MS Science', desc: 'AI-assisted comment drafting with a walkthrough video, built for the whole team.', receipt: '"This spreadsheet is incredible, and the video is so concise and clear."', who: 'Kelsey Bull, MS Principal' },
+            { date: '2025-09', name: 'DT & Trip Safety Consent System', dept: 'MS Design Technology', desc: 'Digital consent forms with a signature-tracking dashboard, used daily by the department.', receipt: '"It has made a massive difference in our department."', who: credit(facts.people.hart) },
+            { date: '2025-09', name: 'Science Report Comment Generator', dept: 'MS Science', desc: 'AI-assisted comment drafting with a walkthrough video, built for the whole team.', receipt: '"This spreadsheet is incredible, and the video is so concise and clear."', who: credit(facts.people.bull) },
             { date: '2025', name: 'French Report Comment Generator', dept: 'World Language', desc: 'Same pattern, second subject, adapted to the department\'s rubrics.', receipt: null, who: null },
-            { date: '2025-12', name: 'EAL Progress Tracker', dept: 'EAL Department', desc: 'Gamified student-progress tool with linked reflection forms.', receipt: '"\'Game-like\' features... Impressive!"', who: 'Suzanne Brigham, HS EAP Teacher' },
+            { date: '2025-12', name: 'EAL Progress Tracker', dept: 'EAL Department', desc: 'Gamified student-progress tool with linked reflection forms.', receipt: '"\'Game-like\' features... Impressive!"', who: credit(facts.people.brigham) },
             { date: '2025', name: 'MS Report Card Comment System v4.0', dept: 'All MS Teachers', desc: '1,914 comments managed per cycle, AI comment banks, one-click export to PowerTeacher Pro.', receipt: null, who: null },
-            { date: '2025-10', name: 'Math Shark Tank Analysis Report', dept: 'Curriculum Leadership', desc: 'A data tool for curriculum-goal alignment, shared with schools abroad.', receipt: '"LC, this is SO cool... Amazing work!"', who: 'Kyle Martin, ISKL' },
-            { date: '2024-09', name: 'Meeting Notes Auto-Transcriber', dept: 'ES Leadership', desc: 'Automated transcription and notes for leadership meetings.', receipt: '"This is amazing. I want to learn how to do this."', who: 'Lynn Schneider, ES Principal' },
+            { date: '2025-10', name: 'Math Shark Tank Analysis Report', dept: 'Curriculum Leadership', desc: 'A data tool for curriculum-goal alignment, shared with schools abroad.', receipt: '"LC, this is SO cool... Amazing work!"', who: credit(facts.people.martin) },
+            { date: '2024-09', name: 'Meeting Notes Auto-Transcriber', dept: 'ES Leadership', desc: 'Automated transcription and notes for leadership meetings.', receipt: '"This is amazing. I want to learn how to do this."', who: credit(facts.people.schneider) },
             { date: '2025', name: 'Innovation Bot', dept: 'Innovation in T&L Council', desc: 'A scoped AI assistant that helped faculty refine their innovation pitches.', receipt: null, who: null },
-            { date: '2025-02', name: 'AI Book Club Companion Site', dept: '20+ Educators', desc: 'Session resources and discussion hub for "Exploring Tomorrow."', receipt: null, who: null },
+            { date: '2025-02', name: 'AI Book Club Companion Site', dept: `${facts.scale.bookClubEducators} Educators`, desc: 'Session resources and discussion hub for "Exploring Tomorrow."', receipt: null, who: null },
             { date: '2024', name: 'Learning Experience Analyzer (LEA)', dept: 'School-wide', desc: 'Multi-framework lesson analysis; the tool that grew into a data system.', receipt: null, who: null },
           ].map(({ date, name, dept, desc, receipt, who }) => (
             <details class="group border-b border-white/10">
@@ -315,44 +319,44 @@ import Footer from '../components/Footer.astro';
         <div class="relative pl-6 border-l-2 border-teal-100 space-y-10 max-w-3xl mx-auto">
           {[
             {
-              years: '2026 – Present',
-              role: 'Instructional Technology Coach',
-              org: 'Shanghai American School (SAS Puxi), China',
+              years: `${facts.current.startYear} – Present`,
+              role: facts.current.title,
+              org: `${facts.current.school} (${facts.current.schoolShort} ${facts.current.campus}), China`,
               badge: 'Current',
-              notes: 'Started July 2026, Middle School campus',
+              notes: `Started ${facts.current.startMonth} ${facts.current.startYear}, ${facts.current.division} campus`,
             },
             {
-              years: '2024 – 2026',
-              role: 'Learning Innovation & Technology Coach · AI Initiatives Coordinator',
-              org: 'American International School Chennai (AISC), India',
+              years: range(facts.aisc),
+              role: `${facts.aisc.title} · ${facts.aisc.secondTitle}`,
+              org: `${facts.aisc.school} (${facts.aisc.schoolShort}), India`,
               badge: null,
-              notes: 'Co-led Apple Distinguished School certification · Co-created HUMAN Framework · Built LEA · Coached 100+ faculty',
+              notes: `Co-led Apple Distinguished School certification · Co-created HUMAN Framework · Built LEA · Coached ${facts.scale.facultyCoached} faculty`,
             },
             {
-              years: '2024 – Present',
-              role: 'Geometry & Game Theory Instructor',
-              org: 'Global Online Academy (GOA), Global',
+              years: range(facts.goa),
+              role: facts.goa.title,
+              org: `${facts.goa.org} (${facts.goa.orgShort}), Global`,
               badge: 'Current',
               notes: 'Teaching Geometry and Game Theory online to students worldwide',
             },
             {
-              years: '2021 – 2024',
-              role: 'MYP Mathematics Teacher · DEIJ Taskforce',
-              org: 'Vientiane International School, Laos',
+              years: range(facts.vis),
+              role: `${facts.vis.title} · DEIJ Taskforce`,
+              org: `${facts.vis.org}, Laos`,
               badge: null,
               notes: 'Presented at AIELOC Hanoi 2024 · Contributed to DEIJ culture initiatives',
             },
             {
-              years: '2016 – 2021',
-              role: 'EdTech Coordinator · Instructional Coach · Math Dept Head · MYP Math Teacher · Learning Support',
-              org: 'International School of Panama',
+              years: range(facts.isp),
+              role: facts.isp.roleChain,
+              org: facts.isp.org,
               badge: null,
-              notes: '5 roles across 5 years, building the full picture of how schools work',
+              notes: `${facts.isp.roleCount} roles across five years, building the full picture of how schools work`,
             },
             {
-              years: '2015 – 2016',
-              role: 'STEM & Robotics Teacher · Head of IT Department',
-              org: 'Colegio Isaac Rabin, Panama',
+              years: range(facts.rabin),
+              role: facts.rabin.title,
+              org: `${facts.rabin.org}, ${facts.rabin.location}`,
               badge: null,
               notes: 'Founded robotics program and led IT infrastructure',
             },
@@ -384,46 +388,46 @@ import Footer from '../components/Footer.astro';
           <span class="tag mb-4">Testimonials</span>
           <h2 class="section-title">What People Say</h2>
           <p class="section-subtitle mx-auto">
-            4.8/5 across 21 teacher responses · 100% would work with me again. Here's what a few of them said.
+            {facts.survey.rating} across {facts.survey.responses} teacher responses · {facts.survey.wouldEngageAgain} would work with me again. Here's what a few of them said.
           </p>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
           {[
             {
               quote: 'Luis Carlos has consistently been patient, responsive, and incredibly helpful, often taking the time to troubleshoot problems thoroughly and ensure that things were fully resolved. His support has significantly reduced stress for many of us and has made a complicated process much smoother.',
-              name: 'Elizabeth Keogh',
-              role: 'Grade 3 Teacher · unsolicited commendation to the Head of School',
-              org: 'AISC',
+              name: facts.people.keogh.name,
+              role: `${facts.people.keogh.title} · unsolicited commendation to the Head of School`,
+              org: facts.aisc.schoolShort,
             },
             {
               quote: 'Over the past year, we have been working to move all of our curriculum documentation into a shared Google Drive structure to create greater consistency, accessibility, and alignment across the school.',
-              name: 'Joel Bevans',
-              role: 'Director of Teaching & Learning',
-              org: 'AISC, sent while introducing my system to 26 incoming teachers as their first onboarding resource',
+              name: facts.people.bevans.name,
+              role: facts.people.bevans.title,
+              org: `${facts.aisc.schoolShort}, sent while introducing my system to ${facts.scale.incomingTeachers} incoming teachers as their first onboarding resource`,
             },
             {
               quote: 'Many students shared afterward how motivated they felt by your feedback. We are deeply grateful for your time and support of our Grade 8 learners.',
-              name: 'Jonathan Wood, PhD',
-              role: 'MS Social Studies Teacher',
-              org: 'AISC, on the Grade 8 Tech Investor Summit',
+              name: facts.people.wood.name,
+              role: facts.people.wood.title,
+              org: `${facts.aisc.schoolShort}, on the Grade 8 Tech Investor Summit`,
             },
             {
               quote: 'Thank you so much for your help on this. It has made a massive difference in our department.',
-              name: 'Jay Hart',
-              role: 'MS Design Technology Teacher',
-              org: 'AISC, on the consent-tracking system I built for his department',
+              name: facts.people.hart.name,
+              role: facts.people.hart.title,
+              org: `${facts.aisc.schoolShort}, on the consent-tracking system I built for his department`,
             },
             {
               quote: 'This spreadsheet is incredible, and the video is so concise and clear.',
-              name: 'Kelsey Bull',
-              role: 'MS Principal',
-              org: 'AISC, on the Science report-comment generator',
+              name: facts.people.bull.name,
+              role: facts.people.bull.title,
+              org: `${facts.aisc.schoolShort}, on the Science report-comment generator`,
             },
             {
               quote: 'This is phenomenal work throughout this year that has provided extensive insight into our program.',
-              name: 'Gretchen Galaty',
-              role: 'MS Counselor',
-              org: 'AISC',
+              name: facts.people.galaty.name,
+              role: facts.people.galaty.title,
+              org: facts.aisc.schoolShort,
             },
           ].map(({ quote, name, role, org }) => (
             <div class="card flex flex-col gap-4">
@@ -454,7 +458,7 @@ import Footer from '../components/Footer.astro';
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="/work-with-me" class="btn-amber">Work With Me</a>
-          <a href="mailto:mr.luisc@gmail.com" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">
+          <a href={`mailto:${facts.person.email}`} class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">
             Send an Email
           </a>
         </div>

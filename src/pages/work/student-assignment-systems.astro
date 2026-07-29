@@ -2,11 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { facts } from '../../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
   title="Student Assignment Systems"
-  description="The logistics infrastructure behind experiential learning at AISC Chennai, assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that placed 700+ students into trips, activities, and workshops."
+  description={`The logistics infrastructure behind experiential learning at ${facts.aisc.schoolShort} Chennai, assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that placed ${facts.assignmentSystems.studentsPlaced} students into trips, activities, and workshops.`}
 >
   <Nav />
   <main>
@@ -31,10 +35,10 @@ import Footer from '../../components/Footer.astro';
       <div class="max-w-4xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '700+', label: 'Students placed' },
+            { value: facts.assignmentSystems.studentsPlaced, label: 'Students placed' },
             { value: '4', label: 'Programs powered' },
-            { value: '15', label: 'Discover India trips' },
-            { value: '50+', label: 'Hours saved' },
+            { value: facts.discoverIndia.trips, label: 'Discover India trips' },
+            { value: facts.assignmentSystems.hoursSavedPerYear, label: 'Hours saved' },
           ].map(({ value, label }) => (
             <div>
               <div class="text-3xl font-bold text-amber">{value}</div>
@@ -60,7 +64,7 @@ import Footer from '../../components/Footer.astro';
               staffing, all of which has to resolve into a clean assignment before anyone boards a bus.
             </p>
             <p>
-              Over a single year I built and ran the assignment engines for four of AISC's flagship
+              Over a single year I built and ran the assignment engines for four of {facts.aisc.schoolShort}'s flagship
               programs. Individually each saved real time; together they formed a reusable pattern for how
               the school runs experiential learning at scale.
             </p>
@@ -93,9 +97,9 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-xs text-gray-400 font-medium">Oct–Nov 2025</span>
               </div>
               <p class="text-gray-600 text-sm leading-relaxed">
-                The system that started it all: a 700+ line engine assigning 150+ students to 12 activities
+                The system that started it all: a {facts.sevai.scriptLines} line engine assigning {facts.sevai.students} students to {facts.sevai.activities} activities
                 by ranked preference, with grade balance, capacity limits, automated notifications, and
-                test mode. Saved 20–30 hours per cycle.
+                test mode. Saved {facts.sevai.hoursSaved} hours per cycle.
                 <a href="/work/sevai-assignment-system" class="text-teal font-medium hover:underline">Full case study →</a>
               </p>
             </div>
@@ -106,9 +110,9 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-xs text-gray-400 font-medium">Apr–May 2026</span>
               </div>
               <p class="text-gray-600 text-sm leading-relaxed">
-                The largest of the four. A complete assignment algorithm plus a 50+ page operations manual
-                to place ~237 students across 15 trips spanning three pillars, Adventure, Service, and
-                Culture. Handled 215+ student sign-up responses, capacity rules (20 students and 3 teachers
+                The largest of the four. A complete assignment algorithm plus a {facts.discoverIndia.manualPages}-page operations manual
+                to place {facts.discoverIndia.students} students across {facts.discoverIndia.trips} trips spanning three pillars, Adventure, Service, and
+                Culture. Handled {facts.discoverIndia.signUps} student sign-up responses, capacity rules (20 students and 3 teachers
                 per trip), gender balance, and a formal appeals process. I built the backend engine; I also
                 chaperoned a trip myself.
               </p>
@@ -120,7 +124,7 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-xs text-gray-400 font-medium">Feb 2026</span>
               </div>
               <p class="text-gray-600 text-sm leading-relaxed">
-                Automated assignment across 34 activities, morning, afternoon, and full-day sessions, from 215 student sign-up responses, with a capacity-tracked dashboard and near-full
+                Automated assignment across {facts.discoveryDay.activities} activities, morning, afternoon, and full-day sessions, from {facts.discoveryDay.signUps} student sign-up responses, with a capacity-tracked dashboard and near-full
                 assignment at launch.
               </p>
             </div>
@@ -131,7 +135,7 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-xs text-gray-400 font-medium">Mar 2026</span>
               </div>
               <p class="text-gray-600 text-sm leading-relaxed">
-                An automated workshop-distribution tool allocating 120+ students across 12+ prototype
+                An automated workshop-distribution tool allocating {facts.steamWeek.students} students across {facts.steamWeek.workshops} prototype
                 workshops over three days for Grades 6–8. I owned the assignment-automation piece in
                 partnership with the program leads.
               </p>
@@ -146,8 +150,8 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">Hundreds of students, placed reliably</h2>
           <div class="grid sm:grid-cols-3 gap-4 mb-8">
             {[
-              { value: '700+', label: 'Total placements', sub: 'across four programs' },
-              { value: '15', label: 'Trips assigned', sub: 'Discover India alone' },
+              { value: facts.assignmentSystems.studentsPlaced, label: 'Total placements', sub: 'across four programs' },
+              { value: facts.discoverIndia.trips, label: 'Trips assigned', sub: 'Discover India alone' },
               { value: '34', label: 'Activities', sub: 'Discovery Day sessions' },
             ].map(({ value, label, sub }) => (
               <div class="text-center p-5 bg-gray-50 rounded-2xl">
@@ -165,7 +169,7 @@ import Footer from '../../components/Footer.astro';
             </p>
             <p>
               The Discover India system in particular was built as a deliberate handover artifact:
-              50+ pages of documentation alongside the algorithm, so the school's signature trip program
+              {facts.discoverIndia.manualPages} pages of documentation alongside the algorithm, so the school's signature trip program
               could keep running long after I left.
             </p>
           </div>
@@ -179,7 +183,7 @@ import Footer from '../../components/Footer.astro';
             {[
               ['Logistics is pedagogy’s silent partner.', 'The trip nobody remembers as "well-organized" is the one that worked. Good assignment infrastructure is invisible by design, and that’s the point.'],
               ['Reuse beats rebuild.', 'Solving SEVAI cleanly meant Discover India, Discovery Day, and STEAM Week each started from a proven pattern instead of a blank spreadsheet.'],
-              ['Build the manual, not just the machine.', 'A 50+ page operations manual is what turns a clever script into an institutional system that outlives its author.'],
+              ['Build the manual, not just the machine.', `A ${facts.discoverIndia.manualPages}-page operations manual is what turns a clever script into an institutional system that outlives its author.`],
             ].map(([title, desc]) => (
               <li class="card">
                 <p class="font-semibold text-navy mb-1" set:html={title}></p>

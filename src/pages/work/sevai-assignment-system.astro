@@ -2,11 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { facts } from '../../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
   title="SEVAI Assignment System"
-  description="A 700+ line Google Apps Script automation that assigns 150+ students to 12 community-service activities by ranked preference and grade balance, saving 20–30 hours of manual work at AISC Chennai."
+  description={`A ${facts.sevai.scriptLines} line Google Apps Script automation that assigns ${facts.sevai.students} students to ${facts.sevai.activities} community-service activities by ranked preference and grade balance, saving ${facts.sevai.hoursSaved} hours of manual work at ${facts.aisc.schoolShort} Chennai.`}
 >
   <Nav />
   <main>
@@ -18,7 +22,7 @@ import Footer from '../../components/Footer.astro';
         <span class="tag bg-white/10 text-white border border-white/20 mt-6 mb-5 inline-block">Automation · Google Apps Script</span>
         <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">SEVAI Assignment System</h1>
         <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
-          An assignment engine for AISC's community-service program that places 150+ students into 12
+          An assignment engine for {facts.aisc.schoolShort}'s community-service program that places {facts.sevai.students} students into {facts.sevai.activities}
           activities by ranked preference and grade balance, turning a multi-day manual scramble into
           a one-click run.
         </p>
@@ -30,10 +34,10 @@ import Footer from '../../components/Footer.astro';
       <div class="max-w-4xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '150+', label: 'Students assigned' },
+            { value: facts.sevai.students, label: 'Students assigned' },
             { value: '12', label: 'Activities' },
-            { value: '20–30', label: 'Hours saved' },
-            { value: '700+', label: 'Lines of script' },
+            { value: facts.sevai.hoursSaved, label: 'Hours saved' },
+            { value: facts.sevai.scriptLines, label: 'Lines of script' },
           ].map(({ value, label }) => (
             <div>
               <div class="text-3xl font-bold text-amber">{value}</div>
@@ -53,7 +57,7 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">What it is</h2>
           <div class="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              SEVAI is AISC's community-service program. Every cycle, more than 150 students rank their
+              SEVAI is {facts.aisc.schoolShort}'s community-service program. Every cycle, more than 150 students rank their
               preferred activities, and someone has to place each of them into one of 12 options, while
               respecting capacity limits and keeping grades balanced. I built a complete Google Apps
               Script automation that does the entire assignment, sends every notification, and ships with
@@ -71,7 +75,7 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">A hand-built jigsaw, every cycle</h2>
           <div class="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              Assigning 150+ students to activities by hand is the kind of task that eats a full working
+              Assigning {facts.sevai.students} students to activities by hand is the kind of task that eats a full working
               week. You're juggling ranked preferences, hard capacity caps per activity, and a fairness
               constraint, no activity should skew toward a single grade. Do it manually and you get
               errors, late nights, and a process only one person understands.
@@ -89,7 +93,7 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">A preference-and-balance assignment engine</h2>
           <div class="space-y-4 text-gray-700 leading-relaxed mb-6">
             <p>
-              The system is a 700+ line Apps Script application driven by ranked student preferences, with
+              The system is a {facts.sevai.scriptLines} line Apps Script application driven by ranked student preferences, with
               the logic and safeguards a real operational tool needs:
             </p>
           </div>
@@ -119,8 +123,8 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">A week of work, reduced to a click</h2>
           <div class="grid sm:grid-cols-3 gap-4 mb-8">
             {[
-              { value: '20–30', label: 'Hours saved', sub: 'per assignment cycle' },
-              { value: '150+', label: 'Students placed', sub: 'by ranked preference' },
+              { value: facts.sevai.hoursSaved, label: 'Hours saved', sub: 'per assignment cycle' },
+              { value: facts.sevai.students, label: 'Students placed', sub: 'by ranked preference' },
               { value: '1', label: 'Click to run', sub: 'fully repeatable' },
             ].map(({ value, label, sub }) => (
               <div class="text-center p-5 bg-gray-50 rounded-2xl">
@@ -132,7 +136,7 @@ import Footer from '../../components/Footer.astro';
           </div>
           <div class="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              The automation removed 20–30 hours of manual work per cycle and made the process repeatable,
+              The automation removed {facts.sevai.hoursSaved} hours of manual work per cycle and made the process repeatable,
               fair, and transparent. The program lead could re-run it, preview results in test mode, and
               trust that capacity and grade-balance rules were enforced consistently every time.
             </p>

@@ -2,11 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { facts } from '../../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
   title="Discover India Trip Assignment System"
-  description="An automated assignment engine plus a 50-page operations manual that placed 237 incoming Grade 9 students across 15 'Week Without Walls' trips at AISC Chennai, balancing capacity, gender, and ranked preferences."
+  description={`An automated assignment engine plus a ${facts.discoverIndia.manualPages}-page operations manual that placed ${facts.discoverIndia.students} incoming Grade 9 students across ${facts.discoverIndia.trips} 'Week Without Walls' trips at ${facts.aisc.schoolShort} Chennai, balancing capacity, gender, and ranked preferences.`}
 >
   <Nav />
   <main>
@@ -19,8 +23,8 @@ import Footer from '../../components/Footer.astro';
         <p class="text-amber text-sm font-semibold uppercase tracking-wider mb-2">Chapter 1 · Prove it on one hard problem</p>
         <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">Discover India Trip Assignment System</h1>
         <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
-          The assignment engine behind AISC's "Week Without Walls", placing 237 incoming Grade 9 students
-          across 15 experiential trips by ranked preference, capacity, and balance, with a 50-page manual
+          The assignment engine behind {facts.aisc.schoolShort}'s "Week Without Walls", placing {facts.discoverIndia.students} incoming Grade 9 students
+          across {facts.discoverIndia.trips} experiential trips by ranked preference, capacity, and balance, with a {facts.discoverIndia.manualPages}-page manual
           so the program runs without its author.
         </p>
       </div>
@@ -31,10 +35,10 @@ import Footer from '../../components/Footer.astro';
       <div class="max-w-4xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '237', label: 'Students assigned' },
-            { value: '15', label: 'Trips · 3 pillars' },
-            { value: '215+', label: 'Sign-up responses' },
-            { value: '50', label: 'Pages of docs' },
+            { value: facts.discoverIndia.students, label: 'Students assigned' },
+            { value: facts.discoverIndia.trips, label: 'Trips · 3 pillars' },
+            { value: facts.discoverIndia.signUps, label: 'Sign-up responses' },
+            { value: facts.discoverIndia.manualPages, label: 'Pages of docs' },
           ].map(({ value, label }) => (
             <div>
               <div class="text-3xl font-bold text-amber">{value}</div>
@@ -54,11 +58,11 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">What it is</h2>
           <div class="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              Discover India is AISC's "Week Without Walls" program, the experiential trips that define a
+              Discover India is {facts.aisc.schoolShort}'s "Week Without Walls" program, the experiential trips that define a
               student's first year of high school. For SY 2026–27, that meant placing
-              <strong class="text-navy">237 incoming Grade 9 students</strong> across
-              <strong class="text-navy">15 trips</strong> spanning three pillars: Adventure, Service, and
-              Culture. I built the complete assignment algorithm and a 50-page operations manual that turns
+              <strong class="text-navy">{facts.discoverIndia.students} incoming Grade 9 students</strong> across
+              <strong class="text-navy">{facts.discoverIndia.trips} trips</strong> spanning three pillars: Adventure, Service, and
+              Culture. I built the complete assignment algorithm and a {facts.discoverIndia.manualPages}-page operations manual that turns
               a sprawling, high-stakes placement problem into a repeatable, documented process.
             </p>
             <p>
@@ -76,7 +80,7 @@ import Footer from '../../components/Footer.astro';
             <p>
               Assigning an entire grade to experiential trips is one of the hardest logistics problems a
               school faces. Every student ranks their preferences; every trip has a hard capacity (20
-              students and 3 teachers) and needs gender balance; and the result has to feel fair to 237
+              students and 3 teachers) and needs gender balance; and the result has to feel fair to {facts.discoverIndia.students}
               teenagers and their parents. Done by hand, it's days of work, opaque decisions, and no clean
               way to explain why any one student ended up where they did.
             </p>
@@ -99,12 +103,12 @@ import Footer from '../../components/Footer.astro';
           </div>
           <ul class="space-y-3">
             {[
-              ['Student sign-up form', 'A Google Form that collected 215+ ranked-preference responses from incoming Grade 9 students.'],
+              ['Student sign-up form', `A Google Form that collected ${facts.discoverIndia.signUps} ranked-preference responses from incoming Grade 9 students.`],
               ['Teacher sign-up form', 'A parallel form to staff each trip with the right faculty leads.'],
               ['Assignment algorithm', 'Places every student by ranked preference while enforcing capacity (20 students / 3 teachers per trip) and gender balance.'],
-              ['Capacity-tracked spreadsheet', 'A live dashboard showing fill rates across all 15 trips so no trip over- or under-fills.'],
+              ['Capacity-tracked spreadsheet', `A live dashboard showing fill rates across all ${facts.discoverIndia.trips} trips so no trip over- or under-fills.`],
               ['Appeals process', 'A formal, documented path for students to request a change after assignments go out.'],
-              ['50-page operations manual', 'Step-by-step documentation so the program runs the same way next year, with or without me.'],
+              [`${facts.discoverIndia.manualPages}-page operations manual`, 'Step-by-step documentation so the program runs the same way next year, with or without me.'],
             ].map(([title, desc]) => (
               <li class="flex gap-3">
                 <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-2"></span>
@@ -124,9 +128,9 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">An entire grade placed, fairly and on the record</h2>
           <div class="grid sm:grid-cols-3 gap-4 mb-8">
             {[
-              { value: '237', label: 'Students placed', sub: 'entire incoming Grade 9' },
-              { value: '15', label: 'Trips assigned', sub: 'Adventure · Service · Culture' },
-              { value: '50', label: 'Pages of docs', sub: 'built for handover' },
+              { value: facts.discoverIndia.students, label: 'Students placed', sub: 'entire incoming Grade 9' },
+              { value: facts.discoverIndia.trips, label: 'Trips assigned', sub: 'Adventure · Service · Culture' },
+              { value: facts.discoverIndia.manualPages, label: 'Pages of docs', sub: 'built for handover' },
             ].map(({ value, label, sub }) => (
               <div class="text-center p-5 bg-gray-50 rounded-2xl">
                 <div class="text-3xl font-bold text-amber mb-1">{value}</div>
@@ -137,13 +141,13 @@ import Footer from '../../components/Footer.astro';
           </div>
           <div class="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              The system placed all 237 students across 15 trips by ranked preference while holding capacity
+              The system placed all {facts.discoverIndia.students} students across {facts.discoverIndia.trips} trips by ranked preference while holding capacity
               and gender-balance rules consistently, and, just as important, it made every placement
               explainable. The capacity dashboard and appeals process turned a process that used to live in
               one head into something the whole program team could see and trust.
             </p>
             <p>
-              Because it shipped with 50 pages of documentation, AISC's signature Grade 9 trip program can
+              Because it shipped with {facts.discoverIndia.manualPages} pages of documentation, {facts.aisc.schoolShort}'s signature Grade 9 trip program can
               keep running long after I leave, the clearest test of whether a system has actually become
               institutional infrastructure.
             </p>
@@ -156,8 +160,8 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">What I'd carry forward</h2>
           <ul class="space-y-4">
             {[
-              ['Fairness has to be legible.', 'For a placement 237 families will scrutinize, being fair isn\'t enough, the system has to make it visible why each student landed where they did.'],
-              ['Documentation is the deliverable.', '50 pages of operations manual is what separates a clever one-off script from a program the school can run again next year.'],
+              ['Fairness has to be legible.', `For a placement ${facts.discoverIndia.students} families will scrutinize, being fair isn't enough, the system has to make it visible why each student landed where they did.`],
+              ['Documentation is the deliverable.', `${facts.discoverIndia.manualPages} pages of operations manual is what separates a clever one-off script from a program the school can run again next year.`],
               ['Build it, then go live it.', 'Chaperoning the trip I\'d assigned students to closed the loop, the logistics only matter because of the experience they make possible.'],
             ].map(([title, desc]) => (
               <li class="card">

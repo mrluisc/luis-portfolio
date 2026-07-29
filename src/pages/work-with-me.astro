@@ -2,9 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { facts } from '../data/facts';
 
 // Replace with your Formspree form ID after signing up at formspree.io
 const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
@@ -61,7 +65,7 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
             {
               title: 'HUMAN Framework Implementation',
               sub: 'Consulting engagement',
-              desc: 'Full implementation support for the HUMAN Framework, co-delivered with María Pérez Talavera. Includes customization to your school context, teacher training, and dashboard setup.',
+              desc: `Full implementation support for the HUMAN Framework, co-delivered with ${facts.people.perezTalavera.name}. Includes customization to your school context, teacher training, and dashboard setup.`,
               details: ['School-specific customization', 'Faculty training series', 'LEA tool configuration', 'Leadership reporting setup', 'Ongoing support'],
               color: 'amber',
             },
@@ -235,18 +239,18 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
           {[
             {
               quote: 'He was so approachable, always working from a growth perspective to help me achieve my goals. He has given me confidence to keep trying other AI applications.',
-              name: 'Nicole Merletti',
-              role: 'MS Teacher, AISC',
+              name: facts.people.merletti.name,
+              role: `${facts.people.merletti.title}, ${facts.aisc.schoolShort}`,
             },
             {
               quote: 'His expertise with educational technology is such an asset. Even if he is unfamiliar with a program, he can quickly analyze it and solve any problems that I have.',
-              name: 'Suzanne Brigham',
-              role: 'Teacher, AISC',
+              name: facts.people.brigham.name,
+              role: `${facts.people.brigham.title}, ${facts.aisc.schoolShort}`,
             },
             {
               quote: 'Luis provided the perfect combination of expertise, patience, and accessibility that made learning feel safe and achievable. Luis is not just an amazing coach but an incredible individual you can truly depend on.',
-              name: 'Eugenia Gomez-Escobar',
-              role: 'MS World Language Teacher, AISC, endorsed the coaching twice, months apart',
+              name: facts.people.gomezEscobar.name,
+              role: `${facts.people.gomezEscobar.title}, ${facts.aisc.schoolShort}, endorsed the coaching twice, months apart`,
             },
           ].map(({ quote, name, role }) => (
             <div class="card">
@@ -256,7 +260,7 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
             </div>
           ))}
         </div>
-        <p class="text-center text-gray-400 text-sm mt-8">90.5% service retention · 76.2% improved learning outcomes · 26 educator survey responses</p>
+        <p class="text-center text-gray-400 text-sm mt-8">{facts.survey.retentionPct} service retention · {facts.survey.outcomesPct} improved learning outcomes · {facts.survey.responses} educator survey responses</p>
       </div>
     </section>
 
@@ -359,8 +363,8 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
             Send Message
           </button>
           <p class="text-center text-gray-400 text-xs">
-            Or email directly: <a href="mailto:mr.luisc@gmail.com" class="text-teal-300 hover:text-white underline">mr.luisc@gmail.com</a>
-            · <a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener" class="text-teal-300 hover:text-white underline">LinkedIn</a>
+            Or email directly: <a href={`mailto:${facts.person.email}`} class="text-teal-300 hover:text-white underline">{facts.person.email}</a>
+            · <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="text-teal-300 hover:text-white underline">LinkedIn</a>
           </p>
         </form>
       </div>

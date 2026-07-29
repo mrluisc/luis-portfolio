@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { facts } from '../../data/facts';
 ---
 
 <Layout
@@ -35,7 +36,7 @@ import Footer from '../../components/Footer.astro';
           connect with me on LinkedIn where I share ideas regularly.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener" class="btn-primary">
+          <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="btn-primary">
             Follow on LinkedIn
           </a>
           <a href="/work-with-me#contact" class="btn-secondary">

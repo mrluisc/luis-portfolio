@@ -2,22 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { facts, rangeProse } from '../data/facts';
 
+// Every number, title, name and date below comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
+//
 // RESOLVED 2026-07-28/29:
-// - Education: both degrees are from Universidad Tecnológica de Panamá (confirmed by
-//   Luis). Full record, incl. dates, also lives in experience.astro - keep the two in
-//   sync if either changes.
+// - Education: all four credentials are from Universidad Tecnológica de Panamá
+//   (confirmed by Luis). Full record, incl. dates, also lives in experience.astro.
 // - AIFE venue was never a conflict: two separate appearances, Bangkok (Nov 2024) and
 //   Jakarta (Nov 2025). Both now listed below.
-// - Survey stat verified against "Learning Innovation & Tech Coach Feedback Survey 24-25"
-//   (Drive 1jnekRn_fsxpdxqauNZ7abkZpxydwigrU): 4.8/5 is correct (16x5 + 5x4 over 21
-//   responses = 4.76); N corrected from 26 to 21; "100% would work with me again" =
-//   100% rated 4 or 5 on engaging again (19 of 21 gave a 5).
+// - Survey stat verified against its source PDF; provenance recorded in facts.ts.
 ---
 
 <Layout
   title="CV"
-  description="Curriculum vitae for Luis Carlos Moreno Rivero, Instructional Technology Coach."
+  description={`Curriculum vitae for ${facts.person.fullName}, ${facts.current.title}.`}
 >
   <Nav />
   <main class="bg-white">
@@ -34,26 +34,27 @@ import Footer from '../components/Footer.astro';
 
       <article class="prose prose-slate max-w-none prose-headings:font-semibold prose-headings:text-navy prose-h2:text-lg prose-h2:uppercase prose-h2:tracking-wide prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2 prose-h2:mt-10 prose-a:text-teal">
 
-        <h1 class="!mb-1 !text-3xl">Luis Carlos Moreno Rivero</h1>
+        <h1 class="!mb-1 !text-3xl">{facts.person.fullName}</h1>
         <p class="!mt-0 text-gray-600">
-          Instructional Technology Coach · Shanghai American School (Puxi) Middle School, from July 2026<br />
-          <a href="mailto:mr.luisc@gmail.com">mr.luisc@gmail.com</a> ·
-          <a href="https://github.com/mrluisc" target="_blank" rel="noopener">github.com/mrluisc</a> ·
-          <a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener">linkedin.com/in/luiscarlosmorenorivero</a> ·
-          <a href="https://mrluisc.com">mrluisc.com</a><br />
-          Venezuelan · Spanish / English / Portuguese
+          {facts.current.title} · {facts.current.school} ({facts.current.campus}) {facts.current.division},
+          from {facts.current.startMonth} {facts.current.startYear}<br />
+          <a href={`mailto:${facts.person.email}`}>{facts.person.email}</a> ·
+          <a href={`https://${facts.person.github}`} target="_blank" rel="noopener">{facts.person.github}</a> ·
+          <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener">{facts.person.linkedin}</a> ·
+          <a href={`https://${facts.person.site}`}>{facts.person.site}</a><br />
+          {facts.person.nationality} · {facts.person.languages}
         </p>
 
         <h2>Professional Summary</h2>
         <p>
           I build the systems schools usually buy. Over two years at an IB World School in Chennai I
           designed and shipped custom web applications for curriculum analytics, student health
-          check-ins, and automated trip and service-learning placement, while coaching 100+ faculty
+          check-ins, and automated trip and service-learning placement, while coaching {facts.scale.facultyCoached} faculty
           through AI integration, UDL, and digital pedagogy. More than twenty of my tools were requested
           by colleagues and adopted by name in daily departmental workflows. I pair classroom
-          credibility (MYP Mathematics teacher) with software engineering (Google Apps Script,
+          credibility ({facts.vis.title}) with software engineering (Google Apps Script,
           Firebase, React) and a coach's instinct for what faculty will actually adopt. The test I hold
-          my work to is simple: does it keep running after I leave the room? At AISC, it does.
+          my work to is simple: does it keep running after I leave the room? At {facts.aisc.schoolShort}, it does.
         </p>
 
         <h2>Core Skills</h2>
@@ -65,7 +66,7 @@ import Footer from '../components/Footer.astro';
         </p>
         <p>
           <strong>Coaching and Professional Learning:</strong> instructional coaching (menu- and
-          cycle-based) · whole-staff PD facilitation (100+ faculty) · UDL implementation leadership ·
+          cycle-based) · whole-staff PD facilitation ({facts.scale.facultyCoached} faculty) · UDL implementation leadership ·
           peer observation models · digital citizenship instruction · co-teaching
         </p>
         <p>
@@ -76,40 +77,40 @@ import Footer from '../components/Footer.astro';
         <p>
           <strong>Systems and Data:</strong> curriculum mapping and gap analysis · institutional audits
           · process documentation and operations manuals · data governance · vendor portfolio
-          management (~$200k annual spend)
+          management ({facts.misc.vendorSpend} annual spend)
         </p>
 
         <h2>Experience</h2>
 
         <p class="!mb-1">
-          <strong>American International School Chennai (AISC), India</strong><br />
-          <em>Learning Innovation & Technology Coach · AI Initiatives Coordinator · Jul 2024 to Jun 2026</em><br />
-          <span class="text-sm text-gray-500">IB World School, ~700 students PK-12, Apple Distinguished School.</span>
+          <strong>{facts.aisc.school} ({facts.aisc.schoolShort}), India</strong><br />
+          <em>{facts.aisc.title} · {facts.aisc.secondTitle} · {facts.aisc.startMonth} {facts.aisc.startYear} to {facts.aisc.endMonth} {facts.aisc.endYear}</em><br />
+          <span class="text-sm text-gray-500">IB World School, {facts.scale.students} students PK-12, Apple Distinguished School.</span>
         </p>
         <ul>
-          <li>Designed and built the Curriculum Intelligence Dashboard, a web app tracking 216 courses and 849 curriculum units across three divisions; deployed to 50+ school leaders. The underlying curriculum Shared Drive infrastructure was sent by the Director of Teaching & Learning to 26 incoming teachers as their first onboarding resource.</li>
-          <li>Built the Health Office App (Firebase + React) for 700+ students: digital check-ins with automated same-day notifications to teachers and secretaries; launched school-wide June 2026.</li>
-          <li>Shipped 20+ additional tools by colleague request, each adopted by name: report-comment generators for Science and French, a DT/trip safety consent-tracking system, a gamified EAL progress tracker, an automated placement engine (SEVAI) assigning 150+ students to service activities, and the Discover India engine placing ~237 students across 15 trips, delivered with a 50-page operations manual.</li>
-          <li>Led the migration from Turnitin to Google Originality Reports, saving ~$7,000 per year, and set up Google Classrooms for all IB teachers.</li>
-          <li>Co-created the HUMAN Framework for ethical AI integration and presented it to 100+ faculty; ran the "Exploring Tomorrow" AI book club for 20+ educators including the Deputy Head and Director.</li>
+          <li>Designed and built the Curriculum Intelligence Dashboard, a web app tracking {facts.curriculum.courses} courses and {facts.curriculum.units} curriculum units across three divisions; deployed to {facts.scale.leaders} school leaders. The underlying curriculum Shared Drive infrastructure was sent by the {facts.people.bevans.title} to {facts.scale.incomingTeachers} incoming teachers as their first onboarding resource.</li>
+          <li>Built the Health Office App (Firebase + React) for {facts.scale.students} students: digital check-ins with automated same-day notifications to teachers and secretaries; launched school-wide June 2026.</li>
+          <li>Shipped {facts.scale.tools} additional tools by colleague request, each adopted by name: report-comment generators for Science and French, a DT/trip safety consent-tracking system, a gamified EAL progress tracker, an automated placement engine (SEVAI) assigning {facts.sevai.students} students to service activities, and the Discover India engine placing {facts.discoverIndia.students} students across {facts.discoverIndia.trips} trips, delivered with a {facts.discoverIndia.manualPages} operations manual.</li>
+          <li>Led the migration from Turnitin to Google Originality Reports, saving {facts.misc.turnitinSavings} per year, and set up Google Classrooms for all IB teachers.</li>
+          <li>Co-created the HUMAN Framework for ethical AI integration and presented it to {facts.scale.facultyCoached} faculty; ran the "Exploring Tomorrow" AI book club for {facts.scale.bookClubEducators} educators including the Deputy Head and Director.</li>
           <li>Directed the secondary school's year-long UDL implementation: orientation series with an external consultant, a UDL Champions cohort, and monthly cycle meetings.</li>
-          <li>Co-led the school's Apple Distinguished School application, from planning through media production and coordination; AISC was certified as a 2025-2028 Apple Distinguished School.</li>
+          <li>Co-led the school's Apple Distinguished School application, from planning through media production and coordination; {facts.aisc.schoolShort} was certified as a {facts.misc.appleYears} Apple Distinguished School.</li>
           <li>Served on hiring panels for MS and HS Principal, Student Support Services Director, and Secondary Learning Coach candidates.</li>
           <li>Co-authored the OTL Strategic Implementation Plan 2025-28; member of the Sustainable Data Systems Council and Innovation in Teaching & Learning Council.</li>
-          <li>Spoke at five international conferences: Data in Schools Singapore/GESS (Oct 2024) and Kuala Lumpur (Oct 2025), AIFE Bangkok (Nov 2024, co-facilitated a HUMAN Framework session for 10+ international schools) and Jakarta (Nov 2025, co-presented "HUMAN Framework &amp; LEA Tool"), and DEIX Vientiane (Feb 2025).</li>
+          <li>Spoke at {facts.conferences.aiscTenure} international conferences: Data in Schools Singapore/GESS (Oct 2024) and Kuala Lumpur (Oct 2025), AIFE Bangkok (Nov 2024, co-facilitated a HUMAN Framework session for 10+ international schools) and Jakarta (Nov 2025, co-presented "HUMAN Framework &amp; LEA Tool"), and DEIX Vientiane (Feb 2025).</li>
         </ul>
 
         <p class="!mb-1 mt-6">
-          <strong>Global Online Academy</strong><br />
-          <em>Instructor, Geometry and Game Theory · 2024 to present</em>
+          <strong>{facts.goa.org}</strong><br />
+          <em>{facts.goa.title} · {rangeProse(facts.goa).toLowerCase()}</em>
         </p>
         <ul>
           <li>Teach fully online, asynchronous-first courses to students across member schools worldwide; competency-based grading with narrative feedback.</li>
         </ul>
 
         <p class="!mb-1 mt-6">
-          <strong>Vientiane International School, Laos</strong><br />
-          <em>MYP Mathematics Teacher · 2021 to 2024</em>
+          <strong>{facts.vis.org}, Laos</strong><br />
+          <em>{facts.vis.title} · {rangeProse(facts.vis)}</em>
         </p>
         <ul>
           <li>Taught MYP Mathematics at an IB World School; built inquiry-based units aligned to IB criteria.</li>
@@ -117,16 +118,16 @@ import Footer from '../components/Footer.astro';
         </ul>
 
         <p class="!mb-1 mt-6">
-          <strong>International School of Panama</strong><br />
-          <em>2016 to 2021</em>
+          <strong>{facts.isp.org}</strong><br />
+          <em>{rangeProse(facts.isp)}</em>
         </p>
         <ul>
-          <li>Five roles across five years: EdTech Coordinator, Instructional Technology Coach, Mathematics Department Head, MYP Mathematics Teacher, Learning Support Specialist.</li>
+          <li>{facts.isp.roleCount} roles across five years: {facts.isp.roleList}.</li>
         </ul>
 
         <p class="!mb-1 mt-6">
-          <strong>Colegio Isaac Rabin, Panama</strong><br />
-          <em>STEM & Robotics Teacher and Head of IT · 2015 to 2016</em>
+          <strong>{facts.rabin.org}, {facts.rabin.location}</strong><br />
+          <em>{facts.rabin.title} · {rangeProse(facts.rabin)}</em>
         </p>
         <ul>
           <li>Founded the school's robotics program.</li>
@@ -146,10 +147,10 @@ import Footer from '../components/Footer.astro';
 
         <h2>Recognition</h2>
         <ul>
-          <li>Formal commendation to school leadership for support of faculty (Elizabeth Keogh to Head of School, May 2026): "His support has significantly reduced stress for many of us and has made a complicated process much smoother."</li>
-          <li>Described by AISC's Deputy Head to an external AI consultant as "making amazing tools to improve teachers' lives, among his many other activities."</li>
-          <li>Colleague survey (Learning Innovation &amp; Tech Coach Feedback Survey, 2024-25): 4.8/5 across 21 responses, with no rating below 4; 100% would engage the service again.</li>
-          <li>International speaking: Data in Schools (Singapore, Kuala Lumpur), AIFE (Bangkok, Jakarta), DEIX (Vientiane), AIELOC (Hanoi); the LEA tool was taken up by educators at eight schools across Indonesia, Singapore, Vietnam, Korea, Malaysia and Macau.</li>
+          <li>Formal commendation to school leadership for support of faculty ({facts.people.keogh.name} to Head of School, May 2026): "His support has significantly reduced stress for many of us and has made a complicated process much smoother."</li>
+          <li>Described by {facts.aisc.schoolShort}'s Deputy Head to an external AI consultant as "making amazing tools to improve teachers' lives, among his many other activities."</li>
+          <li>Colleague survey ({facts.survey.name}): {facts.survey.rating} across {facts.survey.responses} responses, with no rating below 4; {facts.survey.wouldEngageAgain} would engage the service again.</li>
+          <li>International speaking: Data in Schools (Singapore, Kuala Lumpur), AIFE (Bangkok, Jakarta), DEIX (Vientiane), AIELOC (Hanoi); the LEA tool was taken up by educators at {facts.misc.leaSchools} schools across {facts.misc.leaCountries}.</li>
         </ul>
 
       </article>

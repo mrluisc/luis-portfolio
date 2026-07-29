@@ -2,6 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { facts } from '../../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 
 const caseStudies = [
   {
@@ -9,16 +13,16 @@ const caseStudies = [
     tag: 'Systems',
     chapter: 'Chapter 1 · Prove it on one hard problem',
     title: 'Discover India Trip Assignment',
-    desc: 'The assignment engine behind AISC\'s "Week Without Walls", placing 237 incoming Grade 9 students across 15 experiential trips by ranked preference, capacity, and gender balance, with a 50-page operations manual so it never depends on me again.',
-    metrics: ['237 students', '15 trips', '50-page manual'],
+    desc: `The assignment engine behind ${facts.aisc.schoolShort}'s "Week Without Walls", placing ${facts.discoverIndia.students} incoming Grade 9 students across ${facts.discoverIndia.trips} experiential trips by ranked preference, capacity, and gender balance, with a ${facts.discoverIndia.manualPages}-page operations manual so it never depends on me again.`,
+    metrics: [`${facts.discoverIndia.students} students`, `${facts.discoverIndia.trips} trips`, `${facts.discoverIndia.manualPages}-page manual`],
     color: 'amber',
   },
   {
     href: '/work/sevai-assignment-system',
     tag: 'Automation',
     title: 'SEVAI Assignment System',
-    desc: 'A 700+ line Apps Script automation that assigns 150+ students to 12 community-service activities by ranked preference, balanced across grades, replacing 20–30 hours of manual work.',
-    metrics: ['150+ students', '12 activities', '20–30 hrs saved'],
+    desc: `A ${facts.sevai.scriptLines} line Apps Script automation that assigns ${facts.sevai.students} students to ${facts.sevai.activities} community-service activities by ranked preference, balanced across grades, replacing ${facts.sevai.hoursSaved} hours of manual work.`,
+    metrics: [`${facts.sevai.students} students`, `${facts.sevai.activities} activities`, `${facts.sevai.hoursSaved} hrs saved`],
     color: 'teal',
   },
   {
@@ -26,8 +30,8 @@ const caseStudies = [
     tag: 'Systems',
     chapter: 'Chapter 2 · Turn the solution into infrastructure',
     title: 'Student Assignment Systems',
-    desc: 'The logistics infrastructure behind experiential learning, assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that quietly placed 700+ students and saved 50+ hours of manual work a year.',
-    metrics: ['700+ students placed', '4 programs', '50+ hours saved'],
+    desc: `The logistics infrastructure behind experiential learning, assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that quietly placed ${facts.assignmentSystems.studentsPlaced} students and saved ${facts.assignmentSystems.hoursSavedPerYear} hours of manual work a year.`,
+    metrics: [`${facts.assignmentSystems.studentsPlaced} students placed`, `${facts.assignmentSystems.programs} programs`, `${facts.assignmentSystems.hoursSavedPerYear} hours saved`],
     color: 'amber',
   },
   {
@@ -35,8 +39,8 @@ const caseStudies = [
     tag: 'Full-stack',
     chapter: 'Chapter 3 · Go school-wide, and go fast',
     title: 'Health Office App',
-    desc: 'A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries, a duty-of-care gap closed for all 700+ students, from school-wide launch to live automated notifications in six days.',
-    metrics: ['700+ students', 'Firebase + React', 'School-wide launch'],
+    desc: `A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries, a duty-of-care gap closed for all ${facts.scale.students} students, from school-wide launch to live automated notifications in six days.`,
+    metrics: [`${facts.scale.students} students`, 'Firebase + React', 'School-wide launch'],
     color: 'amber',
   },
   {
@@ -44,8 +48,8 @@ const caseStudies = [
     tag: 'Flagship',
     chapter: "Chapter 4 · Become the institution's memory",
     title: 'Curriculum Intelligence Dashboard',
-    desc: 'A Google Apps Script web app that turned scattered curriculum documents into a live analytics system, tracking 216 courses and 849 units across three divisions, put in front of 50+ leaders, and adopted by the director as the first onboarding resource 26 new teachers received.',
-    metrics: ['216 courses', '849 units · 81% complete', '50+ leaders'],
+    desc: `A Google Apps Script web app that turned scattered curriculum documents into a live analytics system, tracking ${facts.curriculum.courses} courses and ${facts.curriculum.units} units across three divisions, put in front of ${facts.scale.leaders} leaders, and adopted by the director as the first onboarding resource ${facts.scale.incomingTeachers} new teachers received.`,
+    metrics: [`${facts.curriculum.courses} courses`, `${facts.curriculum.units} units · ${facts.curriculum.completion} complete`, `${facts.scale.leaders} leaders`],
     color: 'teal',
   },
 ];
@@ -53,7 +57,7 @@ const caseStudies = [
 
 <Layout
   title="Selected Work"
-  description="Case studies from Luis Carlos Moreno's work at the American International School Chennai, curriculum analytics, student assignment systems, and full-stack school tools."
+  description={`Case studies from ${facts.person.shortName}'s work at the ${facts.aisc.school}, curriculum analytics, student assignment systems, and full-stack school tools.`}
 >
   <Nav />
   <main>
@@ -105,7 +109,7 @@ const caseStudies = [
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="/work-with-me" class="btn-amber">Work With Me</a>
-          <a href="mailto:mr.luisc@gmail.com" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Send an Email</a>
+          <a href={`mailto:${facts.person.email}`} class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Send an Email</a>
         </div>
       </div>
     </section>

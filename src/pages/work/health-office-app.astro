@@ -2,11 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { facts } from '../../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
   title="Health Office App"
-  description="A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries, launched school-wide for 700+ students at AISC Chennai."
+  description={`A Firebase + React student check-in system with automated, same-day notifications to teachers and secretaries, launched school-wide for ${facts.scale.students} students at ${facts.aisc.schoolShort} Chennai.`}
 >
   <Nav />
   <main>
@@ -30,7 +34,7 @@ import Footer from '../../components/Footer.astro';
       <div class="max-w-4xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '700+', label: 'Students covered' },
+            { value: facts.scale.students, label: 'Students covered' },
             { value: 'School-wide', label: 'Launch · Jun 3, 2026' },
             { value: 'Same-day', label: 'Notifications live' },
             { value: '2', label: 'Audiences notified' },
@@ -60,7 +64,7 @@ import Footer from '../../components/Footer.astro';
             </p>
             <p>
               It launched school-wide on <strong class="text-navy">June 3, 2026</strong>, covering the
-              full student body of 700+, with automated notifications going live the same week on June 9.
+              full student body of {facts.scale.students}, with automated notifications going live the same week on June 9.
             </p>
           </div>
         </div>
@@ -110,7 +114,7 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">From paper trail to real-time visibility</h2>
           <div class="grid sm:grid-cols-3 gap-4 mb-8">
             {[
-              { value: '700+', label: 'Students covered', sub: 'entire student body' },
+              { value: facts.scale.students, label: 'Students covered', sub: 'entire student body' },
               { value: 'Jun 3', label: 'School-wide launch', sub: '2026' },
               { value: 'Jun 9', label: 'Notifications live', sub: 'same week' },
             ].map(({ value, label, sub }) => (

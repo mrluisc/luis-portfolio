@@ -3,11 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import CalendarHeatmap from '../components/CalendarHeatmap.astro';
+import { facts, range } from '../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
   title="My Journey"
-  description="From systems engineering in Venezuela to learning innovation coaching across 5 countries, the full career journey of Luis Carlos Moreno."
+  description={`From systems engineering in Venezuela to learning innovation coaching across ${facts.scale.countriesLived} countries, the full career journey of ${facts.person.shortName}.`}
 >
   <Nav />
   <main>
@@ -20,7 +24,7 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
             <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">My Journey</span>
             <h1 class="text-4xl md:text-5xl font-bold mb-4">From Systems Engineering to Human-Centered Education</h1>
             <p class="text-gray-300 text-lg leading-relaxed">
-              A decade of building, teaching, coaching, and innovating across four countries and every
+              A decade of building, teaching, coaching, and innovating across {facts.scale.countriesLived} countries and every
               role a school has to offer, with Venezuela always at the beginning of the story.
             </p>
           </div>
@@ -71,7 +75,7 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
             {[
               { emoji: '🇻🇪', label: 'Venezuelan', sub: 'Valle de la Pascua native' },
               { emoji: '🏳️‍🌈', label: 'Queer Educator', sub: 'DEIJ advocate' },
-              { emoji: '🌍', label: '5 Countries', sub: '60+ countries visited' },
+              { emoji: '🌍', label: `${facts.scale.countriesLived} Countries`, sub: `${facts.scale.countriesVisited} countries visited` },
               { emoji: '🎭', label: 'Hospital Clowns', sub: '9 years founding "Payasitos de Hospital"' },
               { emoji: '✍️', label: 'Published Writer', sub: 'Author, songwriter' },
               { emoji: '🗣️', label: 'Multilingual', sub: 'English · Spanish · Portuguese' },
@@ -99,18 +103,18 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
             <div class="flex items-start gap-4 mb-4">
               <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">🎓</div>
               <div>
-                <span class="tag text-xs mb-1">2024 – 2026</span>
-                <h3 class="font-bold text-navy text-lg">Learning Innovation & Technology Coach</h3>
-                <p class="text-teal font-medium text-sm">American International School Chennai (AISC), India</p>
+                <span class="tag text-xs mb-1">{range(facts.aisc)}</span>
+                <h3 class="font-bold text-navy text-lg">{facts.aisc.title}</h3>
+                <p class="text-teal font-medium text-sm">{facts.aisc.school} ({facts.aisc.schoolShort}), India</p>
               </div>
             </div>
             <ul class="space-y-2 text-sm text-gray-600">
-              <li class="flex gap-2"><span class="text-teal">→</span> Co-led Apple Distinguished School certification (2025-2028 designation)</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Co-created HUMAN Framework with María Pérez Talavera</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Engineered LEA, analyzed 8+ months of school-wide data</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Coached 100+ faculty using student-centered model (plan, observe, model, co-teach)</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Built 20+ automation tools, each adopted by name by the colleague who requested it</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Designed digital citizenship curriculum for 400+ students annually</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Co-led Apple Distinguished School certification ({facts.misc.appleYears} designation)</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Co-created HUMAN Framework with {facts.people.perezTalavera.name}</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Engineered LEA, analyzed {facts.scale.leaMonths} months of school-wide data</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Coached {facts.scale.facultyCoached} faculty using student-centered model (plan, observe, model, co-teach)</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Built {facts.scale.tools} automation tools, each adopted by name by the colleague who requested it</li>
+              <li class="flex gap-2"><span class="text-teal">→</span> Designed digital citizenship curriculum for {facts.scale.digitalCitizenshipStudents} students annually</li>
               <li class="flex gap-2"><span class="text-teal">→</span> Managed Integration Studio: VR, podcasting, multimedia</li>
               <li class="flex gap-2"><span class="text-teal">→</span> Facilitated parent & community sessions on AI literacy and digital wellbeing</li>
             </ul>
@@ -119,9 +123,9 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
             <div class="flex items-start gap-4 mb-4">
               <div class="w-12 h-12 bg-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">🌐</div>
               <div>
-                <span class="tag text-xs mb-1">2024 – Present</span>
-                <h3 class="font-bold text-navy text-lg">Game Theory & AI Instructor</h3>
-                <p class="text-amber font-medium text-sm">Global Online Academy (GOA), Worldwide</p>
+                <span class="tag text-xs mb-1">{range(facts.goa)}</span>
+                <h3 class="font-bold text-navy text-lg">{facts.goa.title}</h3>
+                <p class="text-amber font-medium text-sm">{facts.goa.org} ({facts.goa.orgShort}), Worldwide</p>
               </div>
             </div>
             <ul class="space-y-2 text-sm text-gray-600">
@@ -141,7 +145,7 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
       <div class="max-w-5xl mx-auto px-4 md:px-8">
         <div class="text-center mb-10">
           <span class="tag mb-4">Two Years, One Calendar</span>
-          <h2 class="section-title">2,514 Calendar Events in Two Years at AISC</h2>
+          <h2 class="section-title">2,514 Calendar Events in Two Years at {facts.aisc.schoolShort}</h2>
           <p class="section-subtitle mx-auto">The dark squares are the job. Every cell is a day, July 2024 through June 2026.</p>
         </div>
         <CalendarHeatmap />
@@ -211,11 +215,11 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
           {[
             {
               period: '2021 – 2023',
-              role: 'MYP Mathematics Teacher · DEIJ Taskforce Member',
-              org: 'Vientiane International School (VIS)',
+              role: `${facts.vis.title} · DEIJ Taskforce Member`,
+              org: `${facts.vis.org} (${facts.vis.orgShort})`,
               location: 'Vientiane, Laos',
               points: [
-                'MYP Mathematics teacher across multiple grade levels',
+                `${facts.vis.title} across multiple grade levels`,
                 'Designed and taught a grades 6-12 financial literacy curriculum',
                 'DEIJ Taskforce member, contributed to inclusion and equity culture initiatives',
                 'Continued coaching educators in technology integration',
@@ -223,12 +227,12 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
               ],
             },
             {
-              period: '2016 – 2021',
-              role: 'EdTech Coordinator K-12 → Instructional Technology Coach → MS Math Teacher & Dept. Head → Learning Support Specialist',
-              org: 'International School of Panama (ISP)',
+              period: range(facts.isp),
+              role: facts.isp.roleChain,
+              org: `${facts.isp.org} (${facts.isp.orgShort})`,
               location: 'Panama City, Panama',
               points: [
-                'Four distinct roles across five years, built comprehensive understanding of the full school ecosystem',
+                `${facts.isp.roleCount} distinct roles across five years, built comprehensive understanding of the full school ecosystem`,
                 'Led school-wide technology vision; primary administrator for Canvas LMS, FACTS SIS, Google Workspace',
                 'Coached teachers in technology integration with tailored, data-driven support',
                 'Taught middle school mathematics and served as Mathematics Department Head',
@@ -237,9 +241,9 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
               ],
             },
             {
-              period: '2015 – 2016',
+              period: range(facts.rabin),
               role: 'STEM & Robotics Teacher · Head of IT Department',
-              org: 'Colegio Isaac Rabin',
+              org: facts.rabin.org,
               location: 'Panama City, Panama',
               points: [
                 'Founded the school\'s STEM and Robotics program from the ground up',
@@ -374,7 +378,7 @@ import CalendarHeatmap from '../components/CalendarHeatmap.astro';
         <h2 class="text-3xl font-bold mb-6">Want to know more or explore working together?</h2>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="/work-with-me" class="btn-amber">Work With Me</a>
-          <a href="mailto:mr.luisc@gmail.com" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Send an Email</a>
+          <a href={`mailto:${facts.person.email}`} class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Send an Email</a>
         </div>
       </div>
     </section>

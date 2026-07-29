@@ -2,11 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { facts } from '../../data/facts';
+
+// Every number, title, name and date on this page comes from src/data/facts.ts.
+// Do not retype one here - npm run check:facts will fail the build.
 ---
 
 <Layout
   title="Curriculum Intelligence Dashboard"
-  description="A Google Apps Script web app that turned scattered curriculum documents into a live analytics system tracking 216 courses and 849 units across three school divisions, deployed to 50+ leaders at AISC Chennai."
+  description={`A Google Apps Script web app that turned scattered curriculum documents into a live analytics system tracking ${facts.curriculum.courses} courses and ${facts.curriculum.units} units across three school divisions, deployed to ${facts.scale.leaders} leaders at ${facts.aisc.schoolShort} Chennai.`}
 >
   <Nav />
   <main>
@@ -20,7 +24,7 @@ import Footer from '../../components/Footer.astro';
         <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">Curriculum Intelligence Dashboard</h1>
         <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
           A curriculum analytics web app that made an entire school's curriculum visible, searchable,
-          and actionable, and became the first onboarding resource 26 incoming teachers received before
+          and actionable, and became the first onboarding resource {facts.scale.incomingTeachers} incoming teachers received before
           they ever arrived in Chennai.
         </p>
       </div>
@@ -31,9 +35,9 @@ import Footer from '../../components/Footer.astro';
       <div class="max-w-4xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '216', label: 'Courses tracked' },
-            { value: '849', label: 'Units · 81% complete' },
-            { value: '50+', label: 'Leaders using it' },
+            { value: facts.curriculum.courses, label: 'Courses tracked' },
+            { value: facts.curriculum.units, label: `Units · ${facts.curriculum.completion} complete` },
+            { value: facts.scale.leaders, label: 'Leaders using it' },
             { value: '3', label: 'School divisions' },
           ].map(({ value, label }) => (
             <div>
@@ -62,9 +66,9 @@ import Footer from '../../components/Footer.astro';
               an AI tab for deeper queries.
             </p>
             <p>
-              Underneath it sits the AISC Curriculum Documentation Tracker, a structured system tracking
-              <strong class="text-navy">216 courses and 849 units</strong> across all three divisions,
-              reaching <strong class="text-navy">81% school-wide completion</strong> by June 2026.
+              Underneath it sits the {facts.aisc.schoolShort} Curriculum Documentation Tracker, a structured system tracking
+              <strong class="text-navy">{facts.curriculum.courses} courses and {facts.curriculum.units} units</strong> across all three divisions,
+              reaching <strong class="text-navy">{facts.curriculum.completion} school-wide completion</strong> by June 2026.
             </p>
           </div>
         </div>
@@ -75,7 +79,7 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">Curriculum nobody could see</h2>
           <div class="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              Like most schools, AISC's curriculum knowledge was real but invisible. It lived in
+              Like most schools, {facts.aisc.schoolShort}'s curriculum knowledge was real but invisible. It lived in
               individual planning documents, in teachers' heads, and in formats that varied by division
               and department. Leaders couldn't answer basic strategic questions, which standards are
               under-assessed, where are the gaps, how complete is our documentation, without weeks of
@@ -127,9 +131,9 @@ import Footer from '../../components/Footer.astro';
           <h2 class="text-2xl font-bold text-navy mb-4">From a project to onboarding infrastructure</h2>
           <div class="grid sm:grid-cols-3 gap-4 mb-8">
             {[
-              { value: '50+', label: 'Leaders deployed to', sub: '10 SLT + 40+ ILT members' },
-              { value: '81%', label: 'School-wide completion', sub: '849 units documented' },
-              { value: '26', label: 'New teachers onboarded', sub: 'before arriving in Chennai' },
+              { value: facts.scale.leaders, label: 'Leaders deployed to', sub: '10 SLT + 40+ ILT members' },
+              { value: facts.curriculum.completion, label: 'School-wide completion', sub: `${facts.curriculum.units} units documented` },
+              { value: facts.scale.incomingTeachers, label: 'New teachers onboarded', sub: 'before arriving in Chennai' },
             ].map(({ value, label, sub }) => (
               <div class="text-center p-5 bg-gray-50 rounded-2xl">
                 <div class="text-3xl font-bold text-amber mb-1">{value}</div>
@@ -149,13 +153,13 @@ import Footer from '../../components/Footer.astro';
           </div>
           <blockquote class="border-l-4 border-teal pl-5 my-8 text-gray-700 italic">
             "This is phenomenal work throughout this year that has provided extensive insight into our program."
-            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">Gretchen Galaty, MS Counselor</footer>
+            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">{facts.people.galaty.name}, {facts.people.galaty.title}</footer>
           </blockquote>
           <blockquote class="border-l-4 border-amber pl-5 my-8 text-gray-700 italic">
             "Over the past year, we have been working to move all of our curriculum documentation into a
             shared Google Drive structure to create greater consistency, accessibility, and alignment
             across the school."
-            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">Joel Bevans, Director, in the onboarding email sent to 26 incoming teachers</footer>
+            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">{facts.people.bevans.name}, Director, in the onboarding email sent to {facts.scale.incomingTeachers} incoming teachers</footer>
           </blockquote>
         </div>
 
