@@ -127,8 +127,8 @@ export const facts = {
     digitalCitizenshipStudents: '400+',
     /** Months of LEA data analysed. */
     leaMonths: '8+',
-    /** Countries lived and worked in. */
-    countriesLived: '5',
+    /** Countries lived and worked in: Venezuela, USA, Panama, Laos, India, China. Corrected 5 → 6 by Luis 2026-07-29 (the 5 predated the Shanghai move). */
+    countriesLived: '6',
     /** Countries visited. Confirmed by Luis 2026-07-29 — travel-history's ~25 is only the Gmail-recoverable subset. */
     countriesVisited: '60+',
   },
