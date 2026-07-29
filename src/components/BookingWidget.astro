@@ -1,0 +1,84 @@
+---
+/**
+ * BookingWidget.astro — inline Cal.com booking calendar.
+ *
+ * Renders nothing unless config.calLink is set, so the section cannot ship
+ * broken. Set the link in src/data/config.ts and it appears on next build.
+ */
+import { config, hasCal } from '../data/config';
+
+const calLink = config.calLink;
+// "mrluisc/30min" → namespace "30min", used to scope the Cal embed API.
+const namespace = calLink.split('/').pop() ?? 'booking';
+---
+
+{hasCal && (
+  <section id="book" class="py-20 md:py-28 bg-gray-50 scroll-mt-20">
+    <div class="max-w-4xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-10">
+        <span class="tag mb-4">Book a Call</span>
+        <h2 class="section-title">Pick a Time That Works</h2>
+        <p class="section-subtitle mx-auto">
+          The first conversation is always free. Grab a slot directly, no back-and-forth email needed.
+        </p>
+      </div>
+      <div
+        id="cal-inline"
+        data-cal-link={calLink}
+        data-cal-namespace={namespace}
+        class="w-full min-h-[600px] overflow-hidden rounded-2xl bg-white shadow-sm"
+      >
+        <noscript>
+          <p class="p-8 text-center text-gray-600">
+            Booking needs JavaScript. Email me instead and we'll find a time.
+          </p>
+        </noscript>
+      </div>
+    </div>
+
+    <script>
+      // Cal.com's official inline-embed loader, scoped to the element above.
+      const el = document.getElementById('cal-inline');
+      if (el) {
+        const link = el.dataset.calLink;
+        const ns = el.dataset.calNamespace;
+        (function (C, A, L) {
+          let p = function (a, ar) { a.q.push(ar); };
+          let d = C.document;
+          C.Cal = C.Cal || function () {
+            let cal = C.Cal; let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {}; cal.q = cal.q || [];
+              d.head.appendChild(d.createElement('script')).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () { p(api, arguments); };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === 'string') {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ['initNamespace', namespace]);
+              } else { p(cal, ar); }
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+        Cal('init', ns, { origin: 'https://cal.com' });
+        Cal.ns[ns]('inline', {
+          elementOrSelector: '#cal-inline',
+          config: { layout: 'month_view' },
+          calLink: link,
+        });
+        Cal.ns[ns]('ui', {
+          hideEventTypeDetails: false,
+          layout: 'month_view',
+          cssVarsPerTheme: { light: { 'cal-brand': '#0d7377' } },
+        });
+      }
+    </script>
+  </section>
+)}

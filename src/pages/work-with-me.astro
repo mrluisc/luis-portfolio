@@ -2,10 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import BookingWidget from '../components/BookingWidget.astro';
 import { facts } from '../data/facts';
+import { config, hasFormspree } from '../data/config';
 
-// Replace with your Formspree form ID after signing up at formspree.io
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+// Formspree and Cal.com IDs live in src/data/config.ts. Both features hide
+// themselves until configured, so the page never ships a dead form.
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
 // Do not retype one here - npm run check:facts will fail the build.
@@ -294,6 +296,8 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
       </div>
     </section>
 
+    <BookingWidget />
+
     <!-- CONTACT FORM -->
     <section id="contact" class="py-20 md:py-28 bg-navy text-white scroll-mt-20">
       <div class="max-w-3xl mx-auto px-4 md:px-8">
@@ -306,8 +310,9 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
           </p>
         </div>
 
+        {hasFormspree ? (
         <form
-          action={`https://formspree.io/f/${FORMSPREE_ID}`}
+          action={`https://formspree.io/f/${config.formspreeId}`}
           method="POST"
           class="space-y-5"
           id="contact-form"
@@ -367,6 +372,17 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
             · <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="text-teal-300 hover:text-white underline">LinkedIn</a>
           </p>
         </form>
+        ) : (
+          <div class="text-center">
+            <a href={`mailto:${facts.person.email}?subject=Let's work together`} class="btn-amber text-base py-3.5 px-8">
+              Email Me
+            </a>
+            <p class="text-gray-400 text-sm mt-5">
+              <a href={`mailto:${facts.person.email}`} class="text-teal-300 hover:text-white underline">{facts.person.email}</a>
+              · <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="text-teal-300 hover:text-white underline">LinkedIn</a>
+            </p>
+          </div>
+        )}
       </div>
     </section>
 
@@ -374,10 +390,3 @@ const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
   <Footer />
 </Layout>
 
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  form?.addEventListener('submit', async (e) => {
-    if ((form.querySelector('#type') as HTMLSelectElement)?.value === 'YOUR_FORMSPREE_ID') return;
-    // Formspree handles submission natively via action attribute
-  });
-</script>
