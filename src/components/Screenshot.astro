@@ -1,0 +1,51 @@
+---
+/**
+ * Screenshot.astro — renders a case-study screenshot, or nothing at all.
+ *
+ * The five case-study pages have been text-only since June 2026 because the
+ * screenshots were never captured. Rather than leave broken <img> tags or
+ * placeholder boxes on a live site, this component checks at build time
+ * whether the file actually exists in public/ and renders nothing if it
+ * doesn't. Drop the file in, rebuild, and the figure appears — no code change.
+ *
+ * Usage:
+ *   <Screenshot src="/images/work/sevai-dashboard.png"
+ *               alt="The SEVAI assignment dashboard showing fill rates per activity"
+ *               caption="Capacity tracking across all 12 activities, live during a run." />
+ */
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  /** Set for images that are mostly light, to keep the border visible. */
+  bordered?: boolean;
+}
+
+const { src, alt, caption, bordered = true } = Astro.props;
+
+// Astro serves public/ at the site root, so the src maps straight onto a path.
+const exists = existsSync(join(process.cwd(), 'public', src.replace(/^\//, '')));
+---
+
+{exists && (
+  <figure class="my-8">
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      class:list={[
+        'w-full rounded-xl shadow-sm',
+        bordered && 'border border-gray-200',
+      ]}
+    />
+    {caption && (
+      <figcaption class="mt-3 text-sm text-gray-500 leading-relaxed">
+        {caption}
+      </figcaption>
+    )}
+  </figure>
+)}

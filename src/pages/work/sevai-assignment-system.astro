@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Screenshot from '../../components/Screenshot.astro';
 import { facts } from '../../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
@@ -87,6 +88,12 @@ import { facts } from '../../data/facts';
           </div>
         </div>
 
+        <Screenshot
+          src="/images/work/sevai-assignment-run.png"
+          alt="The SEVAI assignment engine mid-run, showing placements by ranked preference"
+          caption="A live assignment run: every student placed by ranked preference, capacity and grade balance enforced."
+        />
+
         <!-- WHAT I BUILT -->
         <div>
           <span class="tag mb-4">What I Built</span>
@@ -116,6 +123,12 @@ import { facts } from '../../data/facts';
             documentation, so the program could run without me in the loop.
           </p>
         </div>
+
+        <Screenshot
+          src="/images/work/sevai-capacity-dashboard.png"
+          alt={`The SEVAI capacity dashboard showing fill rates across ${facts.sevai.activities} activities`}
+          caption={`Capacity tracking across all ${facts.sevai.activities} activities, so no activity over- or under-fills.`}
+        />
 
         <!-- IMPACT -->
         <div>

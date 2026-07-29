@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Screenshot from '../../components/Screenshot.astro';
 import { facts } from '../../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
@@ -84,6 +85,12 @@ import { facts } from '../../data/facts';
             </p>
           </div>
         </div>
+
+        <Screenshot
+          src="/images/work/assignment-systems-overview.png"
+          alt="The four assignment engines side by side"
+          caption="Four programmes, one pattern: ranked preference in, balanced placement out."
+        />
 
         <!-- WHAT I BUILT -->
         <div>

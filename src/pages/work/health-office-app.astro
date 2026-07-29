@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Screenshot from '../../components/Screenshot.astro';
 import { facts } from '../../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
@@ -83,6 +84,12 @@ import { facts } from '../../data/facts';
           </div>
         </div>
 
+        <Screenshot
+          src="/images/work/health-office-checkin.png"
+          alt="The Health Office check-in screen used by the school nurse"
+          caption="The check-in screen. Built in Firebase and React, launched school-wide in six days."
+        />
+
         <!-- WHAT I BUILT -->
         <div>
           <span class="tag mb-4">What I Built</span>
@@ -107,6 +114,12 @@ import { facts } from '../../data/facts';
             ))}
           </ul>
         </div>
+
+        <Screenshot
+          src="/images/work/health-office-notification.png"
+          alt="An automated same-day notification email sent to a teacher"
+          caption="The automated same-day notification, the part that actually closed the duty-of-care gap."
+        />
 
         <!-- IMPACT -->
         <div>

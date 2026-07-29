@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Screenshot from '../../components/Screenshot.astro';
 import { facts } from '../../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
@@ -91,6 +92,12 @@ import { facts } from '../../data/facts';
           </div>
         </div>
 
+        <Screenshot
+          src="/images/work/discover-india-dashboard.png"
+          alt={`The Discover India capacity dashboard showing fill rates across ${facts.discoverIndia.trips} trips`}
+          caption={`Fill rates across all ${facts.discoverIndia.trips} trips, live during the placement run.`}
+        />
+
         <!-- WHAT I BUILT -->
         <div>
           <span class="tag mb-4">What I Built</span>
@@ -121,6 +128,12 @@ import { facts } from '../../data/facts';
             but at grade-wide scale and with a much heavier documentation layer.
           </p>
         </div>
+
+        <Screenshot
+          src="/images/work/discover-india-manual.png"
+          alt={`A page from the ${facts.discoverIndia.manualPages}-page Discover India operations manual`}
+          caption="A page from the operations manual. The documentation is the part that made it survive my leaving."
+        />
 
         <!-- IMPACT -->
         <div>

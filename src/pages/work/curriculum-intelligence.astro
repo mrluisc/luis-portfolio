@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Screenshot from '../../components/Screenshot.astro';
 import { facts } from '../../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
@@ -93,6 +94,12 @@ import { facts } from '../../data/facts';
           </div>
         </div>
 
+        <Screenshot
+          src="/images/work/curriculum-dashboard.png"
+          alt="The Curriculum Intelligence Dashboard, showing completion by division and course"
+          caption={`The view ${facts.scale.leaders} leaders opened: completion rates per division, drillable to the individual unit.`}
+        />
+
         <!-- WHAT I BUILT -->
         <div>
           <span class="tag mb-4">What I Built</span>
@@ -124,6 +131,12 @@ import { facts } from '../../data/facts';
             leadership team.
           </p>
         </div>
+
+        <Screenshot
+          src="/images/work/curriculum-tracker.png"
+          alt="The underlying Curriculum Documentation Tracker spreadsheet"
+          caption={`The tracker underneath the dashboard, ${facts.curriculum.courses} courses and ${facts.curriculum.units} units in one structure.`}
+        />
 
         <!-- IMPACT -->
         <div>
