@@ -66,7 +66,9 @@ Branch: `brand-restyle`.
 - Old blog lmoreno.coetail.com is offline; the Wayback Machine holds 10 posts.
 
 ## Waiting for LC (from the night of 2 Oct)
-- Review the preview; say yes before anything merges to `main`.
+- Review the preview; say yes before anything merges to `main`. Note: until it merges, the LIVE site still
+  shows the unapproved testimonial quotes.
+- Testimonials: LC will ask people one by one; flip each to approved in `src/data/testimonials.ts` when they say yes.
 - Copy Claude drafted in his voice: the blog index intro ("From the archive / My COETAIL Journey, 2020 to 2021"),
   the post footer note, the 404 page lines. Approve or rewrite.
 - Privacy calls made in the posts (removed links to students' work and recordings, a peers' meeting video,
@@ -88,5 +90,8 @@ Branch: `brand-restyle`.
   actually read.
 - **Never reload or navigate a browser tab LC may be typing in;** open a new tab.
 - Check generated files for hand edits before regenerating them.
+- **Testimonials (LC, 3 Oct):** a quote from a named person appears only after that person has approved it.
+  All quotes live in `src/data/testimonials.ts` with `approved: false`; pages show approved ones only and a
+  section with none disappears. To publish one: set `approved: true` and `approvedOn`, or add their new words.
 - Log each session in `LOG.md` (append only), and one line in `~/Developer/brand/LOG.md` when a
   brand decision is made.

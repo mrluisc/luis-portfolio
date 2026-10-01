@@ -14,6 +14,11 @@ import { facts } from '../../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
 // Do not retype one here - npm run check:facts will fail the build.
+import { approvedQuote } from '../../data/testimonials';
+
+// Quotes appear only once the person has approved them (src/data/testimonials.ts).
+const galatyQuote = approvedQuote('galaty-curriculum');
+const bevansQuote = approvedQuote('bevans-onboarding');
 ---
 
 <Layout
@@ -130,16 +135,18 @@ import { facts } from '../../data/facts';
               <strong>26 incoming 2026–27 teachers</strong> as the very first
               onboarding resource they received, before they had even arrived.
             </p>
-          <blockquote>
-            "This is phenomenal work throughout this year that has provided extensive insight into our program."
-            <footer>{facts.people.galaty.name}, {facts.people.galaty.title}</footer>
-          </blockquote>
-          <blockquote>
-            "Over the past year, we have been working to move all of our curriculum documentation into a
-            shared Google Drive structure to create greater consistency, accessibility, and alignment
-            across the school."
-            <footer>{facts.people.bevans.name}, Director, in the onboarding email sent to {facts.scale.incomingTeachers} incoming teachers</footer>
-          </blockquote>
+          {galatyQuote && (
+            <blockquote>
+              "{galatyQuote.quote}"
+              <footer>{galatyQuote.credit}</footer>
+            </blockquote>
+          )}
+          {bevansQuote && (
+            <blockquote>
+              "{bevansQuote.quote}"
+              <footer>{bevansQuote.name}, Director, in the onboarding email sent to {facts.scale.incomingTeachers} incoming teachers</footer>
+            </blockquote>
+          )}
 
           <Label>Lessons Learned</Label>
           <h2>What I'd carry forward</h2>

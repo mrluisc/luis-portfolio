@@ -15,6 +15,11 @@ import { facts, rangeProse } from '../data/facts';
 // - AIFE venue was never a conflict: two separate appearances, Bangkok (Nov 2024) and
 //   Jakarta (Nov 2025). Both now listed below.
 // - Survey stat verified against its source PDF; provenance recorded in facts.ts.
+import { approvedQuote } from '../data/testimonials';
+
+// Quotes appear only once the person has approved them (src/data/testimonials.ts).
+const keoghQuote = approvedQuote('keogh-commendation-short');
+const clintonQuote = approvedQuote('clinton-introduction');
 ---
 
 <Layout
@@ -151,8 +156,8 @@ import { facts, rangeProse } from '../data/facts';
 
         <h2>Recognition</h2>
         <ul>
-          <li>Formal commendation to school leadership for support of faculty ({facts.people.keogh.name} to Head of School, May 2026): "His support has significantly reduced stress for many of us and has made a complicated process much smoother."</li>
-          <li>Described by {facts.aisc.schoolShort}'s Deputy Head to an external AI consultant as "making amazing tools to improve teachers' lives, among his many other activities."</li>
+          {keoghQuote && <li>Formal commendation to school leadership for support of faculty ({keoghQuote.name} to Head of School, May 2026): "{keoghQuote.quote}"</li>}
+          {clintonQuote && <li>Described by {facts.aisc.schoolShort}'s Deputy Head to an external AI consultant as "making amazing tools to improve teachers' lives, among his many other activities."</li>}
           <li>Colleague survey ({facts.survey.name}): {facts.survey.rating} across {facts.survey.responses} responses, with no rating below 4; {facts.survey.wouldEngageAgain} would engage the service again.</li>
           <li>International speaking: Data in Schools (Singapore, Kuala Lumpur), AIFE (Bangkok, Jakarta), DEIX (Vientiane), AIELOC (Hanoi); the LEA tool was taken up by educators at {facts.misc.leaSchools} schools across {facts.misc.leaCountries}.</li>
         </ul>

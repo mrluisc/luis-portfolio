@@ -14,12 +14,28 @@ import CtaPanel from '../components/lc/CtaPanel.astro';
 import Timeline from '../components/lc/Timeline.astro';
 import TimelineItem from '../components/lc/TimelineItem.astro';
 import { motifGeometry } from '../components/lc/motif';
-import { facts, range, credit } from '../data/facts';
+import { approvedQuote } from '../data/testimonials';
+import { facts, range } from '../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
 // Do not retype one here - npm run check:facts will fail the build.
 
 const { clear } = motifGeometry('content-slide', 'light');
+
+// Quotes from colleagues appear only once they have approved them (src/data/testimonials.ts).
+const aboutQuote = approvedQuote('keogh-commendation-short');
+const builtQuote = approvedQuote('clinton-introduction');
+const homeTestimonials = [
+  { id: 'keogh-commendation', role: `${facts.people.keogh.title} · unsolicited commendation to the Head of School`, org: facts.aisc.schoolShort },
+  { id: 'bevans-onboarding', role: facts.people.bevans.title, org: `${facts.aisc.schoolShort}, sent while introducing my system to ${facts.scale.incomingTeachers} incoming teachers as their first onboarding resource` },
+  { id: 'wood-tech-summit', role: facts.people.wood.title, org: `${facts.aisc.schoolShort}, on the Grade 8 Tech Investor Summit` },
+  { id: 'hart-consent-system', role: facts.people.hart.title, org: `${facts.aisc.schoolShort}, on the consent-tracking system I built for his department` },
+  { id: 'bull-comment-generator', role: facts.people.bull.title, org: `${facts.aisc.schoolShort}, on the Science report-comment generator` },
+  { id: 'galaty-curriculum', role: facts.people.galaty.title, org: facts.aisc.schoolShort },
+].flatMap((t) => {
+  const q = approvedQuote(t.id);
+  return q ? [{ ...t, quote: q.quote, name: q.name }] : [];
+});
 ---
 
 <Layout title="Home" description={`${facts.aisc.title}, AI Integration Specialist, and Co-creator of the HUMAN Framework. Engineering solutions, empowering educators.`}>
@@ -115,11 +131,12 @@ const { clear } = motifGeometry('content-slide', 'light');
               people, not the other way around. And one more thing every move has taught me: leaving
               your comfort zone gets easier the more you do it.
             </p>
-            <blockquote>
-              <p>"His support has significantly reduced stress for many of us and has made a complicated
-              process much smoother."</p>
-              <footer>{facts.people.keogh.name}, in a commendation to the Head of School</footer>
-            </blockquote>
+            {aboutQuote && (
+              <blockquote>
+                <p>"{aboutQuote.quote}"</p>
+                <footer>{aboutQuote.name}, in a commendation to the Head of School</footer>
+              </blockquote>
+            )}
           </Prose>
           <div class="flex flex-wrap gap-lc-2">
             <Tag>Venezuelan</Tag>
@@ -223,29 +240,28 @@ const { clear } = motifGeometry('content-slide', 'light');
           job I care about most. Not the flagship launch. The Tuesday request.
         </SectionHeader>
 
-        <blockquote class="flex max-w-3xl flex-col gap-lc-3 border-l-2 border-barro-claro pl-lc-5">
-          <p class="text-lead text-arena">
-            "Luis Carlos Moreno is our Technology and Innovation Coach, making amazing tools to improve
-            teachers' lives, among his many other activities."
-          </p>
-          <p class="text-small text-cielo">
-            {credit(facts.people.clinton)}, introducing me to an outside AI consultant
-          </p>
-        </blockquote>
+        {builtQuote && (
+          <blockquote class="flex max-w-3xl flex-col gap-lc-3 border-l-2 border-barro-claro pl-lc-5">
+            <p class="text-lead text-arena">"{builtQuote.quote}"</p>
+            <p class="text-small text-cielo">{builtQuote.credit}, introducing me to an outside AI consultant</p>
+          </blockquote>
+        )}
 
         <div class="max-w-4xl border-t border-arena/20">
           {[
-            { date: '2025-09', name: 'DT & Trip Safety Consent System', dept: 'MS Design Technology', desc: 'Digital consent forms with a signature-tracking dashboard, used daily by the department.', receipt: '"It has made a massive difference in our department."', who: credit(facts.people.hart) },
-            { date: '2025-09', name: 'Science Report Comment Generator', dept: 'MS Science', desc: 'AI-assisted comment drafting with a walkthrough video, built for the whole team.', receipt: '"This spreadsheet is incredible, and the video is so concise and clear."', who: credit(facts.people.bull) },
-            { date: '2025', name: 'French Report Comment Generator', dept: 'World Language', desc: 'Same pattern, second subject, adapted to the department\'s rubrics.', receipt: null, who: null },
-            { date: '2025-12', name: 'EAL Progress Tracker', dept: 'EAL Department', desc: 'Gamified student-progress tool with linked reflection forms.', receipt: '"\'Game-like\' features... Impressive!"', who: credit(facts.people.brigham) },
-            { date: '2025', name: 'MS Report Card Comment System v4.0', dept: 'All MS Teachers', desc: '1,914 comments managed per cycle, AI comment banks, one-click export to PowerTeacher Pro.', receipt: null, who: null },
-            { date: '2025-10', name: 'Math Shark Tank Analysis Report', dept: 'Curriculum Leadership', desc: 'A data tool for curriculum-goal alignment, shared with schools abroad.', receipt: '"LC, this is SO cool... Amazing work!"', who: credit(facts.people.martin) },
-            { date: '2024-09', name: 'Meeting Notes Auto-Transcriber', dept: 'ES Leadership', desc: 'Automated transcription and notes for leadership meetings.', receipt: '"This is amazing. I want to learn how to do this."', who: credit(facts.people.schneider) },
-            { date: '2025', name: 'Innovation Bot', dept: 'Innovation in T&L Council', desc: 'A scoped AI assistant that helped faculty refine their innovation pitches.', receipt: null, who: null },
-            { date: '2025-02', name: 'AI Book Club Companion Site', dept: `${facts.scale.bookClubEducators} Educators`, desc: 'Session resources and discussion hub for "Exploring Tomorrow."', receipt: null, who: null },
-            { date: '2024', name: 'Learning Experience Analyzer (LEA)', dept: 'School-wide', desc: 'Multi-framework lesson analysis; the tool that grew into a data system.', receipt: null, who: null },
-          ].map(({ date, name, dept, desc, receipt, who }) => (
+            { date: '2025-09', name: 'DT & Trip Safety Consent System', dept: 'MS Design Technology', desc: 'Digital consent forms with a signature-tracking dashboard, used daily by the department.', quoteId: 'hart-consent-system' },
+            { date: '2025-09', name: 'Science Report Comment Generator', dept: 'MS Science', desc: 'AI-assisted comment drafting with a walkthrough video, built for the whole team.', quoteId: 'bull-comment-generator' },
+            { date: '2025', name: 'French Report Comment Generator', dept: 'World Language', desc: 'Same pattern, second subject, adapted to the department\'s rubrics.', quoteId: null },
+            { date: '2025-12', name: 'EAL Progress Tracker', dept: 'EAL Department', desc: 'Gamified student-progress tool with linked reflection forms.', quoteId: 'brigham-eal-tracker' },
+            { date: '2025', name: 'MS Report Card Comment System v4.0', dept: 'All MS Teachers', desc: '1,914 comments managed per cycle, AI comment banks, one-click export to PowerTeacher Pro.', quoteId: null },
+            { date: '2025-10', name: 'Math Shark Tank Analysis Report', dept: 'Curriculum Leadership', desc: 'A data tool for curriculum-goal alignment, shared with schools abroad.', quoteId: 'martin-shark-tank' },
+            { date: '2024-09', name: 'Meeting Notes Auto-Transcriber', dept: 'ES Leadership', desc: 'Automated transcription and notes for leadership meetings.', quoteId: 'schneider-transcriber' },
+            { date: '2025', name: 'Innovation Bot', dept: 'Innovation in T&L Council', desc: 'A scoped AI assistant that helped faculty refine their innovation pitches.', quoteId: null },
+            { date: '2025-02', name: 'AI Book Club Companion Site', dept: `${facts.scale.bookClubEducators} Educators`, desc: 'Session resources and discussion hub for "Exploring Tomorrow."', quoteId: null },
+            { date: '2024', name: 'Learning Experience Analyzer (LEA)', dept: 'School-wide', desc: 'Multi-framework lesson analysis; the tool that grew into a data system.', quoteId: null },
+          ].map(({ date, name, dept, desc, quoteId }) => {
+            const receipt = quoteId ? approvedQuote(quoteId) : undefined;
+            return (
             <details class="group border-b border-arena/20">
               <summary class="flex cursor-pointer list-none items-center gap-lc-4 py-lc-3 hover:text-cielo focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-arena [&::-webkit-details-marker]:hidden">
                 <span class="h-lc-2 w-lc-2 shrink-0 rounded-full bg-barro" aria-hidden="true"></span>
@@ -258,12 +274,13 @@ const { clear } = motifGeometry('content-slide', 'light');
                 <p class="max-w-body text-body">{desc}</p>
                 {receipt && (
                   <p class="flex max-w-body flex-col gap-lc-1 border-l-2 border-barro-claro pl-lc-3 text-body">
-                    {receipt}<span class="block text-small text-cielo">{who}</span>
+                    "{receipt.quote}"<span class="block text-small text-cielo">{receipt.credit}</span>
                   </p>
                 )}
               </div>
             </details>
-          ))}
+            );
+          })}
           <div class="flex items-center gap-lc-4 py-lc-3 text-cielo">
             <span class="h-lc-2 w-lc-2 shrink-0 rounded-full border border-cielo" aria-hidden="true"></span>
             <span class="w-20 shrink-0 font-mono text-label uppercase">2026-…</span>
@@ -347,51 +364,15 @@ const { clear } = motifGeometry('content-slide', 'light');
       </Container>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- TESTIMONIALS: shown only when at least one quote is approved -->
+    {homeTestimonials.length > 0 && (
     <section class="border-t border-tierra/10 py-lc-9">
       <Container class="flex flex-col gap-lc-7">
         <SectionHeader label="Testimonials" title="What People Say">
           {facts.survey.rating} across {facts.survey.responses} teacher responses · {facts.survey.wouldEngageAgain} would work with me again. Here's what a few of them said.
         </SectionHeader>
         <div class="grid gap-lc-5 md:grid-cols-2">
-          {[
-            {
-              quote: 'Luis Carlos has consistently been patient, responsive, and incredibly helpful, often taking the time to troubleshoot problems thoroughly and ensure that things were fully resolved. His support has significantly reduced stress for many of us and has made a complicated process much smoother.',
-              name: facts.people.keogh.name,
-              role: `${facts.people.keogh.title} · unsolicited commendation to the Head of School`,
-              org: facts.aisc.schoolShort,
-            },
-            {
-              quote: 'Over the past year, we have been working to move all of our curriculum documentation into a shared Google Drive structure to create greater consistency, accessibility, and alignment across the school.',
-              name: facts.people.bevans.name,
-              role: facts.people.bevans.title,
-              org: `${facts.aisc.schoolShort}, sent while introducing my system to ${facts.scale.incomingTeachers} incoming teachers as their first onboarding resource`,
-            },
-            {
-              quote: 'Many students shared afterward how motivated they felt by your feedback. We are deeply grateful for your time and support of our Grade 8 learners.',
-              name: facts.people.wood.name,
-              role: facts.people.wood.title,
-              org: `${facts.aisc.schoolShort}, on the Grade 8 Tech Investor Summit`,
-            },
-            {
-              quote: 'Thank you so much for your help on this. It has made a massive difference in our department.',
-              name: facts.people.hart.name,
-              role: facts.people.hart.title,
-              org: `${facts.aisc.schoolShort}, on the consent-tracking system I built for his department`,
-            },
-            {
-              quote: 'This spreadsheet is incredible, and the video is so concise and clear.',
-              name: facts.people.bull.name,
-              role: facts.people.bull.title,
-              org: `${facts.aisc.schoolShort}, on the Science report-comment generator`,
-            },
-            {
-              quote: 'This is phenomenal work throughout this year that has provided extensive insight into our program.',
-              name: facts.people.galaty.name,
-              role: facts.people.galaty.title,
-              org: facts.aisc.schoolShort,
-            },
-          ].map(({ quote, name, role, org }) => (
+          {homeTestimonials.map(({ quote, name, role, org }) => (
             <figure class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
               <span class="h-lc-3 w-lc-3 rounded-full bg-barro" aria-hidden="true"></span>
               <blockquote class="flex-1 text-body text-tierra">"{quote}"</blockquote>
@@ -404,6 +385,7 @@ const { clear } = motifGeometry('content-slide', 'light');
         </div>
       </Container>
     </section>
+    )}
 
     <!-- CTA -->
     <CtaPanel label="Let's Connect" title="Ready to bring AI integration, instructional coaching, or systems thinking to your school or team?">
