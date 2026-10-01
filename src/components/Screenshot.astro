@@ -31,19 +31,19 @@ const exists = existsSync(join(process.cwd(), 'public', src.replace(/^\//, '')))
 ---
 
 {exists && (
-  <figure class="my-8">
+  <figure class="flex flex-col gap-lc-3">
     <img
       src={src}
       alt={alt}
       loading="lazy"
       decoding="async"
       class:list={[
-        'w-full rounded-xl shadow-sm',
-        bordered && 'border border-gray-200',
+        'w-full rounded-medium',
+        bordered && 'border border-tierra/15',
       ]}
     />
     {caption && (
-      <figcaption class="mt-3 text-sm text-gray-500 leading-relaxed">
+      <figcaption class="text-small text-tierra-suave">
         {caption}
       </figcaption>
     )}
