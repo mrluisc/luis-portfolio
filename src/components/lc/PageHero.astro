@@ -11,7 +11,8 @@ import { motifGeometry, type Placement } from './motif';
 
 interface Props {
   label?: string;
-  title: string;
+  /** Plain title; for markup inside it (an accent word), use the `title` slot instead. */
+  title?: string;
   placement?: Placement;
 }
 const { label, title, placement = 'content-slide' } = Astro.props;
@@ -24,7 +25,7 @@ const { clear } = motifGeometry(placement, 'light');
     <div class="grid items-center gap-lc-7 md:grid-cols-[minmax(0,1fr)_auto]" style={`padding-right:calc(${clear}cqw + 16px)`}>
       <div class="flex flex-col gap-lc-5">
         {label && <Label>{label}</Label>}
-        <h1 class="max-w-4xl font-display text-display text-tierra [text-wrap:balance]">{title}</h1>
+        <h1 class="max-w-4xl font-display text-display text-tierra [text-wrap:balance]">{Astro.slots.has('title') ? <slot name="title" /> : title}</h1>
         {Astro.slots.has('default') && <div class="max-w-body text-lead text-tierra-suave"><slot /></div>}
         {Astro.slots.has('actions') && <div class="flex flex-wrap gap-lc-3 pt-lc-2"><slot name="actions" /></div>}
       </div>
