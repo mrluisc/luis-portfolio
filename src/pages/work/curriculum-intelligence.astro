@@ -1,7 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
+import Nav from '../../components/lc/Nav.astro';
+import Footer from '../../components/lc/Footer.astro';
+import Container from '../../components/lc/Container.astro';
+import ArticleHeader from '../../components/lc/ArticleHeader.astro';
+import Stats from '../../components/lc/Stats.astro';
+import Prose from '../../components/lc/Prose.astro';
+import Label from '../../components/lc/Label.astro';
+import CtaPanel from '../../components/lc/CtaPanel.astro';
+import Button from '../../components/lc/Button.astro';
 import Screenshot from '../../components/Screenshot.astro';
 import { facts } from '../../data/facts';
 
@@ -12,52 +19,37 @@ import { facts } from '../../data/facts';
 <Layout
   title="Curriculum Intelligence Dashboard"
   description={`A Google Apps Script web app that turned scattered curriculum documents into a live analytics system tracking ${facts.curriculum.courses} courses and ${facts.curriculum.units} units across three school divisions, deployed to ${facts.scale.leaders} leaders at ${facts.aisc.schoolShort} Chennai.`}
+  brand
 >
   <Nav />
   <main>
 
-    <!-- HERO -->
-    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-16 md:py-24">
-      <div class="max-w-4xl mx-auto px-4 md:px-8">
-        <a href="/work" class="text-teal-200 text-sm hover:text-white transition-colors">← Back to all work</a>
-        <span class="tag bg-white/10 text-white border border-white/20 mt-6 mb-5 inline-block">Flagship Project · Google Apps Script</span>
-        <p class="text-amber text-sm font-semibold uppercase tracking-wider mb-2">Chapter 4 · Become the institution's memory</p>
-        <h1 class="text-3xl md:text-5xl font-bold mb-5 leading-tight">Curriculum Intelligence Dashboard</h1>
-        <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
-          A curriculum analytics web app that made an entire school's curriculum visible, searchable,
-          and actionable, and became the first onboarding resource {facts.scale.incomingTeachers} incoming teachers received before
-          they ever arrived in Chennai.
-        </p>
-      </div>
-    </section>
+    <ArticleHeader
+      back={{ href: '/work', label: 'Back to all work' }}
+      label="Flagship Project · Google Apps Script"
+      sublabel="Chapter 4 · Become the institution's memory"
+      title="Curriculum Intelligence Dashboard"
+    >
+      A curriculum analytics web app that made an entire school's curriculum visible, searchable,
+      and actionable, and became the first onboarding resource {facts.scale.incomingTeachers} incoming teachers received before
+      they ever arrived in Chennai.
+    </ArticleHeader>
 
-    <!-- METRICS BAR -->
-    <section class="bg-teal text-white py-8">
-      <div class="max-w-4xl mx-auto px-4 md:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { value: facts.curriculum.courses, label: 'Courses tracked' },
-            { value: facts.curriculum.units, label: `Units · ${facts.curriculum.completion} complete` },
-            { value: facts.scale.leaders, label: 'Leaders using it' },
-            { value: '3', label: 'School divisions' },
-          ].map(({ value, label }) => (
-            <div>
-              <div class="text-3xl font-bold text-amber">{value}</div>
-              <div class="text-sm text-teal-100 mt-1">{label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Container>
+      <article class="flex max-w-3xl flex-col gap-lc-8 pt-lc-8">
+        <Stats
+          items={[
+          { value: facts.curriculum.courses, label: 'Courses tracked' },
+          { value: facts.curriculum.units, label: `Units · ${facts.curriculum.completion} complete` },
+          { value: facts.scale.leaders, label: 'Leaders using it' },
+          { value: '3', label: 'School divisions' },
+          ]}
+        />
 
-    <article class="py-16 md:py-20 bg-white">
-      <div class="max-w-3xl mx-auto px-4 md:px-8 space-y-14">
+        <Prose>
 
-        <!-- OVERVIEW -->
-        <div>
-          <span class="tag mb-4">Overview</span>
-          <h2 class="text-2xl font-bold text-navy mb-4">What it is</h2>
-          <div class="space-y-4 text-gray-700 leading-relaxed">
+          <Label>Overview</Label>
+          <h2>What it is</h2>
             <p>
               The Curriculum Intelligence Dashboard is a Google Apps Script web application that gives
               an entire IB World School a single, living view of its curriculum across Elementary, Middle,
@@ -68,17 +60,12 @@ import { facts } from '../../data/facts';
             </p>
             <p>
               Underneath it sits the {facts.aisc.schoolShort} Curriculum Documentation Tracker, a structured system tracking
-              <strong class="text-navy">{facts.curriculum.courses} courses and {facts.curriculum.units} units</strong> across all three divisions,
-              reaching <strong class="text-navy">{facts.curriculum.completion} school-wide completion</strong> by June 2026.
+              <strong>{facts.curriculum.courses} courses and {facts.curriculum.units} units</strong> across all three divisions,
+              reaching <strong>{facts.curriculum.completion} school-wide completion</strong> by June 2026.
             </p>
-          </div>
-        </div>
 
-        <!-- PROBLEM -->
-        <div>
-          <span class="tag mb-4">The Problem</span>
-          <h2 class="text-2xl font-bold text-navy mb-4">Curriculum nobody could see</h2>
-          <div class="space-y-4 text-gray-700 leading-relaxed">
+          <Label>The Problem</Label>
+          <h2>Curriculum nobody could see</h2>
             <p>
               Like most schools, {facts.aisc.schoolShort}'s curriculum knowledge was real but invisible. It lived in
               individual planning documents, in teachers' heads, and in formats that varied by division
@@ -91,8 +78,6 @@ import { facts } from '../../data/facts';
               walks out the door every time a teacher leaves. The school needed institutional knowledge
               to become an asset rather than a liability.
             </p>
-          </div>
-        </div>
 
         <Screenshot
           src="/images/work/curriculum-dashboard.png"
@@ -100,18 +85,14 @@ import { facts } from '../../data/facts';
           caption={`The view ${facts.scale.leaders} leaders opened: completion rates per division, drillable to the individual unit.`}
         />
 
-        <!-- WHAT I BUILT -->
-        <div>
-          <span class="tag mb-4">What I Built</span>
-          <h2 class="text-2xl font-bold text-navy mb-4">A live analytics layer over curriculum</h2>
-          <div class="space-y-4 text-gray-700 leading-relaxed mb-6">
+          <Label>What I Built</Label>
+          <h2>A live analytics layer over curriculum</h2>
             <p>
               I designed and built the whole system in Google Apps Script so it lived natively inside the
               school's existing Google Workspace, no new platform, no new login, no new vendor. The web
               app reads from the documentation tracker and surfaces it through purpose-built views:
             </p>
-          </div>
-          <ul class="space-y-3">
+          <ul>
             {[
               ['Navigator', 'Browse and search every course and unit across ES, MS, and HS from one place.'],
               ['Standards view', 'A Visible-for-Learning heatmap plus gap analysis that shows which standards are covered, over-covered, or missing.'],
@@ -119,18 +100,14 @@ import { facts } from '../../data/facts';
               ['Curriculum Calendar', 'A Gantt-style timeline of when units are taught across the year.'],
               ['AI tab', 'Natural-language querying over the curriculum data for deeper, ad-hoc analysis.'],
             ].map(([title, desc]) => (
-              <li class="flex gap-3">
-                <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-2"></span>
-                <span class="text-gray-700"><strong class="text-navy">{title}.</strong> {desc}</span>
-              </li>
+              <li><strong>{title}.</strong> {desc}</li>
             ))}
           </ul>
-          <p class="text-gray-700 leading-relaxed mt-6">
+          <p>
             The system was in real, active use months before any formal launch, a curriculum coach was
             already flagging live bugs in August 2025, well ahead of the June 2026 rollout to the full
             leadership team.
           </p>
-        </div>
 
         <Screenshot
           src="/images/work/curriculum-tracker.png"
@@ -138,75 +115,55 @@ import { facts } from '../../data/facts';
           caption={`The tracker underneath the dashboard, ${facts.curriculum.courses} courses and ${facts.curriculum.units} units in one structure.`}
         />
 
-        <!-- IMPACT -->
-        <div>
-          <span class="tag mb-4">Impact &amp; Results</span>
-          <h2 class="text-2xl font-bold text-navy mb-4">From a project to onboarding infrastructure</h2>
-          <div class="grid sm:grid-cols-3 gap-4 mb-8">
-            {[
-              { value: facts.scale.leaders, label: 'Leaders deployed to', sub: '10 SLT + 40+ ILT members' },
-              { value: facts.curriculum.completion, label: 'School-wide completion', sub: `${facts.curriculum.units} units documented` },
-              { value: facts.scale.incomingTeachers, label: 'New teachers onboarded', sub: 'before arriving in Chennai' },
-            ].map(({ value, label, sub }) => (
-              <div class="text-center p-5 bg-gray-50 rounded-2xl">
-                <div class="text-3xl font-bold text-amber mb-1">{value}</div>
-                <div class="font-semibold text-navy text-sm">{label}</div>
-                <div class="text-gray-500 text-xs mt-1">{sub}</div>
-              </div>
-            ))}
-          </div>
-          <div class="space-y-4 text-gray-700 leading-relaxed">
+          <Label>Impact &amp; Results</Label>
+          <h2>From a project to onboarding infrastructure</h2>
+          <Stats
+            items={[
+              { value: facts.scale.leaders, label: 'Leaders deployed to', note: '10 SLT + 40+ ILT members' },
+              { value: facts.curriculum.completion, label: 'School-wide completion', note: `${facts.curriculum.units} units documented` },
+              { value: facts.scale.incomingTeachers, label: 'New teachers onboarded', note: 'before arriving in Chennai' },
+            ]}
+          />
             <p>
               The dashboard was deployed to 10 Senior Leadership Team members and 40+ Instructional
               Leadership Team members. But the clearest signal of impact came from how the underlying
               Shared Drive curriculum structure got used: in May 2026, the school director sent it to
-              <strong class="text-navy">26 incoming 2026–27 teachers</strong> as the very first
+              <strong>26 incoming 2026–27 teachers</strong> as the very first
               onboarding resource they received, before they had even arrived.
             </p>
-          </div>
-          <blockquote class="border-l-4 border-teal pl-5 my-8 text-gray-700 italic">
+          <blockquote>
             "This is phenomenal work throughout this year that has provided extensive insight into our program."
-            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">{facts.people.galaty.name}, {facts.people.galaty.title}</footer>
+            <footer>{facts.people.galaty.name}, {facts.people.galaty.title}</footer>
           </blockquote>
-          <blockquote class="border-l-4 border-amber pl-5 my-8 text-gray-700 italic">
+          <blockquote>
             "Over the past year, we have been working to move all of our curriculum documentation into a
             shared Google Drive structure to create greater consistency, accessibility, and alignment
             across the school."
-            <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">{facts.people.bevans.name}, Director, in the onboarding email sent to {facts.scale.incomingTeachers} incoming teachers</footer>
+            <footer>{facts.people.bevans.name}, Director, in the onboarding email sent to {facts.scale.incomingTeachers} incoming teachers</footer>
           </blockquote>
-        </div>
 
-        <!-- LESSONS -->
-        <div>
-          <span class="tag mb-4">Lessons Learned</span>
-          <h2 class="text-2xl font-bold text-navy mb-4">What I'd carry forward</h2>
-          <ul class="space-y-4">
+          <Label>Lessons Learned</Label>
+          <h2>What I'd carry forward</h2>
+          <ul>
             {[
               ['Build where people already are.', 'Living inside Google Workspace, no new platform, removed every adoption barrier. The best tool is one nobody has to be convinced to log into.'],
               ['Ship before you launch.', 'Having a curriculum coach catch real bugs in August, ten months before the formal rollout, meant the June launch landed on something already battle-tested.'],
               ['Make knowledge visible and it becomes infrastructure.', 'The moment curriculum became searchable and complete, it stopped being a documentation chore and became the thing a director hands new hires on day zero.'],
             ].map(([title, desc]) => (
-              <li class="card">
-                <p class="font-semibold text-navy mb-1">{title}</p>
-                <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
-              </li>
+              <li><strong>{title}</strong> {desc}</li>
             ))}
           </ul>
-        </div>
 
-      </div>
-    </article>
+        </Prose>
+      </article>
+    </Container>
 
-    <!-- CTA -->
-    <section class="py-16 bg-navy text-white">
-      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-5">Curious what a curriculum dashboard could look like for your school?</h2>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="/work" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">More Case Studies</a>
-          <a href="/work-with-me#contact" class="btn-amber">Let's Talk</a>
-        </div>
-      </div>
-    </section>
+    <CtaPanel title="Curious what a curriculum dashboard could look like for your school?">
+      <Fragment slot="actions">
+        <Button href="/work-with-me#contact">Let's Talk</Button>
+        <Button href="/work" variant="secondary" tone="dark">More Case Studies</Button>
+      </Fragment>
+    </CtaPanel>
 
   </main>
   <Footer />

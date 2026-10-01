@@ -24,6 +24,16 @@ const { class: className } = Astro.props;
   .lc-prose > :global(.lc-label + h2) {
     @apply -mt-lc-2;
   }
+  .lc-prose :global(h3) {
+    @apply font-display text-body font-bold [text-wrap:balance];
+  }
+  /* A quote: lead size, a thin Barro rule, who said it underneath. No italics: the brand loads none. */
+  .lc-prose :global(blockquote) {
+    @apply m-0 my-lc-4 flex flex-col gap-lc-3 border-l-2 border-barro pl-lc-5 text-lead text-tierra;
+  }
+  .lc-prose :global(blockquote footer) {
+    @apply text-small text-tierra-suave;
+  }
   .lc-prose :global(strong) {
     @apply font-semibold;
   }
