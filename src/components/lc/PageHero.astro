@@ -1,7 +1,8 @@
 ---
 /**
  * The top of a page: label, title, lead, then any buttons, with the motif on the
- * right edge. Text keeps clear of the motif at every width.
+ * right edge. Text keeps clear of the motif at every width. An `aside` slot (a
+ * photo) sits beside the text on wider screens.
  */
 import Container from './Container.astro';
 import Label from './Label.astro';
@@ -20,11 +21,14 @@ const { clear } = motifGeometry(placement, 'light');
 <section class="relative border-b border-tierra/10" style="container-type:inline-size">
   <Motif placement={placement} scheme="light" />
   <Container class="relative py-lc-8 md:py-lc-9">
-    <div class="flex flex-col gap-lc-5" style={`padding-right:calc(${clear}cqw + 16px)`}>
-      {label && <Label>{label}</Label>}
-      <h1 class="max-w-4xl font-display text-display text-tierra [text-wrap:balance]">{title}</h1>
-      {Astro.slots.has('default') && <div class="max-w-body text-lead text-tierra-suave"><slot /></div>}
-      {Astro.slots.has('actions') && <div class="flex flex-wrap gap-lc-3 pt-lc-2"><slot name="actions" /></div>}
+    <div class="grid items-center gap-lc-7 md:grid-cols-[minmax(0,1fr)_auto]" style={`padding-right:calc(${clear}cqw + 16px)`}>
+      <div class="flex flex-col gap-lc-5">
+        {label && <Label>{label}</Label>}
+        <h1 class="max-w-4xl font-display text-display text-tierra [text-wrap:balance]">{title}</h1>
+        {Astro.slots.has('default') && <div class="max-w-body text-lead text-tierra-suave"><slot /></div>}
+        {Astro.slots.has('actions') && <div class="flex flex-wrap gap-lc-3 pt-lc-2"><slot name="actions" /></div>}
+      </div>
+      {Astro.slots.has('aside') && <slot name="aside" />}
     </div>
   </Container>
 </section>

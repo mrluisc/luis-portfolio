@@ -11,6 +11,8 @@ import Label from '../components/lc/Label.astro';
 import Tag from '../components/lc/Tag.astro';
 import Button from '../components/lc/Button.astro';
 import CtaPanel from '../components/lc/CtaPanel.astro';
+import Timeline from '../components/lc/Timeline.astro';
+import TimelineItem from '../components/lc/TimelineItem.astro';
 import { motifGeometry } from '../components/lc/motif';
 import { facts, range, credit } from '../data/facts';
 
@@ -283,7 +285,7 @@ const { clear } = motifGeometry('content-slide', 'light');
         <SectionHeader label="Experience" title="A Career Built on Every Angle">
           Having held almost every role in a school, I see education as a complete system, and build solutions that work for everyone.
         </SectionHeader>
-        <ol class="flex max-w-3xl flex-col gap-lc-6 border-l border-tierra/20 pl-lc-6">
+        <Timeline class="max-w-3xl">
           {[
             {
               years: `${facts.current.startYear} – Present`,
@@ -328,8 +330,7 @@ const { clear } = motifGeometry('content-slide', 'light');
               notes: 'Founded robotics program and led IT infrastructure',
             },
           ].map(({ years, role, org, badge, notes }) => (
-            <li class="relative flex flex-col gap-lc-1">
-              <span class="absolute -left-[38.5px] top-1.5 h-lc-3 w-lc-3 rounded-full bg-barro ring-4 ring-arena" aria-hidden="true"></span>
+            <TimelineItem>
               <div class="flex flex-wrap items-center gap-lc-3">
                 <Label as="span" tone="suave">{years}</Label>
                 {badge && <Tag variant="status">{badge}</Tag>}
@@ -337,9 +338,9 @@ const { clear } = motifGeometry('content-slide', 'light');
               <h3 class="font-display text-body font-bold text-tierra">{role}</h3>
               <p class="text-small font-semibold text-selva">{org}</p>
               <p class="max-w-body text-small text-tierra-suave">{notes}</p>
-            </li>
+            </TimelineItem>
           ))}
-        </ol>
+        </Timeline>
         <div>
           <Button href="/experience" variant="secondary">Full Journey →</Button>
         </div>

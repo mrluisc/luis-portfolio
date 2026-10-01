@@ -1,0 +1,7 @@
+---
+/** A vertical timeline: a thin line on the left; each TimelineItem puts the brand's dot on it. */
+interface Props { class?: string }
+const { class: className } = Astro.props;
+---
+
+<ol class:list={['flex flex-col gap-lc-6 border-l border-tierra/20 pl-lc-6', className]}><slot /></ol>

@@ -1,0 +1,25 @@
+---
+/** A list with the brand's dot as the bullet, centred on the first line. Pass `items`, or write <li>s inside. */
+interface Props {
+  items?: string[];
+  size?: 'body' | 'small';
+  tone?: 'tierra' | 'suave';
+  class?: string;
+}
+const { items, size = 'small', tone = 'suave', class: className } = Astro.props;
+---
+
+<ul class:list={['lc-dots flex flex-col', size === 'body' ? 'gap-lc-3 text-body' : 'gap-lc-2 text-small', tone === 'suave' ? 'text-tierra-suave' : 'text-tierra', className]}>
+  {items ? items.map((item) => <li>{item}</li>) : <slot />}
+</ul>
+
+<style>
+  .lc-dots :global(li) {
+    @apply relative pl-lc-5;
+  }
+  .lc-dots :global(li)::before {
+    @apply absolute left-0.5 h-lc-2 w-lc-2 rounded-full bg-barro;
+    content: '';
+    top: calc(0.75em - 4px);
+  }
+</style>
