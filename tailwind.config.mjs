@@ -29,6 +29,8 @@ export default {
         },
         navy: '#192248',
       },
+      fontSize: brand.fontSize,
+      maxWidth: brand.maxWidth,
       spacing: brand.spacing,
       borderRadius: brand.borderRadius,
       fontFamily: {

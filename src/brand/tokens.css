@@ -1,4 +1,4 @@
-/* Generated from src/brand/tokens.json by scripts/brand.mjs. Do not edit by hand. */
+/* Generated from src/brand/tokens.json by scripts/brand.mjs. Do not edit by hand. Fingerprint 99e6861a646f. */
 :root {
   --lc-arena: #F2EADB;
   --lc-tierra: #2A211B;
@@ -24,4 +24,22 @@
   --lc-radius-medium: 12px;
   --lc-stripe: 0.625%;  /* of the frame width */
   --lc-period: 1.25%;
+  --lc-type-display-size: clamp(2.25rem, 1.7955rem + 1.9394vw, 3.25rem);
+  --lc-type-display-line: 1.05;
+  --lc-type-display-tracking: -0.01em;
+  --lc-type-title-size: clamp(1.75rem, 1.5227rem + 0.9697vw, 2.25rem);
+  --lc-type-title-line: 1.1;
+  --lc-type-title-tracking: -0.01em;
+  --lc-type-heading-size: clamp(1.3125rem, 1.2273rem + 0.3636vw, 1.5rem);
+  --lc-type-heading-line: 1.2;
+  --lc-type-lead-size: clamp(1.1875rem, 1.1307rem + 0.2424vw, 1.3125rem);
+  --lc-type-lead-line: 1.45;
+  --lc-type-body-size: clamp(1.0625rem, 1.0341rem + 0.1212vw, 1.125rem);
+  --lc-type-body-line: 1.6;
+  --lc-type-body-measure: 66ch;
+  --lc-type-small-size: clamp(0.875rem, 0.8466rem + 0.1212vw, 0.9375rem);
+  --lc-type-small-line: 1.5;
+  --lc-type-label-size: clamp(0.75rem, 0.7216rem + 0.1212vw, 0.8125rem);
+  --lc-type-label-line: 1.2;
+  --lc-type-label-tracking: 0.06em;
 }
