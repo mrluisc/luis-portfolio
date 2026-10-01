@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import Nav from '../components/lc/Nav.astro';
+import Footer from '../components/lc/Footer.astro';
+import Container from '../components/lc/Container.astro';
+import Label from '../components/lc/Label.astro';
 import { facts, rangeProse } from '../data/facts';
 
 // Every number, title, name and date below comes from src/data/facts.ts.
@@ -18,24 +20,27 @@ import { facts, rangeProse } from '../data/facts';
 <Layout
   title="CV"
   description={`Curriculum vitae for ${facts.person.fullName}, ${facts.current.title}.`}
+  brand
 >
   <Nav />
-  <main class="bg-white">
-    <div class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-20 print:py-0">
-      <div class="flex items-center justify-between mb-10 print:hidden">
-        <span class="tag">Curriculum Vitae</span>
+  <main class="py-lc-8 print:py-0">
+    <Container class="max-w-4xl">
+      <div class="mb-lc-5 flex flex-wrap items-center justify-between gap-lc-3 print:hidden">
+        <Label>Curriculum Vitae</Label>
         <button
+          type="button"
           onclick="window.print()"
-          class="btn-secondary text-sm py-2"
+          class="inline-flex items-center rounded-small border border-tierra px-lc-4 py-lc-2 text-small font-semibold text-tierra transition-colors hover:bg-tierra hover:text-arena focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tierra"
         >
           Download / Print PDF
         </button>
       </div>
 
-      <article class="prose prose-slate max-w-none prose-headings:font-semibold prose-headings:text-navy prose-h2:text-lg prose-h2:uppercase prose-h2:tracking-wide prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2 prose-h2:mt-10 prose-a:text-teal">
+      <div class="cv-page rounded-medium border border-tierra/15 bg-blanco px-lc-5 py-lc-7 md:px-lc-8 md:py-lc-8">
+      <article class="cv-doc">
 
-        <h1 class="!mb-1 !text-3xl">{facts.person.fullName}</h1>
-        <p class="!mt-0 text-gray-600">
+        <h1>{facts.person.fullName}</h1>
+        <p class="cv-contact">
           {facts.current.title} · {facts.current.school} ({facts.current.campus}) {facts.current.division},
           from {facts.current.startMonth} {facts.current.startYear}<br />
           <a href={`mailto:${facts.person.email}`}>{facts.person.email}</a> ·
@@ -82,15 +87,15 @@ import { facts, rangeProse } from '../data/facts';
 
         <h2>Experience</h2>
 
-        <p class="!mb-1">
+        <p class="cv-entry">
           <strong>{facts.aisc.school} ({facts.aisc.schoolShort}), India</strong><br />
-          <em>{facts.aisc.title} · {facts.aisc.secondTitle} · {facts.aisc.startMonth} {facts.aisc.startYear} to {facts.aisc.endMonth} {facts.aisc.endYear}</em><br />
-          <span class="text-sm text-gray-500">IB World School, {facts.scale.students} students PK-12, Apple Distinguished School.</span>
+          <span class="cv-role">{facts.aisc.title} · {facts.aisc.secondTitle} · {facts.aisc.startMonth} {facts.aisc.startYear} to {facts.aisc.endMonth} {facts.aisc.endYear}</span><br />
+          <span class="cv-note">IB World School, {facts.scale.students} students PK-12, Apple Distinguished School.</span>
         </p>
         <ul>
           <li>Designed and built the Curriculum Intelligence Dashboard, a web app tracking {facts.curriculum.courses} courses and {facts.curriculum.units} curriculum units across three divisions; deployed to {facts.scale.leaders} school leaders. The underlying curriculum Shared Drive infrastructure was sent by the {facts.people.bevans.title} to {facts.scale.incomingTeachers} incoming teachers as their first onboarding resource.</li>
           <li>Built the Health Office App (Firebase + React) for {facts.scale.students} students: digital check-ins with automated same-day notifications to teachers and secretaries; launched school-wide June 2026.</li>
-          <li>Shipped {facts.scale.tools} additional tools by colleague request, each adopted by name: report-comment generators for Science and French, a DT/trip safety consent-tracking system, a gamified EAL progress tracker, an automated placement engine (SEVAI) assigning {facts.sevai.students} students to service activities, and the Discover India engine placing {facts.discoverIndia.students} students across {facts.discoverIndia.trips} trips, delivered with a {facts.discoverIndia.manualPages} operations manual.</li>
+          <li>Shipped {facts.scale.tools} additional tools by colleague request, each adopted by name: report-comment generators for Science and French, a DT/trip safety consent-tracking system, a gamified EAL progress tracker, an automated placement engine (SEVAI) assigning {facts.sevai.students} students to service activities, and the Discover India engine placing {facts.discoverIndia.students} students across {facts.discoverIndia.trips} trips, delivered with a {facts.discoverIndia.manualPages}-page operations manual.</li>
           <li>Led the migration from Turnitin to Google Originality Reports, saving {facts.misc.turnitinSavings} per year, and set up Google Classrooms for all IB teachers.</li>
           <li>Co-created the HUMAN Framework for ethical AI integration and presented it to {facts.scale.facultyCoached} faculty; ran the "Exploring Tomorrow" AI book club for {facts.scale.bookClubEducators} educators including the Deputy Head and Director.</li>
           <li>Directed the secondary school's year-long UDL implementation: orientation series with an external consultant, a UDL Champions cohort, and monthly cycle meetings.</li>
@@ -100,40 +105,40 @@ import { facts, rangeProse } from '../data/facts';
           <li>Spoke at {facts.conferences.aiscTenure} international conferences: Data in Schools Singapore/GESS (Oct 2024) and Kuala Lumpur (Oct 2025), AIFE Bangkok (Nov 2024, co-facilitated a HUMAN Framework session for 10+ international schools) and Jakarta (Nov 2025, co-presented "HUMAN Framework &amp; LEA Tool"), and DEIX Vientiane (Feb 2025).</li>
         </ul>
 
-        <p class="!mb-1 mt-6">
+        <p class="cv-entry">
           <strong>{facts.goa.org}</strong><br />
-          <em>{facts.goa.title} · {rangeProse(facts.goa).toLowerCase()}</em>
+          <span class="cv-role">{facts.goa.title} · {rangeProse(facts.goa).toLowerCase()}</span>
         </p>
         <ul>
           <li>Teach fully online, asynchronous-first courses to students across member schools worldwide; competency-based grading with narrative feedback.</li>
         </ul>
 
-        <p class="!mb-1 mt-6">
+        <p class="cv-entry">
           <strong>{facts.vis.org}, Laos</strong><br />
-          <em>{facts.vis.title} · {rangeProse(facts.vis)}</em>
+          <span class="cv-role">{facts.vis.title} · {rangeProse(facts.vis)}</span>
         </p>
         <ul>
           <li>Taught MYP Mathematics at an IB World School; built inquiry-based units aligned to IB criteria.</li>
           <li>Designed and taught a grades 6-12 financial literacy curriculum; served on the DEIJ taskforce; presented at AIELOC Hanoi 2024.</li>
         </ul>
 
-        <p class="!mb-1 mt-6">
+        <p class="cv-entry">
           <strong>{facts.isp.org}</strong><br />
-          <em>{rangeProse(facts.isp)}</em>
+          <span class="cv-role">{rangeProse(facts.isp)}</span>
         </p>
         <ul>
           <li>{facts.isp.roleCount} roles across five years: {facts.isp.roleList}.</li>
         </ul>
 
-        <p class="!mb-1 mt-6">
+        <p class="cv-entry">
           <strong>{facts.rabin.org}, {facts.rabin.location}</strong><br />
-          <em>{facts.rabin.title} · {rangeProse(facts.rabin)}</em>
+          <span class="cv-role">{facts.rabin.title} · {rangeProse(facts.rabin)}</span>
         </p>
         <ul>
           <li>Founded the school's robotics program.</li>
         </ul>
 
-        <p class="text-sm text-gray-500 mt-4">
+        <p class="cv-note">
           Earlier: co-founded Konekti, a coding and robotics education startup in Panama, where I found my path into teaching.
         </p>
 
@@ -154,15 +159,70 @@ import { facts, rangeProse } from '../data/facts';
         </ul>
 
       </article>
-    </div>
+      </div>
+    </Container>
   </main>
   <Footer />
 </Layout>
 
 <style>
+  .cv-doc {
+    @apply flex flex-col gap-lc-3 text-small text-tierra;
+  }
+  .cv-doc h1 {
+    @apply font-display text-title text-tierra;
+  }
+  .cv-doc .cv-contact {
+    @apply text-small text-tierra-suave;
+  }
+  /* Section headings: the small label, as Heading 3 in the brand's Docs template, with a hairline above. */
+  .cv-doc h2 {
+    @apply mt-lc-6 border-t border-tierra/15 pt-lc-4 font-mono text-label uppercase text-barro;
+  }
+  .cv-doc .cv-entry {
+    @apply mt-lc-3;
+  }
+  .cv-doc strong {
+    @apply font-semibold;
+  }
+  .cv-doc .cv-role,
+  .cv-doc .cv-note {
+    @apply text-tierra-suave;
+  }
+  .cv-doc a {
+    @apply underline decoration-barro decoration-2 underline-offset-4 hover:text-barro;
+  }
+  .cv-doc ul {
+    @apply m-0 flex list-none flex-col gap-lc-2 p-0;
+  }
+  .cv-doc li {
+    @apply relative pl-lc-5;
+  }
+  .cv-doc li::before {
+    @apply absolute left-0.5 h-lc-2 w-lc-2 rounded-full bg-barro;
+    content: '';
+    top: calc(0.75em - 4px);
+  }
+
+  @page {
+    margin: 18mm 16mm;
+  }
+
   @media print {
+    /* Keep the Barro dots: browsers drop background colours in print unless asked. */
+    .cv-doc li::before {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
     :global(header), :global(footer) {
       display: none !important;
+    }
+    :global(body) {
+      background: var(--lc-blanco);
+    }
+    .cv-page {
+      border: 0;
+      padding: 0;
     }
   }
 </style>
