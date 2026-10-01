@@ -34,6 +34,48 @@ const { class: className } = Astro.props;
   .lc-prose :global(blockquote footer) {
     @apply text-small text-tierra-suave;
   }
+  .lc-prose :global(h4) {
+    @apply font-text text-body font-semibold;
+  }
+  /* No italics in the brand: emphasis is SemiBold, as in the Docs template. */
+  .lc-prose :global(em) {
+    @apply font-semibold not-italic;
+  }
+  .lc-prose :global(ol) {
+    @apply m-0 flex list-decimal flex-col gap-lc-2 pl-lc-6 marker:font-mono marker:text-label marker:text-barro;
+  }
+  .lc-prose :global(ol li),
+  .lc-prose :global(ul ol li) {
+    @apply pl-lc-1;
+  }
+  .lc-prose :global(ol li)::before {
+    content: none;
+  }
+  .lc-prose :global(ul ul),
+  .lc-prose :global(ul ol),
+  .lc-prose :global(ol ul) {
+    @apply mt-lc-2;
+  }
+  /* Images fill the column, but a tall one (a phone screenshot) stops at 720 px high. */
+  .lc-prose :global(img) {
+    @apply h-auto max-h-[720px] w-auto max-w-full rounded-medium border border-tierra/15 bg-blanco;
+  }
+  .lc-prose :global(figure) {
+    @apply m-0 my-lc-2 flex flex-col gap-lc-3;
+  }
+  .lc-prose :global(figcaption) {
+    @apply text-small text-tierra-suave;
+  }
+  .lc-prose :global(hr) {
+    @apply my-lc-4 border-0 border-t border-tierra/15;
+  }
+  /* A video or other embed at 16:9. */
+  .lc-prose :global(.lc-embed) {
+    @apply relative my-lc-2 aspect-video w-full overflow-hidden rounded-medium border border-tierra/15 bg-tierra;
+  }
+  .lc-prose :global(.lc-embed iframe) {
+    @apply absolute inset-0 h-full w-full border-0;
+  }
   .lc-prose :global(strong) {
     @apply font-semibold;
   }
