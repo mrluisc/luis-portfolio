@@ -1,0 +1,27 @@
+/* Generated from src/brand/tokens.json by scripts/brand.mjs. Do not edit by hand. */
+:root {
+  --lc-arena: #F2EADB;
+  --lc-tierra: #2A211B;
+  --lc-tierra-suave: #6B5E53;
+  --lc-selva: #2F4A36;
+  --lc-barro: #A9492A;
+  --lc-barro-claro: #D98B66;
+  --lc-cielo: #DCE3E0;
+  --lc-blanco: #FFFFFF;
+  --lc-font-display: "Encode Sans Expanded", system-ui, sans-serif;
+  --lc-font-text: "Encode Sans", system-ui, sans-serif;
+  --lc-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --lc-space-1: 4px;
+  --lc-space-2: 8px;
+  --lc-space-3: 12px;
+  --lc-space-4: 16px;
+  --lc-space-5: 24px;
+  --lc-space-6: 32px;
+  --lc-space-7: 48px;
+  --lc-space-8: 64px;
+  --lc-space-9: 96px;
+  --lc-radius-small: 6px;
+  --lc-radius-medium: 12px;
+  --lc-stripe: 0.625%;  /* of the frame width */
+  --lc-period: 1.25%;
+}

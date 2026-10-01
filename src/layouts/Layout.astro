@@ -1,4 +1,7 @@
 ---
+import '../brand/tokens.css';
+import { fontsHref } from '../brand/theme.mjs';
+
 export interface Props {
   title: string;
   description?: string;
@@ -38,6 +41,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:title" content={`${title} | Luis Carlos Moreno`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- LC brand fonts, from the tokens -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={fontsHref} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

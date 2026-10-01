@@ -9,3 +9,4 @@
 - [ ] Step 5: blog posts from the 2021 COETAIL articles; first find the ISP Coaching Menu image.
 - [ ] Step 6: LC reviews the Vercel preview; merge to `main` only on his yes.
 - [ ] Later: decide page by page whether content needs rewriting (it dates from July 2026).
+- 2 Oct 2026: step 2 built, waiting for LC. `scripts/brand.mjs` copies the brand's tokens.json to `src/brand/tokens.json` and builds `src/brand/theme.mjs` (Tailwind colours, fonts, spacing `lc-1` to `lc-9`, radius `small`/`medium`, Google Fonts address) and `src/brand/tokens.css` (identical to the brand's own). `npm run build` now runs `check:brand`: fails on hand edits or a stale copy; on Vercel it checks the copy only. Old look kept until step 4; build output differs only by the added variables and font link. Found: `src/styles/global.css` is imported nowhere, so its buttons, cards, tags and DM Sans never reach the live site. Not committed yet.

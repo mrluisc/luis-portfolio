@@ -1,9 +1,14 @@
+import * as brand from './src/brand/theme.mjs';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      // LC brand: generated from tokens.json by `npm run brand:sync`. Never retype a value here.
       colors: {
+        ...brand.colors,
+        // Old look (teal, amber, navy): removed in step 4 when the pages are restyled.
         teal: {
           50:  '#f0fafa',
           100: '#d0f0f1',
@@ -24,7 +29,12 @@ export default {
         },
         navy: '#192248',
       },
+      spacing: brand.spacing,
+      borderRadius: brand.borderRadius,
       fontFamily: {
+        ...brand.fontFamily,
+        // Old look (DM Sans, IBM Plex Mono): removed in step 4. Until then the
+        // old mono wins over the brand's, so nothing on the live pages changes.
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },

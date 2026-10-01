@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "check:facts": "node scripts/check-facts.mjs",
-    "build": "npm run check:facts && astro build",
+    "check:brand": "node scripts/brand.mjs check",
+    "brand:sync": "node scripts/brand.mjs sync",
+    "build": "npm run check:facts && npm run check:brand && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
