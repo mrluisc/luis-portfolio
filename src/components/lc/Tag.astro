@@ -1,10 +1,11 @@
 ---
 /**
- * Tags. topic: Tierra on Cielo, for what a piece is about. status: the brand's dot
- * and a quiet label (Barro dot when live, outline when retired).
+ * Tags. topic: Tierra on Cielo, for what a piece is about. figure: an outline, for a
+ * number or fact about it. status: the brand's dot and a quiet label (Barro dot when
+ * live, outline when retired).
  */
 interface Props {
-  variant?: 'topic' | 'status';
+  variant?: 'topic' | 'figure' | 'status';
   retired?: boolean;
   class?: string;
 }
@@ -13,6 +14,10 @@ const { variant = 'topic', retired = false, class: className } = Astro.props;
 
 {variant === 'topic' ? (
   <span class:list={['inline-flex items-center rounded-small bg-cielo px-lc-2 py-lc-1 font-mono text-label uppercase text-tierra', className]}>
+    <slot />
+  </span>
+) : variant === 'figure' ? (
+  <span class:list={['inline-flex items-center rounded-small border border-tierra/20 px-lc-2 py-lc-1 font-mono text-label uppercase text-tierra-suave', className]}>
     <slot />
   </span>
 ) : (

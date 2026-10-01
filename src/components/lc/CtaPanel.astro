@@ -1,0 +1,17 @@
+---
+/** A closing call to action: a Selva panel with a title, a line of text and buttons (use tone="dark" on them). */
+import Container from './Container.astro';
+
+interface Props { title: string }
+const { title } = Astro.props;
+---
+
+<section class="pt-lc-8">
+  <Container>
+    <div class="flex flex-col gap-lc-5 rounded-medium bg-selva px-lc-5 py-lc-7 text-arena md:px-lc-8 md:py-lc-8">
+      <h2 class="max-w-3xl font-display text-title [text-wrap:balance]">{title}</h2>
+      <div class="max-w-body text-body"><slot /></div>
+      {Astro.slots.has('actions') && <div class="flex flex-wrap gap-lc-3 pt-lc-2"><slot name="actions" /></div>}
+    </div>
+  </Container>
+</section>

@@ -1,7 +1,8 @@
 ---
 /**
  * A card that links somewhere: white page on sand, the brand's medium radius, a hairline
- * that darkens on hover. Label on top, heading, a short text, tags at the foot.
+ * that darkens on hover. Topic tag and label on top, heading, a short text, figures
+ * (numbers about it) at the foot.
  */
 import Label from './Label.astro';
 import Tag from './Tag.astro';
@@ -10,23 +11,29 @@ interface Props {
   href: string;
   title: string;
   label?: string;
+  topic?: string;
   tags?: string[];
   cta?: string;
+  /** Heading level, so the page outline stays right. */
+  level?: 2 | 3;
+  class?: string;
 }
-const { href, title, label, tags = [], cta = 'Read the case study' } = Astro.props;
+const { href, title, label, topic, tags = [], cta = 'Read the case study', level = 3, class: className } = Astro.props;
+const Heading = `h${level}`;
 ---
 
 <a
   href={href}
-  class="group flex h-full flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 transition-colors hover:border-tierra focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tierra md:p-lc-6"
+  class:list={['group flex h-full flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 transition-colors hover:border-tierra focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tierra md:p-lc-6', className]}
 >
+  {topic && <Tag class="w-fit">{topic}</Tag>}
   {label && <Label tone="suave">{label}</Label>}
-  <h3 class="font-display text-heading text-tierra [text-wrap:balance]">{title}</h3>
-  <div class="text-small text-tierra-suave"><slot /></div>
+  <Heading class="font-display text-heading text-tierra [text-wrap:balance]">{title}</Heading>
+  <div class="max-w-body text-small text-tierra-suave"><slot /></div>
   <div class="mt-auto flex flex-col gap-lc-4 pt-lc-2">
     {tags.length > 0 && (
       <div class="flex flex-wrap gap-lc-2">
-        {tags.map((t) => <Tag>{t}</Tag>)}
+        {tags.map((t) => <Tag variant="figure">{t}</Tag>)}
       </div>
     )}
     <span class="text-small font-semibold text-tierra underline decoration-barro decoration-2 underline-offset-[6px] group-hover:text-barro">

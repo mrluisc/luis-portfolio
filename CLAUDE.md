@@ -14,12 +14,12 @@ Branch: `brand-restyle`.
 
 ### Steps (one at a time; show LC, wait for him, then the next)
 1. ✅ Clone and audit (2 Oct). Findings below.
-2. **Wire the site to the brand tokens.** Read colours, fonts, spacing and radius from
+2. ✅ (2 Oct) **Wire the site to the brand tokens.** Read colours, fonts, spacing and radius from
    `~/Developer/brand/tokens/tokens.json` (the one source of truth), never retype a value.
    Likely: a small script that generates the Tailwind theme and a CSS file from tokens.json into
    this repo, run before build, with a check that fails if they drift. Vercel builds only this
    repo, so generated files must be committed here (the brand repo is private and separate).
-3. Design the web pieces the design system lacks: nav, buttons, cards, tags, article layout,
+3. ✅ (2 Oct, LC "all good"; sample at `/sample`, delete before merge) Design the web pieces the design system lacks: nav, buttons, cards, tags, article layout,
    footer. Show them on ONE sample page first. They may later go back into the design system.
 4. Restyle the existing pages.
 5. Blog: add the two 2021 COETAIL articles (see "Source material").
