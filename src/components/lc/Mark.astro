@@ -1,0 +1,55 @@
+---
+/**
+ * The LC mark, drawn from the brand tokens: one path three times (a wide band, a
+ * see-through gap cut out of it, a thin centre line). Below the tokens' minimum
+ * height for the lines it switches to the solid mark, as the brand asks.
+ */
+import tokens from '../../brand/tokens.json';
+
+interface Props {
+  height: number;
+  scheme?: 'light' | 'dark';
+  /** Force the solid mark in one of the brand's solid colours. */
+  solid?: 'tierra' | 'arena' | 'barro';
+  /** Accessible name; leave empty when the mark sits next to the name. */
+  label?: string;
+  class?: string;
+}
+
+const { height, scheme = 'light', solid, label, class: className } = Astro.props;
+const m = tokens.mark;
+const hex = (name: string) => tokens.color[name as keyof typeof tokens.color].$value;
+const [, , w, h] = m.viewBox;
+const width = +((height * w) / h).toFixed(2);
+const s = m.schemes[scheme];
+const isSolid = Boolean(solid) || height < m.minHeight.lines;
+const solidColour = hex(solid ?? s.outer);
+const pad = m.stroke.band;
+const maskId = `lc-gap-${Math.random().toString(36).slice(2, 9)}`;
+const round = { fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } as const;
+---
+
+<svg
+  viewBox={m.viewBox.join(' ')}
+  width={width}
+  height={height}
+  class={className}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  {isSolid ? (
+    <path d={m.path} stroke={solidColour} stroke-width={m.stroke.band} {...round} />
+  ) : (
+    <>
+      <defs>
+        <mask id={maskId} maskUnits="userSpaceOnUse" x={-pad} y={-pad} width={w + 2 * pad} height={h + 2 * pad}>
+          <rect x={-pad} y={-pad} width={w + 2 * pad} height={h + 2 * pad} fill="white" />
+          <path d={m.path} stroke="black" stroke-width={m.stroke.gap} {...round} />
+        </mask>
+      </defs>
+      <path d={m.path} stroke={hex(s.outer)} stroke-width={m.stroke.band} mask={`url(#${maskId})`} {...round} />
+      <path d={m.path} stroke={hex(s.centre)} stroke-width={m.stroke.centre} {...round} />
+    </>
+  )}
+</svg>

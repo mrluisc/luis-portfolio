@@ -1,0 +1,27 @@
+---
+/**
+ * The signature: a field of fine parallel lines on the right edge and the dot whose
+ * centre sits on the field's left edge, with lines running on through it. Every size
+ * is a share of the parent's width, from the tokens, so it keeps its proportions on
+ * a phone and a wide screen. Put it inside a `relative` element; it fills it.
+ */
+import { motifGeometry, type Placement, type Scheme } from './motif';
+
+interface Props {
+  placement?: Placement;
+  scheme?: Scheme;
+}
+
+const { placement = 'content-slide', scheme = 'light' } = Astro.props;
+const g = motifGeometry(placement, scheme);
+---
+
+<div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden" style="container-type:size">
+  <div class="absolute inset-y-0 right-0" style={`width:${g.field}cqw;background:${g.lines}`}></div>
+  <div
+    class="absolute overflow-hidden rounded-full"
+    style={`width:${g.dot}cqw;height:${g.dot}cqw;left:calc(${100 - g.field}cqw - ${g.dot / 2}cqw);top:calc(${g.dotY}cqh - ${g.dot / 2}cqw);background:${g.dotColour}`}
+  >
+    <div class="absolute inset-y-0 left-1/2 right-0" style={`background:${g.inside}`}></div>
+  </div>
+</div>

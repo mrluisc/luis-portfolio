@@ -1,0 +1,36 @@
+---
+/**
+ * A card that links somewhere: white page on sand, the brand's medium radius, a hairline
+ * that darkens on hover. Label on top, heading, a short text, tags at the foot.
+ */
+import Label from './Label.astro';
+import Tag from './Tag.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  label?: string;
+  tags?: string[];
+  cta?: string;
+}
+const { href, title, label, tags = [], cta = 'Read the case study' } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group flex h-full flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 transition-colors hover:border-tierra focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tierra md:p-lc-6"
+>
+  {label && <Label tone="suave">{label}</Label>}
+  <h3 class="font-display text-heading text-tierra [text-wrap:balance]">{title}</h3>
+  <div class="text-small text-tierra-suave"><slot /></div>
+  <div class="mt-auto flex flex-col gap-lc-4 pt-lc-2">
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-lc-2">
+        {tags.map((t) => <Tag>{t}</Tag>)}
+      </div>
+    )}
+    <span class="text-small font-semibold text-tierra underline decoration-barro decoration-2 underline-offset-[6px] group-hover:text-barro">
+      {cta} <span aria-hidden="true">→</span>
+    </span>
+  </div>
+</a>

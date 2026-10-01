@@ -1,0 +1,52 @@
+---
+/**
+ * The site footer, on Selva: the lockup in the dark scheme, the pages, how to reach
+ * Luis Carlos, and the motif in its dark colours on the right edge.
+ */
+import Container from './Container.astro';
+import Lockup from './Lockup.astro';
+import Label from './Label.astro';
+import Motif from './Motif.astro';
+import { motifGeometry } from './motif';
+import { navLinks, contactHref } from '../../data/nav';
+import { facts } from '../../data/facts';
+
+const year = new Date().getFullYear();
+const { clear } = motifGeometry('content-slide', 'dark');
+const link = 'text-arena underline decoration-transparent underline-offset-4 hover:decoration-cielo focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-arena';
+---
+
+<footer class="relative mt-lc-9 bg-selva text-arena" style="container-type:inline-size">
+  <Motif placement="content-slide" scheme="dark" />
+  <Container class="relative py-lc-8">
+    <div class="flex flex-col gap-lc-7" style={`padding-right:calc(${clear}cqw + 16px)`}>
+      <div class="grid gap-lc-7 md:grid-cols-3">
+        <div class="flex flex-col gap-lc-4">
+          <a href="/" class="w-fit" aria-label="Luis Carlos Moreno, home"><Lockup height={40} scheme="dark" /></a>
+          <p class="text-small text-arena">
+            Engineering Solutions. Empowering Educators.<br />
+            Learning Innovation &amp; Technology Coach | AI Integration Specialist
+          </p>
+        </div>
+        <nav class="flex flex-col gap-lc-4" aria-label="Footer">
+          <Label as="h2" tone="cielo">Navigate</Label>
+          <ul class="flex flex-col gap-lc-2 text-small">
+            {navLinks.map(({ href, label }) => <li><a href={href} class={link}>{label}</a></li>)}
+          </ul>
+        </nav>
+        <div class="flex flex-col gap-lc-4">
+          <Label as="h2" tone="cielo">Connect</Label>
+          <ul class="flex flex-col gap-lc-2 text-small">
+            <li><a href={`mailto:${facts.person.email}`} class={link}>{facts.person.email}</a></li>
+            <li><a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener" class={link}>LinkedIn</a></li>
+            <li><a href={contactHref} class={link}>Work With Me</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col gap-lc-2 border-t border-arena/20 pt-lc-5 sm:flex-row sm:justify-between">
+        <Label as="p" tone="cielo">© {year} Luis Carlos Moreno. All rights reserved.</Label>
+        <Label as="p" tone="cielo">Venezuela · International · Remote worldwide</Label>
+      </div>
+    </div>
+  </Container>
+</footer>

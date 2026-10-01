@@ -1,0 +1,33 @@
+---
+/** The top of an article or case study: a way back, the label, title, lead and a byline line. */
+import Container from './Container.astro';
+import Label from './Label.astro';
+import Motif from './Motif.astro';
+import { motifGeometry } from './motif';
+
+interface Props {
+  back?: { href: string; label: string };
+  label?: string;
+  title: string;
+  meta?: string;
+}
+const { back, label, title, meta } = Astro.props;
+const { clear } = motifGeometry('content-slide', 'light');
+---
+
+<header class="relative border-b border-tierra/10" style="container-type:inline-size">
+  <Motif placement="content-slide" scheme="light" />
+  <Container class="relative py-lc-8">
+    <div class="flex max-w-3xl flex-col gap-lc-5" style={`padding-right:calc(${clear}cqw + 16px)`}>
+      {back && (
+        <a href={back.href} class="w-fit text-small text-tierra-suave underline decoration-tierra/30 underline-offset-4 hover:text-tierra hover:decoration-barro">
+          <span aria-hidden="true">←</span> {back.label}
+        </a>
+      )}
+      {label && <Label>{label}</Label>}
+      <h1 class="font-display text-display text-tierra [text-wrap:balance]">{title}</h1>
+      {Astro.slots.has('default') && <div class="max-w-body text-lead text-tierra-suave"><slot /></div>}
+      {meta && <p class="text-small text-tierra-suave">{meta}</p>}
+    </div>
+  </Container>
+</header>

@@ -1,0 +1,24 @@
+---
+/**
+ * Links that look like buttons. primary: Arena on Barro, the one main action on a
+ * screen. secondary: Tierra outline. quiet: text with a Barro underline.
+ */
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'quiet';
+  size?: 'md' | 'sm';
+  class?: string;
+  [attr: string]: unknown;
+}
+const { href, variant = 'primary', size = 'md', class: className, ...rest } = Astro.props;
+const base =
+  'inline-flex items-center justify-center gap-lc-2 font-text font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tierra';
+const box = { md: 'text-body px-lc-5 py-lc-3', sm: 'text-small px-lc-4 py-lc-2' };
+const variants = {
+  primary: `${box[size]} rounded-small bg-barro text-arena hover:bg-tierra`,
+  secondary: `${box[size]} rounded-small border border-tierra text-tierra hover:bg-tierra hover:text-arena`,
+  quiet: `${size === 'md' ? 'text-body' : 'text-small'} text-tierra underline decoration-barro decoration-2 underline-offset-[6px] hover:text-barro`,
+};
+---
+
+<a href={href} class:list={[base, variants[variant], className]} {...rest}><slot /></a>

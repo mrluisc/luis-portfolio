@@ -6,12 +6,18 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  /** Use the LC brand look. Becomes the default when the pages are restyled (step 4). */
+  brand?: boolean;
+  /** Keep the page out of search results. */
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Learning Innovation & Technology Coach | AI Integration Specialist | Co-creator of the HUMAN Framework. Engineering solutions, empowering educators.',
   image = '/images/headshot.jpg',
+  brand = false,
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -23,6 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Primary Meta -->
     <title>{title} | Luis Carlos Moreno</title>
@@ -52,7 +59,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <slot name="head" />
   </head>
-  <body class="bg-white">
+  <body class={brand ? 'bg-arena font-text text-body text-tierra antialiased' : 'bg-white'}>
     <slot />
   </body>
 </html>

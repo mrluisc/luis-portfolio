@@ -1,0 +1,185 @@
+---
+/**
+ * Step 3 of the brand restyle: every new web piece on one page, for Luis Carlos to
+ * review on the preview link. Copy is taken from the Work page and the SEVAI case
+ * study, unchanged. Not linked from anywhere, kept out of search; delete it before
+ * the branch merges.
+ */
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/lc/Nav.astro';
+import Footer from '../components/lc/Footer.astro';
+import Container from '../components/lc/Container.astro';
+import PageHero from '../components/lc/PageHero.astro';
+import ArticleHeader from '../components/lc/ArticleHeader.astro';
+import Button from '../components/lc/Button.astro';
+import Card from '../components/lc/Card.astro';
+import Label from '../components/lc/Label.astro';
+import Mark from '../components/lc/Mark.astro';
+import Prose from '../components/lc/Prose.astro';
+import Stats from '../components/lc/Stats.astro';
+import Tag from '../components/lc/Tag.astro';
+import { facts } from '../data/facts';
+
+const caseStudies = [
+  {
+    href: '/work/discover-india-trip-assignment',
+    label: 'Chapter 1 · Prove it on one hard problem',
+    title: 'Discover India Trip Assignment',
+    desc: `The assignment engine behind ${facts.aisc.schoolShort}'s "Week Without Walls", placing ${facts.discoverIndia.students} incoming Grade 9 students across ${facts.discoverIndia.trips} experiential trips by ranked preference, capacity, and gender balance, with a ${facts.discoverIndia.manualPages}-page operations manual so it never depends on me again.`,
+    tags: [`${facts.discoverIndia.students} students`, `${facts.discoverIndia.trips} trips`, `${facts.discoverIndia.manualPages}-page manual`],
+  },
+  {
+    href: '/work/sevai-assignment-system',
+    label: 'Automation',
+    title: 'SEVAI Assignment System',
+    desc: `A ${facts.sevai.scriptLines} line Apps Script automation that assigns ${facts.sevai.students} students to ${facts.sevai.activities} community-service activities by ranked preference, balanced across grades, replacing ${facts.sevai.hoursSaved} hours of manual work.`,
+    tags: [`${facts.sevai.students} students`, `${facts.sevai.activities} activities`, `${facts.sevai.hoursSaved} hrs saved`],
+  },
+  {
+    href: '/work/student-assignment-systems',
+    label: 'Chapter 2 · Turn the solution into infrastructure',
+    title: 'Student Assignment Systems',
+    desc: `The logistics infrastructure behind experiential learning, assignment engines for SEVAI, Discover India, Discovery Day, and STEAM Week that quietly placed ${facts.assignmentSystems.studentsPlaced} students and saved ${facts.assignmentSystems.hoursSavedPerYear} hours of manual work a year.`,
+    tags: [`${facts.assignmentSystems.studentsPlaced} students placed`, `${facts.assignmentSystems.programs} programs`],
+  },
+];
+
+const note = 'border-y border-dashed border-tierra/30 bg-blanco py-lc-3';
+---
+
+<Layout title="Brand sample" description="Step 3 sample: the LC brand's web pieces." brand noindex>
+  <Nav />
+  <main>
+    <div class={note}>
+      <Container><Label tone="suave">Sample page for Luis Carlos · step 3 · copy from Work and SEVAI, unchanged · not linked from the site</Label></Container>
+    </div>
+
+    <PageHero label="Selected Work" title="Systems That Make Institutional Knowledge Stick">
+      These projects are one story told at increasing scale. It starts with a single high-stakes
+      logistics problem, placing one grade into its signature trips, and ends with the school's
+      entire curriculum becoming searchable infrastructure that a director now hands to new teachers
+      on day zero.
+      <Fragment slot="actions">
+        <Button href="/work-with-me">Work With Me</Button>
+        <Button href="/experience" variant="secondary">Explore My Journey</Button>
+      </Fragment>
+    </PageHero>
+
+    <section class="py-lc-8">
+      <Container class="flex flex-col gap-lc-6">
+        <div class="flex flex-col gap-lc-3">
+          <Label>Case studies</Label>
+          <h2 class="font-display text-title text-tierra">Selected work</h2>
+        </div>
+        <div class="grid gap-lc-5 lg:grid-cols-3">
+          {caseStudies.map((c) => (
+            <Card href={c.href} label={c.label} title={c.title} tags={c.tags}>{c.desc}</Card>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <div class={note}>
+      <Container><Label tone="suave">Below: the article layout, with the opening of the SEVAI case study</Label></Container>
+    </div>
+
+    <ArticleHeader
+      back={{ href: '/work', label: 'Back to all work' }}
+      label="Automation · Google Apps Script"
+      title="SEVAI Assignment System"
+    >
+      An assignment engine for {facts.aisc.schoolShort}'s community-service program that places {facts.sevai.students} students into {facts.sevai.activities}
+      activities by ranked preference and grade balance, turning a multi-day manual scramble into
+      a one-click run.
+    </ArticleHeader>
+
+    <Container class="flex flex-col gap-lc-8 py-lc-8">
+      <Stats
+        items={[
+          { value: facts.sevai.students, label: 'Students assigned' },
+          { value: facts.sevai.activities, label: 'Activities' },
+          { value: facts.sevai.hoursSaved, label: 'Hours saved' },
+          { value: facts.sevai.scriptLines, label: 'Lines of script' },
+        ]}
+      />
+
+      <Prose>
+        <Label>Overview</Label>
+        <h2>What it is</h2>
+        <p>
+          SEVAI is {facts.aisc.schoolShort}'s community-service program. Every cycle, more than 150 students rank their
+          preferred activities, and someone has to place each of them into one of 12 options, while
+          respecting capacity limits and keeping grades balanced. I built a complete Google Apps
+          Script automation that does the entire assignment, sends every notification, and ships with
+          a full documentation package.
+        </p>
+
+        <Label>The Problem</Label>
+        <h2>A hand-built jigsaw, every cycle</h2>
+        <p>
+          Assigning {facts.sevai.students} students to activities by hand is the kind of task that eats a full working
+          week. You're juggling ranked preferences, hard capacity caps per activity, and a fairness
+          constraint, no activity should skew toward a single grade. Do it manually and you get
+          errors, late nights, and a process only one person understands.
+        </p>
+
+        <Label>What I Built</Label>
+        <h2>A preference-and-balance assignment engine</h2>
+        <p>
+          The system is a {facts.sevai.scriptLines} line Apps Script application driven by ranked student preferences, with
+          the logic and safeguards a real operational tool needs:
+        </p>
+        <ul>
+          <li><strong>Grade-balance algorithm.</strong> Targets roughly 33% per grade in each activity so no group is over-concentrated.</li>
+          <li><strong>Capacity management.</strong> Respects hard caps per activity and handles overflow gracefully.</li>
+          <li><strong>Test mode.</strong> Run the full assignment and preview results without sending a single email.</li>
+        </ul>
+        <p>
+          It shipped as a complete handover package, 8 files including the full script and operating
+          documentation, so the program could run without me in the loop. <a href="/work">See all the work</a>.
+        </p>
+      </Prose>
+    </Container>
+
+    <div class={note}>
+      <Container><Label tone="suave">Below: each piece on its own</Label></Container>
+    </div>
+
+    <Container class="grid gap-lc-7 py-lc-8 md:grid-cols-3">
+      <div class="flex flex-col gap-lc-4">
+        <Label>Buttons</Label>
+        <div class="flex flex-wrap items-center gap-lc-3">
+          <Button href="/work-with-me">Work With Me</Button>
+          <Button href="/experience" variant="secondary">Explore My Journey</Button>
+        </div>
+        <div class="flex flex-wrap items-center gap-lc-3">
+          <Button href="/work-with-me#contact" size="sm">Let's Connect</Button>
+          <Button href="/experience" variant="secondary" size="sm">Full Journey</Button>
+          <Button href="/innovations" variant="quiet" size="sm">See All Innovations</Button>
+        </div>
+      </div>
+      <div class="flex flex-col gap-lc-4">
+        <Label>Tags</Label>
+        <div class="flex flex-wrap items-center gap-lc-3">
+          <Tag>Automation</Tag>
+          <Tag>Google Apps Script</Tag>
+        </div>
+        <div class="flex flex-wrap items-center gap-lc-5">
+          <Tag variant="status">Active</Tag>
+          <Tag variant="status" retired>Retired</Tag>
+        </div>
+      </div>
+      <div class="flex flex-col gap-lc-4">
+        <Label>Mark</Label>
+        <div class="flex flex-wrap items-end gap-lc-5">
+          <Mark height={64} label="LC" />
+          <Mark height={36} />
+          <Mark height={24} />
+          <Mark height={48} solid="barro" />
+        </div>
+        <p class="text-small text-tierra-suave">Lines at 64 and 36 px; below 32 px it turns solid, as the brand asks; solid Barro at 48.</p>
+      </div>
+    </Container>
+  </main>
+  <Footer />
+</Layout>
