@@ -6,49 +6,16 @@ export default {
   theme: {
     extend: {
       // LC brand: generated from tokens.json by `npm run brand:sync`. Never retype a value here.
-      colors: {
-        ...brand.colors,
-        // Old look (teal, amber, navy): removed in step 4 when the pages are restyled.
-        teal: {
-          50:  '#f0fafa',
-          100: '#d0f0f1',
-          200: '#a0e2e4',
-          300: '#60cdd0',
-          400: '#14b2b8',
-          500: '#0d7377',
-          600: '#0a5d61',
-          700: '#07474a',
-          800: '#053033',
-          900: '#021a1c',
-          DEFAULT: '#0d7377',
-        },
-        amber: {
-          DEFAULT: '#F4A442',
-          light: '#f9c87a',
-          dark: '#d4851f',
-        },
-        navy: '#192248',
-      },
+      colors: brand.colors,
       fontSize: brand.fontSize,
       maxWidth: brand.maxWidth,
       spacing: brand.spacing,
       borderRadius: brand.borderRadius,
       fontFamily: {
         ...brand.fontFamily,
-        // Old look (DM Sans, IBM Plex Mono): removed in step 4. Until then the
-        // old mono wins over the brand's, so nothing on the live pages changes.
-        sans: ['DM Sans', 'system-ui', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        // Anything that asks for the default sans face gets the brand's text face.
+        sans: brand.fontFamily.text,
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.gray.800'),
-            a: { color: theme('colors.teal.DEFAULT') },
-          },
-        },
-      }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
 };

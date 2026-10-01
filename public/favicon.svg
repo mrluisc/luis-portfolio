@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0d7377"/>
-  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-weight="700" font-size="26">LCM</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><rect width="100" height="100" rx="22" fill="#A9492A"/><svg x="13" y="23.8419" width="74" height="52.316" viewBox="0 0 107.5 76"><path d="M9 9V67H37M98.5 14.62A27 27 0 1 0 98.5 61.38" stroke="#F2EADB" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></svg>

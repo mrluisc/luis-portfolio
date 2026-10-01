@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/lc/Nav.astro';
+import Footer from '../components/lc/Footer.astro';
+import PageHero from '../components/lc/PageHero.astro';
+import Button from '../components/lc/Button.astro';
+---
+
+<Layout title="Page not found" noindex>
+  <Nav />
+  <main>
+    <PageHero label="404" title="Page not found">
+      This page isn't here. It may have moved when the site changed.
+      <Fragment slot="actions">
+        <Button href="/">Go to the home page</Button>
+        <Button href="/blog" variant="secondary">Read the blog</Button>
+      </Fragment>
+    </PageHero>
+  </main>
+  <Footer />
+</Layout>

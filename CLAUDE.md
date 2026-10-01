@@ -21,9 +21,14 @@ Branch: `brand-restyle`.
    repo, so generated files must be committed here (the brand repo is private and separate).
 3. ✅ (2 Oct, LC "all good"; sample at `/sample`, delete before merge) Design the web pieces the design system lacks: nav, buttons, cards, tags, article layout,
    footer. Show them on ONE sample page first. They may later go back into the design system.
-4. Restyle the existing pages.
-5. Blog: add the two 2021 COETAIL articles (see "Source material").
-6. LC reviews a Vercel preview link. Merge only on his yes.
+4. ✅ (2 Oct, night) Restyle the existing pages. All pages use `src/components/lc/`; the old look is gone
+   (old Nav/Footer, `global.css`, teal/amber/navy, DM Sans/IBM Plex, typography plugin); `/sample` deleted;
+   favicon and touch icons copied from the brand by `npm run brand:sync` and guarded by `check:brand`; brand 404.
+5. ✅ (2 Oct, night) Blog: LC asked for ALL the COETAIL posts. 22 recovered (Mar 2020 to May 2021) in
+   `src/content/blog/`, light edit (no dashes, typos and grammar, meaning unchanged), photos of people and links
+   to students' work left out. Details and what was lost: `LOG.md`, 2 Oct night.
+6. **Next:** LC reviews the Vercel preview (`https://luis-portfolio-git-brand-restyle-luis-projects-bf5eb99a.vercel.app`,
+   needs his Vercel login). Merge only on his yes. Open items for him: see "Waiting for LC" below.
 
 ### Audit findings (2 Oct)
 - Pages: index, experience, innovations, cv, work-with-me, work/ (5 AISC case studies), blog/
@@ -54,10 +59,25 @@ Branch: `brand-restyle`.
   https://web.archive.org/web/2023/https://lmoreno.coetail.com/taking-coaching-online/ ; slide
   images in Drive: "Copy - Coaching at ISP.png" and (1), (3), (4), (5), (6); "Coaching Cycles.png".
   Original post credits the slides to "ISP Coaches and Coordinators": keep that credit.
-- **Missing: the 2021 ISP Coaching Menu infographic itself.** Not in the doc's text; may be an
+- **Found 2 Oct:** the Coaching Menu infographic is "Coaching Cycles.png" in Drive's COETAIL folder; it is in the
+  post now. (Kept for history:) **Missing: the 2021 ISP Coaching Menu infographic itself.** Not in the doc's text; may be an
   embedded image in the "Coaching" doc (try exporting it as HTML or PDF) or elsewhere in Drive.
   Do not confuse with "AISC Coaching Menu.pdf" or "Coaching Menus All School 2021- 2022.pdf".
 - Old blog lmoreno.coetail.com is offline; the Wayback Machine holds 10 posts.
+
+## Waiting for LC (from the night of 2 Oct)
+- Review the preview; say yes before anything merges to `main`.
+- Copy Claude drafted in his voice: the blog index intro ("From the archive / My COETAIL Journey, 2020 to 2021"),
+  the post footer note, the 404 page lines. Approve or rewrite.
+- Privacy calls made in the posts (removed links to students' work and recordings, a peers' meeting video,
+  photos of people). Teachers of Knowledge episode links were kept. Confirm.
+- Factual slips left as written: ISTE strand labels in "Let the game begin!" (all "Empowered Learner") and
+  "Standards for Educators" for student standards in the podcast posts.
+- Voice-checker words left as he wrote them in 2020: "demonstrate" (2 posts), "crucial" (1), "exceptional" (1).
+- Content not changed by the restyle: My Journey "Where I Am Now" still shows AISC and GOA, not SAS.
+- Lost COETAIL posts (never archived): My Communities, Migrating Toward Collaboration, The Cycle of
+  Socialization, Make your Frame Work!, and everything before March 2020. Drafts of some may be in Drive's
+  COETAIL folder ("Community", "Week 1: From Lurker to Connector", ...); adding them needs his OK.
 
 ## Rules
 - **Step by step.** One small step, show LC, wait. No long to-do dumps.

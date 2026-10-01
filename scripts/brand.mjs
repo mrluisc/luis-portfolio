@@ -19,11 +19,14 @@
  *                         tokens.css no longer matches the brand's own tokens.css.
  *                         npm run build runs it first.
  *
+ * Sync also copies the brand's icon files (built from the same tokens by the brand's
+ * mark/build_mark.py) into public/, and the check fails if they differ from the brand's.
+ *
  * Never edit the three files in src/brand by hand: change the brand's tokens.json,
  * then sync. Set LC_BRAND_TOKENS to read tokens.json from somewhere else.
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join, dirname, relative } from 'node:path';
 import { homedir } from 'node:os';
@@ -35,6 +38,14 @@ const COPY = join(OUT_DIR, 'tokens.json');
 const SOURCE =
   process.env.LC_BRAND_TOKENS ?? join(homedir(), 'Developer', 'brand', 'tokens', 'tokens.json');
 const SOURCE_CSS = join(dirname(SOURCE), 'tokens.css');
+const BRAND_ROOT = dirname(dirname(SOURCE));
+
+/** Icon files copied as they are from the brand repo: site path -> brand path. */
+const ICONS = {
+  [join(ROOT, 'public', 'favicon.svg')]: join(BRAND_ROOT, 'mark', 'svg', 'lc-icon.svg'),
+  [join(ROOT, 'public', 'favicon-32.png')]: join(BRAND_ROOT, 'mark', 'png', 'lc-icon-32.png'),
+  [join(ROOT, 'public', 'apple-touch-icon.png')]: join(BRAND_ROOT, 'mark', 'png', 'lc-icon-180.png'),
+};
 
 const rel = (p) => relative(ROOT, p);
 const HEADER = 'Generated from src/brand/tokens.json by scripts/brand.mjs. Do not edit by hand.';
@@ -201,9 +212,13 @@ function sync() {
   writeFileSync(COPY, text);
   const tokens = JSON.parse(text);
   for (const [file, build] of Object.entries(OUTPUTS)) writeFileSync(file, withHeader(file, build(tokens)));
+  for (const [site, brand] of Object.entries(ICONS)) {
+    if (existsSync(brand)) copyFileSync(brand, site);
+    else console.warn(`  ! no ${brand}; ${rel(site)} left as it is`);
+  }
   console.log(
     `✓ brand tokens ${before === text ? 'already current' : 'synced'} from ${SOURCE}\n` +
-      `  wrote ${[COPY, ...Object.keys(OUTPUTS)].map(rel).join(', ')}`,
+      `  wrote ${[COPY, ...Object.keys(OUTPUTS), ...Object.keys(ICONS)].map(rel).join(', ')}`,
   );
 }
 
@@ -211,8 +226,13 @@ function check() {
   if (!existsSync(COPY)) fail([`${rel(COPY)} is missing. Run npm run brand:sync.`]);
   const text = readFileSync(COPY, 'utf8');
   const problems = [];
-  for (const file of Object.keys(OUTPUTS)) {
+  for (const file of [...Object.keys(OUTPUTS), ...Object.keys(ICONS)]) {
     if (!existsSync(file)) problems.push(`${rel(file)} is missing. Run npm run brand:sync.`);
+  }
+  for (const [site, brand] of Object.entries(ICONS)) {
+    if (existsSync(site) && existsSync(brand) && !readFileSync(site).equals(readFileSync(brand))) {
+      problems.push(`${rel(site)} differs from the brand's ${rel(brand)}. Run npm run brand:sync.`);
+    }
   }
   const edited = handEdited();
   for (const file of edited) problems.push(`${rel(file)} was edited by hand. Run npm run brand:sync to see.`);

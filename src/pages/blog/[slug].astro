@@ -28,7 +28,7 @@ const { Content } = await post.render();
 const date = longDate(post.data.date);
 ---
 
-<Layout title={post.data.title} description={excerpt(post.body, 155)} brand>
+<Layout title={post.data.title} description={excerpt(post.body, 155)}>
   <Nav />
   <main>
     <ArticleHeader
