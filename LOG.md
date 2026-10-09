@@ -26,3 +26,18 @@
 - 3 Oct 2026: LC: no testimonial quotes until each person has approved. All 14 quotes (13 people) moved word for word into `src/data/testimonials.ts`, each `approved: false`, with its source; Home (About quote, Built on Request quote and tool receipts, What People Say), Curriculum Intelligence (two quotes), Work With Me (testimonials) and CV (two Recognition lines) now show approved quotes only, and a section with none disappears (the anonymous survey lines inside those two sections go with them; the CV keeps its survey line). Checked: no names or quote fragments anywhere in the build; approving one quote brings back its card and receipt. The live site still shows the quotes until LC approves the merge.
 - 4 Oct 2026: wrap-up before LC clears the session. Nothing merged; branch `brand-restyle` is the finished restyle, waiting for LC's yes (CLAUDE.md "Waiting for LC" is current). Saved for next time: home memory (`project_personal_website` rewritten; new `feedback_testimonials_need_approval`, `feedback_republishing_old_writing`, `reference_coetail_archive`, `reference_web_tooling_gotchas`; dated lines in the brand, Thrive, background and brain-backup notes) and this repo's own memory folder (same notes plus `project_restyle_state`). Brand repo: TODO.md marks the website done and adds a maybe (web components back into the design system). Thrive repo: NEXT-SESSION.md points the Apply comment at `mrluisc.com/blog/coaching-a-la-carte` once merged.
 - 5 Oct 2026: no website work. A full day of SAS work ran from this folder (Eagle Portfolio links to 317 students by Word mail merge; Learner Agency Day simulation and brief); all of it is saved, committed and pushed in `~/Developer/sas` (commit `4e2de40`). One rule carried to this site: **never set a person's name in red** (in China a name in red is associated with death; SAS students caught it on 5 Oct). Checked here: names are Tierra or Tierra suave, never Barro, and the LC mark is never drawn in Barro. This repo's memory gained `feedback_no_names_in_red`, `user_lc_profile` and `reference_sas_work_from_here`. Branch `brand-restyle` still waiting for LC's yes; nothing merged.
+
+## 10 Oct 2026: published
+
+- LC wanted his Thrive comment to link to his own copy of "Coaching À la carte", so the restyle went live first.
+- **Found and fixed before publishing:** blog figures were flex columns, so a tall image stretched to the column width
+  under the 720 px cap and came out squashed (the Coaching Menu looked stretched; LC thought the image file was bad).
+  Then figures became plain blocks so a tall image keeps its proportions at any width (`Prose.astro`).
+- **Checked:** build guards (105 facts, brand tokens), 35 pages, no broken links or images; after deploy, all 35 live
+  pages identical to the build; the article checked at 1280, 600 and 520 px. Headless Chrome cannot render below
+  about 500 px, so a 390 px screenshot looks cut off when it is not; true phone checks need Playwright.
+- **Left as they were (already live before):** en dashes in date and number ranges ("2024 – 2026", "20–30 hours")
+  on 9 pages, and the SAS job title on home and CV. LC to decide on the ranges ("2024 to 2026") some day.
+- Still open from "Waiting for LC": testimonials one by one, his approval of the blog intro, post footer and 404 copy,
+  the privacy calls in old posts, and "Where I Am Now" still showing AISC and GOA, not SAS.
+

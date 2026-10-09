@@ -27,7 +27,7 @@ Branch: `brand-restyle`.
 5. ✅ (2 Oct, night) Blog: LC asked for ALL the COETAIL posts. 22 recovered (Mar 2020 to May 2021) in
    `src/content/blog/`, light edit (no dashes, typos and grammar, meaning unchanged), photos of people and links
    to students' work left out. Details and what was lost: `LOG.md`, 2 Oct night.
-6. **Next:** LC reviews the Vercel preview (`https://luis-portfolio-git-brand-restyle-luis-projects-bf5eb99a.vercel.app`,
+6. ✅ **PUBLISHED 10 Oct 2026 (LC: "lets publish them")**, merged to `main`. Was: LC reviews the Vercel preview (`https://luis-portfolio-git-brand-restyle-luis-projects-bf5eb99a.vercel.app`,
    needs his Vercel login). Merge only on his yes. Open items for him: see "Waiting for LC" below.
 
 ### Audit findings (2 Oct)
@@ -65,9 +65,8 @@ Branch: `brand-restyle`.
   Do not confuse with "AISC Coaching Menu.pdf" or "Coaching Menus All School 2021- 2022.pdf".
 - Old blog lmoreno.coetail.com is offline; the Wayback Machine holds 10 posts.
 
-## Waiting for LC (from the night of 2 Oct)
-- Review the preview; say yes before anything merges to `main`. Note: until it merges, the LIVE site still
-  shows the unapproved testimonial quotes.
+## Waiting for LC (from the night of 2 Oct; the site went live 10 Oct with these still open)
+- ✅ Preview reviewed and published 10 Oct. The unapproved testimonial quotes are no longer on the live site.
 - Testimonials: LC will ask people one by one; flip each to approved in `src/data/testimonials.ts` when they say yes.
 - Copy Claude drafted in his voice: the blog index intro ("From the archive / My COETAIL Journey, 2020 to 2021"),
   the post footer note, the 404 page lines. Approve or rewrite.
