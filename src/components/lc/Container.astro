@@ -1,0 +1,7 @@
+---
+/** The page column: up to 1152 px wide, side gutters 16, 32 and 48 px from the brand's scale. */
+interface Props { class?: string; as?: 'div' | 'section' | 'header' | 'footer' | 'nav' }
+const { class: className, as: Tag = 'div' } = Astro.props;
+---
+
+<Tag class:list={['mx-auto w-full max-w-6xl px-lc-4 md:px-lc-6 lg:px-lc-7', className]}><slot /></Tag>

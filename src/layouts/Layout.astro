@@ -1,14 +1,20 @@
 ---
+import '../brand/tokens.css';
+import { fontsHref } from '../brand/theme.mjs';
+
 export interface Props {
   title: string;
   description?: string;
   image?: string;
+  /** Keep the page out of search results. */
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Learning Innovation & Technology Coach | AI Integration Specialist | Co-creator of the HUMAN Framework. Engineering solutions, empowering educators.',
-  image = '/images/headshot.jpg',
+  image = '/images/headshot-main.jpeg',
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -20,6 +26,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Primary Meta -->
     <title>{title} | Luis Carlos Moreno</title>
@@ -39,12 +46,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
+    <!-- LC brand fonts, from the tokens -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={fontsHref} />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <slot name="head" />
   </head>
-  <body class="bg-white">
+  <body class="bg-arena font-text text-body text-tierra antialiased">
     <slot />
   </body>
 </html>

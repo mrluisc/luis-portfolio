@@ -1,0 +1,23 @@
+---
+/**
+ * A row of key numbers: the number in the headline face, a small label under it, an
+ * optional note, a hairline above. Columns match the number of items (up to four).
+ */
+interface Props {
+  items: { value: string | number; label: string; note?: string }[];
+  /** `text` for labels that are whole phrases: plain small text instead of mono capitals. */
+  labels?: 'mono' | 'text';
+}
+const { items, labels = 'mono' } = Astro.props;
+const cols = { 1: 'md:grid-cols-1', 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4' }[Math.min(items.length, 4) as 1 | 2 | 3 | 4];
+---
+
+<dl class:list={['grid gap-x-lc-5 gap-y-lc-6', items.length === 3 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-2', cols]}>
+  {items.map(({ value, label, note }) => (
+    <div class="flex flex-col gap-lc-2 border-t-2 border-tierra pt-lc-3">
+      <dt class:list={['order-2 text-tierra-suave', labels === 'mono' ? 'font-mono text-label uppercase' : 'text-small']}>{label}</dt>
+      <dd class="order-1 font-display text-title text-tierra [font-variant-numeric:tabular-nums]">{value}</dd>
+      {note && <dd class="order-3 text-small text-tierra-suave">{note}</dd>}
+    </div>
+  ))}
+</dl>

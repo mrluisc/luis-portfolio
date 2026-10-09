@@ -1,7 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import Nav from '../components/lc/Nav.astro';
+import Footer from '../components/lc/Footer.astro';
+import Container from '../components/lc/Container.astro';
+import PageHero from '../components/lc/PageHero.astro';
+import SectionHeader from '../components/lc/SectionHeader.astro';
+import Prose from '../components/lc/Prose.astro';
+import Label from '../components/lc/Label.astro';
+import Tag from '../components/lc/Tag.astro';
+import DotList from '../components/lc/DotList.astro';
+import Timeline from '../components/lc/Timeline.astro';
+import TimelineItem from '../components/lc/TimelineItem.astro';
+import Button from '../components/lc/Button.astro';
+import CtaPanel from '../components/lc/CtaPanel.astro';
 import CalendarHeatmap from '../components/CalendarHeatmap.astro';
 import { facts, range } from '../data/facts';
 
@@ -17,62 +28,49 @@ import { facts, range } from '../data/facts';
   <main>
 
     <!-- HERO -->
-    <section class="bg-gradient-to-br from-navy to-teal-900 text-white py-20 md:py-28">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">My Journey</span>
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">From Systems Engineering to Human-Centered Education</h1>
-            <p class="text-gray-300 text-lg leading-relaxed">
-              A decade of building, teaching, coaching, and innovating across {facts.scale.countriesLived} countries and every
-              role a school has to offer, with Venezuela always at the beginning of the story.
-            </p>
-          </div>
-          <div class="flex justify-center md:justify-end">
-            <img
-              src="/images/headshot-5.jpeg"
-              alt="Luis Carlos Moreno"
-              class="w-64 h-64 md:w-72 md:h-72 rounded-2xl object-cover object-top shadow-2xl ring-4 ring-white/10"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+    <PageHero label="My Journey" title="From Systems Engineering to Human-Centered Education">
+      A decade of building, teaching, coaching, and innovating across {facts.scale.countriesLived} countries and every
+      role a school has to offer, with Venezuela always at the beginning of the story.
+      <img
+        slot="aside"
+        src="/images/headshot-5.jpeg"
+        alt="Luis Carlos Moreno"
+        class="aspect-square w-64 rounded-medium object-cover object-top md:w-72"
+      />
+    </PageHero>
 
     <!-- IDENTITY & REPRESENTATION -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="grid md:grid-cols-2 gap-14 items-center">
-          <div>
-            <span class="tag mb-4">Identity & Practice</span>
-            <h2 class="section-title">The Representation I Wished I'd Had</h2>
-            <div class="space-y-4 text-gray-700 leading-relaxed">
-              <p>
-                I grew up in Valle de la Pascua, a small town in the Venezuelan plains, in a family of
-                entrepreneurs and educators. My grandmother founded two schools there and ran her classroom
-                as a small living democracy she called the República Escolar. I was working by age 7,
-                managing my family's restaurant by 11. At 15, I moved to Texas to learn English, with
-                nothing but drive and the certainty that education could open any door.
-              </p>
-              <p>
-                As a queer, Latino, multilingual educator, I strive to be the representation I wished I'd had.
-                My students shouldn't have to search for someone who looks like them, thinks like them,
-                or navigated what they're navigating. I show up with that purpose every day.
-              </p>
-              <p>
-                My DEIJ work isn't separate from my technology work. It is foundational to it. Every
-                tool I build, every framework I design, begins with the question: <em>who does this serve,
-                and who might it leave out?</em>
-              </p>
-              <blockquote class="border-l-4 border-amber pl-4 text-gray-600 italic">
-                "You will not tell me that you accept me. You will not tell me that you tolerate me.
-                That is not your power. I take that from you. You will respect me for who I am."
-                <footer class="mt-2 text-sm font-medium text-gray-500 not-italic">Luis Carlos Moreno, AIELOC Conference Hanoi 2024</footer>
-              </blockquote>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            {[
+    <section class="py-lc-9">
+      <Container class="grid items-start gap-lc-8 md:grid-cols-2">
+        <div class="flex flex-col gap-lc-5">
+          <SectionHeader label="Identity & Practice" title="The Representation I Wished I'd Had" />
+          <Prose>
+            <p>
+              I grew up in Valle de la Pascua, a small town in the Venezuelan plains, in a family of
+              entrepreneurs and educators. My grandmother founded two schools there and ran her classroom
+              as a small living democracy she called the <span lang="es">República Escolar</span>. I was working by age 7,
+              managing my family's restaurant by 11. At 15, I moved to Texas to learn English, with
+              nothing but drive and the certainty that education could open any door.
+            </p>
+            <p>
+              As a queer, Latino, multilingual educator, I strive to be the representation I wished I'd had.
+              My students shouldn't have to search for someone who looks like them, thinks like them,
+              or navigated what they're navigating. I show up with that purpose every day.
+            </p>
+            <p>
+              My DEIJ work isn't separate from my technology work. It is foundational to it. Every
+              tool I build, every framework I design, begins with the question: <strong>who does this serve,
+              and who might it leave out?</strong>
+            </p>
+            <blockquote>
+              <p>"You will not tell me that you accept me. You will not tell me that you tolerate me.
+              That is not your power. I take that from you. You will respect me for who I am."</p>
+              <footer>Luis Carlos Moreno, AIELOC Conference Hanoi 2024</footer>
+            </blockquote>
+          </Prose>
+        </div>
+        <ul class="grid grid-cols-2 gap-lc-3">
+          {[
               { emoji: '🇻🇪', label: 'Venezuelan', sub: 'Valle de la Pascua native' },
               { emoji: '🏳️‍🌈', label: 'Queer Educator', sub: 'DEIJ advocate' },
               { emoji: '🌍', label: `${facts.scale.countriesLived} Countries`, sub: `${facts.scale.countriesVisited} countries visited` },
@@ -80,86 +78,71 @@ import { facts, range } from '../data/facts';
               { emoji: '✍️', label: 'Published Writer', sub: 'Author, songwriter' },
               { emoji: '🗣️', label: 'Multilingual', sub: 'English · Spanish · Portuguese' },
             ].map(({ emoji, label, sub }) => (
-              <div class="card text-center">
-                <div class="text-3xl mb-2">{emoji}</div>
-                <div class="font-semibold text-navy text-sm">{label}</div>
-                <div class="text-gray-500 text-xs mt-0.5">{sub}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            <li class="flex flex-col gap-lc-1 rounded-medium border border-tierra/15 bg-blanco p-lc-4">
+              <span class="text-title leading-none" aria-hidden="true">{emoji}</span>
+              <span class="pt-lc-2 text-small font-semibold text-tierra">{label}</span>
+              <span class="text-small text-tierra-suave">{sub}</span>
+            </li>
+          ))}
+        </ul>
+      </Container>
     </section>
 
     <!-- CURRENT ROLES -->
-    <section class="py-20 md:py-28 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">Current Roles</span>
-          <h2 class="section-title">Where I Am Now</h2>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="card border-l-4 border-teal">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">🎓</div>
-              <div>
-                <span class="tag text-xs mb-1">{range(facts.aisc)}</span>
-                <h3 class="font-bold text-navy text-lg">{facts.aisc.title}</h3>
-                <p class="text-teal font-medium text-sm">{facts.aisc.school} ({facts.aisc.schoolShort}), India</p>
-              </div>
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Current Roles" title="Where I Am Now" />
+        <div class="grid gap-lc-5 md:grid-cols-2">
+          <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+            <div class="flex flex-col gap-lc-2">
+              <Label tone="suave">{range(facts.aisc)}</Label>
+              <h3 class="font-display text-heading text-tierra">{facts.aisc.title}</h3>
+              <p class="text-small font-semibold text-selva">{facts.aisc.school} ({facts.aisc.schoolShort}), India</p>
             </div>
-            <ul class="space-y-2 text-sm text-gray-600">
-              <li class="flex gap-2"><span class="text-teal">→</span> Co-led Apple Distinguished School certification ({facts.misc.appleYears} designation)</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Co-created HUMAN Framework with {facts.people.perezTalavera.name}</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Engineered LEA, analyzed {facts.scale.leaMonths} months of school-wide data</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Coached {facts.scale.facultyCoached} faculty using student-centered model (plan, observe, model, co-teach)</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Built {facts.scale.tools} automation tools, each adopted by name by the colleague who requested it</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Designed digital citizenship curriculum for {facts.scale.digitalCitizenshipStudents} students annually</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Managed Integration Studio: VR, podcasting, multimedia</li>
-              <li class="flex gap-2"><span class="text-teal">→</span> Facilitated parent & community sessions on AI literacy and digital wellbeing</li>
-            </ul>
+            <DotList>
+              <li>Co-led Apple Distinguished School certification ({facts.misc.appleYears} designation)</li>
+              <li>Co-created HUMAN Framework with {facts.people.perezTalavera.name}</li>
+              <li>Engineered LEA, analyzed {facts.scale.leaMonths} months of school-wide data</li>
+              <li>Coached {facts.scale.facultyCoached} faculty using student-centered model (plan, observe, model, co-teach)</li>
+              <li>Built {facts.scale.tools} automation tools, each adopted by name by the colleague who requested it</li>
+              <li>Designed digital citizenship curriculum for {facts.scale.digitalCitizenshipStudents} students annually</li>
+              <li>Managed Integration Studio: VR, podcasting, multimedia</li>
+              <li>Facilitated parent &amp; community sessions on AI literacy and digital wellbeing</li>
+            </DotList>
           </div>
-          <div class="card border-l-4 border-amber">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 bg-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">🌐</div>
-              <div>
-                <span class="tag text-xs mb-1">{range(facts.goa)}</span>
-                <h3 class="font-bold text-navy text-lg">{facts.goa.title}</h3>
-                <p class="text-amber font-medium text-sm">{facts.goa.org} ({facts.goa.orgShort}), Worldwide</p>
-              </div>
+          <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+            <div class="flex flex-col gap-lc-2">
+              <Label tone="suave">{range(facts.goa)}</Label>
+              <h3 class="font-display text-heading text-tierra">{facts.goa.title}</h3>
+              <p class="text-small font-semibold text-selva">{facts.goa.org} ({facts.goa.orgShort}), Worldwide</p>
             </div>
-            <ul class="space-y-2 text-sm text-gray-600">
-              <li class="flex gap-2"><span class="text-amber">→</span> Teaches Game Theory to students from member schools worldwide</li>
-              <li class="flex gap-2"><span class="text-amber">→</span> Teaches Introduction to Artificial Intelligence</li>
-              <li class="flex gap-2"><span class="text-amber">→</span> Creates custom instructional videos and competency-based assessments</li>
-              <li class="flex gap-2"><span class="text-amber">→</span> 95%+ course completion rate</li>
-              <li class="flex gap-2"><span class="text-amber">→</span> Global, asynchronous, project-based learning model</li>
-            </ul>
+            <DotList>
+              <li>Teaches Game Theory to students from member schools worldwide</li>
+              <li>Teaches Introduction to Artificial Intelligence</li>
+              <li>Creates custom instructional videos and competency-based assessments</li>
+              <li>95%+ course completion rate</li>
+              <li>Global, asynchronous, project-based learning model</li>
+            </DotList>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
 
     <!-- AISC CALENDAR DENSITY -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="max-w-5xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-10">
-          <span class="tag mb-4">Two Years, One Calendar</span>
-          <h2 class="section-title">2,514 Calendar Events in Two Years at {facts.aisc.schoolShort}</h2>
-          <p class="section-subtitle mx-auto">The dark squares are the job. Every cell is a day, July 2024 through June 2026.</p>
-        </div>
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Two Years, One Calendar" title={`2,514 Calendar Events in Two Years at ${facts.aisc.schoolShort}`}>
+          The dark squares are the job. Every cell is a day, July 2024 through June 2026.
+        </SectionHeader>
         <CalendarHeatmap />
-      </div>
+      </Container>
     </section>
 
     <!-- SPEAKING -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">Speaking</span>
-          <h2 class="section-title">Conference Presentations</h2>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-6">
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Speaking" title="Conference Presentations" />
+        <div class="grid gap-lc-5 sm:grid-cols-2">
           {[
             {
               year: '2025',
@@ -190,28 +173,25 @@ import { facts, range } from '../data/facts';
               desc: 'Practical workshop on gamifying learning experiences through digital and physical escape rooms to drive student engagement.',
             },
           ].map(({ year, conf, location, title, desc }) => (
-            <div class="card">
-              <div class="flex items-start justify-between mb-3">
-                <span class="tag text-xs">{year}</span>
-                <span class="text-xs text-gray-400 font-medium">{location}</span>
+            <div class="flex flex-col gap-lc-3 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+              <div class="flex flex-wrap items-center justify-between gap-lc-2">
+                <Tag>{year}</Tag>
+                <Label as="span" tone="suave">{location}</Label>
               </div>
-              <p class="text-xs font-semibold text-teal uppercase tracking-wide mb-2">{conf}</p>
-              <h3 class="font-bold text-navy mb-2 leading-snug">"{title}"</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">{desc}</p>
+              <Label>{conf}</Label>
+              <h3 class="font-display text-body font-bold text-tierra">"{title}"</h3>
+              <p class="text-small text-tierra-suave">{desc}</p>
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
 
     <!-- FULL CAREER TIMELINE -->
-    <section class="py-20 md:py-28 bg-gray-50">
-      <div class="max-w-5xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">Career Timeline</span>
-          <h2 class="section-title">Every Role, Every School</h2>
-        </div>
-        <div class="space-y-8">
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Career Timeline" title="Every Role, Every School" />
+        <Timeline class="max-w-3xl">
           {[
             {
               period: '2021 – 2023',
@@ -264,37 +244,28 @@ import { facts, range } from '../data/facts';
               ],
             },
           ].map(({ period, role, org, location, points }) => (
-            <div class="card">
-              <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-                <span class="tag text-xs">{period}</span>
-                <span class="text-xs text-gray-400">{location}</span>
+            <TimelineItem>
+              <div class="flex flex-wrap items-center gap-x-lc-4 gap-y-lc-1">
+                <Label as="span" tone="suave">{period}</Label>
+                <Label as="span" tone="suave">{location}</Label>
               </div>
-              <h3 class="font-semibold text-navy mb-1">{role}</h3>
-              <p class="text-teal font-medium text-sm mb-4">{org}</p>
-              <ul class="space-y-1.5">
-                {points.map(p => (
-                  <li class="flex gap-2 text-sm text-gray-600">
-                    <span class="text-teal mt-0.5 flex-shrink-0">→</span>
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <h3 class="font-display text-body font-bold text-tierra">{role}</h3>
+              <p class="text-small font-semibold text-selva">{org}</p>
+              <DotList items={points} class="pt-lc-2" />
+            </TimelineItem>
           ))}
-        </div>
-      </div>
+        </Timeline>
+      </Container>
     </section>
 
     <!-- CERTIFICATIONS & EDUCATION -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="grid md:grid-cols-2 gap-14">
-          <!-- Certifications -->
-          <div>
-            <span class="tag mb-4">Certifications</span>
-            <h2 class="text-2xl font-bold text-navy mb-8">Professional Credentials</h2>
-            <div class="space-y-3">
-              {[
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="grid gap-lc-8 md:grid-cols-2">
+        <!-- Certifications -->
+        <div class="flex flex-col gap-lc-6">
+          <SectionHeader label="Certifications" title="Professional Credentials" />
+          <ul class="flex flex-col">
+            {[
                 { name: 'COETAIL, Certificate of Educational Technology & Information Literacy', year: '' },
                 { name: 'Google Certified Educator Level 1 & Level 2', year: '' },
                 { name: 'UDL Associate Level 1 Credential', year: '' },
@@ -308,80 +279,70 @@ import { facts, range } from '../data/facts';
                 { name: 'ISS DEIJ Learning to Action Institute', year: '2021–2022' },
                 { name: 'Responsive Classroom for Elementary Educators', year: '2018' },
               ].map(({ name, year }) => (
-                <div class="flex items-start gap-3 py-2.5 border-b border-gray-50 last:border-0">
-                  <div class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-1.5"></div>
-                  <div class="flex-1">
-                    <span class="text-sm text-gray-700">{name}</span>
-                    {year && <span class="text-xs text-gray-400 ml-2">({year})</span>}
-                  </div>
-                </div>
-              ))}
+              <li class="flex flex-wrap items-baseline gap-x-lc-3 gap-y-lc-1 border-b border-tierra/10 py-lc-3 last:border-0">
+                <span class="text-small text-tierra">{name}</span>
+                {year && <Label as="span" tone="suave">({year})</Label>}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="flex flex-col gap-lc-6">
+          <SectionHeader label="Education" title="Academic Background" />
+          <div class="flex flex-col gap-lc-5">
+            <div class="flex flex-col gap-lc-1 border-t border-tierra/15 pt-lc-4">
+              <Label tone="suave">2013 – 2015</Label>
+              <h3 class="font-display text-body font-bold text-tierra">Master's in Education</h3>
+              <p class="text-small text-tierra-suave">Higher Education, Teaching Emphasis</p>
+              <p class="text-small font-semibold text-selva">Universidad Tecnológica de Panamá</p>
+            </div>
+            <div class="flex flex-col gap-lc-1 border-t border-tierra/15 pt-lc-4">
+              <Label tone="suave">2008 – 2012</Label>
+              <h3 class="font-display text-body font-bold text-tierra">Bachelor's in Computer Science &amp; Systems Engineering</h3>
+              <p class="text-small font-semibold text-selva">Universidad Tecnológica de Panamá</p>
+            </div>
+            <div class="flex flex-col gap-lc-1 border-t border-tierra/15 pt-lc-4">
+              <Label tone="suave">2014 – 2015</Label>
+              <h3 class="font-display text-body font-bold text-tierra">Postgraduate Specialization in Higher Education</h3>
+              <p class="text-small font-semibold text-selva">Universidad Tecnológica de Panamá</p>
+            </div>
+            <div class="flex flex-col gap-lc-1 border-t border-tierra/15 pt-lc-4">
+              <Label tone="suave">2015</Label>
+              <h3 class="font-display text-body font-bold text-tierra">Creative Writing Diploma</h3>
+              <p class="text-small font-semibold text-selva">Universidad Tecnológica de Panamá</p>
             </div>
           </div>
 
-          <!-- Education -->
-          <div>
-            <span class="tag mb-4">Education</span>
-            <h2 class="text-2xl font-bold text-navy mb-8">Academic Background</h2>
-            <div class="space-y-6">
-              <div class="card border-l-4 border-teal">
-                <p class="text-xs text-gray-400 mb-1">2013 – 2015</p>
-                <h3 class="font-bold text-navy mb-1">Master's in Education</h3>
-                <p class="text-gray-600 text-sm mb-0.5">Higher Education, Teaching Emphasis</p>
-                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
-              </div>
-              <div class="card border-l-4 border-amber">
-                <p class="text-xs text-gray-400 mb-1">2008 – 2012</p>
-                <h3 class="font-bold text-navy mb-1">Bachelor's in Computer Science & Systems Engineering</h3>
-                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
-              </div>
-              <div class="card border-l-4 border-gray-200">
-                <p class="text-xs text-gray-400 mb-1">2014 – 2015</p>
-                <h3 class="font-bold text-navy mb-1">Postgraduate Specialization in Higher Education</h3>
-                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
-              </div>
-              <div class="card border-l-4 border-gray-200">
-                <p class="text-xs text-gray-400 mb-1">2015</p>
-                <h3 class="font-bold text-navy mb-1">Creative Writing Diploma</h3>
-                <p class="text-teal text-sm font-medium">Universidad Tecnológica de Panamá</p>
-              </div>
-            </div>
-
-            <div class="mt-10">
-              <span class="tag mb-4">Languages</span>
-              <div class="space-y-3 mt-4">
-                {[
+          <div class="flex flex-col gap-lc-4 pt-lc-4">
+            <Label>Languages</Label>
+            {[
                   { lang: 'Spanish', level: 'Native', pct: 100 },
                   { lang: 'English', level: 'Professional fluency', pct: 98 },
                   { lang: 'Portuguese', level: 'Conversational', pct: 55 },
                 ].map(({ lang, level, pct }) => (
-                  <div>
-                    <div class="flex justify-between text-sm mb-1">
-                      <span class="font-medium text-navy">{lang}</span>
-                      <span class="text-gray-500">{level}</span>
-                    </div>
-                    <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div class="h-full bg-teal rounded-full" style={`width: ${pct}%`}></div>
-                    </div>
-                  </div>
-                ))}
+              <div class="flex flex-col gap-lc-2">
+                <div class="flex justify-between text-small">
+                  <span class="font-semibold text-tierra">{lang}</span>
+                  <span class="text-tierra-suave">{level}</span>
+                </div>
+                <div class="h-lc-2 overflow-hidden rounded-full bg-tierra/10">
+                  <div class="h-full rounded-full bg-selva" style={`width: ${pct}%`}></div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
 
     <!-- CTA -->
-    <section class="py-20 bg-navy text-white">
-      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
-        <h2 class="text-3xl font-bold mb-6">Want to know more or explore working together?</h2>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="/work-with-me" class="btn-amber">Work With Me</a>
-          <a href={`mailto:${facts.person.email}`} class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Send an Email</a>
-        </div>
-      </div>
-    </section>
+    <CtaPanel title="Want to know more or explore working together?">
+      <Fragment slot="actions">
+        <Button href="/work-with-me">Work With Me</Button>
+        <Button href={`mailto:${facts.person.email}`} variant="secondary" tone="dark">Send an Email</Button>
+      </Fragment>
+    </CtaPanel>
 
   </main>
   <Footer />

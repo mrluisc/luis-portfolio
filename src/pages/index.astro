@@ -1,39 +1,65 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import { facts, range, credit } from '../data/facts';
+import Nav from '../components/lc/Nav.astro';
+import Footer from '../components/lc/Footer.astro';
+import Container from '../components/lc/Container.astro';
+import Motif from '../components/lc/Motif.astro';
+import SectionHeader from '../components/lc/SectionHeader.astro';
+import Stats from '../components/lc/Stats.astro';
+import Prose from '../components/lc/Prose.astro';
+import Label from '../components/lc/Label.astro';
+import Tag from '../components/lc/Tag.astro';
+import Button from '../components/lc/Button.astro';
+import CtaPanel from '../components/lc/CtaPanel.astro';
+import Timeline from '../components/lc/Timeline.astro';
+import TimelineItem from '../components/lc/TimelineItem.astro';
+import { motifGeometry } from '../components/lc/motif';
+import { approvedQuote } from '../data/testimonials';
+import { facts, range } from '../data/facts';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
 // Do not retype one here - npm run check:facts will fail the build.
+
+const { clear } = motifGeometry('content-slide', 'light');
+
+// Quotes from colleagues appear only once they have approved them (src/data/testimonials.ts).
+const aboutQuote = approvedQuote('keogh-commendation-short');
+const builtQuote = approvedQuote('clinton-introduction');
+const homeTestimonials = [
+  { id: 'keogh-commendation', role: `${facts.people.keogh.title} · unsolicited commendation to the Head of School`, org: facts.aisc.schoolShort },
+  { id: 'bevans-onboarding', role: facts.people.bevans.title, org: `${facts.aisc.schoolShort}, sent while introducing my system to ${facts.scale.incomingTeachers} incoming teachers as their first onboarding resource` },
+  { id: 'wood-tech-summit', role: facts.people.wood.title, org: `${facts.aisc.schoolShort}, on the Grade 8 Tech Investor Summit` },
+  { id: 'hart-consent-system', role: facts.people.hart.title, org: `${facts.aisc.schoolShort}, on the consent-tracking system I built for his department` },
+  { id: 'bull-comment-generator', role: facts.people.bull.title, org: `${facts.aisc.schoolShort}, on the Science report-comment generator` },
+  { id: 'galaty-curriculum', role: facts.people.galaty.title, org: facts.aisc.schoolShort },
+].flatMap((t) => {
+  const q = approvedQuote(t.id);
+  return q ? [{ ...t, quote: q.quote, name: q.name }] : [];
+});
 ---
 
 <Layout title="Home" description={`${facts.aisc.title}, AI Integration Specialist, and Co-creator of the HUMAN Framework. Engineering solutions, empowering educators.`}>
   <Nav />
   <main>
 
-    <!-- ─── HERO ──────────────────────────────────────────────── -->
-    <section class="bg-gradient-to-br from-navy via-teal-900 to-teal text-white py-20 md:py-32 overflow-hidden relative">
-      <div class="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_50%,_#F4A442_0%,_transparent_60%)]"></div>
-      <div class="max-w-6xl mx-auto px-4 md:px-8 relative">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">
-              {facts.current.school} · {facts.current.campus} {facts.current.division} · Available for consulting
-            </span>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              Luis Carlos <span class="text-amber">Moreno</span>
+    <!-- HERO -->
+    <section class="relative border-b border-tierra/10" style="container-type:inline-size">
+      <Motif placement="content-slide" scheme="light" />
+      <Container class="relative py-lc-8 md:py-lc-9">
+        <div class="grid items-center gap-lc-7 md:grid-cols-[minmax(0,1fr)_auto]" style={`padding-right:calc(${clear}cqw + 16px)`}>
+          <div class="flex flex-col gap-lc-5">
+            <Label>{`${facts.current.school} · ${facts.current.campus} ${facts.current.division} · Available for consulting`}</Label>
+            <h1 class="font-display text-display text-tierra">
+              Luis Carlos <span class="text-barro">Moreno</span>
             </h1>
-            <p class="text-teal-200 font-medium text-lg mb-2">
-              {facts.current.title} &nbsp;·&nbsp; {facts.aisc.title}
-            </p>
-            <p class="text-teal-200 font-medium text-base mb-6">
-              Co-creator of the HUMAN Framework &nbsp;·&nbsp; {facts.goa.orgShort} Instructor &nbsp;·&nbsp; Apple Distinguished School co-lead
-            </p>
-            <p class="text-2xl md:text-3xl font-semibold text-amber mb-8 leading-snug">
+            <div class="flex flex-col gap-lc-1 text-small font-semibold text-tierra-suave">
+              <p>{facts.current.title} &nbsp;·&nbsp; {facts.aisc.title}</p>
+              <p>Co-creator of the HUMAN Framework &nbsp;·&nbsp; {facts.goa.orgShort} Instructor &nbsp;·&nbsp; Apple Distinguished School co-lead</p>
+            </div>
+            <p class="font-display text-title text-tierra [text-wrap:balance]">
               I build school systems<br />that outlive their builder.
             </p>
-            <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-lg">
+            <p class="max-w-body text-body text-tierra-suave">
               A Venezuelan-born systems engineer turned international educator, I work at the
               intersection of coaching and code: close enough to pedagogy to know what teachers
               actually need, technical enough to build it myself. At my last school, the systems I
@@ -41,282 +67,242 @@ import { facts, range, credit } from '../data/facts';
               app that tracks {facts.scale.students} students' health check-ins, the engine that places an entire grade
               into its signature trips. All of it still running after I left. That was the point.
             </p>
-            <div class="flex flex-wrap gap-4">
-              <a href="/experience" class="btn-amber">Explore My Journey</a>
-              <a href="/work-with-me" class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">Work With Me</a>
+            <div class="flex flex-wrap gap-lc-3 pt-lc-2">
+              <Button href="/experience">Explore My Journey</Button>
+              <Button href="/work-with-me" variant="secondary">Work With Me</Button>
             </div>
           </div>
-          <div class="flex justify-center md:justify-end">
-            <div class="relative">
-              <div class="absolute -inset-4 bg-amber/20 rounded-3xl blur-xl"></div>
-              <img
-                src="/images/headshot-main.jpeg"
-                alt="Luis Carlos Moreno"
-                class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl object-cover object-top shadow-2xl ring-4 ring-white/10"
-              />
-            </div>
-          </div>
+          <img
+            src="/images/headshot-main.jpeg"
+            alt="Luis Carlos Moreno"
+            class="aspect-square w-64 rounded-medium object-cover object-top md:w-72 lg:w-96"
+          />
         </div>
-      </div>
+      </Container>
     </section>
 
-    <!-- ─── STATS BAR ─────────────────────────────────────────── -->
-    <section class="bg-teal text-white py-8">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { value: facts.scale.incomingTeachers, label: 'New teachers onboarded through my system, before day one' },
-            { value: facts.scale.leaders, label: 'School leaders running curriculum from my dashboard' },
-            { value: facts.scale.students, label: 'Students covered by school-wide systems' },
-            { value: facts.scale.tools, label: 'Tools shipped by request, adopted by name' },
-          ].map(({ value, label }) => (
-            <div>
-              <div class="text-3xl font-bold text-amber">{value}</div>
-              <div class="text-sm text-teal-100 mt-1">{label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <!-- KEY NUMBERS -->
+    <Container class="pt-lc-8">
+      <Stats
+        labels="text"
+        items={[
+          { value: facts.scale.incomingTeachers, label: 'New teachers onboarded through my system, before day one' },
+          { value: facts.scale.leaders, label: 'School leaders running curriculum from my dashboard' },
+          { value: facts.scale.students, label: 'Students covered by school-wide systems' },
+          { value: facts.scale.tools, label: 'Tools shipped by request, adopted by name' },
+        ]}
+      />
+    </Container>
 
-    <!-- ─── ABOUT ──────────────────────────────────────────────── -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="grid md:grid-cols-2 gap-14 items-center">
-          <div>
-            <span class="tag mb-4">About Me</span>
-            <h2 class="section-title">I Build Systems That Make Institutional Knowledge Stick</h2>
-            <div class="space-y-4 text-gray-700 leading-relaxed">
-              <p>
-                ¡Hola, hola! I'm Luis Carlos, a Venezuelan-born systems engineer who became an educator.
-                It runs in the family: my grandmother founded two schools in Valle de la Pascua, the small
-                town where I grew up, and I am the third generation to make teaching my work. I left for
-                Texas at 15 to learn English, and have since lived and worked across {facts.scale.countriesLived} countries on
-                three continents.
-              </p>
-              <p>
-                At the {facts.aisc.school}, an IB World School of {facts.scale.students} students, I was
-                the <strong>{facts.aisc.title} and {facts.aisc.secondTitle}</strong>.
-                I co-led the school's Apple Distinguished School certification, co-created its framework for
-                ethical AI use, and coached {facts.scale.facultyCoached} faculty. I started my career in the classroom teaching MYP
-                Mathematics, and that path is exactly the point: I work at the intersection of coaching and
-                engineering, translating what teachers actually need into tools they actually adopt.
-              </p>
-              <p>
-                Here's the test I hold my own work to: <strong>does it keep running after I leave the
-                room?</strong> The curriculum dashboard I built is how {facts.scale.leaders} {facts.aisc.schoolShort} leaders see their program,
-                and in May 2026, the school's director sent the curriculum infrastructure behind it to {facts.scale.incomingTeachers}
-                incoming teachers as the very first onboarding resource they received, before they'd even
-                arrived in Chennai. The
-                trip-assignment engine shipped with a {facts.discoverIndia.manualPages} operations manual so the program runs
-                identically without me. That's what I mean by making institutional knowledge stick: not
-                tools, infrastructure.
-              </p>
-              <p>
-                As of <strong>{facts.current.startMonth} {facts.current.startYear} I'm bringing that playbook to {facts.current.school} ({facts.current.schoolShort} {facts.current.campus},
-                {facts.current.division})</strong> as {facts.current.title}. Same belief, new campus: technology serves
-                people, not the other way around. And one more thing every move has taught me: leaving
-                your comfort zone gets easier the more you do it.
-              </p>
-              <p class="italic text-teal font-medium border-l-4 border-teal pl-4">
-                "His support has significantly reduced stress for many of us and has made a complicated
-                process much smoother." {facts.people.keogh.name}, in a commendation to the Head of School
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-3 mt-6 text-sm text-gray-600">
-              <span class="bg-gray-100 rounded-full px-3 py-1">Venezuelan</span>
-              <span class="bg-gray-100 rounded-full px-3 py-1">Queer Educator</span>
-              <span class="bg-gray-100 rounded-full px-3 py-1">{facts.scale.countriesLived} Countries</span>
-              <span class="bg-gray-100 rounded-full px-3 py-1">EN · ES · PT</span>
-            </div>
-          </div>
-          <div class="relative">
-            <img
-              src="/images/headshot-2.jpeg"
-              alt="Luis Carlos Moreno presenting"
-              class="rounded-2xl shadow-lg w-full object-cover max-h-[480px]"
-            />
-            <div class="absolute -bottom-4 -right-4 bg-amber text-white rounded-xl px-5 py-3 shadow-lg text-sm font-semibold">
-              {facts.scale.countriesVisited} countries visited
-            </div>
+    <!-- ABOUT -->
+    <section class="py-lc-9">
+      <Container class="grid items-start gap-lc-8 md:grid-cols-2">
+        <div class="flex flex-col gap-lc-5">
+          <SectionHeader label="About Me" title="I Build Systems That Make Institutional Knowledge Stick" />
+          <Prose>
+            <p>
+              <span lang="es" class="text-barro">¡Hola, hola!</span> I'm Luis Carlos, a Venezuelan-born systems engineer who became an educator.
+              It runs in the family: my grandmother founded two schools in Valle de la Pascua, the small
+              town where I grew up, and I am the third generation to make teaching my work. I left for
+              Texas at 15 to learn English, and have since lived and worked across {facts.scale.countriesLived} countries on
+              three continents.
+            </p>
+            <p>
+              At the {facts.aisc.school}, an IB World School of {facts.scale.students} students, I was
+              the <strong>{facts.aisc.title} and {facts.aisc.secondTitle}</strong>.
+              I co-led the school's Apple Distinguished School certification, co-created its framework for
+              ethical AI use, and coached {facts.scale.facultyCoached} faculty. I started my career in the classroom teaching MYP
+              Mathematics, and that path is exactly the point: I work at the intersection of coaching and
+              engineering, translating what teachers actually need into tools they actually adopt.
+            </p>
+            <p>
+              Here's the test I hold my own work to: <strong>does it keep running after I leave the
+              room?</strong> The curriculum dashboard I built is how {facts.scale.leaders} {facts.aisc.schoolShort} leaders see their program,
+              and in May 2026, the school's director sent the curriculum infrastructure behind it to {facts.scale.incomingTeachers}
+              incoming teachers as the very first onboarding resource they received, before they'd even
+              arrived in Chennai. The
+              trip-assignment engine shipped with a {facts.discoverIndia.manualPages}-page operations manual so the program runs
+              identically without me. That's what I mean by making institutional knowledge stick: not
+              tools, infrastructure.
+            </p>
+            <p>
+              As of <strong>{facts.current.startMonth} {facts.current.startYear} I'm bringing that playbook to {facts.current.school} ({facts.current.schoolShort} {facts.current.campus},
+              {facts.current.division})</strong> as {facts.current.title}. Same belief, new campus: technology serves
+              people, not the other way around. And one more thing every move has taught me: leaving
+              your comfort zone gets easier the more you do it.
+            </p>
+            {aboutQuote && (
+              <blockquote>
+                <p>"{aboutQuote.quote}"</p>
+                <footer>{aboutQuote.name}, in a commendation to the Head of School</footer>
+              </blockquote>
+            )}
+          </Prose>
+          <div class="flex flex-wrap gap-lc-2">
+            <Tag>Venezuelan</Tag>
+            <Tag>Queer Educator</Tag>
+            <Tag>{facts.scale.countriesLived} Countries</Tag>
+            <Tag>EN · ES · PT</Tag>
           </div>
         </div>
-      </div>
+        <div class="relative md:sticky md:top-lc-9">
+          <img
+            src="/images/headshot-2.jpeg"
+            alt="Luis Carlos Moreno presenting"
+            class="max-h-[480px] w-full rounded-medium object-cover"
+          />
+          <span class="absolute bottom-lc-4 right-lc-4 rounded-small bg-barro px-lc-3 py-lc-2 font-mono text-label uppercase text-arena">
+            {facts.scale.countriesVisited} countries visited
+          </span>
+        </div>
+      </Container>
     </section>
 
-    <!-- ─── SIGNATURE INNOVATIONS ─────────────────────────────── -->
-    <section class="py-20 md:py-28 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">Signature Innovations</span>
-          <h2 class="section-title">Tools &amp; Frameworks That Transform Education</h2>
-          <p class="section-subtitle mx-auto">
-            From ethical AI integration guidelines to data-driven lesson analysis: built for real classrooms, real teachers, real impact.
-          </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8">
+    <!-- SIGNATURE INNOVATIONS -->
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Signature Innovations" title="Tools & Frameworks That Transform Education">
+          From ethical AI integration guidelines to data-driven lesson analysis: built for real classrooms, real teachers, real impact.
+        </SectionHeader>
+        <div class="grid gap-lc-5 md:grid-cols-2">
 
           <!-- HUMAN Framework -->
-          <div class="card group hover:border-teal-200">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
-                <svg class="w-6 h-6 text-teal group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
+          <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+            <div class="flex flex-wrap items-start justify-between gap-lc-3">
+              <div class="flex flex-col gap-lc-2">
+                <Label tone="suave">Co-created with {facts.people.perezTalavera.name}</Label>
+                <h3 class="font-display text-heading text-tierra">The HUMAN Framework</h3>
               </div>
-              <div>
-                <span class="text-xs font-semibold uppercase tracking-wider text-teal">Co-created with {facts.people.perezTalavera.name}</span>
-                <h3 class="text-xl font-bold text-navy mt-0.5">The HUMAN Framework</h3>
-              </div>
-              <div class="ml-auto flex items-center gap-1.5 flex-shrink-0">
-                <span class="status-dot"></span>
-                <span class="status-label">Operational</span>
-              </div>
+              <Tag variant="status">Operational</Tag>
             </div>
-            <p class="text-gray-600 mb-5 leading-relaxed">
+            <p class="text-body text-tierra-suave">
               School-wide guidelines for ethical, human-centered AI integration in education. Five levels
               from pure human thinking to AI-created elements, give teachers a clear, flexible map
               for responsible AI use that preserves learning and maintains integrity.
             </p>
-            <img src="/images/human-framework.png" alt="HUMAN Framework diagram" class="w-full rounded-xl mb-5 border border-gray-100" />
-            <div class="flex flex-wrap gap-2 text-xs mb-5">
+            <img src="/images/human-framework.png" alt="HUMAN Framework diagram" class="w-full rounded-small border border-tierra/15" />
+            <div class="flex flex-wrap gap-lc-2">
               {['Preserving Learning', 'Maintaining Integrity', 'AIFE Jakarta', 'Data in Schools KL'].map(t => (
-                <span class="bg-teal-50 text-teal rounded-full px-3 py-1 font-medium">{t}</span>
+                <Tag>{t}</Tag>
               ))}
             </div>
-            <a href="/innovations#human-framework" class="btn-secondary text-sm py-2">
+            <Button href="/innovations#human-framework" variant="secondary" size="sm" class="mt-auto w-fit">
               Learn More →
-            </a>
+            </Button>
           </div>
 
           <!-- LEA -->
-          <div class="card group hover:border-amber/30">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 bg-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-amber group-hover:text-white transition-colors">
-                <svg class="w-6 h-6 text-amber group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                </svg>
+          <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+            <div class="flex flex-wrap items-start justify-between gap-lc-3">
+              <div class="flex flex-col gap-lc-2">
+                <Label tone="suave">AI-Powered Tool</Label>
+                <h3 class="font-display text-heading text-tierra">Learning Experience Analyzer (LEA)</h3>
               </div>
-              <div>
-                <span class="text-xs font-semibold uppercase tracking-wider text-amber">AI-Powered Tool</span>
-                <h3 class="text-xl font-bold text-navy mt-0.5">Learning Experience Analyzer (LEA)</h3>
-              </div>
-              <div class="ml-auto flex items-center gap-1.5 flex-shrink-0">
-                <span class="status-dot"></span>
-                <span class="status-label">Operational</span>
-              </div>
+              <Tag variant="status">Operational</Tag>
             </div>
-            <p class="text-gray-600 mb-5 leading-relaxed">
+            <p class="text-body text-tierra-suave">
               Teachers paste a learning activity and LEA instantly analyzes it against UbD, UDL, Bloom's
               Taxonomy, the HUMAN Framework, and school-specific mission &amp; values, generating
               actionable improvement recommendations in seconds.
             </p>
-            <img src="/images/lea-web.jpeg" alt="LEA tool interface" class="w-full rounded-xl mb-5 border border-gray-100" />
-            <div class="grid grid-cols-3 gap-3 text-center mb-5">
+            <img src="/images/lea-web.jpeg" alt="LEA tool interface" class="w-full rounded-small border border-tierra/15" />
+            <dl class="grid grid-cols-3 gap-lc-3">
               {[
                 { who: 'Students', what: 'Better-designed learning experiences' },
                 { who: 'Teachers', what: 'Streamlined planning, less cognitive load' },
                 { who: 'Leadership', what: 'Data for strategic decisions' },
               ].map(({ who, what }) => (
-                <div class="bg-gray-50 rounded-xl p-3">
-                  <div class="font-semibold text-navy text-sm">{who}</div>
-                  <div class="text-xs text-gray-500 mt-1 leading-snug">{what}</div>
+                <div class="flex flex-col gap-lc-1 border-t border-tierra/15 pt-lc-2">
+                  <dt class="text-small font-semibold text-tierra">{who}</dt>
+                  <dd class="text-small text-tierra-suave">{what}</dd>
                 </div>
               ))}
-            </div>
-            <a href="/innovations#lea" class="btn-secondary text-sm py-2">
+            </dl>
+            <Button href="/innovations#lea" variant="secondary" size="sm" class="mt-auto w-fit">
               Learn More →
-            </a>
+            </Button>
           </div>
 
         </div>
-        <div class="text-center mt-10">
-          <a href="/innovations" class="btn-primary">See All Innovations</a>
+        <div>
+          <Button href="/innovations">See All Innovations</Button>
         </div>
-      </div>
+      </Container>
     </section>
 
-    <!-- ─── BUILT ON REQUEST ──────────────────────────────────── -->
-    <section class="py-20 md:py-28 bg-navy text-white">
-      <div class="max-w-4xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-10">
-          <span class="tag bg-white/10 text-white border border-white/20 mb-4 inline-block">Built on Request</span>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">The Case Studies Are Five. The Requests Never Stopped.</h2>
-          <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-            Case studies get the spotlight. Most of what I built at {facts.aisc.schoolShort} started smaller: a colleague
-            mentioned a headache, and a few days later there was a tool. More than twenty of these are in
-            the record by name, each one adopted by the person who asked for it. This is the part of the
-            job I care about most. Not the flagship launch. The Tuesday request.
-          </p>
-        </div>
+    <!-- BUILT ON REQUEST -->
+    <section class="bg-selva py-lc-9 text-arena">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader tone="dark" label="Built on Request" title="The Case Studies Are Five. The Requests Never Stopped.">
+          Case studies get the spotlight. Most of what I built at {facts.aisc.schoolShort} started smaller: a colleague
+          mentioned a headache, and a few days later there was a tool. More than twenty of these are in
+          the record by name, each one adopted by the person who asked for it. This is the part of the
+          job I care about most. Not the flagship launch. The Tuesday request.
+        </SectionHeader>
 
-        <blockquote class="border-l-4 border-amber pl-6 py-2 mb-12 max-w-2xl mx-auto">
-          <p class="text-xl text-amber font-medium italic leading-snug">
-            "Luis Carlos Moreno is our Technology and Innovation Coach, making amazing tools to improve
-            teachers' lives, among his many other activities."
-          </p>
-          <p class="text-sm text-gray-400 mt-3">
-            {credit(facts.people.clinton)}, introducing me to an outside AI consultant
-          </p>
-        </blockquote>
+        {builtQuote && (
+          <blockquote class="flex max-w-3xl flex-col gap-lc-3 border-l-2 border-barro-claro pl-lc-5">
+            <p class="text-lead text-arena">"{builtQuote.quote}"</p>
+            <p class="text-small text-cielo">{builtQuote.credit}, introducing me to an outside AI consultant</p>
+          </blockquote>
+        )}
 
-        <div class="space-y-1 font-mono text-sm">
+        <div class="max-w-4xl border-t border-arena/20">
           {[
-            { date: '2025-09', name: 'DT & Trip Safety Consent System', dept: 'MS Design Technology', desc: 'Digital consent forms with a signature-tracking dashboard, used daily by the department.', receipt: '"It has made a massive difference in our department."', who: credit(facts.people.hart) },
-            { date: '2025-09', name: 'Science Report Comment Generator', dept: 'MS Science', desc: 'AI-assisted comment drafting with a walkthrough video, built for the whole team.', receipt: '"This spreadsheet is incredible, and the video is so concise and clear."', who: credit(facts.people.bull) },
-            { date: '2025', name: 'French Report Comment Generator', dept: 'World Language', desc: 'Same pattern, second subject, adapted to the department\'s rubrics.', receipt: null, who: null },
-            { date: '2025-12', name: 'EAL Progress Tracker', dept: 'EAL Department', desc: 'Gamified student-progress tool with linked reflection forms.', receipt: '"\'Game-like\' features... Impressive!"', who: credit(facts.people.brigham) },
-            { date: '2025', name: 'MS Report Card Comment System v4.0', dept: 'All MS Teachers', desc: '1,914 comments managed per cycle, AI comment banks, one-click export to PowerTeacher Pro.', receipt: null, who: null },
-            { date: '2025-10', name: 'Math Shark Tank Analysis Report', dept: 'Curriculum Leadership', desc: 'A data tool for curriculum-goal alignment, shared with schools abroad.', receipt: '"LC, this is SO cool... Amazing work!"', who: credit(facts.people.martin) },
-            { date: '2024-09', name: 'Meeting Notes Auto-Transcriber', dept: 'ES Leadership', desc: 'Automated transcription and notes for leadership meetings.', receipt: '"This is amazing. I want to learn how to do this."', who: credit(facts.people.schneider) },
-            { date: '2025', name: 'Innovation Bot', dept: 'Innovation in T&L Council', desc: 'A scoped AI assistant that helped faculty refine their innovation pitches.', receipt: null, who: null },
-            { date: '2025-02', name: 'AI Book Club Companion Site', dept: `${facts.scale.bookClubEducators} Educators`, desc: 'Session resources and discussion hub for "Exploring Tomorrow."', receipt: null, who: null },
-            { date: '2024', name: 'Learning Experience Analyzer (LEA)', dept: 'School-wide', desc: 'Multi-framework lesson analysis; the tool that grew into a data system.', receipt: null, who: null },
-          ].map(({ date, name, dept, desc, receipt, who }) => (
-            <details class="group border-b border-white/10">
-              <summary class="flex items-center gap-4 py-3 cursor-pointer list-none hover:text-amber transition-colors">
-                <span class="status-dot flex-shrink-0"></span>
-                <span class="text-gray-400 w-20 flex-shrink-0">{date}</span>
-                <span class="font-semibold flex-1">{name}</span>
-                <span class="text-gray-400 text-xs hidden md:inline">{dept}</span>
-                <span class="text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0">▾</span>
+            { date: '2025-09', name: 'DT & Trip Safety Consent System', dept: 'MS Design Technology', desc: 'Digital consent forms with a signature-tracking dashboard, used daily by the department.', quoteId: 'hart-consent-system' },
+            { date: '2025-09', name: 'Science Report Comment Generator', dept: 'MS Science', desc: 'AI-assisted comment drafting with a walkthrough video, built for the whole team.', quoteId: 'bull-comment-generator' },
+            { date: '2025', name: 'French Report Comment Generator', dept: 'World Language', desc: 'Same pattern, second subject, adapted to the department\'s rubrics.', quoteId: null },
+            { date: '2025-12', name: 'EAL Progress Tracker', dept: 'EAL Department', desc: 'Gamified student-progress tool with linked reflection forms.', quoteId: 'brigham-eal-tracker' },
+            { date: '2025', name: 'MS Report Card Comment System v4.0', dept: 'All MS Teachers', desc: '1,914 comments managed per cycle, AI comment banks, one-click export to PowerTeacher Pro.', quoteId: null },
+            { date: '2025-10', name: 'Math Shark Tank Analysis Report', dept: 'Curriculum Leadership', desc: 'A data tool for curriculum-goal alignment, shared with schools abroad.', quoteId: 'martin-shark-tank' },
+            { date: '2024-09', name: 'Meeting Notes Auto-Transcriber', dept: 'ES Leadership', desc: 'Automated transcription and notes for leadership meetings.', quoteId: 'schneider-transcriber' },
+            { date: '2025', name: 'Innovation Bot', dept: 'Innovation in T&L Council', desc: 'A scoped AI assistant that helped faculty refine their innovation pitches.', quoteId: null },
+            { date: '2025-02', name: 'AI Book Club Companion Site', dept: `${facts.scale.bookClubEducators} Educators`, desc: 'Session resources and discussion hub for "Exploring Tomorrow."', quoteId: null },
+            { date: '2024', name: 'Learning Experience Analyzer (LEA)', dept: 'School-wide', desc: 'Multi-framework lesson analysis; the tool that grew into a data system.', quoteId: null },
+          ].map(({ date, name, dept, desc, quoteId }) => {
+            const receipt = quoteId ? approvedQuote(quoteId) : undefined;
+            return (
+            <details class="group border-b border-arena/20">
+              <summary class="flex cursor-pointer list-none items-center gap-lc-4 py-lc-3 hover:text-cielo focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-arena [&::-webkit-details-marker]:hidden">
+                <span class="h-lc-2 w-lc-2 shrink-0 rounded-full bg-barro" aria-hidden="true"></span>
+                <span class="w-20 shrink-0 font-mono text-label uppercase text-cielo">{date}</span>
+                <span class="flex-1 text-body font-semibold">{name}</span>
+                <span class="hidden font-mono text-label uppercase text-cielo md:inline">{dept}</span>
+                <span class="shrink-0 text-cielo transition-transform group-open:rotate-180" aria-hidden="true">▾</span>
               </summary>
-              <div class="pb-4 pl-10 pr-4 text-gray-300 font-sans">
-                <p class="mb-2">{desc}</p>
+              <div class="flex flex-col gap-lc-3 pb-lc-4 pl-lc-8 pr-lc-4">
+                <p class="max-w-body text-body">{desc}</p>
                 {receipt && (
-                  <p class="border-l-2 border-amber/50 pl-3 italic text-amber-light text-sm">
-                    {receipt}<span class="block not-italic text-gray-400 mt-1">{who}</span>
+                  <p class="flex max-w-body flex-col gap-lc-1 border-l-2 border-barro-claro pl-lc-3 text-body">
+                    "{receipt.quote}"<span class="block text-small text-cielo">{receipt.credit}</span>
                   </p>
                 )}
               </div>
             </details>
-          ))}
-          <div class="flex items-center gap-4 py-3 text-gray-500">
-            <span class="status-dot-retired flex-shrink-0"></span>
-            <span class="w-20 flex-shrink-0">2026-…</span>
-            <span class="flex-1">your school's tool</span>
-            <a href="/work-with-me" class="text-amber hover:underline text-xs">get in touch →</a>
+            );
+          })}
+          <div class="flex items-center gap-lc-4 py-lc-3 text-cielo">
+            <span class="h-lc-2 w-lc-2 shrink-0 rounded-full border border-cielo" aria-hidden="true"></span>
+            <span class="w-20 shrink-0 font-mono text-label uppercase">2026-…</span>
+            <span class="flex-1 text-body">your school's tool</span>
+            <a href="/work-with-me" class="text-small text-arena underline decoration-barro-claro decoration-2 underline-offset-4 hover:text-cielo">get in touch →</a>
           </div>
         </div>
 
-        <p class="text-center text-gray-400 text-sm mt-10 max-w-xl mx-auto">
+        <p class="max-w-body text-small text-cielo">
           Every entry above was requested by a colleague and adopted by name. When a number is on this
           site, there is an email behind it. And the list is an undercount: the record keeps surfacing more.
         </p>
-      </div>
+      </Container>
     </section>
 
-    <!-- ─── CAREER HIGHLIGHTS ─────────────────────────────────── -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">Experience</span>
-          <h2 class="section-title">A Career Built on Every Angle</h2>
-          <p class="section-subtitle mx-auto">
-            Having held almost every role in a school, I see education as a complete system, and build solutions that work for everyone.
-          </p>
-        </div>
-        <div class="relative pl-6 border-l-2 border-teal-100 space-y-10 max-w-3xl mx-auto">
+    <!-- CAREER HIGHLIGHTS -->
+    <section class="py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Experience" title="A Career Built on Every Angle">
+          Having held almost every role in a school, I see education as a complete system, and build solutions that work for everyone.
+        </SectionHeader>
+        <Timeline class="max-w-3xl">
           {[
             {
               years: `${facts.current.startYear} – Present`,
@@ -361,109 +347,57 @@ import { facts, range, credit } from '../data/facts';
               notes: 'Founded robotics program and led IT infrastructure',
             },
           ].map(({ years, role, org, badge, notes }) => (
-            <div class="relative">
-              <div class="absolute -left-[29px] w-4 h-4 rounded-full bg-teal border-2 border-white shadow-sm"></div>
-              <div class="card ml-2">
-                <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
-                  <span class="text-sm text-gray-500 font-medium">{years}</span>
-                  {badge && <span class="tag text-xs">{badge}</span>}
-                </div>
-                <h3 class="font-semibold text-navy text-base mb-0.5">{role}</h3>
-                <p class="text-teal text-sm font-medium mb-2">{org}</p>
-                <p class="text-gray-500 text-sm">{notes}</p>
+            <TimelineItem>
+              <div class="flex flex-wrap items-center gap-lc-3">
+                <Label as="span" tone="suave">{years}</Label>
+                {badge && <Tag variant="status">{badge}</Tag>}
               </div>
-            </div>
+              <h3 class="font-display text-body font-bold text-tierra">{role}</h3>
+              <p class="text-small font-semibold text-selva">{org}</p>
+              <p class="max-w-body text-small text-tierra-suave">{notes}</p>
+            </TimelineItem>
           ))}
+        </Timeline>
+        <div>
+          <Button href="/experience" variant="secondary">Full Journey →</Button>
         </div>
-        <div class="text-center mt-10">
-          <a href="/experience" class="btn-secondary">Full Journey →</a>
-        </div>
-      </div>
+      </Container>
     </section>
 
-    <!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
-    <section class="py-20 md:py-28 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">Testimonials</span>
-          <h2 class="section-title">What People Say</h2>
-          <p class="section-subtitle mx-auto">
-            {facts.survey.rating} across {facts.survey.responses} teacher responses · {facts.survey.wouldEngageAgain} would work with me again. Here's what a few of them said.
-          </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-          {[
-            {
-              quote: 'Luis Carlos has consistently been patient, responsive, and incredibly helpful, often taking the time to troubleshoot problems thoroughly and ensure that things were fully resolved. His support has significantly reduced stress for many of us and has made a complicated process much smoother.',
-              name: facts.people.keogh.name,
-              role: `${facts.people.keogh.title} · unsolicited commendation to the Head of School`,
-              org: facts.aisc.schoolShort,
-            },
-            {
-              quote: 'Over the past year, we have been working to move all of our curriculum documentation into a shared Google Drive structure to create greater consistency, accessibility, and alignment across the school.',
-              name: facts.people.bevans.name,
-              role: facts.people.bevans.title,
-              org: `${facts.aisc.schoolShort}, sent while introducing my system to ${facts.scale.incomingTeachers} incoming teachers as their first onboarding resource`,
-            },
-            {
-              quote: 'Many students shared afterward how motivated they felt by your feedback. We are deeply grateful for your time and support of our Grade 8 learners.',
-              name: facts.people.wood.name,
-              role: facts.people.wood.title,
-              org: `${facts.aisc.schoolShort}, on the Grade 8 Tech Investor Summit`,
-            },
-            {
-              quote: 'Thank you so much for your help on this. It has made a massive difference in our department.',
-              name: facts.people.hart.name,
-              role: facts.people.hart.title,
-              org: `${facts.aisc.schoolShort}, on the consent-tracking system I built for his department`,
-            },
-            {
-              quote: 'This spreadsheet is incredible, and the video is so concise and clear.',
-              name: facts.people.bull.name,
-              role: facts.people.bull.title,
-              org: `${facts.aisc.schoolShort}, on the Science report-comment generator`,
-            },
-            {
-              quote: 'This is phenomenal work throughout this year that has provided extensive insight into our program.',
-              name: facts.people.galaty.name,
-              role: facts.people.galaty.title,
-              org: facts.aisc.schoolShort,
-            },
-          ].map(({ quote, name, role, org }) => (
-            <div class="card flex flex-col gap-4">
-              <svg class="w-8 h-8 text-teal-200 flex-shrink-0" fill="currentColor" viewBox="0 0 32 32">
-                <path d="M10 8C5.582 8 2 11.582 2 16s3.582 8 8 8h1v4l6-4h3c4.418 0 8-3.582 8-8s-3.582-8-8-8H10z"/>
-              </svg>
-              <p class="text-gray-700 leading-relaxed flex-1 italic">"{quote}"</p>
-              <div class="pt-2 border-t border-gray-100">
-                <p class="font-semibold text-navy text-sm">{name}</p>
-                <p class="text-gray-500 text-xs">{role} · {org}</p>
-              </div>
-            </div>
+    <!-- TESTIMONIALS: shown only when at least one quote is approved -->
+    {homeTestimonials.length > 0 && (
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Testimonials" title="What People Say">
+          {facts.survey.rating} across {facts.survey.responses} teacher responses · {facts.survey.wouldEngageAgain} would work with me again. Here's what a few of them said.
+        </SectionHeader>
+        <div class="grid gap-lc-5 md:grid-cols-2">
+          {homeTestimonials.map(({ quote, name, role, org }) => (
+            <figure class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+              <span class="h-lc-3 w-lc-3 rounded-full bg-barro" aria-hidden="true"></span>
+              <blockquote class="flex-1 text-body text-tierra">"{quote}"</blockquote>
+              <figcaption class="flex flex-col gap-lc-1 border-t border-tierra/15 pt-lc-3">
+                <span class="text-small font-semibold text-tierra">{name}</span>
+                <span class="text-small text-tierra-suave">{role} · {org}</span>
+              </figcaption>
+            </figure>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
+    )}
 
-    <!-- ─── CTA ───────────────────────────────────────────────── -->
-    <section class="py-20 md:py-28 bg-navy text-white">
-      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
-        <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Let's Connect</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          Ready to bring AI integration, instructional coaching, or systems thinking to your school or team?
-        </h2>
-        <p class="text-gray-300 text-lg mb-10">
-          Whether you're a school leader exploring AI integration, an educator looking for coaching support,
-          or a professional wanting to work smarter, let's start a conversation.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="/work-with-me" class="btn-amber">Work With Me</a>
-          <a href={`mailto:${facts.person.email}`} class="btn-secondary border-white/40 text-white hover:bg-white hover:text-teal">
-            Send an Email
-          </a>
-        </div>
-      </div>
-    </section>
+    <!-- CTA -->
+    <CtaPanel label="Let's Connect" title="Ready to bring AI integration, instructional coaching, or systems thinking to your school or team?">
+      Whether you're a school leader exploring AI integration, an educator looking for coaching support,
+      or a professional wanting to work smarter, let's start a conversation.
+      <Fragment slot="actions">
+        <Button href="/work-with-me">Work With Me</Button>
+        <Button href={`mailto:${facts.person.email}`} variant="secondary" tone="dark">
+          Send an Email
+        </Button>
+      </Fragment>
+    </CtaPanel>
 
   </main>
   <Footer />

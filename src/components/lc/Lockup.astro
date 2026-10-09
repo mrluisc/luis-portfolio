@@ -1,0 +1,24 @@
+---
+/** The mark with the name beside it; size and gap are the tokens' shares of the mark's height. */
+import tokens from '../../brand/tokens.json';
+import Mark from './Mark.astro';
+
+interface Props {
+  height: number;
+  scheme?: 'light' | 'dark';
+  /** Classes for the name, e.g. to hide it at some widths. */
+  nameClass?: string;
+}
+
+const { height, scheme = 'light', nameClass = '' } = Astro.props;
+const lk = tokens.mark.lockup;
+const ink = scheme === 'light' ? 'tierra' : 'arena';
+---
+
+<span class="inline-flex items-center" style={`gap:${+(lk.gap * height).toFixed(1)}px`}>
+  <Mark height={height} scheme={scheme} />
+  <span
+    class:list={['font-display whitespace-nowrap', nameClass]}
+    style={`font-weight:${lk.weight};font-size:${+(lk.size * height).toFixed(1)}px;line-height:1;color:var(--lc-${ink})`}
+  >{lk.name}</span>
+</span>

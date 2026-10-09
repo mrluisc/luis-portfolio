@@ -1,0 +1,84 @@
+---
+/**
+ * The site nav: the lockup, the pages, one call to action. The page you are on is
+ * marked with the brand's dot. On phones the pages fold into a menu.
+ */
+import Container from './Container.astro';
+import Lockup from './Lockup.astro';
+import Button from './Button.astro';
+import { navLinks, contactHref } from '../../data/nav';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(href + '/');
+---
+
+<header class="sticky top-0 z-50 border-b border-tierra/10 bg-arena/95 backdrop-blur-sm">
+  <Container as="nav" class="flex h-lc-8 items-center justify-between gap-lc-5" aria-label="Main">
+    <a href="/" class="rounded-small focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tierra" aria-label="Luis Carlos Moreno, home">
+      <Lockup height={36} nameClass="lg:hidden xl:inline" />
+    </a>
+
+    <ul class="hidden items-center gap-lc-5 lg:flex">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            aria-current={isActive(href) ? 'page' : undefined}
+            class="group relative flex items-center gap-lc-2 py-lc-2 text-small font-semibold text-tierra hover:text-barro focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tierra"
+          >
+            <span class:list={['h-lc-2 w-lc-2 rounded-full bg-barro', !isActive(href) && 'hidden']} aria-hidden="true"></span>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-lc-3">
+      <Button href={contactHref} size="sm" class="hidden lg:inline-flex">Let's Connect</Button>
+      <button
+        id="lc-nav-toggle"
+        type="button"
+        class="flex items-center gap-lc-2 rounded-small border border-tierra px-lc-3 py-lc-2 font-mono text-label uppercase text-tierra focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tierra lg:hidden"
+        aria-expanded="false"
+        aria-controls="lc-nav-menu"
+      >
+        <span id="lc-nav-toggle-text">Menu</span>
+      </button>
+    </div>
+  </Container>
+
+  <div id="lc-nav-menu" class="hidden border-t border-tierra/10 bg-arena lg:hidden">
+    <Container>
+      <ul class="flex flex-col py-lc-4">
+        {navLinks.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              aria-current={isActive(href) ? 'page' : undefined}
+              class="flex items-center gap-lc-3 py-lc-3 font-display text-heading text-tierra hover:text-barro"
+            >
+              <span class:list={['h-lc-3 w-lc-3 shrink-0 rounded-full', isActive(href) ? 'bg-barro' : 'border border-tierra/30']} aria-hidden="true"></span>
+              {label}
+            </a>
+          </li>
+        ))}
+        <li class="pt-lc-4">
+          <Button href={contactHref} class="w-full">Let's Connect</Button>
+        </li>
+      </ul>
+    </Container>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('lc-nav-toggle');
+  const menu = document.getElementById('lc-nav-menu');
+  const text = document.getElementById('lc-nav-toggle-text');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    menu?.classList.toggle('hidden', !open);
+    if (text) text.textContent = open ? 'Close' : 'Menu';
+  });
+</script>

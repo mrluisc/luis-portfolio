@@ -1,7 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import Nav from '../components/lc/Nav.astro';
+import Footer from '../components/lc/Footer.astro';
+import Container from '../components/lc/Container.astro';
+import PageHero from '../components/lc/PageHero.astro';
+import SectionHeader from '../components/lc/SectionHeader.astro';
+import Label from '../components/lc/Label.astro';
+import DotList from '../components/lc/DotList.astro';
+import Button from '../components/lc/Button.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 import { facts } from '../data/facts';
 import { config, hasFormspree } from '../data/config';
@@ -11,6 +17,18 @@ import { config, hasFormspree } from '../data/config';
 
 // Every number, title, name and date on this page comes from src/data/facts.ts.
 // Do not retype one here - npm run check:facts will fail the build.
+import { approvedQuote } from '../data/testimonials';
+
+// Quotes appear only once the person has approved them (src/data/testimonials.ts);
+// the section disappears while none is approved.
+const coachingTestimonials = [
+  { id: 'merletti-coaching', role: `${facts.people.merletti.title}, ${facts.aisc.schoolShort}` },
+  { id: 'brigham-coaching', role: `${facts.people.brigham.title}, ${facts.aisc.schoolShort}` },
+  { id: 'gomez-escobar-coaching', role: `${facts.people.gomezEscobar.title}, ${facts.aisc.schoolShort}, endorsed the coaching twice, months apart` },
+].flatMap((t) => {
+  const q = approvedQuote(t.id);
+  return q ? [{ ...t, quote: q.quote, name: q.name }] : [];
+});
 ---
 
 <Layout
@@ -21,97 +39,75 @@ import { config, hasFormspree } from '../data/config';
   <main>
 
     <!-- HERO -->
-    <section class="bg-gradient-to-br from-navy to-teal-900 text-white py-20 md:py-28">
-      <div class="max-w-6xl mx-auto px-4 md:px-8 text-center">
-        <span class="tag bg-white/10 text-white border border-white/20 mb-6 inline-block">Work With Me</span>
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          Coaching, Training &amp; Consulting<br />
-          <span class="text-amber">for Educators, Professionals &amp; Organizations</span>
-        </h1>
-        <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
-          My approach is always the same: efficiency, efficacy, sustainability, and above all, partnership.
-          Whether you're an individual educator, a leadership team, or a professional outside education,
-          I'm here to walk alongside you.
-        </p>
-        <a href="#contact" class="btn-amber">Start a Conversation</a>
-      </div>
-    </section>
+    <PageHero label="Work With Me">
+      <Fragment slot="title">
+        Coaching, Training &amp; Consulting<br />
+        <span class="text-barro">for Educators, Professionals &amp; Organizations</span>
+      </Fragment>
+      My approach is always the same: efficiency, efficacy, sustainability, and above all, partnership.
+      Whether you're an individual educator, a leadership team, or a professional outside education,
+      I'm here to walk alongside you.
+      <Fragment slot="actions">
+        <Button href="#contact">Start a Conversation</Button>
+      </Fragment>
+    </PageHero>
 
     <!-- FOR EDUCATORS -->
-    <section class="py-20 md:py-28 bg-white">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">For Educators & Schools</span>
-          <h2 class="section-title">Services That Meet You Where You Are</h2>
-          <p class="section-subtitle mx-auto">
-            Every educator and every school has unique needs. I design services to be flexible,
-            practical, and deeply responsive to your context.
-          </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8">
+    <section class="py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="For Educators & Schools" title="Services That Meet You Where You Are">
+          Every educator and every school has unique needs. I design services to be flexible,
+          practical, and deeply responsive to your context.
+        </SectionHeader>
+        <div class="grid gap-lc-5 md:grid-cols-2">
           {[
             {
               title: 'AI Integration Coaching',
               sub: '1:1 or small groups',
               desc: 'Personalized coaching sessions helping educators build confidence with AI tools, develop their own informed philosophy, and integrate AI purposefully into their practice.',
               details: ['Tool selection and setup', 'Prompt engineering for teachers', 'HUMAN Framework introduction', 'Classroom application planning', 'Ethics and data privacy'],
-              color: 'teal',
             },
             {
               title: 'School-Wide Workshops & PD',
               sub: 'Half-day to multi-session programs',
               desc: 'Interactive professional development for faculty and staff, from foundational AI literacy to advanced implementation of the HUMAN Framework and LEA system.',
               details: ['AI foundations for educators', 'HUMAN Framework rollout', 'LEA implementation training', 'Digital citizenship curriculum', 'Leadership data strategy sessions'],
-              color: 'teal',
             },
             {
               title: 'HUMAN Framework Implementation',
               sub: 'Consulting engagement',
               desc: `Full implementation support for the HUMAN Framework, co-delivered with ${facts.people.perezTalavera.name}. Includes customization to your school context, teacher training, and dashboard setup.`,
               details: ['School-specific customization', 'Faculty training series', 'LEA tool configuration', 'Leadership reporting setup', 'Ongoing support'],
-              color: 'amber',
             },
             {
               title: 'Systems & Efficiency Consulting',
               sub: 'Custom engagements',
               desc: 'Custom solutions for schools navigating platform transitions, workflow inefficiencies, or digital system gaps, from Google Workspace rollouts to custom automation tools.',
               details: ['EdTech audit & roadmap', 'Platform transition support', 'Custom tool development', 'Data workflow design', 'Staff capacity building'],
-              color: 'amber',
             },
-          ].map(({ title, sub, desc, details, color }) => (
-            <div class={`card border-t-4 ${color === 'teal' ? 'border-teal' : 'border-amber'}`}>
-              <h3 class="font-bold text-navy text-lg mb-0.5">{title}</h3>
-              <p class="text-sm text-gray-400 mb-3">{sub}</p>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">{desc}</p>
-              <ul class="space-y-1.5">
-                {details.map(d => (
-                  <li class="flex gap-2 text-sm text-gray-600">
-                    <span class={color === 'teal' ? 'text-teal' : 'text-amber'}>✓</span>
-                    <span>{d}</span>
-                  </li>
-                ))}
-              </ul>
+          ].map(({ title, sub, desc, details }) => (
+            <div class="flex flex-col gap-lc-3 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+              <h3 class="font-display text-heading text-tierra">{title}</h3>
+              <Label tone="suave">{sub}</Label>
+              <p class="text-small text-tierra-suave">{desc}</p>
+              <DotList items={details} tone="tierra" class="pt-lc-2" />
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
 
     <!-- FOR PROFESSIONALS -->
-    <section class="py-20 md:py-28 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">For Professionals & Teams</span>
-          <h2 class="section-title">Work Smarter with AI, Without Losing Control of Your Data</h2>
-          <p class="section-subtitle mx-auto">
-            Not in education? No problem. Whether you're a lawyer, doctor, business owner, or executive,
-            I help you harness AI tools that actually fit how you work, with a focus on data privacy and practical results.
-          </p>
-        </div>
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="For Professionals & Teams" title="Work Smarter with AI, Without Losing Control of Your Data">
+          Not in education? No problem. Whether you're a lawyer, doctor, business owner, or executive,
+          I help you harness AI tools that actually fit how you work, with a focus on data privacy and practical results.
+        </SectionHeader>
 
-        <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 md:p-8 mb-12">
-          <h3 class="font-semibold text-navy mb-4">Who This Is For</h3>
-          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+          <h3 class="font-display text-heading text-tierra">Who This Is For</h3>
+          <DotList tone="tierra" class="grid gap-x-lc-6 sm:grid-cols-2 md:grid-cols-3">
             {[
               'Legal Professionals: contracts, research, correspondence',
               'Healthcare: documentation, patient comms, research',
@@ -120,14 +116,12 @@ import { config, hasFormspree } from '../data/config';
               'Executive Teams: strategy, communication, decisions',
               'Anyone who writes, analyzes, or decides for a living',
             ].map(item => (
-              <div class="flex gap-2 text-sm text-gray-700">
-                <span>{item}</span>
-              </div>
+              <li>{item}</li>
             ))}
-          </div>
+          </DotList>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="grid gap-lc-5 md:grid-cols-3">
           {[
             {
               title: 'AI Readiness Call',
@@ -148,19 +142,19 @@ import { config, hasFormspree } from '../data/config';
               cta: 'Inquire',
             },
           ].map(({ title, sub, desc, cta }) => (
-            <div class="card text-center">
-              <h3 class="font-bold text-navy mb-1">{title}</h3>
-              <p class="text-sm text-gray-400 mb-3">{sub}</p>
-              <p class="text-gray-600 text-sm leading-relaxed mb-5">{desc}</p>
-              <a href="#contact" class="btn-secondary text-sm py-2 w-full justify-center">{cta}</a>
+            <div class="flex flex-col gap-lc-3 rounded-medium border border-tierra/15 bg-blanco p-lc-5">
+              <h3 class="font-display text-heading text-tierra">{title}</h3>
+              <Label tone="suave">{sub}</Label>
+              <p class="text-small text-tierra-suave">{desc}</p>
+              <Button href="#contact" variant="secondary" size="sm" class="mt-auto w-full">{cta}</Button>
             </div>
           ))}
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="card">
-            <h3 class="font-semibold text-navy mb-4">What You Get</h3>
-            <ul class="space-y-2">
+        <div class="grid gap-lc-5 md:grid-cols-2">
+          <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+            <h3 class="font-display text-heading text-tierra">What You Get</h3>
+            <DotList tone="tierra">
               {[
                 'Live sessions (recorded for your reference)',
                 'Custom prompt library tailored to your work',
@@ -168,41 +162,35 @@ import { config, hasFormspree } from '../data/config';
                 'Quick reference guides and frameworks',
                 '30 days follow-up support via email',
               ].map(item => (
-                <li class="flex gap-2 text-sm text-gray-600">
-                  <span class="text-teal">✓</span>
-                  <span>{item}</span>
-                </li>
+                <li>{item}</li>
               ))}
-            </ul>
+            </DotList>
           </div>
-          <div class="card">
-            <h3 class="font-semibold text-navy mb-4">Tools We Cover</h3>
-            <div class="space-y-3">
+          <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
+            <h3 class="font-display text-heading text-tierra">Tools We Cover</h3>
+            <dl class="flex flex-col gap-lc-3">
               {[
                 { tool: 'Claude', note: 'Best for confidential/legal work, complex analysis' },
                 { tool: 'ChatGPT', note: 'General productivity, creative tasks' },
                 { tool: 'Gemini', note: 'Google Workspace integration, research' },
                 { tool: 'Industry-specific', note: 'Based on your particular needs' },
               ].map(({ tool, note }) => (
-                <div class="flex gap-3 text-sm">
-                  <span class="font-semibold text-navy w-24 flex-shrink-0">{tool}</span>
-                  <span class="text-gray-500">{note}</span>
+                <div class="flex gap-lc-3 text-small">
+                  <dt class="w-28 shrink-0 font-semibold text-tierra">{tool}</dt>
+                  <dd class="text-tierra-suave">{note}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
 
     <!-- HOW I WORK -->
-    <section class="py-20 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">My Approach</span>
-          <h2 class="section-title">How I Work</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="My Approach" title="How I Work" />
+        <ol class="grid gap-lc-6 md:grid-cols-3">
           {[
             {
               step: '01',
@@ -220,173 +208,154 @@ import { config, hasFormspree } from '../data/config';
               desc: 'We work together iteratively. You apply what we explore to your actual work. I provide feedback, adjustment, and ongoing support to make sure it sticks.',
             },
           ].map(({ step, title, desc }) => (
-            <div class="text-center">
-              <div class="w-14 h-14 bg-teal rounded-2xl flex items-center justify-center text-white font-bold text-lg mx-auto mb-5">{step}</div>
-              <h3 class="font-bold text-navy text-lg mb-3">{title}</h3>
-              <p class="text-gray-600 leading-relaxed">{desc}</p>
-            </div>
+            <li class="flex flex-col gap-lc-3 border-t-2 border-tierra pt-lc-4">
+              <span class="font-mono text-label uppercase text-barro">{step}</span>
+              <h3 class="font-display text-heading text-tierra">{title}</h3>
+              <p class="text-body text-tierra-suave">{desc}</p>
+            </li>
           ))}
-        </div>
-      </div>
+        </ol>
+      </Container>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="py-20 md:py-24 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="tag mb-4">What People Say</span>
-          <h2 class="section-title">From Educators I've Worked With</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              quote: 'He was so approachable, always working from a growth perspective to help me achieve my goals. He has given me confidence to keep trying other AI applications.',
-              name: facts.people.merletti.name,
-              role: `${facts.people.merletti.title}, ${facts.aisc.schoolShort}`,
-            },
-            {
-              quote: 'His expertise with educational technology is such an asset. Even if he is unfamiliar with a program, he can quickly analyze it and solve any problems that I have.',
-              name: facts.people.brigham.name,
-              role: `${facts.people.brigham.title}, ${facts.aisc.schoolShort}`,
-            },
-            {
-              quote: 'Luis provided the perfect combination of expertise, patience, and accessibility that made learning feel safe and achievable. Luis is not just an amazing coach but an incredible individual you can truly depend on.',
-              name: facts.people.gomezEscobar.name,
-              role: `${facts.people.gomezEscobar.title}, ${facts.aisc.schoolShort}, endorsed the coaching twice, months apart`,
-            },
-          ].map(({ quote, name, role }) => (
-            <div class="card">
-              <p class="text-gray-700 italic mb-4 leading-relaxed text-sm">"{quote}"</p>
-              <p class="font-semibold text-navy text-sm">{name}</p>
-              <p class="text-gray-400 text-xs">{role}</p>
-            </div>
+    <!-- TESTIMONIALS: shown only when at least one quote is approved -->
+    {coachingTestimonials.length > 0 && (
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="What People Say" title="From Educators I've Worked With" />
+        <div class="grid gap-lc-5 md:grid-cols-3">
+          {coachingTestimonials.map(({ quote, name, role }) => (
+            <figure class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5">
+              <span class="h-lc-3 w-lc-3 rounded-full bg-barro" aria-hidden="true"></span>
+              <blockquote class="flex-1 text-small text-tierra">"{quote}"</blockquote>
+              <figcaption class="flex flex-col gap-lc-1 border-t border-tierra/15 pt-lc-3">
+                <span class="text-small font-semibold text-tierra">{name}</span>
+                <span class="text-small text-tierra-suave">{role}</span>
+              </figcaption>
+            </figure>
           ))}
         </div>
-        <p class="text-center text-gray-400 text-sm mt-8">{facts.survey.retentionPct} service retention · {facts.survey.outcomesPct} improved learning outcomes · {facts.survey.responses} educator survey responses</p>
-      </div>
+        <Label as="p" tone="suave">{facts.survey.retentionPct} service retention · {facts.survey.outcomesPct} improved learning outcomes · {facts.survey.responses} educator survey responses</Label>
+      </Container>
     </section>
+    )}
 
     <!-- INVESTMENT -->
-    <section class="py-20 md:py-24 bg-white">
-      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
-        <span class="tag mb-4">Investment</span>
-        <h2 class="section-title">Flexible to Your Context</h2>
-        <p class="text-gray-600 leading-relaxed mb-8">
+    <section class="border-t border-tierra/10 py-lc-9">
+      <Container class="flex flex-col gap-lc-7">
+        <SectionHeader label="Investment" title="Flexible to Your Context">
           I believe in accessible, transparent pricing. Educators and professionals start with a free
           discovery call, no obligation, just a conversation. From there, we design an engagement that
           fits your budget and goals.
-        </p>
-        <div class="grid sm:grid-cols-3 gap-6 mb-10">
+        </SectionHeader>
+        <div class="grid max-w-4xl gap-lc-5 sm:grid-cols-3">
           {[
             { label: 'Discovery Call', price: 'Free', note: '30 min · No commitment' },
             { label: '1:1 Session', price: 'From $75', note: '90 min · Virtual' },
             { label: 'Team Program', price: 'From $600', note: '4 sessions · 3–8 people' },
           ].map(({ label, price, note }) => (
-            <div class="card text-center">
-              <div class="text-xl font-bold text-amber mb-1">{price}</div>
-              <div class="font-semibold text-navy text-sm mb-0.5">{label}</div>
-              <div class="text-gray-400 text-xs">{note}</div>
+            <div class="flex flex-col gap-lc-1 rounded-medium border border-tierra/15 bg-blanco p-lc-5">
+              <span class="font-display text-title text-tierra">{price}</span>
+              <span class="pt-lc-2 text-small font-semibold text-tierra">{label}</span>
+              <Label as="span" tone="suave">{note}</Label>
             </div>
           ))}
         </div>
-        <p class="text-gray-500 text-sm">
+        <p class="max-w-body text-small text-tierra-suave">
           Schools and organizations: custom pricing for multi-session programs and school-wide implementations.
           Contact me to discuss.
         </p>
-      </div>
+      </Container>
     </section>
 
     <BookingWidget />
 
     <!-- CONTACT FORM -->
-    <section id="contact" class="py-20 md:py-28 bg-navy text-white scroll-mt-20">
-      <div class="max-w-3xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-12">
-          <span class="tag bg-white/10 text-white border border-white/20 mb-4 inline-block">Get in Touch</span>
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start?</h2>
-          <p class="text-gray-300">
+    <section id="contact" class="scroll-mt-lc-9 pt-lc-8">
+      <Container>
+        <div class="flex flex-col gap-lc-6 rounded-medium bg-selva px-lc-5 py-lc-7 text-arena md:px-lc-8 md:py-lc-8">
+          <SectionHeader tone="dark" label="Get in Touch" title="Ready to Start?">
             Whether you have a specific challenge in mind or just want to explore possibilities,
             the first conversation is always free.
-          </p>
-        </div>
+          </SectionHeader>
 
-        {hasFormspree ? (
-        <form
-          action={`https://formspree.io/f/${config.formspreeId}`}
-          method="POST"
-          class="space-y-5"
-          id="contact-form"
-        >
-          <div class="grid sm:grid-cols-2 gap-5">
+          {hasFormspree ? (
+          <form
+            action={`https://formspree.io/f/${config.formspreeId}`}
+            method="POST"
+            class="flex max-w-3xl flex-col gap-lc-5"
+            id="contact-form"
+          >
+            <div class="grid gap-lc-5 sm:grid-cols-2">
+              <div>
+                <label for="name" class="mb-lc-2 block text-small font-semibold text-cielo">Full Name *</label>
+                <input type="text" id="name" name="name" required
+                  class="w-full rounded-small border border-arena/30 bg-arena px-lc-4 py-lc-3 text-body text-tierra placeholder:text-tierra-suave focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-arena"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label for="email" class="mb-lc-2 block text-small font-semibold text-cielo">Email *</label>
+                <input type="email" id="email" name="email" required
+                  class="w-full rounded-small border border-arena/30 bg-arena px-lc-4 py-lc-3 text-body text-tierra placeholder:text-tierra-suave focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-arena"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-300 mb-1.5">Full Name *</label>
-              <input type="text" id="name" name="name" required
-                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
-                placeholder="Your name"
+              <label for="type" class="mb-lc-2 block text-small font-semibold text-cielo">I am a… *</label>
+              <select id="type" name="type" required
+                class="w-full rounded-small border border-arena/30 bg-arena px-lc-4 py-lc-3 text-body text-tierra placeholder:text-tierra-suave focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-arena"
+              >
+                <option value="">Select…</option>
+                <option value="educator">Educator / Teacher</option>
+                <option value="school-leader">School Leader / Administrator</option>
+                <option value="professional">Professional (non-education)</option>
+                <option value="conference">Conference / Event Organizer</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="subject" class="mb-lc-2 block text-small font-semibold text-cielo">Subject *</label>
+              <input type="text" id="subject" name="subject" required
+                class="w-full rounded-small border border-arena/30 bg-arena px-lc-4 py-lc-3 text-body text-tierra placeholder:text-tierra-suave focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-arena"
+                placeholder="What would you like to discuss?"
               />
             </div>
+
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-300 mb-1.5">Email *</label>
-              <input type="email" id="email" name="email" required
-                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
-                placeholder="your@email.com"
-              />
+              <label for="message" class="mb-lc-2 block text-small font-semibold text-cielo">Message *</label>
+              <textarea id="message" name="message" required rows="5"
+                class="w-full rounded-small border border-arena/30 bg-arena px-lc-4 py-lc-3 text-body text-tierra placeholder:text-tierra-suave focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-arena resize-none"
+                placeholder="Tell me about your context, needs, or questions…"
+              ></textarea>
             </div>
-          </div>
 
-          <div>
-            <label for="type" class="block text-sm font-medium text-gray-300 mb-1.5">I am a… *</label>
-            <select id="type" name="type" required
-              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
-            >
-              <option value="" class="text-gray-800">Select…</option>
-              <option value="educator" class="text-gray-800">Educator / Teacher</option>
-              <option value="school-leader" class="text-gray-800">School Leader / Administrator</option>
-              <option value="professional" class="text-gray-800">Professional (non-education)</option>
-              <option value="conference" class="text-gray-800">Conference / Event Organizer</option>
-              <option value="other" class="text-gray-800">Other</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="subject" class="block text-sm font-medium text-gray-300 mb-1.5">Subject *</label>
-            <input type="text" id="subject" name="subject" required
-              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors"
-              placeholder="What would you like to discuss?"
-            />
-          </div>
-
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-300 mb-1.5">Message *</label>
-            <textarea id="message" name="message" required rows="5"
-              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-colors resize-none"
-              placeholder="Tell me about your context, needs, or questions…"
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn-amber w-full justify-center text-base py-3.5">
-            Send Message
-          </button>
-          <p class="text-center text-gray-400 text-xs">
-            Or email directly: <a href={`mailto:${facts.person.email}`} class="text-teal-300 hover:text-white underline">{facts.person.email}</a>
-            · <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="text-teal-300 hover:text-white underline">LinkedIn</a>
-          </p>
-        </form>
-        ) : (
-          <div class="text-center">
-            <a href={`mailto:${facts.person.email}?subject=Let's work together`} class="btn-amber text-base py-3.5 px-8">
-              Email Me
-            </a>
-            <p class="text-gray-400 text-sm mt-5">
-              <a href={`mailto:${facts.person.email}`} class="text-teal-300 hover:text-white underline">{facts.person.email}</a>
-              · <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="text-teal-300 hover:text-white underline">LinkedIn</a>
+            <button type="submit" class="inline-flex w-full items-center justify-center rounded-small bg-barro px-lc-5 py-lc-3 text-body font-semibold text-arena transition-colors hover:bg-tierra focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-arena">
+              Send Message
+            </button>
+            <p class="text-small text-cielo">
+              Or email directly: <a href={`mailto:${facts.person.email}`} class="text-arena underline decoration-barro-claro underline-offset-4 hover:text-cielo">{facts.person.email}</a>
+              · <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="text-arena underline decoration-barro-claro underline-offset-4 hover:text-cielo">LinkedIn</a>
             </p>
-          </div>
-        )}
-      </div>
+          </form>
+          ) : (
+            <div class="flex flex-col items-start gap-lc-4">
+              <Button href={`mailto:${facts.person.email}?subject=Let's work together`}>
+                Email Me
+              </Button>
+              <p class="text-small text-cielo">
+                <a href={`mailto:${facts.person.email}`} class="text-arena underline decoration-barro-claro underline-offset-4 hover:text-cielo">{facts.person.email}</a>
+                · <a href={`https://www.${facts.person.linkedin}/`} target="_blank" rel="noopener" class="text-arena underline decoration-barro-claro underline-offset-4 hover:text-cielo">LinkedIn</a>
+              </p>
+            </div>
+          )}
+        </div>
+      </Container>
     </section>
 
   </main>
   <Footer />
 </Layout>
-

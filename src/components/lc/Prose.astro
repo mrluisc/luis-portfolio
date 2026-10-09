@@ -1,0 +1,103 @@
+---
+/**
+ * Running text for articles and case studies: body size, 66 characters wide, the
+ * brand's dot as the bullet, links underlined in Barro. Write plain HTML inside.
+ */
+interface Props { class?: string }
+const { class: className } = Astro.props;
+---
+
+<div class:list={['lc-prose', className]}><slot /></div>
+
+<style>
+  .lc-prose {
+    @apply flex max-w-body flex-col gap-lc-4 text-body text-tierra;
+  }
+  .lc-prose :global(h2) {
+    @apply font-display text-heading [text-wrap:balance];
+  }
+  /* A new section starts with a heading, or a label then a heading: space above the first of them. */
+  .lc-prose > :global(h2:not(:first-child)),
+  .lc-prose > :global(.lc-label:not(:first-child)) {
+    @apply mt-lc-6;
+  }
+  .lc-prose > :global(.lc-label + h2) {
+    @apply -mt-lc-2;
+  }
+  .lc-prose :global(h3) {
+    @apply font-display text-body font-bold [text-wrap:balance];
+  }
+  /* A quote: lead size, a thin Barro rule, who said it underneath. No italics: the brand loads none. */
+  .lc-prose :global(blockquote) {
+    @apply m-0 my-lc-4 flex flex-col gap-lc-3 border-l-2 border-barro pl-lc-5 text-lead text-tierra;
+  }
+  .lc-prose :global(blockquote footer) {
+    @apply text-small text-tierra-suave;
+  }
+  .lc-prose :global(h4) {
+    @apply font-text text-body font-semibold;
+  }
+  /* No italics in the brand: emphasis is SemiBold, as in the Docs template. */
+  .lc-prose :global(em) {
+    @apply font-semibold not-italic;
+  }
+  .lc-prose :global(ol) {
+    @apply m-0 flex list-decimal flex-col gap-lc-2 pl-lc-6 marker:font-mono marker:text-label marker:text-barro;
+  }
+  .lc-prose :global(ol li),
+  .lc-prose :global(ul ol li) {
+    @apply pl-lc-1;
+  }
+  .lc-prose :global(ol li)::before {
+    content: none;
+  }
+  .lc-prose :global(ul ul),
+  .lc-prose :global(ul ol),
+  .lc-prose :global(ol ul) {
+    @apply mt-lc-2;
+  }
+  /* Images fill the column, but a tall one (a phone screenshot) stops at 720 px high. */
+  .lc-prose :global(img) {
+    @apply h-auto max-h-[720px] w-auto max-w-full rounded-medium border border-tierra/15 bg-blanco;
+  }
+  /* items-center, not the flex default (stretch): a stretched img takes the full column width
+     while max-h caps its height, which squashed tall images like the Coaching Menu (found 10 Oct). */
+  .lc-prose :global(figure) {
+    @apply m-0 my-lc-2 flex flex-col items-center gap-lc-3;
+  }
+  /* A tall infographic meant to be read: full column width, no height cap. */
+  .lc-prose :global(figure.lc-tall img) {
+    @apply max-h-none w-full;
+  }
+  .lc-prose :global(figcaption) {
+    @apply text-small text-tierra-suave;
+  }
+  .lc-prose :global(hr) {
+    @apply my-lc-4 border-0 border-t border-tierra/15;
+  }
+  /* A video or other embed at 16:9. */
+  .lc-prose :global(.lc-embed) {
+    @apply relative my-lc-2 aspect-video w-full overflow-hidden rounded-medium border border-tierra/15 bg-tierra;
+  }
+  .lc-prose :global(.lc-embed iframe) {
+    @apply absolute inset-0 h-full w-full border-0;
+  }
+  .lc-prose :global(strong) {
+    @apply font-semibold;
+  }
+  .lc-prose :global(a) {
+    @apply underline decoration-barro decoration-2 underline-offset-4 hover:text-barro;
+  }
+  .lc-prose :global(ul) {
+    @apply m-0 flex list-none flex-col gap-lc-3 p-0;
+  }
+  .lc-prose :global(li) {
+    @apply relative pl-lc-5;
+  }
+  /* The brand's dot as the bullet, centred on the first line. */
+  .lc-prose :global(li)::before {
+    @apply absolute left-0.5 h-lc-2 w-lc-2 rounded-full bg-barro;
+    content: '';
+    top: calc(0.8em - 4px);
+  }
+</style>

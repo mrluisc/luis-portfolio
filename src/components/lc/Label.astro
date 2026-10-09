@@ -1,0 +1,12 @@
+---
+/** The small label: JetBrains Mono capitals. Barro on light grounds; `suave` for quieter ones; `cielo` on Selva. */
+interface Props {
+  as?: 'p' | 'span' | 'h2' | 'h3' | 'div';
+  tone?: 'barro' | 'suave' | 'cielo';
+  class?: string;
+}
+const { as: Tag = 'p', tone = 'barro', class: className } = Astro.props;
+const tones = { barro: 'text-barro', suave: 'text-tierra-suave', cielo: 'text-cielo' };
+---
+
+<Tag class:list={['lc-label font-mono text-label uppercase', tones[tone], className]}><slot /></Tag>

@@ -1,0 +1,22 @@
+---
+/** The start of a page section: label, title, and an optional line under it. Left-aligned. */
+import Label from './Label.astro';
+
+interface Props {
+  label?: string;
+  title: string;
+  /** On Selva: Cielo label, Arena text. */
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+const { label, title, tone = 'light', class: className } = Astro.props;
+const dark = tone === 'dark';
+---
+
+<div class:list={['flex flex-col gap-lc-3', className]}>
+  {label && <Label tone={dark ? 'cielo' : 'barro'}>{label}</Label>}
+  <h2 class:list={['max-w-4xl font-display text-title [text-wrap:balance]', dark ? 'text-arena' : 'text-tierra']}>{title}</h2>
+  {Astro.slots.has('default') && (
+    <p class:list={['max-w-body text-body', dark ? 'text-arena' : 'text-tierra-suave']}><slot /></p>
+  )}
+</div>

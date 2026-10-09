@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/lc/Nav.astro';
+import Footer from '../../components/lc/Footer.astro';
+import Container from '../../components/lc/Container.astro';
+import ArticleHeader from '../../components/lc/ArticleHeader.astro';
+import Prose from '../../components/lc/Prose.astro';
+import Label from '../../components/lc/Label.astro';
+import { allPosts, excerpt, longDate, type Post } from '../../data/blog';
+
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.slug },
+    // allPosts is newest first: the next item is the older post.
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+
+interface Props {
+  post: Post;
+  newer?: Post;
+  older?: Post;
+}
+
+const { post, newer, older } = Astro.props;
+const { Content } = await post.render();
+const date = longDate(post.data.date);
+---
+
+<Layout title={post.data.title} description={excerpt(post.body, 155)}>
+  <Nav />
+  <main>
+    <ArticleHeader
+      back={{ href: '/blog', label: 'Back to the blog' }}
+      label="COETAIL"
+      sublabel={date}
+      title={post.data.title}
+    />
+
+    <Container>
+      <article class="flex max-w-3xl flex-col gap-lc-7 pt-lc-8">
+        <Prose>
+          <Content />
+        </Prose>
+
+        <p class="max-w-body border-t border-tierra/15 pt-lc-4 text-small text-tierra-suave">
+          First published on my COETAIL blog on {date}, lightly edited for this site.
+          {post.data.imagesLost && ' Some of its images are not included here.'}
+          {post.data.archive && (
+            <>
+              {' '}
+              <a href={post.data.archive} class="text-tierra underline decoration-barro decoration-2 underline-offset-4 hover:text-barro" target="_blank" rel="noopener">Read the archived original</a>.
+            </>
+          )}
+        </p>
+
+        <nav class="grid gap-lc-4 sm:grid-cols-2" aria-label="More posts">
+          {older ? (
+            <a href={`/blog/${older.slug}`} class="group flex flex-col gap-lc-1 rounded-medium border border-tierra/15 bg-blanco p-lc-4 hover:border-tierra">
+              <Label as="span" tone="suave">Older post</Label>
+              <span class="font-display text-body font-bold text-tierra group-hover:text-barro">{older.data.title}</span>
+            </a>
+          ) : <span />}
+          {newer && (
+            <a href={`/blog/${newer.slug}`} class="group flex flex-col gap-lc-1 rounded-medium border border-tierra/15 bg-blanco p-lc-4 hover:border-tierra sm:text-right">
+              <Label as="span" tone="suave">Newer post</Label>
+              <span class="font-display text-body font-bold text-tierra group-hover:text-barro">{newer.data.title}</span>
+            </a>
+          )}
+        </nav>
+      </article>
+    </Container>
+  </main>
+  <Footer />
+</Layout>

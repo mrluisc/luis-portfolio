@@ -1,16 +1,10 @@
 ---
 import rawDays from '../data/calendar-heatmap.json';
+import { ramp, mix } from './lc/ramp';
 
-// Validated sequential teal ramp (dataviz skill, --ordinal check, all pass):
-// light-end contrast 2.53:1, monotone lightness, single hue, ΔL >= 0.06 per step
-const BUCKET_COLORS = [
-  '#e5e7eb', // 0 events — neutral gray, not part of the magnitude ramp
-  '#14b2b8', // 1-2
-  '#0d7377', // 3-5
-  '#0a5d61', // 6-8
-  '#07474a', // 9-12
-  '#053033', // 13+
-];
+// LC brand: no events is a quiet tint of Tierra on Arena (not part of the magnitude
+// ramp); 1-2 up to 13+ events are the validated Selva ramp from ramp.ts.
+const BUCKET_COLORS = [mix('arena', 'tierra', 0.1), ...ramp('selva')];
 const BUCKET_LABELS = ['No events', '1-2 events', '3-5 events', '6-8 events', '9-12 events', '13+ events'];
 
 type Day = { date: string; count: number; bucket: number };
@@ -51,11 +45,11 @@ const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
 <div class="overflow-x-auto pb-2">
   <div class="inline-block min-w-full">
     <!-- Month labels -->
-    <div class="flex" style={`padding-left:${28}px`}>
+    <div class="flex" style={`padding-left:${36}px`}>
       {weeks.map((_, wi) => {
         const label = monthLabels.find(m => m.weekIndex === wi)?.label;
         return (
-          <div style={`width:${cellSize + cellGap}px; flex-shrink:0`} class="text-[10px] font-mono text-gray-400">
+          <div style={`width:${cellSize + cellGap}px; flex-shrink:0`} class="whitespace-nowrap font-mono text-label text-tierra-suave">
             {label || ''}
           </div>
         );
@@ -64,9 +58,9 @@ const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
 
     <div class="flex mt-1">
       <!-- Day-of-week labels -->
-      <div class="flex flex-col justify-between" style={`width:24px; margin-right:4px`}>
+      <div class="flex flex-col justify-between" style={`width:32px; margin-right:4px`}>
         {dayLabels.map(l => (
-          <div style={`height:${cellSize}px; margin-bottom:${cellGap}px`} class="text-[9px] font-mono text-gray-400 leading-none flex items-center">{l}</div>
+          <div style={`height:${cellSize}px; margin-bottom:${cellGap}px`} class="flex items-center font-mono text-label leading-none text-tierra-suave">{l}</div>
         ))}
       </div>
 
@@ -90,7 +84,7 @@ const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
     </div>
 
     <!-- Legend -->
-    <div class="flex items-center justify-end gap-1.5 mt-4 text-[11px] font-mono text-gray-400">
+    <div class="mt-lc-4 flex items-center justify-end gap-lc-2 font-mono text-label text-tierra-suave">
       <span>Less</span>
       {BUCKET_COLORS.map((c, i) => (
         <div style={`width:${cellSize}px; height:${cellSize}px; background:${c}; border-radius:2px`} title={BUCKET_LABELS[i]}></div>
