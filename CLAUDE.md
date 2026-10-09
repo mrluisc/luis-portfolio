@@ -65,6 +65,9 @@ Branch: `brand-restyle`.
   Do not confuse with "AISC Coaching Menu.pdf" or "Coaching Menus All School 2021- 2022.pdf".
 - Old blog lmoreno.coetail.com is offline; the Wayback Machine holds 10 posts.
 
+## Hidden for now
+- **Work With Me** (LC, 10 Oct 2026): `src/pages/_work-with-me.astro`, not built. Contact buttons go to LinkedIn. To restore: rename the file, add its line back to `src/data/nav.ts`, and point `contactHref` back to `/work-with-me#contact`.
+
 ## Waiting for LC (from the night of 2 Oct; the site went live 10 Oct with these still open)
 - ✅ Preview reviewed and published 10 Oct. The unapproved testimonial quotes are no longer on the live site.
 - Testimonials: LC will ask people one by one; flip each to approved in `src/data/testimonials.ts` when they say yes.

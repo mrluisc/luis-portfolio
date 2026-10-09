@@ -40,4 +40,4 @@
   on 9 pages, and the SAS job title on home and CV. LC to decide on the ranges ("2024 to 2026") some day.
 - Still open from "Waiting for LC": testimonials one by one, his approval of the blog intro, post footer and 404 copy,
   the privacy calls in old posts, and "Where I Am Now" still showing AISC and GOA, not SAS.
-
+- 10 Oct, later: **Work With Me hidden** (LC). Page renamed `_work-with-me.astro` (not built; one rename restores it, plus its line in `nav.ts`). Every contact button opens LinkedIn in a new tab, read from `facts.ts`. The contact form went with the page. Live: `/work-with-me` returns 404, 34 pages match the build.
