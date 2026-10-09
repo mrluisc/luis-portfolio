@@ -60,10 +60,17 @@ const { class: className } = Astro.props;
   .lc-prose :global(img) {
     @apply h-auto max-h-[720px] w-auto max-w-full rounded-medium border border-tierra/15 bg-blanco;
   }
-  /* items-center, not the flex default (stretch): a stretched img takes the full column width
-     while max-h caps its height, which squashed tall images like the Coaching Menu (found 10 Oct). */
+  /* A block, not a flex column. In flex, a tall image either stretched to the column width under
+     the 720 px cap (squashed, found 10 Oct) or, centred, kept the cap and ran off a phone screen.
+     In block layout the browser keeps the proportions under both limits. */
   .lc-prose :global(figure) {
-    @apply m-0 my-lc-2 flex flex-col items-center gap-lc-3;
+    @apply m-0 my-lc-2 block text-center;
+  }
+  .lc-prose :global(figure img) {
+    @apply mx-auto inline-block align-top;
+  }
+  .lc-prose :global(figure figcaption) {
+    @apply mt-lc-3 block text-left;
   }
   /* A tall infographic meant to be read: full column width, no height cap. */
   .lc-prose :global(figure.lc-tall img) {
