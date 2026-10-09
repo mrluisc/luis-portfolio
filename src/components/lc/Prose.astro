@@ -60,8 +60,14 @@ const { class: className } = Astro.props;
   .lc-prose :global(img) {
     @apply h-auto max-h-[720px] w-auto max-w-full rounded-medium border border-tierra/15 bg-blanco;
   }
+  /* items-center, not the flex default (stretch): a stretched img takes the full column width
+     while max-h caps its height, which squashed tall images like the Coaching Menu (found 10 Oct). */
   .lc-prose :global(figure) {
-    @apply m-0 my-lc-2 flex flex-col gap-lc-3;
+    @apply m-0 my-lc-2 flex flex-col items-center gap-lc-3;
+  }
+  /* A tall infographic meant to be read: full column width, no height cap. */
+  .lc-prose :global(figure.lc-tall img) {
+    @apply max-h-none w-full;
   }
   .lc-prose :global(figcaption) {
     @apply text-small text-tierra-suave;
