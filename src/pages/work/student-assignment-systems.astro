@@ -1,4 +1,5 @@
 ---
+import { contactHref } from '../../data/nav';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/lc/Nav.astro';
 import Footer from '../../components/lc/Footer.astro';
@@ -170,7 +171,7 @@ import { facts } from '../../data/facts';
 
     <CtaPanel title="Running a program that's held together by spreadsheets and luck?">
       <Fragment slot="actions">
-        <Button href="/work-with-me#contact">Let's Talk</Button>
+        <Button href={contactHref} target="_blank" rel="noopener">Let's Talk</Button>
         <Button href="/work" variant="secondary" tone="dark">More Case Studies</Button>
       </Fragment>
     </CtaPanel>

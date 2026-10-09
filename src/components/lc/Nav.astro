@@ -35,7 +35,7 @@ const isActive = (href: string) =>
     </ul>
 
     <div class="flex items-center gap-lc-3">
-      <Button href={contactHref} size="sm" class="hidden lg:inline-flex">Let's Connect</Button>
+      <Button href={contactHref} target="_blank" rel="noopener" size="sm" class="hidden lg:inline-flex">Let's Connect</Button>
       <button
         id="lc-nav-toggle"
         type="button"
@@ -64,7 +64,7 @@ const isActive = (href: string) =>
           </li>
         ))}
         <li class="pt-lc-4">
-          <Button href={contactHref} class="w-full">Let's Connect</Button>
+          <Button href={contactHref} target="_blank" rel="noopener" class="w-full">Let's Connect</Button>
         </li>
       </ul>
     </Container>

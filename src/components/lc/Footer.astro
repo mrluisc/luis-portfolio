@@ -8,7 +8,7 @@ import Lockup from './Lockup.astro';
 import Label from './Label.astro';
 import Motif from './Motif.astro';
 import { motifGeometry } from './motif';
-import { navLinks, contactHref } from '../../data/nav';
+import { navLinks } from '../../data/nav';
 import { facts } from '../../data/facts';
 
 const year = new Date().getFullYear();
@@ -39,7 +39,6 @@ const link = 'text-arena underline decoration-transparent underline-offset-4 hov
           <ul class="flex flex-col gap-lc-2 text-small">
             <li><a href={`mailto:${facts.person.email}`} class={link}>{facts.person.email}</a></li>
             <li><a href="https://www.linkedin.com/in/luiscarlosmorenorivero/" target="_blank" rel="noopener" class={link}>LinkedIn</a></li>
-            <li><a href={contactHref} class={link}>Work With Me</a></li>
           </ul>
         </div>
       </div>
