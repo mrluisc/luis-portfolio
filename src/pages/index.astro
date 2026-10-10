@@ -87,10 +87,10 @@ const homeTestimonials = [
       <Stats
         labels="text"
         items={[
-          { value: facts.scale.incomingTeachers, label: 'New teachers onboarded through my system, before day one' },
-          { value: facts.scale.leaders, label: 'School leaders running curriculum from my dashboard' },
-          { value: facts.scale.students, label: 'Students covered by school-wide systems' },
-          { value: facts.scale.tools, label: 'Tools shipped by request, adopted by name' },
+          { value: `${facts.scale.incomingTeachers} teachers`, label: 'New teachers onboarded through my system, before day one' },
+          { value: `${facts.scale.leaders} leaders`, label: 'School leaders running curriculum from my dashboard' },
+          { value: `${facts.scale.students} students`, label: 'Students covered by school-wide systems' },
+          { value: `${facts.scale.tools} tools`, label: 'Tools shipped by request, adopted by name' },
         ]}
       />
     </Container>
@@ -143,7 +143,7 @@ const homeTestimonials = [
             <Tag>Venezuelan</Tag>
             <Tag>Queer Educator</Tag>
             <Tag>{facts.scale.countriesLived} Countries</Tag>
-            <Tag>EN · ES · PT</Tag>
+            <Tag>{facts.person.languages}</Tag>
           </div>
         </div>
         <div class="relative md:sticky md:top-lc-9">
@@ -324,7 +324,7 @@ const homeTestimonials = [
               role: facts.goa.title,
               org: `${facts.goa.org} (${facts.goa.orgShort}), Global`,
               badge: 'Current',
-              notes: 'Teaching Geometry and Game Theory online to students worldwide',
+              notes: 'Teaching Game Theory and Engineering Design online to students worldwide',
             },
             {
               years: range(facts.vis),

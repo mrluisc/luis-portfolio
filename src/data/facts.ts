@@ -71,7 +71,8 @@ export const facts = {
   goa: {
     org: 'Global Online Academy',
     orgShort: 'GOA',
-    title: 'Geometry & Game Theory Instructor',
+    /** Semester 1 2026-27 courses, corrected by LC 10 Oct 2026 (he has not taught AI; Geometry was earlier). */
+    title: 'Game Theory & Engineering Design Instructor',
     startYear: '2024',
     endYear: 'Present',
   },

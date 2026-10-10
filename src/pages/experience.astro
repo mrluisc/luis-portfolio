@@ -96,20 +96,10 @@ import { facts, range } from '../data/facts';
         <div class="grid gap-lc-5 md:grid-cols-2">
           <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
             <div class="flex flex-col gap-lc-2">
-              <Label tone="suave">{range(facts.aisc)}</Label>
-              <h3 class="font-display text-heading text-tierra">{facts.aisc.title}</h3>
-              <p class="text-small font-semibold text-selva">{facts.aisc.school} ({facts.aisc.schoolShort}), India</p>
+              <Label tone="suave">{`${facts.current.startMonth} ${facts.current.startYear} – Present`}</Label>
+              <h3 class="font-display text-heading text-tierra">{facts.current.title}</h3>
+              <p class="text-small font-semibold text-selva">{facts.current.school} ({facts.current.schoolShort}), {facts.current.campus} {facts.current.division}, {facts.current.location}</p>
             </div>
-            <DotList>
-              <li>Co-led Apple Distinguished School certification ({facts.misc.appleYears} designation)</li>
-              <li>Co-created HUMAN Framework with {facts.people.perezTalavera.name}</li>
-              <li>Engineered LEA, analyzed {facts.scale.leaMonths} months of school-wide data</li>
-              <li>Coached {facts.scale.facultyCoached} faculty using student-centered model (plan, observe, model, co-teach)</li>
-              <li>Built {facts.scale.tools} automation tools, each adopted by name by the colleague who requested it</li>
-              <li>Designed digital citizenship curriculum for {facts.scale.digitalCitizenshipStudents} students annually</li>
-              <li>Managed Integration Studio: VR, podcasting, multimedia</li>
-              <li>Facilitated parent &amp; community sessions on AI literacy and digital wellbeing</li>
-            </DotList>
           </div>
           <div class="flex flex-col gap-lc-4 rounded-medium border border-tierra/15 bg-blanco p-lc-5 md:p-lc-6">
             <div class="flex flex-col gap-lc-2">
@@ -119,7 +109,7 @@ import { facts, range } from '../data/facts';
             </div>
             <DotList>
               <li>Teaches Game Theory to students from member schools worldwide</li>
-              <li>Teaches Introduction to Artificial Intelligence</li>
+              <li>Teaches Problem Solving with Engineering and Design</li>
               <li>Creates custom instructional videos and competency-based assessments</li>
               <li>95%+ course completion rate</li>
               <li>Global, asynchronous, project-based learning model</li>
@@ -194,6 +184,22 @@ import { facts, range } from '../data/facts';
         <SectionHeader label="Career Timeline" title="Every Role, Every School" />
         <Timeline class="max-w-3xl">
           {[
+            {
+              period: range(facts.aisc),
+              role: `${facts.aisc.title} · ${facts.aisc.secondTitle}`,
+              org: `${facts.aisc.school} (${facts.aisc.schoolShort})`,
+              location: facts.aisc.location,
+              points: [
+                `Co-led Apple Distinguished School certification (${facts.misc.appleYears} designation)`,
+                `Co-created HUMAN Framework with ${facts.people.perezTalavera.name}`,
+                `Engineered LEA, analyzed ${facts.scale.leaMonths} months of school-wide data`,
+                `Coached ${facts.scale.facultyCoached} faculty using student-centered model (plan, observe, model, co-teach)`,
+                `Built ${facts.scale.tools} automation tools, each adopted by name by the colleague who requested it`,
+                `Designed digital citizenship curriculum for ${facts.scale.digitalCitizenshipStudents} students annually`,
+                'Managed Integration Studio: VR, podcasting, multimedia',
+                'Facilitated parent & community sessions on AI literacy and digital wellbeing',
+              ],
+            },
             {
               period: '2021 – 2023',
               role: `${facts.vis.title} · DEIJ Taskforce Member`,
