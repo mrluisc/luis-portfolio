@@ -41,3 +41,10 @@
 - Still open from "Waiting for LC": testimonials one by one, his approval of the blog intro, post footer and 404 copy,
   the privacy calls in old posts, and "Where I Am Now" still showing AISC and GOA, not SAS.
 - 10 Oct, later: **Work With Me hidden** (LC). Page renamed `_work-with-me.astro` (not built; one rename restores it, plus its line in `nav.ts`). Every contact button opens LinkedIn in a new tab, read from `facts.ts`. The contact form went with the page. Live: `/work-with-me` returns 404, 34 pages match the build.
+- 10 Oct, later: **Silvana Loreto's review** (read through her phone's translator). Fixed and published: stats carry
+  their units (a bare "50+" became "más de 50 años" in translation), languages spelled out from facts.ts, Where I Am
+  Now shows SAS (bare card, LC will write bullets) beside GOA, AISC moved to the top of the timeline, GOA title and
+  bullets corrected to Game Theory and Engineering Design (LC has not taught AI; Geometry was earlier). 34 live pages
+  match the build. **Her other note, for later:** lots of technical jargon for a non-educator reader; a plainer
+  version, or a Spanish one, is a future decision.
+

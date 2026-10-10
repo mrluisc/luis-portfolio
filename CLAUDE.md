@@ -78,7 +78,8 @@ Branch: `brand-restyle`.
 - Factual slips left as written: ISTE strand labels in "Let the game begin!" (all "Empowered Learner") and
   "Standards for Educators" for student standards in the podcast posts.
 - Voice-checker words left as he wrote them in 2020: "demonstrate" (2 posts), "crucial" (1), "exceptional" (1).
-- Content not changed by the restyle: My Journey "Where I Am Now" still shows AISC and GOA, not SAS.
+- ✅ (10 Oct) Where I Am Now shows SAS and GOA; the SAS card has no bullet points until LC writes them.
+- Silvana (10 Oct): too much jargon for non-educators; a plainer or Spanish version is a future decision.
 - Lost COETAIL posts (never archived): My Communities, Migrating Toward Collaboration, The Cycle of
   Socialization, Make your Frame Work!, and everything before March 2020. Drafts of some may be in Drive's
   COETAIL folder ("Community", "Week 1: From Lurker to Connector", ...); adding them needs his OK.
