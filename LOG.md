@@ -48,3 +48,5 @@
   match the build. **Her other note, for later:** lots of technical jargon for a non-educator reader; a plainer
   version, or a Spanish one, is a future decision.
 
+
+- Wed 28 Oct 2026, 00:00: the 11 COETAIL posts missing from the blog extracted from the 2021 WordPress export (copied to Drive on 24 Oct) into `scripts/coetail-import/missing-posts.json` on this branch, posts only, images as placeholders, 3 links removed (README there). Cloud job 11 builds the posts on its own branch from here; nothing is on the site until LC says yes.
